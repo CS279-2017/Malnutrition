@@ -8,6 +8,8 @@
 
 import Foundation
 
+import SwiftyJSON
+
 //Singleton that manages all of the data used by the app
 class DataStore{
     //stores the shared singleton instance of the DataStore class
@@ -26,35 +28,17 @@ class DataStore{
     private init(){
         //Constructor for DataStore, called by get() function, never called outside of DataStore class
         //read the string from the text file that contains the item directory structure
-        let stringFromFile = readStringFromFile(fileName: "samplejson")
-        var parsedJsonObject = parseJson(json: stringFromFile);
+        let stringFromFile = readStringFromFile(fileName: "data")
+        var parsedJsonObject = parseJson(jsonString: stringFromFile);
         
     }
     
-    func parseJson(json:String) -> [String:AnyObject]?{
-        //some code to parse the string into an item directory
-        print(json);
-        var jsonString = json.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines)
-        var data = jsonString.data(using: .utf8)!
-        if let parsedData = try? JSONSerialization.jsonObject(with: data) as! [String:Any] {
-            let language = parsedData["Language"] as! [String:Any]
-            print(language)
-            let field = language["Field"] as! [[String:Any]]
-            let name = field[0]["Name"]!
-            print(name) // ==> Test1
+    func parseJson(jsonString:String){
+        if let dataFromString = jsonString.data(using: .utf8, allowLossyConversion: false) {
+            let json = JSON(data: dataFromString)
         }
-//        func convertStringToDictionary(text: String) -> [String:AnyObject]? {
-//            if let data = text.data(using: String.Encoding.utf8) {
-//                do {
-//                    return try JSONSerialization.jsonObject(with: data, options: []) as? [String:AnyObject]
-//                } catch let error as NSError {
-//                    print(error)
-//                }
-//            }
-//            return nil
-//        }
-//        return convertStringToDictionary(text: trimmed);
     }
+    
     
     func readStringFromFile(fileName: String) -> String{
         

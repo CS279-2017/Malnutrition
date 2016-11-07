@@ -18,6 +18,7 @@
 		32D587D91DC8FA1F00E15047 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32D587D71DC8FA1F00E15047 /* Main.storyboard */; };
 		32D587DB1DC8FA1F00E15047 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 32D587DA1DC8FA1F00E15047 /* Assets.xcassets */; };
 		32D587DE1DC8FA1F00E15047 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32D587DC1DC8FA1F00E15047 /* LaunchScreen.storyboard */; };
+		5166E453FD79E8A677D4F1E4 /* Pods_malnutrition_app.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CE7D24C59BD95752429DF5C /* Pods_malnutrition_app.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,9 @@
 		32D587DA1DC8FA1F00E15047 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		32D587DD1DC8FA1F00E15047 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		32D587DF1DC8FA1F00E15047 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4CE7D24C59BD95752429DF5C /* Pods_malnutrition_app.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_malnutrition_app.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4D8533A467F6279AA992F07B /* Pods-malnutrition app.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-malnutrition app.debug.xcconfig"; path = "Pods/Target Support Files/Pods-malnutrition app/Pods-malnutrition app.debug.xcconfig"; sourceTree = "<group>"; };
+		A161A7C601922742337D5974 /* Pods-malnutrition app.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-malnutrition app.release.xcconfig"; path = "Pods/Target Support Files/Pods-malnutrition app/Pods-malnutrition app.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,17 +45,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5166E453FD79E8A677D4F1E4 /* Pods_malnutrition_app.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1EAF4CB6216C9798426607C5 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				4D8533A467F6279AA992F07B /* Pods-malnutrition app.debug.xcconfig */,
+				A161A7C601922742337D5974 /* Pods-malnutrition app.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		32D587C71DC8FA1F00E15047 = {
 			isa = PBXGroup;
 			children = (
 				32D587D21DC8FA1F00E15047 /* malnutrition app */,
 				32D587D11DC8FA1F00E15047 /* Products */,
+				1EAF4CB6216C9798426607C5 /* Pods */,
+				FAB15955479DA14E8EAFC4EF /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -82,6 +98,14 @@
 			path = "malnutrition app";
 			sourceTree = "<group>";
 		};
+		FAB15955479DA14E8EAFC4EF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4CE7D24C59BD95752429DF5C /* Pods_malnutrition_app.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -89,9 +113,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 32D587E21DC8FA1F00E15047 /* Build configuration list for PBXNativeTarget "malnutrition app" */;
 			buildPhases = (
+				987386A3318DC5019515805F /* [CP] Check Pods Manifest.lock */,
 				32D587CC1DC8FA1F00E15047 /* Sources */,
 				32D587CD1DC8FA1F00E15047 /* Frameworks */,
 				32D587CE1DC8FA1F00E15047 /* Resources */,
+				FF33CF70098462FDBF7E1B76 /* [CP] Embed Pods Frameworks */,
+				EC559A342B5C054584755ADD /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -151,6 +178,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		987386A3318DC5019515805F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		EC559A342B5C054584755ADD /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-malnutrition app/Pods-malnutrition app-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FF33CF70098462FDBF7E1B76 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-malnutrition app/Pods-malnutrition app-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		32D587CC1DC8FA1F00E15047 /* Sources */ = {
@@ -281,6 +356,7 @@
 		};
 		32D587E31DC8FA1F00E15047 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4D8533A467F6279AA992F07B /* Pods-malnutrition app.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = DE4758AREF;
@@ -294,6 +370,7 @@
 		};
 		32D587E41DC8FA1F00E15047 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A161A7C601922742337D5974 /* Pods-malnutrition app.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = DE4758AREF;
