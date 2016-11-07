@@ -13,14 +13,15 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     //this is the item which the view controller represents
     var item:Item = Item();
+    var tableView = UITableView();
     
     //creates and initializes the tableView, setting the delegate and data source of the tableView to this class.
     override func viewDidLoad() {
         super.viewDidLoad()
-        var tableView = UITableView();
-        self.view = tableView;
-        tableView.dataSource = self;
-        tableView.delegate = self;
+        self.tableView.dataSource = self;
+        self.tableView.delegate = self;
+        self.view = self.tableView;
+        print(item.text);
         
 //        tableView.rowHeight = UITableViewAutomaticDimension
 //        tableView.estimatedRowHeight = 140
@@ -32,6 +33,7 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     func setItem(item: Item){
         self.item = item;
+        self.tableView.reloadData();
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -39,22 +41,38 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var tableViewCell = TableViewCell();
-        tableViewCell.setItem(item: item.nextItems[indexPath.row]);
-        return tableViewCell
+        let row = indexPath.row
+        let item = self.item.nextItems[row];
+//        let tableViewCell = TableViewCell(item: item);
+//        let cell = UITableViewCell()
+//        cell.textLabel = 
+//        print(tableViewCell.item?.text)
+        let cell = UITableViewCell();
+        cell.textLabel?.text = item.text;
+        return cell
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        
+   
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath as IndexPath, animated: true)
-        
         let row = indexPath.row
         let item = self.item.nextItems[row];
         let newViewController = TableViewController();
         newViewController.setItem(item: item);
         navigationController?.pushViewController(newViewController, animated: true);
-        
-        
     }
+//    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+//        
+//        print("tableViewCell was clicked");
+//        
+////        tableView.deselectRow(at: indexPath as IndexPath, animated: true)
+//        
+//        let row = indexPath.row
+//        let item = self.item.nextItems[row];
+//        let newViewController = TableViewController();
+//        newViewController.setItem(item: item);
+//        navigationController?.pushViewController(newViewController, animated: true);
+//    }
+
     
 }
