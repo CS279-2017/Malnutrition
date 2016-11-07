@@ -27,7 +27,8 @@ class ViewController: UIViewController {
     func startButtonClicked(sender:UIButton){
         let rootItem = DataStore.get().rootItem;
         let newViewController = TableViewController();
-        newViewController.setItem(item: rootItem)
+        //since we choose to store the entire item directory in one Item object, in a trie like fashion, we must have a rootItem, also since we choose to create the Trie by appending Item objects onto the trie as we read the Json we must have another intial root on which to append to the other nodes, thus we essentially have two 'roots', thus if we want to not display these nodes in the app, we will have to skip the initial root, hence rootItem.nextItems[0]
+        newViewController.setItem(item: rootItem.nextItems[0])
         self.navigationController?.pushViewController(newViewController, animated: true);
         //starts the first link in a chain of TableViewControllers each representing one item; 
         
