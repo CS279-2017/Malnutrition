@@ -34,18 +34,26 @@ class DataStore{
     func parseJson(json:String) -> [String:AnyObject]?{
         //some code to parse the string into an item directory
         print(json);
-        var trimmed = json.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines)
-        func convertStringToDictionary(text: String) -> [String:AnyObject]? {
-            if let data = text.data(using: String.Encoding.utf8) {
-                do {
-                    return try JSONSerialization.jsonObject(with: data, options: []) as? [String:AnyObject]
-                } catch let error as NSError {
-                    print(error)
-                }
-            }
-            return nil
+        var jsonString = json.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines)
+        var data = jsonString.data(using: .utf8)!
+        if let parsedData = try? JSONSerialization.jsonObject(with: data) as! [String:Any] {
+            let language = parsedData["Language"] as! [String:Any]
+            print(language)
+            let field = language["Field"] as! [[String:Any]]
+            let name = field[0]["Name"]!
+            print(name) // ==> Test1
         }
-        return convertStringToDictionary(text: trimmed);
+//        func convertStringToDictionary(text: String) -> [String:AnyObject]? {
+//            if let data = text.data(using: String.Encoding.utf8) {
+//                do {
+//                    return try JSONSerialization.jsonObject(with: data, options: []) as? [String:AnyObject]
+//                } catch let error as NSError {
+//                    print(error)
+//                }
+//            }
+//            return nil
+//        }
+//        return convertStringToDictionary(text: trimmed);
     }
     
     func readStringFromFile(fileName: String) -> String{
