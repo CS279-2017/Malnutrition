@@ -15,7 +15,7 @@ class DataStore{
     //stores the shared singleton instance of the DataStore class
     static var sharedInstance: DataStore? = nil;
     
-    var itemsDirectory:[Item] = [Item]();
+    var rootItem:Item = Item(text: "root", nextItems: [Item]());
     
     //get the singleton instance if it exists, otherwise call constructor and make an instance
     static func get() -> DataStore{
@@ -35,8 +35,30 @@ class DataStore{
     
     func parseJson(jsonString:String){
         if let dataFromString = jsonString.data(using: .utf8, allowLossyConversion: false) {
-            let json = JSON(data: dataFromString)
+            let json = JSON(data: dataFromString);
+//            for (index,subJson):(String, JSON) in json {
+//                var item = Item();
+//                item.text = json[index]["text"].string!;
+//            }
+            let i = json[0]["text"].string
+            print(i);
+            buildItemDirectory(parent: rootItem, json: json)
         }
+    }
+    
+    func buildItemDirectory(parent: Item, json:JSON){
+        var newItem = Item();
+        if(json["text"].string != nil){
+            newItem.text = json["text"].string!
+        }
+        if let nextItem = json["nextItem"].array {
+            if(nextItem.count > 0){
+                for next in nextItem{
+                    buildItemDirectory(parent: newItem, json: next)
+                }
+            }
+        }
+        parent.nextItems.append(newItem);
     }
     
     

@@ -11,8 +11,8 @@ import UIKit
 
 class TableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
     
-    //stores one level of items (previous levels are inaccessible)
-    var items: [Item] = [Item]();
+    //this is the item which the view controller represents
+    var item:Item = Item();
     
     //creates and initializes the tableView, setting the delegate and data source of the tableView to this class.
     override func viewDidLoad() {
@@ -30,17 +30,17 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
     }
     
-    func setItems(items: [Item]){
-        self.items = items;
+    func setItem(item: Item){
+        self.item = item;
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return items.count;
+        return item.nextItems.count;
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var tableViewCell = TableViewCell();
-        tableViewCell.setItem(item: items[indexPath.row]);
+        tableViewCell.setItem(item: item.nextItems[indexPath.row]);
         return tableViewCell
     }
     
@@ -49,11 +49,9 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
         tableView.deselectRow(at: indexPath as IndexPath, animated: true)
         
         let row = indexPath.row
-        
-        let item = items[row];
-        let nextItems = item.nextItems;
+        let item = self.item.nextItems[row];
         let newViewController = TableViewController();
-        newViewController.setItems(items: nextItems);
+        newViewController.setItem(item: item);
         navigationController?.pushViewController(newViewController, animated: true);
         
         

@@ -25,11 +25,11 @@ class ViewController: UIViewController {
     }
     
     func startButtonClicked(sender:UIButton){
-        var newViewController = UIViewController();
-        var tableView = UITableView();
-        var tableCell = UITableViewCell();
-        newViewController.view = tableView;
+        let rootItem = DataStore.get().rootItem;
+        let newViewController = TableViewController();
+        newViewController.setItem(item: rootItem)
         self.navigationController?.pushViewController(newViewController, animated: true);
+        //starts the first link in a chain of TableViewControllers each representing one item; 
         
     }
 
