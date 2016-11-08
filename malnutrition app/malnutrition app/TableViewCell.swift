@@ -14,20 +14,21 @@ class TableViewCell: UITableViewCell{
     var item: Item?;
     var label:UILabel = UILabel();
     
-    init(item: Item) {
-        print("init called");
-        super.init(style: UITableViewCellStyle.default, reuseIdentifier: "cell")
-        self.item = item;
-        self.label.text = item.text;
-        addSubview(label);
-        print(self.label.text);
-    }
+//    init(item: Item) {
+//        print("init called");
+////        super.init()
+////        super.init(style: UITableViewCellStyle.default, reuseIdentifier: "cell")
+////        self.item = item;
+////        self.label.text = item.text;
+////        addSubview(label);
+////        print(self.label.text);
+//    }
     
-    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+//    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+//        super.init(style: style, reuseIdentifier: reuseIdentifier)
+//    }
+//    
+//    required init?(coder aDecoder: NSCoder) {
+//        fatalError("init(coder:) has not been implemented")
+//    }
 }

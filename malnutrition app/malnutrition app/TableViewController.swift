@@ -47,19 +47,38 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
 //        let cell = UITableViewCell()
 //        cell.textLabel = 
 //        print(tableViewCell.item?.text)
-        let cell = UITableViewCell();
-        cell.textLabel?.text = item.text;
+        let cell = TableViewCell();
+        cell.item = item;
+        if(item.nextItems.count == 0){
+            cell.textLabel?.text = item.text;
+            let switchView = UISwitch();
+            switchView.addTarget(self, action: #selector(switchClicked(sender:)), for: UIControlEvents.touchUpInside);
+            switchView.isOn = item.switched;
+            cell.accessoryView = switchView;
+
+        }
+        else{
+            cell.textLabel?.text = item.text;
+        }
         return cell
     }
     
    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath as IndexPath, animated: true)
+        
         let row = indexPath.row
         let item = self.item.nextItems[row];
-        let newViewController = TableViewController();
-        newViewController.setItem(item: item);
-        navigationController?.pushViewController(newViewController, animated: true);
+        if(item.nextItems.count != 0){
+            let newViewController = TableViewController();
+            newViewController.setItem(item: item);
+            navigationController?.pushViewController(newViewController, animated: true);
+        }
+    }
+    
+    func switchClicked(sender: UISwitch){
+        let cell = sender.superview as! TableViewCell;
+        cell.item!.toggleSwitch();
     }
 //    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
 //        

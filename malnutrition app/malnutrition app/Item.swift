@@ -12,6 +12,7 @@ import Foundation
 class Item{
     var nextItems:[Item] = [Item](); //items that are linked to this item (i.e these items will be displayed when this item is clicked)
     var text:String = "";
+    var switched = false;
     
     init(){
         
@@ -22,6 +23,7 @@ class Item{
         self.nextItems = nextItems; 
     }
     
-    
-    
+    func toggleSwitch(){
+        switched = !switched;
+    }
 }
