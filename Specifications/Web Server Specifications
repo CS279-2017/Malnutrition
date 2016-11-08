@@ -1,0 +1,11 @@
+Web Server Specifications
+
+App currently reads JSON format for symptoms and details for physical examination.
+
+Server-based form solicits provider for symptom information. Website front-end updates information to be inputted into
+the application. Designed to be used primarily by Dr. Silver. Log-in feature to verify that Heidi is the user.
+
+Primarily tech specifications:
+-MongoDB for database or just JSON string file
+-AWS (lambda server)
+-Front-end website for input
