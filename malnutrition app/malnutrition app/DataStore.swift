@@ -51,7 +51,7 @@ class DataStore{
         if(json["text"].string != nil){
             newItem.text = json["text"].string!
         }
-        if let nextItem = json["nextItem"].array {
+        if let nextItem = json["nextItems"].array {
             if(nextItem.count > 0){
                 for next in nextItem{
                     buildItemDirectory(parent: newItem, json: next)
