@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		321775841DD159BA002CDBD9 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 321775831DD159BA002CDBD9 /* README.md */; };
 		323F8D191DD0181F008A0A7C /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323F8D181DD0181F008A0A7C /* TableViewController.swift */; };
 		323F8D1D1DD01D1F008A0A7C /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323F8D1C1DD01D1F008A0A7C /* Item.swift */; };
 		323F8D1F1DD02151008A0A7C /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323F8D1E1DD02151008A0A7C /* TableViewCell.swift */; };
@@ -23,7 +22,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		321775831DD159BA002CDBD9 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		323F8D181DD0181F008A0A7C /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		323F8D1C1DD01D1F008A0A7C /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		323F8D1E1DD02151008A0A7C /* TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
@@ -96,7 +94,6 @@
 				323F8D1C1DD01D1F008A0A7C /* Item.swift */,
 				323F8D1E1DD02151008A0A7C /* TableViewCell.swift */,
 				323F8D221DD036FF008A0A7C /* samplejson.txt */,
-				321775831DD159BA002CDBD9 /* README.md */,
 			);
 			path = "malnutrition app";
 			sourceTree = "<group>";
@@ -238,7 +235,6 @@
 				328A53621DCBA2B70035DA6C /* DataStore.swift in Sources */,
 				32D587D61DC8FA1F00E15047 /* ViewController.swift in Sources */,
 				32D587D41DC8FA1F00E15047 /* AppDelegate.swift in Sources */,
-				321775841DD159BA002CDBD9 /* README.md in Sources */,
 				323F8D1D1DD01D1F008A0A7C /* Item.swift in Sources */,
 				323F8D1F1DD02151008A0A7C /* TableViewCell.swift in Sources */,
 				323F8D191DD0181F008A0A7C /* TableViewController.swift in Sources */,
