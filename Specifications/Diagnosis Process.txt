@@ -1,0 +1,9 @@
+At this stage, it is unclear if the application will be able to make the sophisticated logic trees in order
+to make specific malnutrition diagnoses. Need to consult Dr. Silver and the medical team to assess
+the complexity of diagnosis differentiation.
+
+Assuming that we cannot do so, the note-taking feature of the application will be expanded:
+-The final produced note screen will list all symptoms and characteristics discovered for the patient
+-Underneath this note will be a list of clinical ICD-10 codes and descriptions of clinical characteristics
+-Essentially serving as a quick reference for providers to assess in order to guide their diagnosis
+
