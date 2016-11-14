@@ -18,10 +18,14 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
     //creates and initializes the tableView, setting the delegate and data source of the tableView to this class.
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.register(SymptomCell.self, forCellReuseIdentifier: "SymptomCell")
         self.tableView.dataSource = self;
         self.tableView.delegate = self;
         self.view = self.tableView;
         print(item?.title);
+        
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 140
         
 //        tableView.rowHeight = UITableViewAutomaticDimension
 //        tableView.estimatedRowHeight = 140
@@ -29,6 +33,10 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
         //TODO: add label to footer to show "没有单词“
 //        tableView.tableFooterView = UIView();
         
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 85
     }
     
     func setItem(item: Item){
@@ -43,14 +51,12 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let row = indexPath.row
         let item = self.item?.nextItems[row];
-//        let tableViewCell = TableViewCell(item: item);
-//        let cell = UITableViewCell()
-//        cell.textLabel = 
-//        print(tableViewCell.item?.text)
-        let cell = TableViewCell();
+        let cell = tableView.dequeueReusableCell(withIdentifier: "SymptomCell", for: indexPath) as! SymptomCell
         cell.item = item;
+        cell.titleLabel.text = item!.title
+        cell.descriptionLabel.text = item!.description
         if(item?.nextItems.count == 0){
-            cell.textLabel?.text = item?.title;
+//            cell.textLabel?.text = item?.title;
             let switchView = UISwitch();
             switchView.addTarget(self, action: #selector(switchClicked(sender:)), for: UIControlEvents.touchUpInside);
             switchView.isOn = (item?.switched)!;
@@ -58,10 +64,12 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
 
         }
         else{
-            cell.textLabel?.text = item?.title;
+//            cell.textLabel?.text = item?.title;
         }
         return cell
     }
+    
+    
     
    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -77,7 +85,7 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     func switchClicked(sender: UISwitch){
-        let cell = sender.superview as! TableViewCell;
+        let cell = sender.superview as! SymptomCell;
         cell.item!.toggleSwitch();
     }
 //    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
