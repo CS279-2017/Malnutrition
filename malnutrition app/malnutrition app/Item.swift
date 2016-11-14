@@ -10,16 +10,23 @@ import Foundation
 
 //Generic object that superclasses Disease, BodyPart
 class Item{
+    var type:String? //can take on values: "Root, Symptom", "Body Part", "Action", "Question, or nil"
+    var title:String?
+    var description:String?
+    var images: [String] = [String]();
     var nextItems:[Item] = [Item](); //items that are linked to this item (i.e these items will be displayed when this item is clicked)
-    var text:String = "";
-    var switched = false;
     
+    var switched = false;
+
     init(){
-        
+    
     }
     
-    init(text:String, nextItems: [Item]){
-        self.text = text;
+    init(type: String, title:String?, description: String?, images: [String], nextItems: [Item]){
+        self.type = type;
+        self.title = title;
+        self.description = description;
+        self.images = images;
         self.nextItems = nextItems; 
     }
     

@@ -12,7 +12,7 @@ import UIKit
 class TableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
     
     //this is the item which the view controller represents
-    var item:Item = Item();
+    var item:Item?;
     var tableView = UITableView();
     
     //creates and initializes the tableView, setting the delegate and data source of the tableView to this class.
@@ -21,7 +21,7 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
         self.tableView.dataSource = self;
         self.tableView.delegate = self;
         self.view = self.tableView;
-        print(item.text);
+        print(item?.title);
         
 //        tableView.rowHeight = UITableViewAutomaticDimension
 //        tableView.estimatedRowHeight = 140
@@ -37,28 +37,28 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return item.nextItems.count;
+        return item!.nextItems.count;
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let row = indexPath.row
-        let item = self.item.nextItems[row];
+        let item = self.item?.nextItems[row];
 //        let tableViewCell = TableViewCell(item: item);
 //        let cell = UITableViewCell()
 //        cell.textLabel = 
 //        print(tableViewCell.item?.text)
         let cell = TableViewCell();
         cell.item = item;
-        if(item.nextItems.count == 0){
-            cell.textLabel?.text = item.text;
+        if(item?.nextItems.count == 0){
+            cell.textLabel?.text = item?.title;
             let switchView = UISwitch();
             switchView.addTarget(self, action: #selector(switchClicked(sender:)), for: UIControlEvents.touchUpInside);
-            switchView.isOn = item.switched;
+            switchView.isOn = (item?.switched)!;
             cell.accessoryView = switchView;
 
         }
         else{
-            cell.textLabel?.text = item.text;
+            cell.textLabel?.text = item?.title;
         }
         return cell
     }
@@ -68,10 +68,10 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
         tableView.deselectRow(at: indexPath as IndexPath, animated: true)
         
         let row = indexPath.row
-        let item = self.item.nextItems[row];
-        if(item.nextItems.count != 0){
+        let item = self.item?.nextItems[row];
+        if(item?.nextItems.count != 0){
             let newViewController = TableViewController();
-            newViewController.setItem(item: item);
+            newViewController.setItem(item: item!);
             navigationController?.pushViewController(newViewController, animated: true);
         }
     }

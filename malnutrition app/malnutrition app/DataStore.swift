@@ -15,7 +15,8 @@ class DataStore{
     //stores the shared singleton instance of the DataStore class
     static var sharedInstance: DataStore? = nil;
     
-    var rootItem:Item = Item(text: "root", nextItems: [Item]());
+    
+    var rootItem:Item = Item(type: "Root", title: nil, description: nil, images: [String](), nextItems: [Item]());
     
     //get the singleton instance if it exists, otherwise call constructor and make an instance
     static func get() -> DataStore{
@@ -47,10 +48,17 @@ class DataStore{
     }
     
     func buildItemDirectory(parent: Item, json:JSON){
-        var newItem = Item();
-        if(json["text"].string != nil){
-            newItem.text = json["text"].string!
+        let newItem = Item();
+        newItem.type = json["type"].string
+        newItem.title = json["title"].string
+        newItem.description = json["description"].string
+        //if the images array is not empty then copy all the image urls into a string array
+        if let imageArray = json["images"].array{
+            for json in imageArray{
+                newItem.images.append(json.string!)
+            }
         }
+        //if nextItems array not empty recursively call the buildItemDirectory function on every item
         if let nextItem = json["nextItems"].array {
             if(nextItem.count > 0){
                 for next in nextItem{

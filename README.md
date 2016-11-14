@@ -8,7 +8,7 @@ The app accepts JSON as input and is able to dynamically generate content based 
 
 
 2. The Items should be of the form {"type": "", "title": "", "description": " ", images [], "nextItems": []}, where text is the a string, and nextItems is an array of Items
-  * type can have the values "Symptom", "Body Part", "Action", "Question"
+  * type can have the values "Root", "Symptom", "Body Part", "Action", "Question"
   * title is the title of the item
   * description is a description of what the item is
   * images is an array of strings, each string being the filename of an image
