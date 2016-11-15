@@ -44,10 +44,6 @@ class SymptomCell: UITableViewCell {
         descriptionLabel.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor).isActive = true;
         descriptionLabel.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor).isActive = true;
         descriptionLabel.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor).isActive = true;
-        
-//        descriptionLabelTopConstraint.isActive = true;
-//        descriptionLabelLeadingConstraint.isActive = true;
-//        descriptionLabelTrailingConstraint.isActive = true;
     }
     
     required init?(coder aDecoder: NSCoder) {

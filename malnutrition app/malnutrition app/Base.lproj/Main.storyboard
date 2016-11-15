@@ -44,6 +44,7 @@
                     <navigationItem key="navigationItem" id="dvg-L4-lBY"/>
                     <connections>
                         <outlet property="startButton" destination="5PD-RL-yWW" id="m9E-hx-eMG"/>
+                        <outlet property="viewNotesButton" destination="bai-0H-a1x" id="eqw-qW-Z98"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

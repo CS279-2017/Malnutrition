@@ -24,7 +24,7 @@ class DataStore{
         return documentDirectory as NSURL
     }()
     
-    var noteBook:NoteBook?
+    var noteBook:NoteBook = NoteBook();
     
     //get the singleton instance if it exists, otherwise call constructor and make an instance
     static func get() -> DataStore{
@@ -39,7 +39,10 @@ class DataStore{
         //read the string from the text file that contains the item directory structure
         let stringFromFile = readStringFromFile(fileName: "data")
         var parsedJsonObject = parseJson(jsonString: stringFromFile);
-        noteBook = NSKeyedUnarchiver.unarchiveObject(withFile: DataStore.archiveURL.path!) as? NoteBook
+        if let unarchivedObject = (NSKeyedUnarchiver.unarchiveObject(withFile: DataStore.archiveURL.path!)){
+            noteBook = unarchivedObject as! NoteBook;
+        }
+    
     }
     
     func parseJson(jsonString:String){
@@ -93,10 +96,7 @@ class DataStore{
     
     //save user inform stored inside dataStore
     func save() -> Bool{
-        if(noteBook != nil){
-            return NSKeyedArchiver.archiveRootObject(noteBook!, toFile: DataStore.archiveURL.path!)
-        }
-        return false;
+        return NSKeyedArchiver.archiveRootObject(noteBook, toFile: DataStore.archiveURL.path!)
     }
     
 //    func makeNote(title:String, text:String){

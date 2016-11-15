@@ -35,11 +35,13 @@ class NoteBook: NSObject, NSCoding{
         return notes.count;
     }
     
-//    func getAllNotes() -> [Note]{
-//        var allNotes = [Note]();
-//        for key in notes{
-//            allNotes.append(notes[key]);
-//        }
-//        return allNotes;
-//    }
+    //returns notes in descending order by date
+    func getAllNotes() -> [Note]{
+        var allNotes = [Note]();
+        for (title, note) in notes{
+            allNotes.append(note)
+        }
+        allNotes.sort(by: {$0.dateCreated > $1.dateCreated});
+        return allNotes;
+    }
 }

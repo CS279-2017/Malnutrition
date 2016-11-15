@@ -49,4 +49,11 @@ class Item{
         }
         return retString;
     }
+    
+    func switchOffAllItems(){
+        switched = false;
+        for item in nextItems{
+            item.switchOffAllItems();
+        }
+    }
 }

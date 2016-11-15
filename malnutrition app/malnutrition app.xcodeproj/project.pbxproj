@@ -15,6 +15,7 @@
 		323F8D231DD036FF008A0A7C /* samplejson.txt in Resources */ = {isa = PBXBuildFile; fileRef = 323F8D221DD036FF008A0A7C /* samplejson.txt */; };
 		327D817F1DDA697C00A6B0F1 /* MakeNoteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327D817E1DDA697C00A6B0F1 /* MakeNoteCell.swift */; };
 		327D81811DDA73BF00A6B0F1 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327D81801DDA73BF00A6B0F1 /* Note.swift */; };
+		3285FAD91DDADA410071B017 /* NoteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3285FAD81DDADA410071B017 /* NoteCell.swift */; };
 		328A53621DCBA2B70035DA6C /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328A53611DCBA2B70035DA6C /* DataStore.swift */; };
 		32D587D41DC8FA1F00E15047 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D587D31DC8FA1F00E15047 /* AppDelegate.swift */; };
 		32D587D61DC8FA1F00E15047 /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D587D51DC8FA1F00E15047 /* MainController.swift */; };
@@ -38,6 +39,7 @@
 		323F8D221DD036FF008A0A7C /* samplejson.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = samplejson.txt; sourceTree = "<group>"; };
 		327D817E1DDA697C00A6B0F1 /* MakeNoteCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MakeNoteCell.swift; sourceTree = "<group>"; };
 		327D81801DDA73BF00A6B0F1 /* Note.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
+		3285FAD81DDADA410071B017 /* NoteCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteCell.swift; sourceTree = "<group>"; };
 		328A53611DCBA2B70035DA6C /* DataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataStore.swift; sourceTree = "<group>"; };
 		32D587D01DC8FA1F00E15047 /* malnutrition app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "malnutrition app.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		32D587D31DC8FA1F00E15047 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -118,6 +120,7 @@
 				327D81801DDA73BF00A6B0F1 /* Note.swift */,
 				32E898E41DDA7D660051B9E5 /* NoteBook.swift */,
 				32E898E61DDA81730051B9E5 /* NoteEditController.swift */,
+				3285FAD81DDADA410071B017 /* NoteCell.swift */,
 			);
 			path = "malnutrition app";
 			sourceTree = "<group>";
@@ -268,6 +271,7 @@
 				327D81811DDA73BF00A6B0F1 /* Note.swift in Sources */,
 				323F8D191DD0181F008A0A7C /* ItemTableController.swift in Sources */,
 				32E898E91DDA8C430051B9E5 /* NoteController.swift in Sources */,
+				3285FAD91DDADA410071B017 /* NoteCell.swift in Sources */,
 				32EC60DB1DDA2FA3005ED383 /* BodyDiagramController.swift in Sources */,
 				327D817F1DDA697C00A6B0F1 /* MakeNoteCell.swift in Sources */,
 			);

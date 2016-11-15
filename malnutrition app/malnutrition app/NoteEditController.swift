@@ -20,7 +20,7 @@ class NoteEditController:UIViewController, UITextViewDelegate{
 //        self.view.addSubview(textView)
 //        self.view.addSubview(titleTextField)
         
-        let saveNoteButton = UIBarButtonItem(title: "Save", style: .plain, target: self, action: nil)
+        let saveNoteButton = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(saveNoteButtonClicked(button:)))
         self.navigationItem.rightBarButtonItem = saveNoteButton;
 //        self.navigationItem.rightBarButtonItem = saveNoteButton
     }
@@ -28,13 +28,18 @@ class NoteEditController:UIViewController, UITextViewDelegate{
     func saveNoteButtonClicked(button: UIBarButtonItem){
         //TODO: Validate that title isn't empty
         let note = Note(title: titleTextField.text!)
-        DataStore.get().noteBook?.addNote(note: note);
+        note.text = textView.text!
+        let noteBook = DataStore.get().noteBook
+        noteBook.addNote(note: note);
         if(DataStore.get().save() != true){
             print("unable to save note");
         }
         else{
             print("save note successful!")
+            //successfully saved note, segue to 
         }
+        DataStore.get().rootItem.switchOffAllItems();
+        
     }
     
 }
