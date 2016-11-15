@@ -3,13 +3,14 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Main Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="malnutrition_app" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MainController" id="BYZ-38-t0r" customClass="MainController" customModule="malnutrition_app" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -23,14 +24,11 @@
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="87y-FT-PRK">
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0UI-n3-KNR">
-                                        <state key="normal" title="References"/>
-                                        <connections>
-                                            <segue destination="SfK-kN-7Ol" kind="show" id="Tt9-Rr-oqn"/>
-                                        </connections>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bai-0H-a1x">
+                                        <state key="normal" title="View Notes"/>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5PD-RL-yWW">
-                                        <state key="normal" title="Start"/>
+                                        <state key="normal" title="Start New Note"/>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -45,13 +43,104 @@
                     </view>
                     <navigationItem key="navigationItem" id="dvg-L4-lBY"/>
                     <connections>
-                        <outlet property="referenceButton" destination="0UI-n3-KNR" id="eua-k6-rf8"/>
                         <outlet property="startButton" destination="5PD-RL-yWW" id="m9E-hx-eMG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="214" y="18"/>
+        </scene>
+        <!--Body Diagram Controller-->
+        <scene sceneID="i1D-zS-elv">
+            <objects>
+                <viewController storyboardIdentifier="BodyDiagramController" id="vEA-lI-Wb2" customClass="BodyDiagramController" customModule="malnutrition_app" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="dua-sJ-hSE"/>
+                        <viewControllerLayoutGuide type="bottom" id="43q-4W-8I3"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="wDm-yb-OXc">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="9fX-RQ-NEI">
+                                <subviews>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="vsE-5K-XhG">
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </tableView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VRL-Bx-7sT">
+                                        <state key="normal" title="Make Note"/>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="9fX-RQ-NEI" firstAttribute="top" secondItem="dua-sJ-hSE" secondAttribute="bottom" id="3Rz-3q-HFH"/>
+                            <constraint firstItem="9fX-RQ-NEI" firstAttribute="leading" secondItem="wDm-yb-OXc" secondAttribute="leading" id="GWb-M8-q9l"/>
+                            <constraint firstItem="43q-4W-8I3" firstAttribute="top" secondItem="9fX-RQ-NEI" secondAttribute="bottom" id="N2M-jp-KK3"/>
+                            <constraint firstAttribute="trailing" secondItem="9fX-RQ-NEI" secondAttribute="trailing" id="iHi-W3-CQo"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="makeNoteButton" destination="VRL-Bx-7sT" id="kzO-LA-l7f"/>
+                        <outlet property="tableView" destination="vsE-5K-XhG" id="B6t-Ll-Vn0"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IOM-hV-kMU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1813.5999999999999" y="-0.44977511244377816"/>
+        </scene>
+        <!--Note Edit Controller-->
+        <scene sceneID="E55-g1-c4W">
+            <objects>
+                <viewController storyboardIdentifier="NoteEditController" id="yir-Pg-HJU" customClass="NoteEditController" customModule="malnutrition_app" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Oij-d7-RAi"/>
+                        <viewControllerLayoutGuide type="bottom" id="Fcd-TL-uKX"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="0UW-9W-DIM">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="B8D-19-PCn">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eWb-yE-IGV">
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="sUm-OC-xnE">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="B8D-19-PCn" secondAttribute="trailing" id="6C1-uz-Kas"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="eWb-yE-IGV" secondAttribute="trailing" id="R54-uk-U4m"/>
+                            <constraint firstItem="Fcd-TL-uKX" firstAttribute="top" secondItem="B8D-19-PCn" secondAttribute="bottom" id="SBy-Ct-ZQl"/>
+                            <constraint firstItem="eWb-yE-IGV" firstAttribute="top" secondItem="Oij-d7-RAi" secondAttribute="bottom" constant="8" id="TK8-Zm-dYb"/>
+                            <constraint firstItem="sUm-OC-xnE" firstAttribute="top" secondItem="eWb-yE-IGV" secondAttribute="bottom" constant="8" id="bVz-OM-DSb"/>
+                            <constraint firstItem="Fcd-TL-uKX" firstAttribute="top" secondItem="sUm-OC-xnE" secondAttribute="bottom" id="iHx-Ln-Lia"/>
+                            <constraint firstItem="B8D-19-PCn" firstAttribute="leading" secondItem="0UW-9W-DIM" secondAttribute="leading" id="k39-9j-paH"/>
+                            <constraint firstItem="B8D-19-PCn" firstAttribute="top" secondItem="Oij-d7-RAi" secondAttribute="bottom" id="mkx-3S-Pdj"/>
+                            <constraint firstItem="eWb-yE-IGV" firstAttribute="leading" secondItem="0UW-9W-DIM" secondAttribute="leadingMargin" id="oBR-aV-ycf"/>
+                            <constraint firstItem="sUm-OC-xnE" firstAttribute="leading" secondItem="0UW-9W-DIM" secondAttribute="leadingMargin" id="oUT-C2-aJ0"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="sUm-OC-xnE" secondAttribute="trailing" id="w1a-9s-4xW"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="textView" destination="sUm-OC-xnE" id="e13-dT-P2Q"/>
+                        <outlet property="titleTextField" destination="eWb-yE-IGV" id="sLm-wr-JLb"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KmW-Ng-CAb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2844" y="168"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="JEX-93-Cbr">
@@ -168,10 +257,10 @@
             </objects>
             <point key="canvasLocation" x="908" y="1026"/>
         </scene>
-        <!--View Controller-->
+        <!--Note Controller-->
         <scene sceneID="XU0-PB-6jn">
             <objects>
-                <viewController id="SfK-kN-7Ol" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="NoteController" id="SfK-kN-7Ol" customClass="NoteController" customModule="malnutrition_app" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Z7N-G3-Hxg"/>
                         <viewControllerLayoutGuide type="bottom" id="bM8-Oq-HLo"/>
@@ -180,23 +269,32 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="GbP-tg-LWq">
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="xai-gm-8nW">
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="jGJ-4k-RJe">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <sections/>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="GbP-tg-LWq" firstAttribute="top" secondItem="Z7N-G3-Hxg" secondAttribute="bottom" id="FyM-ag-khP"/>
-                            <constraint firstItem="GbP-tg-LWq" firstAttribute="leading" secondItem="i7j-Wb-nzI" secondAttribute="leading" id="KQV-tN-0HQ"/>
-                            <constraint firstItem="bM8-Oq-HLo" firstAttribute="top" secondItem="GbP-tg-LWq" secondAttribute="bottom" id="X2J-VG-1e5"/>
-                            <constraint firstAttribute="trailing" secondItem="GbP-tg-LWq" secondAttribute="trailing" id="tCd-QP-wLa"/>
+                            <constraint firstItem="xai-gm-8nW" firstAttribute="leading" secondItem="i7j-Wb-nzI" secondAttribute="leading" id="2MH-DM-cuV"/>
+                            <constraint firstAttribute="trailing" secondItem="xai-gm-8nW" secondAttribute="trailing" id="4BY-ba-46p"/>
+                            <constraint firstAttribute="trailing" secondItem="jGJ-4k-RJe" secondAttribute="trailing" id="6uG-ZM-2We"/>
+                            <constraint firstItem="jGJ-4k-RJe" firstAttribute="leading" secondItem="i7j-Wb-nzI" secondAttribute="leading" id="FCX-h4-tc0"/>
+                            <constraint firstItem="jGJ-4k-RJe" firstAttribute="top" secondItem="xai-gm-8nW" secondAttribute="bottom" id="Otl-gv-WyJ"/>
+                            <constraint firstItem="bM8-Oq-HLo" firstAttribute="top" secondItem="jGJ-4k-RJe" secondAttribute="bottom" id="jPN-AF-VJG"/>
+                            <constraint firstItem="xai-gm-8nW" firstAttribute="top" secondItem="Z7N-G3-Hxg" secondAttribute="bottom" id="n3n-8X-iGE"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="searchBar" destination="xai-gm-8nW" id="eak-Ve-uZa"/>
+                        <outlet property="tableView" destination="jGJ-4k-RJe" id="6T2-f2-7dT"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TJc-nj-xPU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="977" y="38"/>
+            <point key="canvasLocation" x="993" y="18"/>
         </scene>
     </scenes>
 </document>

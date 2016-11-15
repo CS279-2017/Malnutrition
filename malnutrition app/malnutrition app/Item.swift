@@ -33,4 +33,20 @@ class Item{
     func toggleSwitch(){
         switched = !switched;
     }
+    
+    func toString() -> String{
+        var retString = "";
+        if(switched == true){
+            if(title != nil){
+                retString += ("Title: " + title! + "\n");
+            }
+            if(description != nil){
+                retString += ("Description: " + description! + "\n");
+            }
+        }
+        for item in nextItems{
+            retString += item.toString();
+        }
+        return retString;
+    }
 }

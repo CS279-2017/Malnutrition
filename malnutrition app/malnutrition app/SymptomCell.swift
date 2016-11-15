@@ -13,14 +13,13 @@ class SymptomCell: UITableViewCell {
     var titleLabel = UILabel();
     var descriptionLabel = UILabel();
     var selectedSwitch = UISwitch();
-    var switched = false;
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
     
-        titleLabel.backgroundColor = UIColor.yellow
-        descriptionLabel.backgroundColor = UIColor.blue
+//        titleLabel.backgroundColor = UIColor.yellow
+//        descriptionLabel.backgroundColor = UIColor.blue
 //        titleLabel.frame = CGRect(x: 0, y: 0, width: 100, height: 30)
 //        descriptionLabel.frame = CGRect(x: 20, y: 35, width: 100, height: 30);
         
@@ -33,12 +32,9 @@ class SymptomCell: UITableViewCell {
         titleLabel.sizeToFit();
         titleLabel.numberOfLines = 0;
         titleLabel.lineBreakMode = .byWordWrapping
-        let titleLabelTopConstraint = titleLabel.topAnchor.constraint(equalTo: self.contentView.topAnchor)
-        let titleLabelLeadingConstraint = titleLabel.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor)
-        let titleLabelTrailingConstraint = titleLabel.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor);
-        titleLabelTopConstraint.isActive = true;
-        titleLabelLeadingConstraint.isActive = true;
-        titleLabelTrailingConstraint.isActive = true;
+        titleLabel.topAnchor.constraint(equalTo: self.contentView.topAnchor).isActive = true;
+        titleLabel.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor).isActive = true;
+        titleLabel.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor).isActive = true;
         
         descriptionLabel.sizeToFit();
         descriptionLabel.numberOfLines = 0;

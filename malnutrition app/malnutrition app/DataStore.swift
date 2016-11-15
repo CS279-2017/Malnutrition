@@ -18,6 +18,14 @@ class DataStore{
     
     var rootItem:Item = Item(type: "Root", title: nil, description: nil, images: [String](), nextItems: [Item]());
     
+    private static let archiveURL: NSURL = {
+        let documentsDirectories = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask);
+        let documentDirectory = documentsDirectories.first!.appendingPathComponent("noteBook.archive");
+        return documentDirectory as NSURL
+    }()
+    
+    var noteBook:NoteBook?
+    
     //get the singleton instance if it exists, otherwise call constructor and make an instance
     static func get() -> DataStore{
         if(sharedInstance == nil){
@@ -31,7 +39,7 @@ class DataStore{
         //read the string from the text file that contains the item directory structure
         let stringFromFile = readStringFromFile(fileName: "data")
         var parsedJsonObject = parseJson(jsonString: stringFromFile);
-        
+        noteBook = NSKeyedUnarchiver.unarchiveObject(withFile: DataStore.archiveURL.path!) as? NoteBook
     }
     
     func parseJson(jsonString:String){
@@ -82,6 +90,20 @@ class DataStore{
         }
         return "";
     }
+    
+    //save user inform stored inside dataStore
+    func save() -> Bool{
+        if(noteBook != nil){
+            return NSKeyedArchiver.archiveRootObject(noteBook!, toFile: DataStore.archiveURL.path!)
+        }
+        return false;
+    }
+    
+//    func makeNote(title:String, text:String){
+//        let note = Note(title: title);
+//        note.text = text;
+//        
+//    }
     
 //        let path = Bundle.main.path( forResource: "data", ofType: "txt");
 //

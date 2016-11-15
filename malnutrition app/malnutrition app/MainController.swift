@@ -8,9 +8,8 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class MainController: UIViewController {
 
-    @IBOutlet weak var referenceButton: UIButton!
     @IBOutlet weak var startButton: UIButton!
     
     override func viewDidLoad() {
@@ -26,14 +25,21 @@ class ViewController: UIViewController {
     
     func startButtonClicked(sender:UIButton){
         let rootItem = DataStore.get().rootItem;
-        let newViewController = TableViewController();
+        var newViewController:ItemController;
+//        if(rootItem.nextItems[0].type != nil && rootItem.nextItems[0].type! == "Body Diagram"){
+//            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+////            let controller = storyboard.instantiateViewController(withIdentifier: "BodyDiagramController") as!
+//            newViewController = controller as! ItemController;
+//        }
+//        else{
+            newViewController = ItemTableController() as! ItemController;
+//        }
         //since we choose to store the entire item directory in one Item object, in a trie like fashion, we must have a rootItem, also since we choose to create the Trie by appending Item objects onto the trie as we read the Json we must have another intial root on which to append to the other nodes, thus we essentially have two 'roots', thus if we want to not display these nodes in the app, we will have to skip the initial root, hence rootItem.nextItems[0]
         newViewController.setItem(item: rootItem.nextItems[0])
-        self.navigationController?.pushViewController(newViewController, animated: true);
+        self.navigationController?.pushViewController(newViewController as! UIViewController, animated: true);
         //starts the first link in a chain of TableViewControllers each representing one item; 
         
     }
 
 
 }
-
