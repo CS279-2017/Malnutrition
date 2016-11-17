@@ -1,0 +1,9 @@
+-Body diagram (root)
+	-Body Region (9 fixed ones) --> Text Selection
+		-Symptom (Cell)
+				-Title
+				-Description
+				-Image (optional)
+				-Selection (array)
+					-2 or 3 entries
+				
