@@ -7,7 +7,12 @@ The app accepts JSON as input and is able to dynamically generate content based 
   *The next entry is an array of objects, each one representing another Item, i,e clickable table entry
 
 
-2. The Items should be of the form {text: "", nextItems: []}, where text is the a string, and nextItems is an array of Items
+2. The Items should be of the form {"type": "", "title": "", "description": " ", images [], "nextItems": []}, where text is the a string, and nextItems is an array of Items
+  * type can have the values "Root", "Symptom", "Body Part", "Action", "Question", "Body Diagram",
+  * title is the title of the item
+  * description is a description of what the item is
+  * images is an array of strings, each string being the filename of an image
+  * nextItems is an array of other Items
 
 3. This JSON input can come from a file stored with the app or it can come from a web server. In the second case, we would be able to update the contents of the app.
 

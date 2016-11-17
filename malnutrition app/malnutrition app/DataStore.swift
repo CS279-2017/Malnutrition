@@ -15,7 +15,16 @@ class DataStore{
     //stores the shared singleton instance of the DataStore class
     static var sharedInstance: DataStore? = nil;
     
-    var rootItem:Item = Item(text: "root", nextItems: [Item]());
+    
+    var rootItem:Item = Item(type: "Root", title: nil, description: nil, images: [String](), nextItems: [Item]());
+    
+    private static let archiveURL: NSURL = {
+        let documentsDirectories = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask);
+        let documentDirectory = documentsDirectories.first!.appendingPathComponent("noteBook.archive");
+        return documentDirectory as NSURL
+    }()
+    
+    var noteBook:NoteBook = NoteBook();
     
     //get the singleton instance if it exists, otherwise call constructor and make an instance
     static func get() -> DataStore{
@@ -30,7 +39,10 @@ class DataStore{
         //read the string from the text file that contains the item directory structure
         let stringFromFile = readStringFromFile(fileName: "data")
         var parsedJsonObject = parseJson(jsonString: stringFromFile);
-        
+        if let unarchivedObject = (NSKeyedUnarchiver.unarchiveObject(withFile: DataStore.archiveURL.path!)){
+            noteBook = unarchivedObject as! NoteBook;
+        }
+    
     }
     
     func parseJson(jsonString:String){
@@ -47,10 +59,17 @@ class DataStore{
     }
     
     func buildItemDirectory(parent: Item, json:JSON){
-        var newItem = Item();
-        if(json["text"].string != nil){
-            newItem.text = json["text"].string!
+        let newItem = Item();
+        newItem.type = json["type"].string
+        newItem.title = json["title"].string
+        newItem.description = json["description"].string
+        //if the images array is not empty then copy all the image urls into a string array
+        if let imageArray = json["images"].array{
+            for json in imageArray{
+                newItem.images.append(json.string!)
+            }
         }
+        //if nextItems array not empty recursively call the buildItemDirectory function on every item
         if let nextItem = json["nextItems"].array {
             if(nextItem.count > 0){
                 for next in nextItem{
@@ -74,6 +93,17 @@ class DataStore{
         }
         return "";
     }
+    
+    //save user inform stored inside dataStore
+    func save() -> Bool{
+        return NSKeyedArchiver.archiveRootObject(noteBook, toFile: DataStore.archiveURL.path!)
+    }
+    
+//    func makeNote(title:String, text:String){
+//        let note = Note(title: title);
+//        note.text = text;
+//        
+//    }
     
 //        let path = Bundle.main.path( forResource: "data", ofType: "txt");
 //
