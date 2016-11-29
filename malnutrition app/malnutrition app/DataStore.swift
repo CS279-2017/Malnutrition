@@ -106,33 +106,29 @@ class DataStore{
         return NSKeyedArchiver.archiveRootObject(noteBook, toFile: DataStore.archiveURL.path!)
     }
     
-//    func makeNote(title:String, text:String){
-//        let note = Note(title: title);
-//        note.text = text;
-//        
-//    }
-    
-//        let path = Bundle.main.path( forResource: "data", ofType: "txt");
-//
-////        if let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
-////            
-////            let path = dir.appendingPathComponent(fileName)
-//        
-//            //writing
-////            do {
-////                try text.write(to: path, atomically: false, encoding: String.Encoding.utf8)
-////            }
-////            catch {/* error handling here */}
-//            
-//            //reading
-//            do {
-//                String(contentsOf: path!,
-//                let text2 = try String(contentsOf: URL(path!), encoding: String.Encoding.utf8)
-//                return text2;
-//            }
-//            catch {
-//            }
-//        }
-//        return "";
+    func error_handler(error: String){
+        let alertController = UIAlertController(title: "Error", message: error, preferredStyle: UIAlertControllerStyle.alert)
+        let okAction = UIAlertAction(title: "Ok", style: UIAlertActionStyle.default) { (result : UIAlertAction) -> Void in
+        }
+        alertController.addAction(okAction)
+        UIApplication.topViewController()?.present(alertController, animated: true, completion: nil)
+    }
 
+}
+
+extension UIApplication {
+    class func topViewController(base: UIViewController? = (UIApplication.shared.delegate as! AppDelegate).window?.rootViewController) -> UIViewController? {
+        if let nav = base as? UINavigationController {
+            return topViewController(base: nav.visibleViewController)
+        }
+        if let tab = base as? UITabBarController {
+            if let selected = tab.selectedViewController {
+                return topViewController(base: selected)
+            }
+        }
+        if let presented = base?.presentedViewController {
+            return topViewController(base: presented)
+        }
+        return base
+    }
 }

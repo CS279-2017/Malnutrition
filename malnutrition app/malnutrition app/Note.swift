@@ -18,6 +18,12 @@ class Note: NSObject, NSCoding{
         self.dateCreated = Date();
     }
     
+    init(title:String, text: String){
+        self.title = title;
+        self.text = text;
+        self.dateCreated = Date();
+    }
+    
     func encode(with aCoder: NSCoder) {
         aCoder.encode(self.title, forKey: "title")
         aCoder.encode(self.text, forKey: "text")

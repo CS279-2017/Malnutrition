@@ -74,7 +74,8 @@ class ItemTableController: UIViewController, UITableViewDelegate, UITableViewDat
     func makeNoteButtonClicked(sender: UIBarButtonItem){
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let controller = storyboard.instantiateViewController(withIdentifier: "NoteEditController") as! NoteEditController
-        controller.textBody = (self.item?.toString())!;
+        let note = Note(title: "", text: (DataStore.get().rootItem.toString()));
+        controller.setNote(note: note, isEditingExisting: false);
         self.navigationController?.pushViewController(controller, animated: true)
     }
 //    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {

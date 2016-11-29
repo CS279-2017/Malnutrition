@@ -19,6 +19,8 @@ class MainController: UIViewController {
         startButton.addTarget(self, action: #selector(startButtonClicked) , for: UIControlEvents.touchUpInside)
         viewNotesButton.addTarget(self, action: #selector(viewNotesButtonClicked(button:)), for: UIControlEvents.touchUpInside);
     }
+    
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -45,6 +47,14 @@ class MainController: UIViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let controller = storyboard.instantiateViewController(withIdentifier: "NoteController")
         self.navigationController?.pushViewController(controller, animated: true)
+    }
+    
+    @IBAction func unwindToMainController(segue: UIStoryboardSegue) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let controller = storyboard.instantiateViewController(withIdentifier: "NoteController")
+            self.navigationController?.pushViewController(controller, animated: true)
+        }
     }
 
 

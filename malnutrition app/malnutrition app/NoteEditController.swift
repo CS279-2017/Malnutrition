@@ -8,16 +8,31 @@
 
 import UIKit
 
-class NoteEditController:UIViewController, UITextViewDelegate{
-    var textBody:String = "";
+class NoteEditController:UIViewController, UITextFieldDelegate, UITextViewDelegate{
+    
+    var edittingExistingNote: Bool?
+    var note: Note?;
+    
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var textView: UITextView!
     
     override func viewDidLoad() {
-        titleTextField.placeholder = "Enter Title of Note"
+        if(note != nil){
+            let noteText = note!.text;
+            let noteTitle = note!.title;
+            if(noteTitle == ""){
+                titleTextField.placeholder = "Enter Title of Note"
+            }
+            else{
+                self.titleTextField.text = noteTitle;
+            }
+            textView.text! = noteText;
+        }
+        titleTextField.delegate = self;
         textView.delegate = self;
-        textView.text! = textBody;
-        textView.returnKeyType = .done;
+        
+        
+        titleTextField.returnKeyType = .done;
 //        self.view.addSubview(textView)
 //        self.view.addSubview(titleTextField)\
         
@@ -32,28 +47,60 @@ class NoteEditController:UIViewController, UITextViewDelegate{
     
     func saveNoteButtonClicked(button: UIBarButtonItem){
         //TODO: Validate that title isn't empty
-        let note = Note(title: titleTextField.text!)
-        note.text = textView.text!
-        let noteBook = DataStore.get().noteBook
-        noteBook.addNote(note: note);
-        if(DataStore.get().save() != true){
-            print("unable to save note");
+        let enteredTitle = titleTextField.text!;
+        if(self.edittingExistingNote == false){
+            if(enteredTitle == ""){
+                DataStore.get().error_handler(error: "You must enter a title");
+            }
+            else{
+                if(DataStore.get().noteBook.get(title: enteredTitle) != nil){
+                    DataStore.get().error_handler(error: "There's already a note with this title, please use a unique title!");
+                }
+                else{
+                    let noteBook = DataStore.get().noteBook
+                    noteBook.addNote(note: note!);
+                    if(DataStore.get().save() != true){
+                        print("unable to save note");
+                    }
+                    else{
+                        print("save note successful!")
+                        self.performSegue(withIdentifier: "unwindFromNoteEditController", sender: self);
+                        DataStore.get().rootItem.switchOffAllItems();
+
+
+                    }
+                }
+            }
         }
         else{
-            print("save note successful!")
-            //successfully saved note, segue to 
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let controller = storyboard.instantiateViewController(withIdentifier: "NoteController") as! NoteController
-//            controller.email_address = email_address;
-            self.navigationController?.pushViewController(controller, animated: true);
+            if(enteredTitle == ""){
+                DataStore.get().error_handler(error: "You must enter a title");
+            }
+            else{
+                if(enteredTitle != note!.title && DataStore.get().noteBook.get(title: enteredTitle) != nil){
+                    DataStore.get().error_handler(error: "There's already a note with this title, please use a unique title!");
+                }
+                else{
+                    note!.title = titleTextField.text!
+                    note!.text = textView.text!
+                    print("save note successful!")
+                    self.navigationController?.popViewController(animated: true);
+//                    self.performSegue(withIdentifier: "unwindFromNoteEditController", sender: self);
+//                    DataStore.get().rootItem.switchOffAllItems();
+                    //note: we don't switch off because we are editing an existing note and not making a new note
+                }
+            }
         }
-        DataStore.get().rootItem.switchOffAllItems();
-        
     }
     
-    func textViewShouldEndEditing(_ textView: UITextView) -> Bool {
-        textView.endEditing(true);
-        return true;
+    func setNote(note: Note, isEditingExisting: Bool){
+        self.note = note;
+        self.edittingExistingNote = isEditingExisting;
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.endEditing(true);
+        return false;
     }
     
 }

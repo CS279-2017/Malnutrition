@@ -58,7 +58,12 @@ class ItemTableCell:UITableViewCell, UICollectionViewDelegate, UICollectionViewD
                 button.titleLabel?.adjustsFontSizeToFitWidth = true;
                 button.setTitle(item.options[i], for: .normal)
                 subview.isHidden = false;
-                button.tintColor = defaultSeparatorColor;
+                if(item.optionsSelectedIndex == i){
+                    button.tintColor = defaultTintColor;
+                }
+                else{
+                    button.tintColor = defaultSeparatorColor;
+                }
                 button.addTarget(self, action: #selector(buttonClicked(button:)), for: .touchUpInside)
                 
             }

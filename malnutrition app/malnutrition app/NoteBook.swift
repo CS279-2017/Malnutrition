@@ -27,8 +27,8 @@ class NoteBook: NSObject, NSCoding{
         notes[note.title] = note;
     }
     
-    func get(title:String) -> Note{
-        return notes[title]!;
+    func get(title:String) -> Note?{
+        return notes[title];
     }
     
     func size() -> Int{

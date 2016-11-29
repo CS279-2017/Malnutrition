@@ -92,7 +92,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IOM-hV-kMU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1813.5999999999999" y="-0.44977511244377816"/>
+            <point key="canvasLocation" x="1502" y="-36"/>
         </scene>
         <!--Note Edit Controller-->
         <scene sceneID="E55-g1-c4W">
@@ -106,11 +106,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="B8D-19-PCn">
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eWb-yE-IGV">
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -124,14 +119,10 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="B8D-19-PCn" secondAttribute="trailing" id="6C1-uz-Kas"/>
                             <constraint firstAttribute="trailingMargin" secondItem="eWb-yE-IGV" secondAttribute="trailing" id="R54-uk-U4m"/>
-                            <constraint firstItem="Fcd-TL-uKX" firstAttribute="top" secondItem="B8D-19-PCn" secondAttribute="bottom" id="SBy-Ct-ZQl"/>
                             <constraint firstItem="eWb-yE-IGV" firstAttribute="top" secondItem="Oij-d7-RAi" secondAttribute="bottom" constant="8" id="TK8-Zm-dYb"/>
                             <constraint firstItem="sUm-OC-xnE" firstAttribute="top" secondItem="eWb-yE-IGV" secondAttribute="bottom" constant="8" id="bVz-OM-DSb"/>
                             <constraint firstItem="Fcd-TL-uKX" firstAttribute="top" secondItem="sUm-OC-xnE" secondAttribute="bottom" id="iHx-Ln-Lia"/>
-                            <constraint firstItem="B8D-19-PCn" firstAttribute="leading" secondItem="0UW-9W-DIM" secondAttribute="leading" id="k39-9j-paH"/>
-                            <constraint firstItem="B8D-19-PCn" firstAttribute="top" secondItem="Oij-d7-RAi" secondAttribute="bottom" id="mkx-3S-Pdj"/>
                             <constraint firstItem="eWb-yE-IGV" firstAttribute="leading" secondItem="0UW-9W-DIM" secondAttribute="leadingMargin" id="oBR-aV-ycf"/>
                             <constraint firstItem="sUm-OC-xnE" firstAttribute="leading" secondItem="0UW-9W-DIM" secondAttribute="leadingMargin" id="oUT-C2-aJ0"/>
                             <constraint firstAttribute="trailingMargin" secondItem="sUm-OC-xnE" secondAttribute="trailing" id="w1a-9s-4xW"/>
@@ -140,11 +131,13 @@
                     <connections>
                         <outlet property="textView" destination="sUm-OC-xnE" id="e13-dT-P2Q"/>
                         <outlet property="titleTextField" destination="eWb-yE-IGV" id="sLm-wr-JLb"/>
+                        <segue destination="lyv-dx-mee" kind="unwind" identifier="unwindFromNoteEditController" unwindAction="unwindToMainControllerWithSegue:" id="0r0-Mc-BrP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KmW-Ng-CAb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="lyv-dx-mee" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2618" y="342"/>
+            <point key="canvasLocation" x="2494" y="437"/>
         </scene>
         <!--Item Table Controller-->
         <scene sceneID="KwZ-cF-seW">
@@ -165,7 +158,7 @@
                                         <rect key="frame" x="0.0" y="92" width="375" height="252"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1Hc-ME-wg8" id="VQ4-eu-6fr">
-                                            <frame key="frameInset" width="375" height="251"/>
+                                            <frame key="frameInset" width="375" height="251.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="5vc-7Q-7ZD">

@@ -1,5 +1,8 @@
 #Malnutrition app
 
+##TODO:
+* make sure images can be loaded from http:// urls in addition to https://
+
 The app accepts JSON as input and is able to dynamically generate content based on that input.
 
 1. The structue of the Json should be a bunch of nested objects where each object represents an Item, an Item as of now will take the form of a clickable entry in the table.

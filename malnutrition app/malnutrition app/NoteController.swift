@@ -25,9 +25,13 @@ class NoteController: UIViewController, UISearchBarDelegate, UITableViewDelegate
         tableView.tableFooterView = UIView();
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        tableView.reloadData();
+    }
+    
     //build a full search function later on that searches for prefixes
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        noteBook.get(title: searchText);
+//        noteBook.get(title: searchText);
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -40,5 +44,14 @@ class NoteController: UIViewController, UISearchBarDelegate, UITableViewDelegate
         cell.setNote(note: note);
         return cell;
         
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let note = allNotes[indexPath.row];
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: "NoteEditController") as! NoteEditController
+        controller.setNote(note: note, isEditingExisting: true);
+        self.navigationController?.pushViewController(controller, animated: true)
+
     }
 }
