@@ -45,15 +45,16 @@ class ItemTableController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if(item  != nil){
-            let row = indexPath.row
+        let row = indexPath.row
+        if(item != nil && row < (item?.nextItems.count)!){
             let item = self.item?.nextItems[row];
             let cell = tableView.dequeueReusableCell(withIdentifier: "ItemTableCell", for: indexPath) as! ItemTableCell;
-            cell.setItem(item: item!);
+            if(item != nil){
+                cell.setItem(item: item!);
+            }
             return cell;
         }
         return UITableViewCell();
-       
     }
     
     

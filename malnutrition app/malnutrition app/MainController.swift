@@ -12,7 +12,7 @@ class MainController: UIViewController {
 
     @IBOutlet weak var viewNotesButton: UIButton!
     @IBOutlet weak var startButton: UIButton!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -31,6 +31,7 @@ class MainController: UIViewController {
         let rootItem = DataStore.get().rootItem;
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let controller = storyboard.instantiateViewController(withIdentifier: "ItemTableController") as! ItemTableController
+        print(rootItem.nextItems[0]);
         controller.setItem(item: rootItem.nextItems[0]);
         self.navigationController?.pushViewController(controller, animated: true);
 //        if(rootItem.nextItems[0].type != nil && rootItem.nextItems[0].type! == "Body Diagram"){

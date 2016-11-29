@@ -19,6 +19,10 @@ class ItemTableCell:UITableViewCell, UICollectionViewDelegate, UICollectionViewD
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
+    
+    var optionsStackViewHolder: UIStackView?;
+    var collectionViewHolder: UICollectionView?;
+
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier);
     }
@@ -28,23 +32,42 @@ class ItemTableCell:UITableViewCell, UICollectionViewDelegate, UICollectionViewD
     }
     
     func setItem(item: Item){
+        if(collectionView == nil){
+            collectionView = collectionViewHolder;
+        }
+        if(optionsStackView == nil){
+            optionsStackView = optionsStackViewHolder
+        }
         self.item = item;
-        titleLabel.text = item.title
+        print(self.item);
+        if(titleLabel != nil){
+            titleLabel.text = item.title
+        }
         if(collectionView != nil){
             self.collectionView.delegate = self;
             self.collectionView.dataSource = self;
         }
-        if(item.description != "null"){
-            descriptionLabel.text = item.description
+        if(item.description != nil && item.description != "null"){
+            if(descriptionLabel != nil){
+                descriptionLabel.text = item.description
+            }
         }
         else{
-            descriptionLabel.text = "";
+            if(descriptionLabel != nil){
+                descriptionLabel.text = "";
+            }
         }
         if(item.images.count == 0){
-            collectionView.removeFromSuperview();
+            if(collectionView != nil){
+                collectionViewHolder = collectionView;
+                collectionView.removeFromSuperview();
+            }
         }
         if(item.options.count == 0){
-            optionsStackView.removeFromSuperview();
+            if(optionsStackView != nil){
+                optionsStackViewHolder = optionsStackView;
+                optionsStackView.removeFromSuperview();
+            }
         }
         
         //TODO: add some code to get the images from the urls

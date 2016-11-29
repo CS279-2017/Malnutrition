@@ -52,8 +52,8 @@ class DataStore{
 //                var item = Item();
 //                item.text = json[index]["text"].string!;
 //            }
-            let i = json[0]["text"].string
-            print(i);
+//            let i = json[0]["text"].string
+//            print(i);
             buildItemDirectory(parent: rootItem, json: json)
         }
     }
