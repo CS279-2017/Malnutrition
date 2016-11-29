@@ -40,9 +40,6 @@ class Item{
     func toString() -> String{
         var retString = "";
         if(switched == true){
-            if(retString != ""){
-                retString += "\n";
-            }
             if(title != nil){
                 retString += ("Title: " + title! + "\n");
             }
@@ -51,6 +48,9 @@ class Item{
             }
             if(optionsSelectedIndex != nil){
                 retString += ("Condition: " + options[optionsSelectedIndex!] + "\n");
+            }
+            if(retString != ""){
+                retString += "\n";
             }
         }
         for item in nextItems{

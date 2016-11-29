@@ -29,9 +29,6 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5PD-RL-yWW">
                                         <state key="normal" title="Start New Note"/>
-                                        <connections>
-                                            <segue destination="OAi-Jy-hW1" kind="show" id="Gqg-4g-Jxi"/>
-                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -155,7 +152,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ItemTableCell" rowHeight="252" id="1Hc-ME-wg8" customClass="ItemTableCell" customModule="malnutrition_app" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="92" width="375" height="252"/>
+                                        <rect key="frame" x="0.0" y="28" width="375" height="252"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1Hc-ME-wg8" id="VQ4-eu-6fr">
                                             <frame key="frameInset" width="375" height="251.5"/>
