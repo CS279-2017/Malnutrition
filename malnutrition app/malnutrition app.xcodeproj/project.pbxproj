@@ -27,6 +27,8 @@
 		32E898E91DDA8C430051B9E5 /* NoteController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32E898E81DDA8C430051B9E5 /* NoteController.swift */; };
 		32EC60D91DD972A0005ED383 /* SymptomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32EC60D81DD972A0005ED383 /* SymptomCell.swift */; };
 		32EC60DB1DDA2FA3005ED383 /* BodyDiagramController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32EC60DA1DDA2FA3005ED383 /* BodyDiagramController.swift */; };
+		32F67FCE1DED03D300AFD31E /* ItemTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F67FCD1DED03D300AFD31E /* ItemTableCell.swift */; };
+		32F67FD51DED133E00AFD31E /* ImageCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F67FD41DED133E00AFD31E /* ImageCollectionCell.swift */; };
 		5166E453FD79E8A677D4F1E4 /* Pods_malnutrition_app.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CE7D24C59BD95752429DF5C /* Pods_malnutrition_app.framework */; };
 /* End PBXBuildFile section */
 
@@ -53,6 +55,8 @@
 		32E898E81DDA8C430051B9E5 /* NoteController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteController.swift; sourceTree = "<group>"; };
 		32EC60D81DD972A0005ED383 /* SymptomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SymptomCell.swift; sourceTree = "<group>"; };
 		32EC60DA1DDA2FA3005ED383 /* BodyDiagramController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BodyDiagramController.swift; sourceTree = "<group>"; };
+		32F67FCD1DED03D300AFD31E /* ItemTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemTableCell.swift; sourceTree = "<group>"; };
+		32F67FD41DED133E00AFD31E /* ImageCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCollectionCell.swift; sourceTree = "<group>"; };
 		4CE7D24C59BD95752429DF5C /* Pods_malnutrition_app.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_malnutrition_app.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D8533A467F6279AA992F07B /* Pods-malnutrition app.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-malnutrition app.debug.xcconfig"; path = "Pods/Target Support Files/Pods-malnutrition app/Pods-malnutrition app.debug.xcconfig"; sourceTree = "<group>"; };
 		A161A7C601922742337D5974 /* Pods-malnutrition app.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-malnutrition app.release.xcconfig"; path = "Pods/Target Support Files/Pods-malnutrition app/Pods-malnutrition app.release.xcconfig"; sourceTree = "<group>"; };
@@ -100,29 +104,71 @@
 		32D587D21DC8FA1F00E15047 /* malnutrition app */ = {
 			isa = PBXGroup;
 			children = (
-				32D587D31DC8FA1F00E15047 /* AppDelegate.swift */,
-				32D587D51DC8FA1F00E15047 /* MainController.swift */,
-				323F8D181DD0181F008A0A7C /* ItemTableController.swift */,
-				328A53611DCBA2B70035DA6C /* DataStore.swift */,
+				32F67FD11DED129000AFD31E /* Model */,
+				32F67FD01DED128B00AFD31E /* View */,
+				32F67FCF1DED127000AFD31E /* Controller */,
 				323F8D201DD029AF008A0A7C /* data.txt */,
-				32D587D71DC8FA1F00E15047 /* Main.storyboard */,
-				32E898E81DDA8C430051B9E5 /* NoteController.swift */,
-				32D587DA1DC8FA1F00E15047 /* Assets.xcassets */,
-				32D587DC1DC8FA1F00E15047 /* LaunchScreen.storyboard */,
 				32D587DF1DC8FA1F00E15047 /* Info.plist */,
-				323F8D1C1DD01D1F008A0A7C /* Item.swift */,
 				323F8D221DD036FF008A0A7C /* samplejson.txt */,
-				32EC60D81DD972A0005ED383 /* SymptomCell.swift */,
-				32EC60DA1DDA2FA3005ED383 /* BodyDiagramController.swift */,
-				323A36521DDA4F34004734E2 /* ItemController.swift */,
-				323A36541DDA58A0004734E2 /* BodyPartCell.swift */,
-				327D817E1DDA697C00A6B0F1 /* MakeNoteCell.swift */,
-				327D81801DDA73BF00A6B0F1 /* Note.swift */,
-				32E898E41DDA7D660051B9E5 /* NoteBook.swift */,
-				32E898E61DDA81730051B9E5 /* NoteEditController.swift */,
-				3285FAD81DDADA410071B017 /* NoteCell.swift */,
 			);
 			path = "malnutrition app";
+			sourceTree = "<group>";
+		};
+		32F67FCF1DED127000AFD31E /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				32D587D31DC8FA1F00E15047 /* AppDelegate.swift */,
+				32F67FD31DED130B00AFD31E /* Cells */,
+				32F67FD21DED130100AFD31E /* Screens */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		32F67FD01DED128B00AFD31E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				32D587D71DC8FA1F00E15047 /* Main.storyboard */,
+				32D587DC1DC8FA1F00E15047 /* LaunchScreen.storyboard */,
+				32D587DA1DC8FA1F00E15047 /* Assets.xcassets */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		32F67FD11DED129000AFD31E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				328A53611DCBA2B70035DA6C /* DataStore.swift */,
+				323F8D1C1DD01D1F008A0A7C /* Item.swift */,
+				327D81801DDA73BF00A6B0F1 /* Note.swift */,
+				32E898E41DDA7D660051B9E5 /* NoteBook.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		32F67FD21DED130100AFD31E /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				32EC60DA1DDA2FA3005ED383 /* BodyDiagramController.swift */,
+				323A36521DDA4F34004734E2 /* ItemController.swift */,
+				32E898E61DDA81730051B9E5 /* NoteEditController.swift */,
+				32D587D51DC8FA1F00E15047 /* MainController.swift */,
+				323F8D181DD0181F008A0A7C /* ItemTableController.swift */,
+				32E898E81DDA8C430051B9E5 /* NoteController.swift */,
+			);
+			name = Screens;
+			sourceTree = "<group>";
+		};
+		32F67FD31DED130B00AFD31E /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				3285FAD81DDADA410071B017 /* NoteCell.swift */,
+				32F67FCD1DED03D300AFD31E /* ItemTableCell.swift */,
+				32EC60D81DD972A0005ED383 /* SymptomCell.swift */,
+				323A36541DDA58A0004734E2 /* BodyPartCell.swift */,
+				327D817E1DDA697C00A6B0F1 /* MakeNoteCell.swift */,
+				32F67FD41DED133E00AFD31E /* ImageCollectionCell.swift */,
+			);
+			name = Cells;
 			sourceTree = "<group>";
 		};
 		FAB15955479DA14E8EAFC4EF /* Frameworks */ = {
@@ -263,7 +309,9 @@
 				32D587D61DC8FA1F00E15047 /* MainController.swift in Sources */,
 				32E898E51DDA7D660051B9E5 /* NoteBook.swift in Sources */,
 				323A36531DDA4F34004734E2 /* ItemController.swift in Sources */,
+				32F67FD51DED133E00AFD31E /* ImageCollectionCell.swift in Sources */,
 				32D587D41DC8FA1F00E15047 /* AppDelegate.swift in Sources */,
+				32F67FCE1DED03D300AFD31E /* ItemTableCell.swift in Sources */,
 				323A36551DDA58A0004734E2 /* BodyPartCell.swift in Sources */,
 				32E898E71DDA81730051B9E5 /* NoteEditController.swift in Sources */,
 				323F8D1D1DD01D1F008A0A7C /* Item.swift in Sources */,

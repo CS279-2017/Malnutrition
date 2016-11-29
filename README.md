@@ -7,7 +7,7 @@ The app accepts JSON as input and is able to dynamically generate content based 
   *The next entry is an array of objects, each one representing another Item, i,e clickable table entry
 
 
-2. The Items should be of the form {"type": "", "title": "", "description": " ", images [], "nextItems": []}, where text is the a string, and nextItems is an array of Items
+2. The Items should be of the form {"type": "", "title": "", "description": " ", images [], "nextItems": [], options: []}, where text is the a string, and nextItems is an array of Items
   * type can have the values "Root", "Symptom", "Body Part", "Action", "Question", "Body Diagram",
   * title is the title of the item
   * description is a description of what the item is
@@ -24,3 +24,5 @@ Next Steps:
   3. Be able to view and edit these notes
   4. Save these notes on the phone and have to ability to upload them online
 
+Example: {“title”: “HEENT”, “type”: “Body Region”, “description”: “null”, “nextItems”:
+[{“title”: “Hair brittleness”, “description”: “hair could be brittle or breaks off easily”, “images”: [], "nextItems": }]

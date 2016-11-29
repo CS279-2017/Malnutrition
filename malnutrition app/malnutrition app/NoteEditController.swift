@@ -18,7 +18,11 @@ class NoteEditController:UIViewController, UITextViewDelegate{
         textView.delegate = self;
         textView.text! = textBody;
 //        self.view.addSubview(textView)
-//        self.view.addSubview(titleTextField)
+//        self.view.addSubview(titleTextField)\
+        
+        textView.layer.borderColor = UIColor.lightGray.cgColor
+        textView.layer.borderWidth = 1.0
+        textView.layer.cornerRadius = 10.0
         
         let saveNoteButton = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(saveNoteButtonClicked(button:)))
         self.navigationItem.rightBarButtonItem = saveNoteButton;
@@ -37,6 +41,10 @@ class NoteEditController:UIViewController, UITextViewDelegate{
         else{
             print("save note successful!")
             //successfully saved note, segue to 
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let controller = storyboard.instantiateViewController(withIdentifier: "NoteController") as! NoteController
+//            controller.email_address = email_address;
+            self.navigationController?.pushViewController(controller, animated: true);
         }
         DataStore.get().rootItem.switchOffAllItems();
         

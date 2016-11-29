@@ -50,6 +50,32 @@ class SymptomCell: UITableViewCell {
         super.init(coder: aDecoder)
     }
     
+    func setItem(item: Item){
+        self.item = item;
+        self.titleLabel.text = item.title
+        self.descriptionLabel.text = item.description
+        if(self.item?.nextItems.count == 0){
+            //            cell.textLabel?.text = item?.title;
+            let switchView = UISwitch();
+//            switchView.translatesAutoresizingMaskIntoConstraints = false;
+            self.accessoryView = switchView;
+            switchView.addTarget(self, action: #selector(switchClicked(sender:)), for: UIControlEvents.touchUpInside);
+            switchView.isOn = (self.item?.switched)!;
+            switchView.topAnchor.constraint(equalTo: (self.accessoryView?.topAnchor)!).isActive = true;
+//            switchView.leadingAnchor.constraint(equalTo: titleLabel.trailingAnchor).isActive = true;
+//            switchView.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor).isActive = true;
+            switchView.bottomAnchor.constraint(equalTo: (self.accessoryView?.bottomAnchor)!).isActive = true;
+        }
+        else{
+            //            cell.textLabel?.text =item?.title;
+        }
+    }
+    
+    func switchClicked(sender: UISwitch){
+        let cell = sender.superview as! SymptomCell;
+        cell.item!.toggleSwitch();
+    }
+    
     
 }
 

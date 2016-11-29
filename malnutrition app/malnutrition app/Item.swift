@@ -15,6 +15,8 @@ class Item{
     var description:String?
     var images: [String] = [String]();
     var nextItems:[Item] = [Item](); //items that are linked to this item (i.e these items will be displayed when this item is clicked)
+    var options: [String] = [String]();
+    var optionsSelectedIndex :Int?
     
     var switched = false;
 
@@ -22,12 +24,13 @@ class Item{
     
     }
     
-    init(type: String, title:String?, description: String?, images: [String], nextItems: [Item]){
+    init(type: String, title:String?, description: String?, images: [String], nextItems: [Item], options:[String]){
         self.type = type;
         self.title = title;
         self.description = description;
         self.images = images;
-        self.nextItems = nextItems; 
+        self.nextItems = nextItems;
+        self.options = options;
     }
     
     func toggleSwitch(){
@@ -42,6 +45,9 @@ class Item{
             }
             if(description != nil){
                 retString += ("Description: " + description! + "\n");
+            }
+            if(optionsSelectedIndex != nil){
+                retString += ("Condition: " + options[optionsSelectedIndex!] + "\n");
             }
         }
         for item in nextItems{

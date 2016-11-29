@@ -1,10 +1,21 @@
 {"title":"Root", "type": "Body Diagram", "nextItems":
 
-    [{"title": "Bilateral Muscle Wasting", "description": "Hello from the other side", "nextItems":
+[{"title": "Bilateral Muscle Wasting", "description": "Hello from the other side", "images": ["https://i.ytimg.com/vi/YQHsXMglC9A/maxresdefault.jpg"], "options":["Yo", "Wassup", "hi"], "nextItems":
         [{"title":"Head", "nextItems":[]},
             {"title":"Deltoid", "nextItems":[]},
             {"title":"Interosseous", "nextItems":[]},
-            {"title":"Clavicles (chest)", "nextItems":[]} ] },
-        {"title": "Subcutaneous Fat Loss", "description": "Losing fat....subcutaneously lalalalalllalalalalalalalalalalalaalal", "nextItems": [ ] }, { "title": "Fluid Status", "nextItems": [{ "title": "Edema", "nextItems": [] }] }, { "title": "Protein Energy Malnutrition (PEM)", "nextItems": [{ "title": "Pitting edema", "nextItems": [] }, { "title": "Dry, flaky, scaly, cracked, bruised, or bleeding skin", "nextItems": [] }, { "title": "Dull, brittle, and loose hair", "nextItems": [] }, { "title": "Ridged, cracked, spoon shaped, or pale nails", "nextItems": [] }] }
+            {"title":"Clavicles (chest)", "nextItems":[]} ]
+        },
+        {"title": "Subcutaneous Fat Loss", "description": "Losing fat....subcutaneously lalalalalllalalalalalalalalalalalaalal", "nextItems": [ ]
+        },
+        { "title": "Fluid Status", "nextItems":
+            [{ "title": "Edema", "nextItems": [] }]
+        },
+        { "title": "Protein Energy Malnutrition (PEM)", "nextItems":
+            [{ "title": "Pitting edema", "nextItems": [] },
+            { "title": "Dry, flaky, scaly, cracked, bruised, or bleeding skin", "nextItems": [] },
+            { "title": "Dull, brittle, and loose hair", "nextItems": [] },
+            { "title": "Ridged, cracked, spoon shaped, or pale nails", "nextItems": [] }]
+        }
     ]
 }

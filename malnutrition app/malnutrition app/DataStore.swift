@@ -16,7 +16,7 @@ class DataStore{
     static var sharedInstance: DataStore? = nil;
     
     
-    var rootItem:Item = Item(type: "Root", title: nil, description: nil, images: [String](), nextItems: [Item]());
+    var rootItem:Item = Item(type: "Root", title: nil, description: nil, images: [String](), nextItems: [Item](), options: [String]());
     
     private static let archiveURL: NSURL = {
         let documentsDirectories = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask);
@@ -74,6 +74,13 @@ class DataStore{
             if(nextItem.count > 0){
                 for next in nextItem{
                     buildItemDirectory(parent: newItem, json: next)
+                }
+            }
+        }
+        if let options = json["options"].array{
+            if(options.count > 0){
+                for option in options{
+                    newItem.options.append(option.string!)
                 }
             }
         }
