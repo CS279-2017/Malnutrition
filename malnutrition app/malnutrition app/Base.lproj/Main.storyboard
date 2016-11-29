@@ -168,87 +168,84 @@
                                             <frame key="frameInset" width="375" height="251"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Symptom Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oIw-o9-UaB">
-                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l1z-b8-k3Y">
-                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Ueh-Uz-swi">
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="100" id="KWi-iJ-Ij3"/>
-                                                    </constraints>
-                                                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="J8P-Wq-zza">
-                                                        <size key="itemSize" width="100" height="100"/>
-                                                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                                    </collectionViewFlowLayout>
-                                                    <cells>
-                                                        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ImageCollectionCell" id="DK2-PU-82L" customClass="ImageCollectionCell" customModule="malnutrition_app" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                                                <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
-                                                                <autoresizingMask key="autoresizingMask"/>
-                                                                <subviews>
-                                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xCe-wz-Otu"/>
-                                                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="g0y-7Z-nUZ">
-                                                                        <constraints>
-                                                                            <constraint firstAttribute="width" constant="50" id="4dV-oP-81R"/>
-                                                                            <constraint firstAttribute="height" constant="50" id="9vw-nt-97o"/>
-                                                                        </constraints>
-                                                                    </activityIndicatorView>
-                                                                </subviews>
-                                                            </view>
-                                                            <constraints>
-                                                                <constraint firstItem="xCe-wz-Otu" firstAttribute="top" secondItem="DK2-PU-82L" secondAttribute="top" id="B9N-Cl-n3G"/>
-                                                                <constraint firstItem="g0y-7Z-nUZ" firstAttribute="centerX" secondItem="DK2-PU-82L" secondAttribute="centerX" id="GF4-U3-qKL"/>
-                                                                <constraint firstItem="xCe-wz-Otu" firstAttribute="leading" secondItem="DK2-PU-82L" secondAttribute="leading" id="auP-s5-F2q"/>
-                                                                <constraint firstItem="g0y-7Z-nUZ" firstAttribute="centerY" secondItem="DK2-PU-82L" secondAttribute="centerY" id="cnz-rW-z8p"/>
-                                                                <constraint firstAttribute="trailing" secondItem="xCe-wz-Otu" secondAttribute="trailing" id="dpd-b5-wu4"/>
-                                                                <constraint firstAttribute="bottom" secondItem="xCe-wz-Otu" secondAttribute="bottom" id="oIc-Ps-a0M"/>
-                                                            </constraints>
-                                                            <connections>
-                                                                <outlet property="activityIndicator" destination="g0y-7Z-nUZ" id="84b-mh-3ae"/>
-                                                                <outlet property="imageView" destination="xCe-wz-Otu" id="nWY-jd-hGh"/>
-                                                            </connections>
-                                                        </collectionViewCell>
-                                                    </cells>
-                                                </collectionView>
-                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="GXt-9s-wNj">
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="5vc-7Q-7ZD">
                                                     <subviews>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mqy-gy-tCw">
-                                                            <state key="normal" title="Button"/>
-                                                        </button>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p40-qK-cIr">
-                                                            <state key="normal" title="Button"/>
-                                                        </button>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zj1-Bo-x5H">
-                                                            <state key="normal" title="Button"/>
-                                                        </button>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Symptom Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oIw-o9-UaB">
+                                                            <frame key="frameInset" width="359" height="18"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l1z-b8-k3Y">
+                                                            <frame key="frameInset" minY="26" width="359" height="15"/>
+                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Ueh-Uz-swi">
+                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="100" id="KWi-iJ-Ij3"/>
+                                                            </constraints>
+                                                            <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="J8P-Wq-zza">
+                                                                <size key="itemSize" width="100" height="100"/>
+                                                                <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                                                <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                                                <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                            </collectionViewFlowLayout>
+                                                            <cells>
+                                                                <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ImageCollectionCell" id="DK2-PU-82L" customClass="ImageCollectionCell" customModule="malnutrition_app" customModuleProvider="target">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                    <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                                                        <autoresizingMask key="autoresizingMask"/>
+                                                                        <subviews>
+                                                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xCe-wz-Otu"/>
+                                                                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="g0y-7Z-nUZ">
+                                                                                <constraints>
+                                                                                    <constraint firstAttribute="width" constant="50" id="4dV-oP-81R"/>
+                                                                                    <constraint firstAttribute="height" constant="50" id="9vw-nt-97o"/>
+                                                                                </constraints>
+                                                                            </activityIndicatorView>
+                                                                        </subviews>
+                                                                    </view>
+                                                                    <constraints>
+                                                                        <constraint firstItem="xCe-wz-Otu" firstAttribute="top" secondItem="DK2-PU-82L" secondAttribute="top" id="B9N-Cl-n3G"/>
+                                                                        <constraint firstItem="g0y-7Z-nUZ" firstAttribute="centerX" secondItem="DK2-PU-82L" secondAttribute="centerX" id="GF4-U3-qKL"/>
+                                                                        <constraint firstItem="xCe-wz-Otu" firstAttribute="leading" secondItem="DK2-PU-82L" secondAttribute="leading" id="auP-s5-F2q"/>
+                                                                        <constraint firstItem="g0y-7Z-nUZ" firstAttribute="centerY" secondItem="DK2-PU-82L" secondAttribute="centerY" id="cnz-rW-z8p"/>
+                                                                        <constraint firstAttribute="trailing" secondItem="xCe-wz-Otu" secondAttribute="trailing" id="dpd-b5-wu4"/>
+                                                                        <constraint firstAttribute="bottom" secondItem="xCe-wz-Otu" secondAttribute="bottom" id="oIc-Ps-a0M"/>
+                                                                    </constraints>
+                                                                    <connections>
+                                                                        <outlet property="activityIndicator" destination="g0y-7Z-nUZ" id="84b-mh-3ae"/>
+                                                                        <outlet property="imageView" destination="xCe-wz-Otu" id="nWY-jd-hGh"/>
+                                                                    </connections>
+                                                                </collectionViewCell>
+                                                            </cells>
+                                                        </collectionView>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="GXt-9s-wNj">
+                                                            <subviews>
+                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mqy-gy-tCw">
+                                                                    <state key="normal" title="Button"/>
+                                                                </button>
+                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p40-qK-cIr">
+                                                                    <state key="normal" title="Button"/>
+                                                                </button>
+                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zj1-Bo-x5H">
+                                                                    <state key="normal" title="Button"/>
+                                                                </button>
+                                                            </subviews>
+                                                        </stackView>
                                                     </subviews>
                                                 </stackView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="Ueh-Uz-swi" firstAttribute="leading" secondItem="VQ4-eu-6fr" secondAttribute="leading" constant="8" id="5bp-Ck-Zrv"/>
-                                                <constraint firstAttribute="trailing" secondItem="GXt-9s-wNj" secondAttribute="trailing" constant="8" id="LDu-lS-ZFB"/>
-                                                <constraint firstItem="l1z-b8-k3Y" firstAttribute="leading" secondItem="VQ4-eu-6fr" secondAttribute="leading" constant="8" id="OGb-aE-p0x"/>
-                                                <constraint firstItem="Ueh-Uz-swi" firstAttribute="top" secondItem="l1z-b8-k3Y" secondAttribute="bottom" constant="8" id="R1R-JH-K3m"/>
-                                                <constraint firstItem="l1z-b8-k3Y" firstAttribute="top" secondItem="oIw-o9-UaB" secondAttribute="bottom" constant="8" id="SV5-9V-dDl"/>
-                                                <constraint firstAttribute="bottom" secondItem="GXt-9s-wNj" secondAttribute="bottom" constant="8" id="V1k-V8-Wqn"/>
-                                                <constraint firstItem="GXt-9s-wNj" firstAttribute="leading" secondItem="VQ4-eu-6fr" secondAttribute="leading" constant="8" id="W1K-XW-OdM"/>
-                                                <constraint firstItem="oIw-o9-UaB" firstAttribute="top" secondItem="VQ4-eu-6fr" secondAttribute="top" constant="8" id="bpx-Eq-PG6"/>
-                                                <constraint firstAttribute="trailing" secondItem="oIw-o9-UaB" secondAttribute="trailing" constant="8" id="diD-6N-sEW"/>
-                                                <constraint firstAttribute="trailing" secondItem="l1z-b8-k3Y" secondAttribute="trailing" constant="8" id="mGX-MR-JDo"/>
-                                                <constraint firstAttribute="trailing" secondItem="Ueh-Uz-swi" secondAttribute="trailing" constant="8" id="pKb-40-wQd"/>
-                                                <constraint firstItem="GXt-9s-wNj" firstAttribute="top" secondItem="Ueh-Uz-swi" secondAttribute="bottom" constant="8" id="pqT-mq-L6D"/>
-                                                <constraint firstItem="oIw-o9-UaB" firstAttribute="leading" secondItem="VQ4-eu-6fr" secondAttribute="leading" constant="8" id="sOh-mT-8Ne"/>
+                                                <constraint firstItem="5vc-7Q-7ZD" firstAttribute="top" secondItem="VQ4-eu-6fr" secondAttribute="top" constant="8" id="5UT-AG-clv"/>
+                                                <constraint firstItem="5vc-7Q-7ZD" firstAttribute="leading" secondItem="VQ4-eu-6fr" secondAttribute="leading" constant="8" id="A29-55-BqP"/>
+                                                <constraint firstAttribute="bottom" secondItem="5vc-7Q-7ZD" secondAttribute="bottom" constant="8" id="ghg-wD-u3A"/>
+                                                <constraint firstAttribute="trailing" secondItem="5vc-7Q-7ZD" secondAttribute="trailing" constant="8" id="n1q-Vr-QTU"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>

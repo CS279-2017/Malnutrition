@@ -29,6 +29,7 @@
 		32EC60DB1DDA2FA3005ED383 /* BodyDiagramController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32EC60DA1DDA2FA3005ED383 /* BodyDiagramController.swift */; };
 		32F67FCE1DED03D300AFD31E /* ItemTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F67FCD1DED03D300AFD31E /* ItemTableCell.swift */; };
 		32F67FD51DED133E00AFD31E /* ImageCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F67FD41DED133E00AFD31E /* ImageCollectionCell.swift */; };
+		32F67FD71DED41A500AFD31E /* siruis json.txt in Resources */ = {isa = PBXBuildFile; fileRef = 32F67FD61DED41A500AFD31E /* siruis json.txt */; };
 		5166E453FD79E8A677D4F1E4 /* Pods_malnutrition_app.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CE7D24C59BD95752429DF5C /* Pods_malnutrition_app.framework */; };
 /* End PBXBuildFile section */
 
@@ -57,6 +58,7 @@
 		32EC60DA1DDA2FA3005ED383 /* BodyDiagramController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BodyDiagramController.swift; sourceTree = "<group>"; };
 		32F67FCD1DED03D300AFD31E /* ItemTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemTableCell.swift; sourceTree = "<group>"; };
 		32F67FD41DED133E00AFD31E /* ImageCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCollectionCell.swift; sourceTree = "<group>"; };
+		32F67FD61DED41A500AFD31E /* siruis json.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "siruis json.txt"; sourceTree = "<group>"; };
 		4CE7D24C59BD95752429DF5C /* Pods_malnutrition_app.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_malnutrition_app.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D8533A467F6279AA992F07B /* Pods-malnutrition app.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-malnutrition app.debug.xcconfig"; path = "Pods/Target Support Files/Pods-malnutrition app/Pods-malnutrition app.debug.xcconfig"; sourceTree = "<group>"; };
 		A161A7C601922742337D5974 /* Pods-malnutrition app.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-malnutrition app.release.xcconfig"; path = "Pods/Target Support Files/Pods-malnutrition app/Pods-malnutrition app.release.xcconfig"; sourceTree = "<group>"; };
@@ -108,6 +110,7 @@
 				32F67FD01DED128B00AFD31E /* View */,
 				32F67FCF1DED127000AFD31E /* Controller */,
 				323F8D201DD029AF008A0A7C /* data.txt */,
+				32F67FD61DED41A500AFD31E /* siruis json.txt */,
 				32D587DF1DC8FA1F00E15047 /* Info.plist */,
 				323F8D221DD036FF008A0A7C /* samplejson.txt */,
 			);
@@ -244,6 +247,7 @@
 			files = (
 				323F8D211DD029AF008A0A7C /* data.txt in Resources */,
 				323F8D231DD036FF008A0A7C /* samplejson.txt in Resources */,
+				32F67FD71DED41A500AFD31E /* siruis json.txt in Resources */,
 				32D587DE1DC8FA1F00E15047 /* LaunchScreen.storyboard in Resources */,
 				32D587DB1DC8FA1F00E15047 /* Assets.xcassets in Resources */,
 				32D587D91DC8FA1F00E15047 /* Main.storyboard in Resources */,

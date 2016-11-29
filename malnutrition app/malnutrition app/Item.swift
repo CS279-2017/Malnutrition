@@ -40,6 +40,9 @@ class Item{
     func toString() -> String{
         var retString = "";
         if(switched == true){
+            if(retString != ""){
+                retString += "\n";
+            }
             if(title != nil){
                 retString += ("Title: " + title! + "\n");
             }

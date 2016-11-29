@@ -38,6 +38,7 @@ class ImageCollectionCell:UICollectionViewCell{
             DispatchQueue.main.async() { () -> Void in
                 self.imageView.image = image
                 self.activityIndicator.stopAnimating();
+                self.activityIndicator.isHidden = true;
             }
             }.resume()
     }

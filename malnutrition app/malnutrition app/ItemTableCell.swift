@@ -30,14 +30,21 @@ class ItemTableCell:UITableViewCell, UICollectionViewDelegate, UICollectionViewD
     func setItem(item: Item){
         self.item = item;
         titleLabel.text = item.title
-        self.collectionView.delegate = self;
-        self.collectionView.dataSource = self;
-        descriptionLabel.text = item.description
+        if(collectionView != nil){
+            self.collectionView.delegate = self;
+            self.collectionView.dataSource = self;
+        }
+        if(item.description != "null"){
+            descriptionLabel.text = item.description
+        }
+        else{
+            descriptionLabel.text = "";
+        }
         if(item.images.count == 0){
-//            collectionView.isHidden = true;
+            collectionView.removeFromSuperview();
         }
         if(item.options.count == 0){
-//            optionsStackView.removeFromSuperview()
+            optionsStackView.removeFromSuperview();
         }
         
         //TODO: add some code to get the images from the urls
@@ -46,6 +53,9 @@ class ItemTableCell:UITableViewCell, UICollectionViewDelegate, UICollectionViewD
         for subview in optionsStackView.subviews{
             if(i < item.options.count){
                 let button = subview as! UIButton;
+                button.titleLabel?.minimumScaleFactor = 0.25;
+                button.titleLabel?.numberOfLines = 2;
+                button.titleLabel?.adjustsFontSizeToFitWidth = true;
                 button.setTitle(item.options[i], for: .normal)
                 subview.isHidden = false;
                 button.tintColor = defaultSeparatorColor;

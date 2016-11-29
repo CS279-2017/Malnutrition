@@ -17,6 +17,7 @@ class NoteEditController:UIViewController, UITextViewDelegate{
         titleTextField.placeholder = "Enter Title of Note"
         textView.delegate = self;
         textView.text! = textBody;
+        textView.returnKeyType = .done;
 //        self.view.addSubview(textView)
 //        self.view.addSubview(titleTextField)\
         
@@ -48,6 +49,11 @@ class NoteEditController:UIViewController, UITextViewDelegate{
         }
         DataStore.get().rootItem.switchOffAllItems();
         
+    }
+    
+    func textViewShouldEndEditing(_ textView: UITextView) -> Bool {
+        textView.endEditing(true);
+        return true;
     }
     
 }
