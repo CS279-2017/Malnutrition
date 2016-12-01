@@ -10,6 +10,8 @@ import UIKit
 
 class TextFieldCell: UITableViewCell, UITextFieldDelegate{
     
+    var item: Item?
+    
     @IBOutlet weak var label: UILabel!
     @IBOutlet weak var textField: UITextField!
     
@@ -17,10 +19,29 @@ class TextFieldCell: UITableViewCell, UITextFieldDelegate{
         super.init(coder: aDecoder);
     }
     
-    func setTitle(title: String){
-        self.label.text = title;
-        self.textField.placeholder = "Enter " + title;
+    func setItem(item: Item){
+        self.item = item;
+        self.label.text = item.title;
+        self.textField.delegate = self;
+        if(item.value == nil){
+            self.textField.placeholder = "Enter " + item.title!;
+        }
+        else{
+            self.textField.text = item.value;
+
+        }
         textField.returnKeyType = .done;
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if(item != nil){
+            self.item?.value = textField.text
+        }
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.endEditing(true);
+        return false;
     }
     
 }

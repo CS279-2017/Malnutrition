@@ -39,7 +39,7 @@ class AssessmentController: UIViewController, UITableViewDelegate, UITableViewDa
             if let item = assessmentItemsArray?[indexPath.row]{
                 if(item.type == "textbox"){
                     let cell = tableView.dequeueReusableCell(withIdentifier: "TextFieldCell") as! TextFieldCell;
-                    cell.setTitle(title: item.title!);
+                    cell.setItem(item: item);
                     return cell;
                 }
                 else{
@@ -62,6 +62,7 @@ class AssessmentController: UIViewController, UITableViewDelegate, UITableViewDa
     func setItem(rootItem: Item){
         self.assessmentRootItem = rootItem;
         self.assessmentItemsArray = rootItem.nextItems;
+        
     }
     
 }

@@ -25,6 +25,13 @@ class ExaminationController: UIViewController{
         
         clearNoteButton.addTarget(self, action: #selector(clearNoteButtonClicked(sender:)), for: UIControlEvents.touchUpInside)
         
+        reviewOfSymptomsButton.layer.borderWidth = 1;
+        reviewOfSymptomsButton.layer.borderColor = reviewOfSymptomsButton.tintColor.cgColor
+        
+        assessmentQuizButton.layer.borderWidth = 1;
+        assessmentQuizButton.layer.borderColor = assessmentQuizButton.tintColor.cgColor;
+
+        
     }
     
     func assessmentQuizButtonClicked(sender: UIButton){

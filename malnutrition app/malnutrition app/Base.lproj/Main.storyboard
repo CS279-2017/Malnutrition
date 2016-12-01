@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -19,9 +20,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="87y-FT-PRK">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="87y-FT-PRK">
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5PD-RL-yWW">
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="iKY-hs-NHN"/>
+                                            <constraint firstAttribute="width" secondItem="5PD-RL-yWW" secondAttribute="height" multiplier="3:1" id="vtg-qE-TaV"/>
+                                        </constraints>
                                         <state key="normal" title="Examination"/>
                                         <connections>
                                             <segue destination="jxK-16-vH6" kind="show" id="P6X-h1-yVP"/>
@@ -34,6 +39,10 @@
                                         <state key="normal" title="References"/>
                                     </button>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstItem="PoZ-jT-Cv2" firstAttribute="height" secondItem="bai-0H-a1x" secondAttribute="height" id="BQS-bU-xdI"/>
+                                    <constraint firstItem="bai-0H-a1x" firstAttribute="height" secondItem="5PD-RL-yWW" secondAttribute="height" id="KlK-hl-w0f"/>
+                                </constraints>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -47,6 +56,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="examinationButton" destination="5PD-RL-yWW" id="nKj-Se-7xz"/>
+                        <outlet property="referencesButton" destination="PoZ-jT-Cv2" id="1hw-Qf-zSP"/>
                         <outlet property="viewNotesButton" destination="bai-0H-a1x" id="eqw-qW-Z98"/>
                     </connections>
                 </viewController>
@@ -66,9 +76,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="4gn-fv-Zjs">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="4gn-fv-Zjs">
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b2U-rj-27t">
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="b2U-rj-27t" secondAttribute="height" multiplier="5:1" id="Aqn-Zh-a9q"/>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="Bg3-gv-Y15"/>
+                                        </constraints>
                                         <state key="normal" title="Review of Symptoms"/>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nqt-F2-NZf">

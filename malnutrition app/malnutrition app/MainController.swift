@@ -13,11 +13,21 @@ class MainController: UIViewController {
     @IBOutlet weak var viewNotesButton: UIButton!
     @IBOutlet weak var examinationButton: UIButton!
 
+    @IBOutlet weak var referencesButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
 //        examinationButton.addTarget(self, action: #selector(startButtonClicked) , for: UIControlEvents.touchUpInside)
         viewNotesButton.addTarget(self, action: #selector(viewNotesButtonClicked(button:)), for: UIControlEvents.touchUpInside);
+        
+        viewNotesButton.layer.borderWidth = 1;
+        viewNotesButton.layer.borderColor = viewNotesButton.tintColor.cgColor;
+        
+        examinationButton.layer.borderWidth = 1;
+        examinationButton.layer.borderColor = viewNotesButton.tintColor.cgColor;
+        referencesButton.layer.borderWidth = 1;
+        referencesButton.layer.borderColor = referencesButton.tintColor.cgColor
     }
     
     

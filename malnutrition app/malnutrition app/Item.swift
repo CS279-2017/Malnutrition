@@ -18,6 +18,8 @@ class Item{
     var options: [String] = [String]();
     var optionsSelectedIndex :Int?
     
+    var value:String?
+    
     var switched = false;
 
     init(){
@@ -31,6 +33,10 @@ class Item{
         self.images = images;
         self.nextItems = nextItems;
         self.options = options;
+    }
+    
+    func setValue(value: String){
+        self.value = value;
     }
     
     func toggleSwitch(){
@@ -62,6 +68,7 @@ class Item{
     func switchOffAllItems(){
         switched = false;
         optionsSelectedIndex = nil;
+        value = nil;
         for item in nextItems{
             item.switchOffAllItems();
         }
