@@ -54,7 +54,7 @@ class ExaminationController: UIViewController{
     func makeNoteButtonClicked(sender: UIButton){
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let controller = storyboard.instantiateViewController(withIdentifier: "NoteEditController") as! NoteEditController
-        let note = Note(title: "", text: (DataStore.get().rootItemExamination.toString()), exam_root: DataStore.get().rootItemExamination, assessment_root: DataStore.get().rootItemAssessmentQuiz);
+        let note = Note(title: "", text: DataStore.get().examinationNoteText() , exam_root: DataStore.get().rootItemExamination, assessment_root: DataStore.get().rootItemAssessmentQuiz);
         controller.setNote(note: note, isEditingExisting: false);
         self.navigationController?.pushViewController(controller, animated: true)
     }

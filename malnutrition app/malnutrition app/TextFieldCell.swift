@@ -36,6 +36,7 @@ class TextFieldCell: UITableViewCell, UITextFieldDelegate{
     func textFieldDidEndEditing(_ textField: UITextField) {
         if(item != nil){
             self.item?.value = textField.text
+            item?.switched = true;
         }
     }
     

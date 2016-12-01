@@ -37,6 +37,7 @@ class Item{
     
     func setValue(value: String){
         self.value = value;
+        switched = true;
     }
     
     func toggleSwitch(){
@@ -47,13 +48,16 @@ class Item{
         var retString = "";
         if(switched == true){
             if(title != nil){
-                retString += ("Title: " + title! + "\n");
+                retString += (title! + "\n");
             }
             if(description != nil){
-                retString += ("Description: " + description! + "\n");
+                retString += (description! + "\n");
             }
             if(optionsSelectedIndex != nil){
-                retString += ("Condition: " + options[optionsSelectedIndex!] + "\n");
+                retString += (options[optionsSelectedIndex!] + "\n");
+            }
+            if(value != nil){
+                retString += (value! + "\n");
             }
             if(retString != ""){
                 retString += "\n";

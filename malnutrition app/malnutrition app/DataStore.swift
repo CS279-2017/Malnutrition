@@ -118,6 +118,10 @@ class DataStore{
         alertController.addAction(okAction)
         UIApplication.topViewController()?.present(alertController, animated: true, completion: nil)
     }
+    
+    func examinationNoteText() -> String{
+        return "Review Of Symptoms:\n" + DataStore.get().rootItemExamination.toString() + "\n" + "Assessment Quiz:\n" + DataStore.get().rootItemAssessmentQuiz.toString();
+    }
 
 }
 
