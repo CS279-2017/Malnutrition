@@ -1,0 +1,3 @@
+ga('set', 'userId', {{USER_ID}}); // Set the user ID using signed-in user_id.
+
+Implement this code along with other previously committed tracking code to send User-ID data to Google Analytics.
