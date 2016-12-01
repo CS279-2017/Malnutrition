@@ -37,7 +37,7 @@ class DataStore{
     private init(){
         //Constructor for DataStore, called by get() function, never called outside of DataStore class
         //read the string from the text file that contains the item directory structure
-        let stringFromFile = readStringFromFile(fileName: "data")
+        let stringFromFile = readStringFromFile(fileName: "siruis json")
         var parsedJsonObject = parseJson(jsonString: stringFromFile);
         if let unarchivedObject = (NSKeyedUnarchiver.unarchiveObject(withFile: DataStore.archiveURL.path!)){
             noteBook = unarchivedObject as! NoteBook;
