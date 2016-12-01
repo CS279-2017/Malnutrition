@@ -4,6 +4,7 @@
 * Mohaimin
     * 
 * Bowen
+    * Make a cell for Notes
     * Add backend that edits JSON and sends it to the app on request
     * Add References and Assessment screens to app
     * Add ability to add additional comments to each of items

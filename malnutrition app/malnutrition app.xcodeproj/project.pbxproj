@@ -7,12 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		323A36531DDA4F34004734E2 /* ItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323A36521DDA4F34004734E2 /* ItemController.swift */; };
-		323A36551DDA58A0004734E2 /* BodyPartCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323A36541DDA58A0004734E2 /* BodyPartCell.swift */; };
 		323F8D191DD0181F008A0A7C /* ItemTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323F8D181DD0181F008A0A7C /* ItemTableController.swift */; };
 		323F8D1D1DD01D1F008A0A7C /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323F8D1C1DD01D1F008A0A7C /* Item.swift */; };
 		323F8D211DD029AF008A0A7C /* data.txt in Resources */ = {isa = PBXBuildFile; fileRef = 323F8D201DD029AF008A0A7C /* data.txt */; };
 		323F8D231DD036FF008A0A7C /* samplejson.txt in Resources */ = {isa = PBXBuildFile; fileRef = 323F8D221DD036FF008A0A7C /* samplejson.txt */; };
+		324B91CD1DF0A47D00EF4764 /* ExaminationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324B91CC1DF0A47D00EF4764 /* ExaminationController.swift */; };
+		324B91CF1DF0A8F700EF4764 /* TextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324B91CE1DF0A8F700EF4764 /* TextFieldCell.swift */; };
+		324B91D31DF0AE4100EF4764 /* assessment_quiz.txt in Resources */ = {isa = PBXBuildFile; fileRef = 324B91D21DF0AE4100EF4764 /* assessment_quiz.txt */; };
 		327D817F1DDA697C00A6B0F1 /* MakeNoteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327D817E1DDA697C00A6B0F1 /* MakeNoteCell.swift */; };
 		327D81811DDA73BF00A6B0F1 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327D81801DDA73BF00A6B0F1 /* Note.swift */; };
 		3285FAD91DDADA410071B017 /* NoteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3285FAD81DDADA410071B017 /* NoteCell.swift */; };
@@ -25,8 +26,6 @@
 		32E898E51DDA7D660051B9E5 /* NoteBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32E898E41DDA7D660051B9E5 /* NoteBook.swift */; };
 		32E898E71DDA81730051B9E5 /* NoteEditController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32E898E61DDA81730051B9E5 /* NoteEditController.swift */; };
 		32E898E91DDA8C430051B9E5 /* NoteController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32E898E81DDA8C430051B9E5 /* NoteController.swift */; };
-		32EC60D91DD972A0005ED383 /* SymptomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32EC60D81DD972A0005ED383 /* SymptomCell.swift */; };
-		32EC60DB1DDA2FA3005ED383 /* BodyDiagramController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32EC60DA1DDA2FA3005ED383 /* BodyDiagramController.swift */; };
 		32F67FCE1DED03D300AFD31E /* ItemTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F67FCD1DED03D300AFD31E /* ItemTableCell.swift */; };
 		32F67FD51DED133E00AFD31E /* ImageCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F67FD41DED133E00AFD31E /* ImageCollectionCell.swift */; };
 		32F67FD71DED41A500AFD31E /* siruis json.txt in Resources */ = {isa = PBXBuildFile; fileRef = 32F67FD61DED41A500AFD31E /* siruis json.txt */; };
@@ -34,12 +33,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		323A36521DDA4F34004734E2 /* ItemController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemController.swift; sourceTree = "<group>"; };
-		323A36541DDA58A0004734E2 /* BodyPartCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BodyPartCell.swift; sourceTree = "<group>"; };
 		323F8D181DD0181F008A0A7C /* ItemTableController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemTableController.swift; sourceTree = "<group>"; };
 		323F8D1C1DD01D1F008A0A7C /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		323F8D201DD029AF008A0A7C /* data.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = data.txt; sourceTree = "<group>"; };
 		323F8D221DD036FF008A0A7C /* samplejson.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = samplejson.txt; sourceTree = "<group>"; };
+		324B91CC1DF0A47D00EF4764 /* ExaminationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExaminationController.swift; sourceTree = "<group>"; };
+		324B91CE1DF0A8F700EF4764 /* TextFieldCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldCell.swift; sourceTree = "<group>"; };
+		324B91D21DF0AE4100EF4764 /* assessment_quiz.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = assessment_quiz.txt; sourceTree = "<group>"; };
 		327D817E1DDA697C00A6B0F1 /* MakeNoteCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MakeNoteCell.swift; sourceTree = "<group>"; };
 		327D81801DDA73BF00A6B0F1 /* Note.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
 		3285FAD81DDADA410071B017 /* NoteCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteCell.swift; sourceTree = "<group>"; };
@@ -54,8 +54,6 @@
 		32E898E41DDA7D660051B9E5 /* NoteBook.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteBook.swift; sourceTree = "<group>"; };
 		32E898E61DDA81730051B9E5 /* NoteEditController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteEditController.swift; sourceTree = "<group>"; };
 		32E898E81DDA8C430051B9E5 /* NoteController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteController.swift; sourceTree = "<group>"; };
-		32EC60D81DD972A0005ED383 /* SymptomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SymptomCell.swift; sourceTree = "<group>"; };
-		32EC60DA1DDA2FA3005ED383 /* BodyDiagramController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BodyDiagramController.swift; sourceTree = "<group>"; };
 		32F67FCD1DED03D300AFD31E /* ItemTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemTableCell.swift; sourceTree = "<group>"; };
 		32F67FD41DED133E00AFD31E /* ImageCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCollectionCell.swift; sourceTree = "<group>"; };
 		32F67FD61DED41A500AFD31E /* siruis json.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "siruis json.txt"; sourceTree = "<group>"; };
@@ -110,6 +108,7 @@
 				32F67FD01DED128B00AFD31E /* View */,
 				32F67FCF1DED127000AFD31E /* Controller */,
 				323F8D201DD029AF008A0A7C /* data.txt */,
+				324B91D21DF0AE4100EF4764 /* assessment_quiz.txt */,
 				32F67FD61DED41A500AFD31E /* siruis json.txt */,
 				32D587DF1DC8FA1F00E15047 /* Info.plist */,
 				323F8D221DD036FF008A0A7C /* samplejson.txt */,
@@ -151,10 +150,9 @@
 		32F67FD21DED130100AFD31E /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				32EC60DA1DDA2FA3005ED383 /* BodyDiagramController.swift */,
-				323A36521DDA4F34004734E2 /* ItemController.swift */,
-				32E898E61DDA81730051B9E5 /* NoteEditController.swift */,
 				32D587D51DC8FA1F00E15047 /* MainController.swift */,
+				324B91CC1DF0A47D00EF4764 /* ExaminationController.swift */,
+				32E898E61DDA81730051B9E5 /* NoteEditController.swift */,
 				323F8D181DD0181F008A0A7C /* ItemTableController.swift */,
 				32E898E81DDA8C430051B9E5 /* NoteController.swift */,
 			);
@@ -166,10 +164,9 @@
 			children = (
 				3285FAD81DDADA410071B017 /* NoteCell.swift */,
 				32F67FCD1DED03D300AFD31E /* ItemTableCell.swift */,
-				32EC60D81DD972A0005ED383 /* SymptomCell.swift */,
-				323A36541DDA58A0004734E2 /* BodyPartCell.swift */,
 				327D817E1DDA697C00A6B0F1 /* MakeNoteCell.swift */,
 				32F67FD41DED133E00AFD31E /* ImageCollectionCell.swift */,
+				324B91CE1DF0A8F700EF4764 /* TextFieldCell.swift */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -246,6 +243,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				323F8D211DD029AF008A0A7C /* data.txt in Resources */,
+				324B91D31DF0AE4100EF4764 /* assessment_quiz.txt in Resources */,
 				323F8D231DD036FF008A0A7C /* samplejson.txt in Resources */,
 				32F67FD71DED41A500AFD31E /* siruis json.txt in Resources */,
 				32D587DE1DC8FA1F00E15047 /* LaunchScreen.storyboard in Resources */,
@@ -312,19 +310,17 @@
 				328A53621DCBA2B70035DA6C /* DataStore.swift in Sources */,
 				32D587D61DC8FA1F00E15047 /* MainController.swift in Sources */,
 				32E898E51DDA7D660051B9E5 /* NoteBook.swift in Sources */,
-				323A36531DDA4F34004734E2 /* ItemController.swift in Sources */,
 				32F67FD51DED133E00AFD31E /* ImageCollectionCell.swift in Sources */,
 				32D587D41DC8FA1F00E15047 /* AppDelegate.swift in Sources */,
 				32F67FCE1DED03D300AFD31E /* ItemTableCell.swift in Sources */,
-				323A36551DDA58A0004734E2 /* BodyPartCell.swift in Sources */,
+				324B91CF1DF0A8F700EF4764 /* TextFieldCell.swift in Sources */,
+				324B91CD1DF0A47D00EF4764 /* ExaminationController.swift in Sources */,
 				32E898E71DDA81730051B9E5 /* NoteEditController.swift in Sources */,
 				323F8D1D1DD01D1F008A0A7C /* Item.swift in Sources */,
-				32EC60D91DD972A0005ED383 /* SymptomCell.swift in Sources */,
 				327D81811DDA73BF00A6B0F1 /* Note.swift in Sources */,
 				323F8D191DD0181F008A0A7C /* ItemTableController.swift in Sources */,
 				32E898E91DDA8C430051B9E5 /* NoteController.swift in Sources */,
 				3285FAD91DDADA410071B017 /* NoteCell.swift in Sources */,
-				32EC60DB1DDA2FA3005ED383 /* BodyDiagramController.swift in Sources */,
 				327D817F1DDA697C00A6B0F1 /* MakeNoteCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

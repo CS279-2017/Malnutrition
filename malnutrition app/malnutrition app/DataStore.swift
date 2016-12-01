@@ -16,7 +16,10 @@ class DataStore{
     static var sharedInstance: DataStore? = nil;
     
     
-    var rootItem:Item = Item(type: "Root", title: nil, description: nil, images: [String](), nextItems: [Item](), options: [String]());
+    var rootItemExamination:Item = Item(type: "Root", title: nil, description: nil, images: [String](), nextItems: [Item](), options: [String]());
+    
+    var rootItemAssessmentQuiz:Item = Item(type: "Root", title: nil, description: nil, images: [String](), nextItems: [Item](), options: [String]());
+
     
     private static let archiveURL: NSURL = {
         let documentsDirectories = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask);
@@ -37,15 +40,17 @@ class DataStore{
     private init(){
         //Constructor for DataStore, called by get() function, never called outside of DataStore class
         //read the string from the text file that contains the item directory structure
-        let stringFromFile = readStringFromFile(fileName: "siruis json")
-        var parsedJsonObject = parseJson(jsonString: stringFromFile);
+        let examinationJson = readStringFromFile(fileName: "siruis json")
+        let quizAssessmentJson = readStringFromFile(fileName: "assessment_quiz");
+        parseJson(jsonString: examinationJson, root:rootItemExamination);
+        parseJson(jsonString: quizAssessmentJson, root: rootItemAssessmentQuiz);
         if let unarchivedObject = (NSKeyedUnarchiver.unarchiveObject(withFile: DataStore.archiveURL.path!)){
             noteBook = unarchivedObject as! NoteBook;
         }
     
     }
     
-    func parseJson(jsonString:String){
+    func parseJson(jsonString:String, root: Item){
         if let dataFromString = jsonString.data(using: .utf8, allowLossyConversion: false) {
             let json = JSON(data: dataFromString);
 //            for (index,subJson):(String, JSON) in json {
@@ -54,7 +59,7 @@ class DataStore{
 //            }
 //            let i = json[0]["text"].string
 //            print(i);
-            buildItemDirectory(parent: rootItem, json: json)
+            buildItemDirectory(parent: root, json: json)
         }
     }
     

@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class ItemTableController: UIViewController, UITableViewDelegate, UITableViewDataSource, ItemController{
+class ItemTableController: UIViewController, UITableViewDelegate, UITableViewDataSource{
     
     //this is the item which the view controller represents
     var item:Item?;
@@ -21,10 +21,11 @@ class ItemTableController: UIViewController, UITableViewDelegate, UITableViewDat
         
         self.automaticallyAdjustsScrollViewInsets = false
 
-        
-        let makeNoteButton = UIBarButtonItem(title: "Make Note", style: .plain, target: self, action: #selector(makeNoteButtonClicked(sender:)))
-        
-        self.navigationItem.rightBarButtonItem = makeNoteButton
+//        if(item.title = "Root"){
+//            
+//        }
+//        let makeNoteButton = UIBarButtonItem(title: "Make Note", style: .plain, target: self, action: #selector(makeNoteButtonClicked(sender:)))
+//        self.navigationItem.rightBarButtonItem = makeNoteButton
         self.tableView.dataSource = self;
         self.tableView.delegate = self;
         tableView.rowHeight = UITableViewAutomaticDimension
@@ -70,14 +71,6 @@ class ItemTableController: UIViewController, UITableViewDelegate, UITableViewDat
             controller.setItem(item: item!);
             self.navigationController?.pushViewController(controller, animated: true);
         }
-    }
-    
-    func makeNoteButtonClicked(sender: UIBarButtonItem){
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let controller = storyboard.instantiateViewController(withIdentifier: "NoteEditController") as! NoteEditController
-        let note = Note(title: "", text: (DataStore.get().rootItem.toString()));
-        controller.setNote(note: note, isEditingExisting: false);
-        self.navigationController?.pushViewController(controller, animated: true)
     }
 //    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
 //        

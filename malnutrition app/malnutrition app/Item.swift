@@ -61,6 +61,7 @@ class Item{
     
     func switchOffAllItems(){
         switched = false;
+        optionsSelectedIndex = nil;
         for item in nextItems{
             item.switchOffAllItems();
         }

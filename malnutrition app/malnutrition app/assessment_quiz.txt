@@ -1,0 +1,18 @@
+{"title":"Root", "type": "Risk Assessment Quiz", "nextItems":
+
+[
+	{"title": "Age", "options": ["< 65", "> 65"]},
+	{"title": "Height", "options": [], "type": "textbox"},
+	{"title": "Weight", "options": [], "type": "textbox"},
+	{"title": "Fatigue", "options": ["No", "Yes"]},
+	{"title": "Weakness", "options": ["No", "Yes"]},
+	{"title": "Fever", "options": ["No", "Yes"]},
+	{"title": "Inflammation", "options": ["No", "Yes"]},
+	{"title": "Mobility", "options": ["Ambulates", "Bed or Chair Bound"]},
+	{"title": "Nutrition Supplement Use", "options": ["No", "Yes"]},
+	{"title": "Comorbidities", "options": ["Fractures", "Pneumonia", "CA", "CHF", "COPD", "Stroke", "HIV Positive", "Kidney failure", "Liver failure", "Burn", "Trauma", "Abdominal Surgery", "Dementia"]}
+	
+]
+
+
+}

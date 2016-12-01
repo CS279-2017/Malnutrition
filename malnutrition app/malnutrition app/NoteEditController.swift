@@ -65,7 +65,7 @@ class NoteEditController:UIViewController, UITextFieldDelegate, UITextViewDelega
                     else{
                         print("save note successful!")
                         self.performSegue(withIdentifier: "unwindFromNoteEditController", sender: self);
-                        DataStore.get().rootItem.switchOffAllItems();
+                        DataStore.get().rootItemExamination.switchOffAllItems();
 
 
                     }
