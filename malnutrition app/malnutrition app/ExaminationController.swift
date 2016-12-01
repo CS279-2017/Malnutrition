@@ -28,7 +28,11 @@ class ExaminationController: UIViewController{
     }
     
     func assessmentQuizButtonClicked(sender: UIButton){
-        
+        let rootItem = DataStore.get().rootItemAssessmentQuiz;
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: "AssessmentController") as! AssessmentController
+        controller.setItem(rootItem: rootItem.nextItems[0]);
+        self.navigationController?.pushViewController(controller, animated: true);
     }
     
     func reviewOfSymptomsButtonClicked(sender:UIButton){
@@ -43,7 +47,7 @@ class ExaminationController: UIViewController{
     func makeNoteButtonClicked(sender: UIButton){
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let controller = storyboard.instantiateViewController(withIdentifier: "NoteEditController") as! NoteEditController
-        let note = Note(title: "", text: (DataStore.get().rootItemExamination.toString()));
+        let note = Note(title: "", text: (DataStore.get().rootItemExamination.toString()), exam_root: DataStore.get().rootItemExamination, assessment_root: DataStore.get().rootItemAssessmentQuiz);
         controller.setNote(note: note, isEditingExisting: false);
         self.navigationController?.pushViewController(controller, animated: true)
     }

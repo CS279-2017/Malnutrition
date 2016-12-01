@@ -17,6 +17,7 @@ class NoteEditController:UIViewController, UITextFieldDelegate, UITextViewDelega
     @IBOutlet weak var textView: UITextView!
     
     override func viewDidLoad() {
+        self.hideKeyboardWhenTappedAround();
         if(note != nil){
             let noteText = note!.text;
             let noteTitle = note!.title;

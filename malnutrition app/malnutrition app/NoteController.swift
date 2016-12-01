@@ -17,6 +17,8 @@ class NoteController: UIViewController, UISearchBarDelegate, UITableViewDelegate
     var allNotes = DataStore.get().noteBook.getAllNotes();
     
     override func viewDidLoad() {
+        self.hideKeyboardWhenTappedAround();
+
         tableView.register(NoteCell.self, forCellReuseIdentifier: "NoteCell")
         self.tableView.dataSource = self;
         self.tableView.delegate = self;

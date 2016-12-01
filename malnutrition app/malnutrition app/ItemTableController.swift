@@ -19,6 +19,9 @@ class ItemTableController: UIViewController, UITableViewDelegate, UITableViewDat
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.hideKeyboardWhenTappedAround();
+
+        
         self.automaticallyAdjustsScrollViewInsets = false
 
 //        if(item.title = "Root"){

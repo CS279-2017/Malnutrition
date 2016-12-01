@@ -14,7 +14,7 @@
 		324B91CD1DF0A47D00EF4764 /* ExaminationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324B91CC1DF0A47D00EF4764 /* ExaminationController.swift */; };
 		324B91CF1DF0A8F700EF4764 /* TextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324B91CE1DF0A8F700EF4764 /* TextFieldCell.swift */; };
 		324B91D31DF0AE4100EF4764 /* assessment_quiz.txt in Resources */ = {isa = PBXBuildFile; fileRef = 324B91D21DF0AE4100EF4764 /* assessment_quiz.txt */; };
-		327D817F1DDA697C00A6B0F1 /* MakeNoteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327D817E1DDA697C00A6B0F1 /* MakeNoteCell.swift */; };
+		324B91D51DF0B8A200EF4764 /* AssessmentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324B91D41DF0B8A200EF4764 /* AssessmentController.swift */; };
 		327D81811DDA73BF00A6B0F1 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327D81801DDA73BF00A6B0F1 /* Note.swift */; };
 		3285FAD91DDADA410071B017 /* NoteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3285FAD81DDADA410071B017 /* NoteCell.swift */; };
 		328A53621DCBA2B70035DA6C /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328A53611DCBA2B70035DA6C /* DataStore.swift */; };
@@ -40,7 +40,7 @@
 		324B91CC1DF0A47D00EF4764 /* ExaminationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExaminationController.swift; sourceTree = "<group>"; };
 		324B91CE1DF0A8F700EF4764 /* TextFieldCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldCell.swift; sourceTree = "<group>"; };
 		324B91D21DF0AE4100EF4764 /* assessment_quiz.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = assessment_quiz.txt; sourceTree = "<group>"; };
-		327D817E1DDA697C00A6B0F1 /* MakeNoteCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MakeNoteCell.swift; sourceTree = "<group>"; };
+		324B91D41DF0B8A200EF4764 /* AssessmentController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssessmentController.swift; sourceTree = "<group>"; };
 		327D81801DDA73BF00A6B0F1 /* Note.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
 		3285FAD81DDADA410071B017 /* NoteCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteCell.swift; sourceTree = "<group>"; };
 		328A53611DCBA2B70035DA6C /* DataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataStore.swift; sourceTree = "<group>"; };
@@ -155,6 +155,7 @@
 				32E898E61DDA81730051B9E5 /* NoteEditController.swift */,
 				323F8D181DD0181F008A0A7C /* ItemTableController.swift */,
 				32E898E81DDA8C430051B9E5 /* NoteController.swift */,
+				324B91D41DF0B8A200EF4764 /* AssessmentController.swift */,
 			);
 			name = Screens;
 			sourceTree = "<group>";
@@ -164,7 +165,6 @@
 			children = (
 				3285FAD81DDADA410071B017 /* NoteCell.swift */,
 				32F67FCD1DED03D300AFD31E /* ItemTableCell.swift */,
-				327D817E1DDA697C00A6B0F1 /* MakeNoteCell.swift */,
 				32F67FD41DED133E00AFD31E /* ImageCollectionCell.swift */,
 				324B91CE1DF0A8F700EF4764 /* TextFieldCell.swift */,
 			);
@@ -317,11 +317,11 @@
 				324B91CD1DF0A47D00EF4764 /* ExaminationController.swift in Sources */,
 				32E898E71DDA81730051B9E5 /* NoteEditController.swift in Sources */,
 				323F8D1D1DD01D1F008A0A7C /* Item.swift in Sources */,
+				324B91D51DF0B8A200EF4764 /* AssessmentController.swift in Sources */,
 				327D81811DDA73BF00A6B0F1 /* Note.swift in Sources */,
 				323F8D191DD0181F008A0A7C /* ItemTableController.swift in Sources */,
 				32E898E91DDA8C430051B9E5 /* NoteController.swift in Sources */,
 				3285FAD91DDADA410071B017 /* NoteCell.swift in Sources */,
-				327D817F1DDA697C00A6B0F1 /* MakeNoteCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -12,16 +12,20 @@ class Note: NSObject, NSCoding{
     var title:String
     var text:String = "";
     var dateCreated:Date;
+    var examRootItem:Item?
+    var assessmentRootItem: Item?
     
     init(title:String){
         self.title = title;
         self.dateCreated = Date();
     }
     
-    init(title:String, text: String){
+    init(title:String, text: String, exam_root: Item, assessment_root: Item){
         self.title = title;
         self.text = text;
         self.dateCreated = Date();
+        self.examRootItem = exam_root;
+        self.assessmentRootItem = assessment_root;
     }
     
     func encode(with aCoder: NSCoder) {
