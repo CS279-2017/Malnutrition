@@ -65,26 +65,30 @@ class NoteController: UIViewController, UISearchBarDelegate, UITableViewDelegate
     }
     
     func deleteNoteButtonClicked(button: UIButton){
-        let note = displayedNotes[button.tag];
-        noteBook.deleteNote(note: note);
-        updateDisplayedNotes();
-        tableView.deleteRows(at: [IndexPath(row: button.tag, section: 0)]
-, with: UITableViewRowAnimation.automatic)
-//        if(DataStore.get().save() != true){
-//            print("unable to save note");
-//        }
-//        else{
-//            print("save note successful!")
-//        }
-//        tableView.reloadData();
+        let alertController = UIAlertController(title: "Delete Note", message: "Are you sure you want to delete this note?", preferredStyle: UIAlertControllerStyle.alert)
+        let deleteAction = UIAlertAction(title: "Delete", style: UIAlertActionStyle.destructive) { (result : UIAlertAction) -> Void in
+            let note = self.displayedNotes[button.tag];
+            DataStore.get().deleteNote(note: note);
+            self.updateDisplayedNotes();
+            self.tableView.deleteRows(at: [IndexPath(row: button.tag, section: 0)]
+                , with: UITableViewRowAnimation.automatic)
+            
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default) { (result : UIAlertAction) -> Void in
+        }
+        alertController.addAction(deleteAction)
+        alertController.addAction(cancelAction)
+        UIApplication.topViewController()?.present(alertController, animated: true, completion: nil)
+       
+        
     }
     
     func editNoteButtonClicked(button: UIButton){
-//        let note = displayedNotes[indexPath.row];
-//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//        let controller = storyboard.instantiateViewController(withIdentifier: "NoteEditController") as! NoteEditController
-//        controller.setNote(note: note, isEditingExisting: true);
-//        self.navigationController?.pushViewController(controller, animated: true)
+        let note = displayedNotes[button.tag];
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: "NoteEditController") as! NoteEditController
+        controller.setNote(note: note, isEditingExisting: true);
+        self.navigationController?.pushViewController(controller, animated: true)
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

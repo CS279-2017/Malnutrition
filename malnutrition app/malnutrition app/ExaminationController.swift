@@ -62,8 +62,7 @@ class ExaminationController: UIViewController{
     func clearNoteButtonClicked(sender: UIButton){
         let alertController = UIAlertController(title: "Clear Note", message: "Are you sure you want to clear this note?", preferredStyle: UIAlertControllerStyle.alert)
         let clearAction = UIAlertAction(title: "Clear", style: UIAlertActionStyle.destructive) { (result : UIAlertAction) -> Void in
-            DataStore.get().rootItemExamination.switchOffAllItems();
-            DataStore.get().rootItemAssessmentQuiz.switchOffAllItems();
+            DataStore.get().clearNote();
 
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default) { (result : UIAlertAction) -> Void in

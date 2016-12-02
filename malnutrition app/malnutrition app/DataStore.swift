@@ -122,6 +122,21 @@ class DataStore{
     func examinationNoteText() -> String{
         return "Review Of Symptoms:\n" + DataStore.get().rootItemExamination.toString() + "\n" + "Assessment Quiz:\n" + DataStore.get().rootItemAssessmentQuiz.toString();
     }
+    
+    func deleteNote(note: Note){
+        noteBook.deleteNote(note: note);
+        if(save() != true){
+            print("unable to save note");
+        }
+        else{
+            print("save note successful!")
+        }
+    }
+    
+    func clearNote(){
+        rootItemAssessmentQuiz.switchOffAllItems();
+        rootItemExamination.switchOffAllItems();
+    }
 
 }
 
