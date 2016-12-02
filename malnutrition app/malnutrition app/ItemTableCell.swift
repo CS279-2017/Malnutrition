@@ -104,6 +104,11 @@ class ItemTableCell:UITableViewCell, UICollectionViewDelegate, UICollectionViewD
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ImageCollectionCell", for: indexPath) as! ImageCollectionCell;
+        let imageView = cell.imageView
+        let tapGestureRecognizer = UITapGestureRecognizer(target:self, action: #selector(imageTapped(gestureRecognizer:)))
+        imageView?.isUserInteractionEnabled = true
+        imageView?.addGestureRecognizer(tapGestureRecognizer)
+   
         cell.updateImageUrlString(url: (self.item?.images[indexPath.row])!);
         return cell;
     }
@@ -127,5 +132,15 @@ class ItemTableCell:UITableViewCell, UICollectionViewDelegate, UICollectionViewD
             i += 1;
         }
 
+    }
+    
+    func imageTapped(gestureRecognizer: UITapGestureRecognizer)
+    {
+        let tappedImageView = gestureRecognizer.view! as! UIImageView
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let controller : PictureViewController = storyBoard.instantiateViewController(withIdentifier: "PictureViewController") as! PictureViewController
+        controller.setImage(image: tappedImageView.image!)
+        let topViewController = UIApplication.topViewController();
+        topViewController?.present(controller, animated: true, completion: nil)
     }
 }

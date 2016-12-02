@@ -15,6 +15,8 @@
 		324B91CF1DF0A8F700EF4764 /* TextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324B91CE1DF0A8F700EF4764 /* TextFieldCell.swift */; };
 		324B91D31DF0AE4100EF4764 /* assessment_quiz.txt in Resources */ = {isa = PBXBuildFile; fileRef = 324B91D21DF0AE4100EF4764 /* assessment_quiz.txt */; };
 		324B91D51DF0B8A200EF4764 /* AssessmentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324B91D41DF0B8A200EF4764 /* AssessmentController.swift */; };
+		3260AD431DF1442700EA8DF3 /* siruis json2.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3260AD421DF1442700EA8DF3 /* siruis json2.txt */; };
+		3260AD451DF1456900EA8DF3 /* PictureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3260AD441DF1456900EA8DF3 /* PictureViewController.swift */; };
 		327D81811DDA73BF00A6B0F1 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327D81801DDA73BF00A6B0F1 /* Note.swift */; };
 		3285FAD91DDADA410071B017 /* NoteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3285FAD81DDADA410071B017 /* NoteCell.swift */; };
 		328A53621DCBA2B70035DA6C /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328A53611DCBA2B70035DA6C /* DataStore.swift */; };
@@ -41,6 +43,8 @@
 		324B91CE1DF0A8F700EF4764 /* TextFieldCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldCell.swift; sourceTree = "<group>"; };
 		324B91D21DF0AE4100EF4764 /* assessment_quiz.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = assessment_quiz.txt; sourceTree = "<group>"; };
 		324B91D41DF0B8A200EF4764 /* AssessmentController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssessmentController.swift; sourceTree = "<group>"; };
+		3260AD421DF1442700EA8DF3 /* siruis json2.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "siruis json2.txt"; sourceTree = "<group>"; };
+		3260AD441DF1456900EA8DF3 /* PictureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PictureViewController.swift; sourceTree = "<group>"; };
 		327D81801DDA73BF00A6B0F1 /* Note.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
 		3285FAD81DDADA410071B017 /* NoteCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteCell.swift; sourceTree = "<group>"; };
 		328A53611DCBA2B70035DA6C /* DataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataStore.swift; sourceTree = "<group>"; };
@@ -110,6 +114,7 @@
 				323F8D201DD029AF008A0A7C /* data.txt */,
 				324B91D21DF0AE4100EF4764 /* assessment_quiz.txt */,
 				32F67FD61DED41A500AFD31E /* siruis json.txt */,
+				3260AD421DF1442700EA8DF3 /* siruis json2.txt */,
 				32D587DF1DC8FA1F00E15047 /* Info.plist */,
 				323F8D221DD036FF008A0A7C /* samplejson.txt */,
 			);
@@ -156,6 +161,7 @@
 				323F8D181DD0181F008A0A7C /* ItemTableController.swift */,
 				32E898E81DDA8C430051B9E5 /* NoteController.swift */,
 				324B91D41DF0B8A200EF4764 /* AssessmentController.swift */,
+				3260AD441DF1456900EA8DF3 /* PictureViewController.swift */,
 			);
 			name = Screens;
 			sourceTree = "<group>";
@@ -243,6 +249,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				323F8D211DD029AF008A0A7C /* data.txt in Resources */,
+				3260AD431DF1442700EA8DF3 /* siruis json2.txt in Resources */,
 				324B91D31DF0AE4100EF4764 /* assessment_quiz.txt in Resources */,
 				323F8D231DD036FF008A0A7C /* samplejson.txt in Resources */,
 				32F67FD71DED41A500AFD31E /* siruis json.txt in Resources */,
@@ -308,6 +315,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				328A53621DCBA2B70035DA6C /* DataStore.swift in Sources */,
+				3260AD451DF1456900EA8DF3 /* PictureViewController.swift in Sources */,
 				32D587D61DC8FA1F00E15047 /* MainController.swift in Sources */,
 				32E898E51DDA7D660051B9E5 /* NoteBook.swift in Sources */,
 				32F67FD51DED133E00AFD31E /* ImageCollectionCell.swift in Sources */,

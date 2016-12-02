@@ -305,6 +305,36 @@
             </objects>
             <point key="canvasLocation" x="1063" y="-11"/>
         </scene>
+        <!--Picture View Controller-->
+        <scene sceneID="fUV-se-cYW">
+            <objects>
+                <viewController storyboardIdentifier="PictureViewController" id="BrE-td-3Yg" customClass="PictureViewController" customModule="malnutrition_app" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="0HV-8n-lO4"/>
+                        <viewControllerLayoutGuide type="bottom" id="GAl-e8-na5"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="rAE-FJ-bFa">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wBb-F0-HZU"/>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="wBb-F0-HZU" firstAttribute="bottom" secondItem="GAl-e8-na5" secondAttribute="top" id="IOL-zH-HUp"/>
+                            <constraint firstItem="wBb-F0-HZU" firstAttribute="top" secondItem="rAE-FJ-bFa" secondAttribute="top" id="Pnn-So-cz4"/>
+                            <constraint firstAttribute="trailing" secondItem="wBb-F0-HZU" secondAttribute="trailing" id="dF0-xb-jd1"/>
+                            <constraint firstItem="wBb-F0-HZU" firstAttribute="leading" secondItem="rAE-FJ-bFa" secondAttribute="leading" id="pFJ-Bo-l1Y"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="imageView" destination="wBb-F0-HZU" id="Yaz-pg-q0c"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="k5l-NI-oNK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-33" y="-675"/>
+        </scene>
         <!--Assessment Controller-->
         <scene sceneID="h8i-Id-JGQ">
             <objects>
@@ -509,7 +539,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="188"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hSC-2C-E7X" id="mtN-3d-w19">
-                                            <frame key="frameInset" width="375" height="187"/>
+                                            <frame key="frameInset" width="375" height="187.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="hts-hP-ldl">

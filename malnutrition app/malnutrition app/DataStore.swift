@@ -40,7 +40,7 @@ class DataStore{
     private init(){
         //Constructor for DataStore, called by get() function, never called outside of DataStore class
         //read the string from the text file that contains the item directory structure
-        let examinationJson = readStringFromFile(fileName: "siruis json")
+        let examinationJson = readStringFromFile(fileName: "siruis json2")
         let quizAssessmentJson = readStringFromFile(fileName: "assessment_quiz");
         parseJson(jsonString: examinationJson, root:rootItemExamination);
         parseJson(jsonString: quizAssessmentJson, root: rootItemAssessmentQuiz);
