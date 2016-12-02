@@ -135,26 +135,37 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter A Title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eWb-yE-IGV">
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="sUm-OC-xnE">
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="De2-Y3-pd8">
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Title:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CRW-fV-yEv">
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter A Title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eWb-yE-IGV">
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Content: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cha-g4-KpY">
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="sUm-OC-xnE">
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="eWb-yE-IGV" secondAttribute="trailing" id="R54-uk-U4m"/>
-                            <constraint firstItem="eWb-yE-IGV" firstAttribute="top" secondItem="Oij-d7-RAi" secondAttribute="bottom" constant="8" id="TK8-Zm-dYb"/>
-                            <constraint firstItem="sUm-OC-xnE" firstAttribute="top" secondItem="eWb-yE-IGV" secondAttribute="bottom" constant="8" id="bVz-OM-DSb"/>
-                            <constraint firstItem="Fcd-TL-uKX" firstAttribute="top" secondItem="sUm-OC-xnE" secondAttribute="bottom" constant="8" id="iHx-Ln-Lia"/>
-                            <constraint firstItem="eWb-yE-IGV" firstAttribute="leading" secondItem="0UW-9W-DIM" secondAttribute="leadingMargin" id="oBR-aV-ycf"/>
-                            <constraint firstItem="sUm-OC-xnE" firstAttribute="leading" secondItem="0UW-9W-DIM" secondAttribute="leadingMargin" id="oUT-C2-aJ0"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="sUm-OC-xnE" secondAttribute="trailing" id="w1a-9s-4xW"/>
+                            <constraint firstItem="De2-Y3-pd8" firstAttribute="top" secondItem="Oij-d7-RAi" secondAttribute="bottom" constant="8" id="EjF-Z3-Mpe"/>
+                            <constraint firstItem="De2-Y3-pd8" firstAttribute="leading" secondItem="0UW-9W-DIM" secondAttribute="leading" constant="8" id="Z1W-bn-Cd8"/>
+                            <constraint firstAttribute="trailing" secondItem="De2-Y3-pd8" secondAttribute="trailing" constant="8" id="wAp-K7-2Nq"/>
+                            <constraint firstItem="Fcd-TL-uKX" firstAttribute="top" secondItem="De2-Y3-pd8" secondAttribute="bottom" constant="8" id="zC6-1e-L96"/>
                         </constraints>
                     </view>
                     <connections>
@@ -537,6 +548,11 @@
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Date Time Last Edited" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1bd-GW-M0O">
+                                                            <fontDescription key="fontDescription" type="italicSystem" pointSize="12"/>
+                                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="248" verticalCompressionResistancePriority="749" text="Note Content" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r5G-Os-ZP1">
                                                             <fontDescription key="fontDescription" type="system" weight="thin" pointSize="15"/>
                                                             <nil key="textColor"/>
@@ -560,7 +576,8 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="bodyLabel" destination="r5G-Os-ZP1" id="HhE-Uj-RY4"/>
-                                            <outlet property="dateTimeLabel" destination="fqP-nk-6MK" id="lwb-QR-kJe"/>
+                                            <outlet property="dateTimeCreatedLabel" destination="fqP-nk-6MK" id="x8g-GI-SOH"/>
+                                            <outlet property="dateTimeEditedLabel" destination="1bd-GW-M0O" id="RYJ-3I-0Mn"/>
                                             <outlet property="deleteButton" destination="NV1-hV-EPK" id="gj8-Vg-GhS"/>
                                             <outlet property="editButton" destination="A5V-O6-Yhk" id="Jwo-13-6kc"/>
                                             <outlet property="titleLabel" destination="GvG-or-ACX" id="zlH-Vu-ckk"/>

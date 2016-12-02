@@ -15,7 +15,8 @@ class NoteCell: UITableViewCell{
     @IBOutlet weak var editButton: UIButton!
     @IBOutlet weak var deleteButton: UIButton!
     @IBOutlet weak var bodyLabel: UILabel!
-    @IBOutlet weak var dateTimeLabel: UILabel!
+    @IBOutlet weak var dateTimeCreatedLabel: UILabel!
+    @IBOutlet weak var dateTimeEditedLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
 //    var titleLabel = UILabel();
 //    var textBodyLabel = UILabel();
@@ -30,12 +31,23 @@ class NoteCell: UITableViewCell{
         attributeString.addAttribute(NSUnderlineStyleAttributeName, value: 1, range: NSMakeRange(0, attributeString.length))
         attributeString.addAttribute(NSFontAttributeName, value: UIFont.boldSystemFont(ofSize: 24), range: NSRange(location: 0, length: attributeString.length))
         self.titleLabel.attributedText = attributeString;
-        self.bodyLabel.text = note.text;
+        self.bodyLabel.text = note.textContent;
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = DateFormatter.Style.short
         dateFormatter.timeStyle = DateFormatter.Style.short
-        self.dateTimeLabel.text = "Created On: " + dateFormatter.string(from: note.dateCreated)
+        self.dateTimeCreatedLabel.text = "Created On: " + dateFormatter.string(from: note.dateCreated)
+        
+        //if note has been edited, i.e dateLastEdited != nil, then show last edited text
+        if(note.dateLastEdited != nil){
+            self.dateTimeEditedLabel.text = "Last Edited: " + dateFormatter.string(from: note.dateLastEdited!)
+            self.dateTimeEditedLabel.isHidden = false;
+        }
+        else{
+            self.dateTimeEditedLabel.isHidden = true;
+            self.dateTimeEditedLabel.text = nil;
+        }
+        
         
         deleteButton.adjustsImageWhenHighlighted = false;
         editButton.adjustsImageWhenHighlighted = false;

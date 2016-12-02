@@ -3,7 +3,7 @@
 [
  {"title": "HEENT", "type": "Body Region", "description": "null", "nextItems":
 	[
-		{"title": "Hair brittleness", "description": "Hair brittle or breaks off easily", "images": [], "options": ["No", "Mild-Moderate Loss", "Severe Loss"]},
+		{"title": "Hair brittleness", "description": "Hair brittle or breaks off easily", "images": ["http://i.imgur.com/GFQjQTp.png"], "options": ["No", "Mild-Moderate Loss", "Severe Loss"]},
 		{"title": "Hair pluckability", "description": "Ask client if they have noticed any changes to the texture of the hair. Gently pull on a few stands to check if hair is easily plucked", "images": [], "options": ["No", "Mild-Moderate Loss", "Severe Loss"]},
 		{"title": "Temporalis muscle wasting", "description": "Have patient turn the head to the side. Gently palpate the temple region with fingertips.", "images": [], "options": ["No muscle loss", "Slight depression", "Severe indentation or hollow appearance"]},
 		{"title": "Orbital sockets", "description": "View the client from the front. Gently palpate under the eyes and above the cheekbones with your middle finger, feeling for a lack of orbital fat pads. Look for dark rings and loose skin.", "images": [], "options": ["Fat pad bulging", "Slightly hollow above cheekbones and some darkening", "Severely hollow and depressed, loose skin, dark circles"]},

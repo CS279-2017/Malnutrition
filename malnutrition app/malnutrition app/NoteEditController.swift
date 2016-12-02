@@ -19,7 +19,7 @@ class NoteEditController:UIViewController, UITextFieldDelegate, UITextViewDelega
     override func viewDidLoad() {
         self.hideKeyboardWhenTappedAround();
         if(note != nil){
-            let noteText = note!.text;
+            let noteText = note!.textContent;
             let noteTitle = note!.title;
             if(noteTitle == ""){
                 titleTextField.placeholder = "Enter Title of Note"
@@ -36,9 +36,11 @@ class NoteEditController:UIViewController, UITextFieldDelegate, UITextViewDelega
 //        self.view.addSubview(textView)
 //        self.view.addSubview(titleTextField)\
         
-        textView.layer.borderColor = UIColor.lightGray.cgColor
-        textView.layer.borderWidth = 1.0
-        textView.layer.cornerRadius = 10.0
+        textView.layer.borderColor = UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 1.0).cgColor
+        textView.layer.borderWidth = 1
+        textView.layer.cornerRadius = 5;
+        
+//        textView.layer.cornerRadius =
         
         let saveNoteButton = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(saveNoteButtonClicked(button:)))
         self.navigationItem.rightBarButtonItem = saveNoteButton;
@@ -54,7 +56,7 @@ class NoteEditController:UIViewController, UITextFieldDelegate, UITextViewDelega
             }
             else{
                 note!.title = titleTextField.text!
-                note?.text = textView.text!
+                note?.textContent = textView.text!
                 DataStore.get().addNote(note: note!, callback: {self.performSegue(withIdentifier: "unwindFromNoteEditController", sender: self);
                 DataStore.get().clearNote();}, error_handler: DataStore.get().error_handler)
             }
@@ -65,7 +67,8 @@ class NoteEditController:UIViewController, UITextFieldDelegate, UITextViewDelega
             }
             else{
                 note!.title = titleTextField.text!
-                note?.text = textView.text!
+                note!.textContent = textView.text!
+                note!.dateLastEdited = Date();
                 if(DataStore.get().save()){
                     self.navigationController?.popViewController(animated: true);
                 }
