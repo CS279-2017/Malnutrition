@@ -11,40 +11,54 @@ import UIKit
 
 class NoteCell: UITableViewCell{
     var note: Note?
-    var titleLabel = UILabel();
-    var textBodyLabel = UILabel();
-    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false;
-        textBodyLabel.translatesAutoresizingMaskIntoConstraints = false;
-        
-        self.contentView.addSubview(titleLabel)
-        self.contentView.addSubview(textBodyLabel);
-        
-        titleLabel.sizeToFit();
-        titleLabel.numberOfLines = 0;
-        titleLabel.lineBreakMode = .byWordWrapping
-        titleLabel.topAnchor.constraint(equalTo: self.contentView.topAnchor).isActive = true;
-        titleLabel.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor).isActive = true;
-        titleLabel.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor).isActive = true;
-        
-        textBodyLabel.sizeToFit();
-        textBodyLabel.numberOfLines = 0;
-        textBodyLabel.lineBreakMode = .byWordWrapping
-        //        NSLayoutConstraint(item: textBodyLabel, attribute: .top, relatedBy: .equal, toItem: titleLabel, attribute: .bottom, multiplier: 1.0, constant: 0.0).isActive = true
-        textBodyLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor).isActive = true;
-        textBodyLabel.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor).isActive = true;
-        textBodyLabel.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor).isActive = true;
-        textBodyLabel.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor).isActive = true;
-    }
+    
+    @IBOutlet weak var editButton: UIButton!
+    @IBOutlet weak var deleteButton: UIButton!
+    @IBOutlet weak var bodyLabel: UILabel!
+    @IBOutlet weak var dateTimeLabel: UILabel!
+    @IBOutlet weak var titleLabel: UILabel!
+//    var titleLabel = UILabel();
+//    var textBodyLabel = UILabel();
     
     required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: aDecoder);
     }
     
     func setNote(note: Note){
         self.note = note;
-        self.titleLabel.text = note.title;
-        self.textBodyLabel.text = note.text;
+        let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string: note.title)
+        attributeString.addAttribute(NSUnderlineStyleAttributeName, value: 1, range: NSMakeRange(0, attributeString.length))
+        attributeString.addAttribute(NSFontAttributeName, value: UIFont.boldSystemFont(ofSize: 24), range: NSRange(location: 0, length: attributeString.length))
+        self.titleLabel.attributedText = attributeString;
+        self.bodyLabel.text = note.text;
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = DateFormatter.Style.short
+        dateFormatter.timeStyle = DateFormatter.Style.short
+        self.dateTimeLabel.text = "Created On: " + dateFormatter.string(from: note.dateCreated)
+        
+        deleteButton.adjustsImageWhenHighlighted = false;
+        editButton.adjustsImageWhenHighlighted = false;
+        
+        deleteButton.addTarget(self, action: #selector(startFade(button:)), for: .touchDown)
+        deleteButton.addTarget(self, action: #selector(stopFade(button:)), for: .touchUpInside)
+        deleteButton.addTarget(self, action: #selector(stopFade(button:)), for: .touchUpOutside)
+        
+        editButton.addTarget(self, action: #selector(startFade(button:)), for: .touchDown)
+        editButton.addTarget(self, action: #selector(stopFade(button:)), for: .touchUpInside)
+        editButton.addTarget(self, action: #selector(stopFade(button:)), for: .touchUpOutside)
+
+    }
+    
+    
+    
+    func startFade(button: UIButton){
+//        UIView.animate(withDuration: 0.2, animations: { button.alpha = 0.25})
+        button.alpha = 0.25
+    }
+    
+    func stopFade(button: UIButton){
+//        button.alpha = 1.0
+        UIView.animate(withDuration: 0.25, animations: { button.alpha = 1.0})
     }
 }

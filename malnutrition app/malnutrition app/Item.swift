@@ -48,11 +48,11 @@ class Item{
         var retString = "";
         if(switched == true){
             if(title != nil){
-                retString += (title! + "\n");
+                retString += (title! + ": " + "\n");
             }
-            if(description != nil){
-                retString += (description! + "\n");
-            }
+//            if(description != nil){
+//                retString += (description! + "\n");
+//            }
             if(optionsSelectedIndex != nil){
                 retString += (options[optionsSelectedIndex!] + "\n");
             }

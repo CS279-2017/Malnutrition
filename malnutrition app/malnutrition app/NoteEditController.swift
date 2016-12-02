@@ -32,7 +32,6 @@ class NoteEditController:UIViewController, UITextFieldDelegate, UITextViewDelega
         titleTextField.delegate = self;
         textView.delegate = self;
         
-        
         titleTextField.returnKeyType = .done;
 //        self.view.addSubview(textView)
 //        self.view.addSubview(titleTextField)\
@@ -58,6 +57,7 @@ class NoteEditController:UIViewController, UITextFieldDelegate, UITextViewDelega
                     DataStore.get().error_handler(error: "There's already a note with this title, please use a unique title!");
                 }
                 else{
+                    note!.title = enteredTitle;
                     let noteBook = DataStore.get().noteBook
                     noteBook.addNote(note: note!);
                     if(DataStore.get().save() != true){

@@ -27,8 +27,22 @@ class NoteBook: NSObject, NSCoding{
         notes[note.title] = note;
     }
     
+    func deleteNote(note: Note){
+        notes.removeValue(forKey: note.title);
+    }
+    
     func get(title:String) -> Note?{
         return notes[title];
+    }
+    
+    func getNotesWithPrefix(prefix: String)-> [Note]{
+        var returnArray = [Note]();
+        for note in notes{
+            if(note.value.title.hasPrefix(prefix)){
+                returnArray.append(note.value);
+            }
+        }
+        return returnArray;
     }
     
     func size() -> Int{
