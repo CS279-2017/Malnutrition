@@ -119,17 +119,39 @@ class DataStore{
         UIApplication.topViewController()?.present(alertController, animated: true, completion: nil)
     }
     
-    func examinationNoteText() -> String{
+    func getNoteString() -> String{
         return "Review Of Symptoms:\n" + DataStore.get().rootItemExamination.toString() + "\n" + "Assessment Quiz:\n" + DataStore.get().rootItemAssessmentQuiz.toString();
     }
     
-    func deleteNote(note: Note){
+    func deleteNote(note: Note, callback: (() -> Void)?, error_handler: ((String)->Void)?){
         noteBook.deleteNote(note: note);
         if(save() != true){
+            print("unable to save note");
+            if(error_handler != nil){
+                error_handler!("unable to save note")
+            }
+        }
+        else{
+            print("save note successful!")
+            if(callback != nil){
+                callback!();
+            }
+        }
+    }
+    
+    func addNote(note: Note, callback: (() -> Void)?, error_handler: ((String)->Void)?){
+        noteBook.addNote(note: note);
+        if(save() != true){
+            if(error_handler != nil){
+                error_handler!("unable to save note")
+            }
             print("unable to save note");
         }
         else{
             print("save note successful!")
+            if(callback != nil){
+                callback!();
+            }
         }
     }
     

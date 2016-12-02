@@ -68,7 +68,7 @@ class NoteController: UIViewController, UISearchBarDelegate, UITableViewDelegate
         let alertController = UIAlertController(title: "Delete Note", message: "Are you sure you want to delete this note?", preferredStyle: UIAlertControllerStyle.alert)
         let deleteAction = UIAlertAction(title: "Delete", style: UIAlertActionStyle.destructive) { (result : UIAlertAction) -> Void in
             let note = self.displayedNotes[button.tag];
-            DataStore.get().deleteNote(note: note);
+            DataStore.get().deleteNote(note: note, callback: nil, error_handler: DataStore.get().error_handler);
             self.updateDisplayedNotes();
             self.tableView.deleteRows(at: [IndexPath(row: button.tag, section: 0)]
                 , with: UITableViewRowAnimation.automatic)

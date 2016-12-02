@@ -135,7 +135,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eWb-yE-IGV">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter A Title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eWb-yE-IGV">
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -151,7 +151,7 @@
                             <constraint firstAttribute="trailingMargin" secondItem="eWb-yE-IGV" secondAttribute="trailing" id="R54-uk-U4m"/>
                             <constraint firstItem="eWb-yE-IGV" firstAttribute="top" secondItem="Oij-d7-RAi" secondAttribute="bottom" constant="8" id="TK8-Zm-dYb"/>
                             <constraint firstItem="sUm-OC-xnE" firstAttribute="top" secondItem="eWb-yE-IGV" secondAttribute="bottom" constant="8" id="bVz-OM-DSb"/>
-                            <constraint firstItem="Fcd-TL-uKX" firstAttribute="top" secondItem="sUm-OC-xnE" secondAttribute="bottom" id="iHx-Ln-Lia"/>
+                            <constraint firstItem="Fcd-TL-uKX" firstAttribute="top" secondItem="sUm-OC-xnE" secondAttribute="bottom" constant="8" id="iHx-Ln-Lia"/>
                             <constraint firstItem="eWb-yE-IGV" firstAttribute="leading" secondItem="0UW-9W-DIM" secondAttribute="leadingMargin" id="oBR-aV-ycf"/>
                             <constraint firstItem="sUm-OC-xnE" firstAttribute="leading" secondItem="0UW-9W-DIM" secondAttribute="leadingMargin" id="oUT-C2-aJ0"/>
                             <constraint firstAttribute="trailingMargin" secondItem="sUm-OC-xnE" secondAttribute="trailing" id="w1a-9s-4xW"/>

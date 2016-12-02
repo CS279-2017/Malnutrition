@@ -53,23 +53,10 @@ class NoteEditController:UIViewController, UITextFieldDelegate, UITextViewDelega
                 DataStore.get().error_handler(error: "You must enter a title");
             }
             else{
-                if(DataStore.get().noteBook.get(title: enteredTitle) != nil){
-                    DataStore.get().error_handler(error: "There's already a note with this title, please use a unique title!");
-                }
-                else{
-                    note!.title = enteredTitle;
-                    let noteBook = DataStore.get().noteBook
-                    noteBook.addNote(note: note!);
-                    if(DataStore.get().save() != true){
-                        print("unable to save note");
-                    }
-                    else{
-                        print("save note successful!")
-                        self.performSegue(withIdentifier: "unwindFromNoteEditController", sender: self);
-                        DataStore.get().clearNote();
-
-                    }
-                }
+                note!.title = titleTextField.text!
+                note?.text = textView.text!
+                DataStore.get().addNote(note: note!, callback: {self.performSegue(withIdentifier: "unwindFromNoteEditController", sender: self);
+                DataStore.get().clearNote();}, error_handler: DataStore.get().error_handler)
             }
         }
         else{
@@ -77,18 +64,17 @@ class NoteEditController:UIViewController, UITextFieldDelegate, UITextViewDelega
                 DataStore.get().error_handler(error: "You must enter a title");
             }
             else{
-                if(enteredTitle != note!.title && DataStore.get().noteBook.get(title: enteredTitle) != nil){
-                    DataStore.get().error_handler(error: "There's already a note with this title, please use a unique title!");
+                note!.title = titleTextField.text!
+                note?.text = textView.text!
+                if(DataStore.get().save()){
+                    self.navigationController?.popViewController(animated: true);
                 }
                 else{
-                    note!.title = titleTextField.text!
-                    note!.text = textView.text!
-                    print("save note successful!")
-                    self.navigationController?.popViewController(animated: true);
-//                    self.performSegue(withIdentifier: "unwindFromNoteEditController", sender: self);
-//                    DataStore.get().rootItem.switchOffAllItems();
-                    //note: we don't switch off because we are editing an existing note and not making a new note
+                    DataStore.get().error_handler(error: "Unable to save note");
                 }
+    //                    self.performSegue(withIdentifier: "unwindFromNoteEditController", sender: self);
+    //                    DataStore.get().rootItem.switchOffAllItems();
+                //note: we don't switch off because we are editing an existing note and not making a new note
             }
         }
     }

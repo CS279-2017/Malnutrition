@@ -24,21 +24,23 @@ class NoteBook: NSObject, NSCoding{
     }
     
     func addNote(note: Note){
-        notes[note.title] = note;
+        notes[note.uuid] = note;
     }
     
     func deleteNote(note: Note){
-        notes.removeValue(forKey: note.title);
+        notes.removeValue(forKey: note.uuid);
     }
     
-    func get(title:String) -> Note?{
-        return notes[title];
+    func get(uuid:String) -> Note?{
+        return notes[uuid];
     }
     
     func getNotesWithPrefix(prefix: String)-> [Note]{
         var returnArray = [Note]();
+        //ignore caps we want our prefix match to ignore caps
+        let prefix = prefix.lowercased();
         for note in notes{
-            if(note.value.title.hasPrefix(prefix)){
+            if(note.value.title.lowercased().hasPrefix(prefix)){
                 returnArray.append(note.value);
             }
         }

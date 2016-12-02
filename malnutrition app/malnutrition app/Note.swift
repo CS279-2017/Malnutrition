@@ -9,6 +9,7 @@
 import Foundation
 
 class Note: NSObject, NSCoding{
+    var uuid:String;
     var title:String
     var text:String = "";
     var dateCreated:Date;
@@ -16,25 +17,27 @@ class Note: NSObject, NSCoding{
     var assessmentRootItem: Item?
     
     init(title:String){
+        self.uuid = UUID().uuidString
         self.title = title;
         self.dateCreated = Date();
     }
     
-    init(title:String, text: String, exam_root: Item, assessment_root: Item){
+    init(title:String, text: String){
+        self.uuid = UUID().uuidString
         self.title = title;
         self.text = text;
         self.dateCreated = Date();
-        self.examRootItem = exam_root;
-        self.assessmentRootItem = assessment_root;
     }
     
     func encode(with aCoder: NSCoder) {
+        aCoder.encode(self.uuid, forKey: "uuid");
         aCoder.encode(self.title, forKey: "title")
         aCoder.encode(self.text, forKey: "text")
         aCoder.encode(self.dateCreated, forKey: "dateCreated");
     }
     
     required init?(coder aDecoder: NSCoder) {
+        self.uuid = aDecoder.decodeObject(forKey: "uuid") as! String;
         self.title = aDecoder.decodeObject(forKey: "title") as! String;
         self.text = aDecoder.decodeObject(forKey: "text") as! String
         self.dateCreated = aDecoder.decodeObject(forKey: "dateCreated") as! Date;
