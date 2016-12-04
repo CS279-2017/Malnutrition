@@ -45,7 +45,8 @@
         <div id="json_div">
             <textarea id="json_textarea" rows="20" cols="50"></textarea>
             <p>
-                <button id="json_submit_button">Validate</button>
+                <button id="json_validate_button">Validate</button>
+                <button id="json_submit_button">Submit</button>
             </p>
             <pre id="result"></pre>
         </div>
@@ -53,6 +54,28 @@
 
     <script>
         var domain = "http://localhost:3000/"
+
+        function authenticate(callback, error_handler){
+            var request = $.ajax({
+                url: domain + "authenticate",
+                type: "POST",
+                data: {auth_key: localStorage.getItem('auth_key')},
+                dataType: "html"
+            });
+
+            request.done(function (message) {
+                let response = JSON.parse(message);
+                console.log(message);
+                if (response["error"] == null) {
+                    callback();
+                }
+                else {
+                    console.log("Error_handler called!")
+                    error_handler(response.error);
+                }
+            });
+        }
+
         function login(password, callback, error_handler){
 
             var request = $.ajax({
@@ -65,33 +88,55 @@
             request.done(function(message) {
                 var json = JSON.parse(message);
                 if(json.error == null){
-                    $('#json_textarea').val(json.data);
-                    $('#json_div').show();
-                    $('#login_div').hide();
+                    localStorage.setItem('auth_key',json.data.auth_key);
+                    callback();
                 }
                 else{
-                    alert(json.error)
+                    error_handler(json.error);
                 }
             });
         }
 
         function validate(json, callback, error_handler) {
-            console.log(json);
+            authenticate(function(){
+                showTextarea();
+                var request = $.ajax({
+                    url: domain + "validate",
+                    type: "POST",
+                    data: {auth_key: localStorage.getItem('auth_key'), json: json},
+                    dataType: "html"
+                });
+                request.done(function (message) {
+                    let json = JSON.parse(message);
+                    console.log(message);
+                    if (json["error"] == null) {
+                        console.log("callback called!")
+                        callback();
+                    }
+                    else {
+                        console.log("Error_handler called!")
+                        error_handler(json.error);
+                    }
+                });
+            },function(error){
+                alert(error);
+                showLogin();
+            });
+        }
 
+        function get_json(callback, error_handler){
             var request = $.ajax({
                 url: domain + "validate",
                 type: "POST",
-                data: {json: json},
+                data: {auth_key: localStorage.getItem('auth_key'), json: json},
                 dataType: "html"
             });
-
             request.done(function (message) {
                 let json = JSON.parse(message);
                 console.log(message);
-//            console.log(message);
                 if (json["error"] == null) {
                     console.log("callback called!")
-                    callback(json.data);
+                    callback(json.data.json);
                 }
                 else {
                     console.log("Error_handler called!")
@@ -99,21 +144,78 @@
                 }
             });
         }
+
+        function submit(json, callback, error_handler){
+
+            authenticate(function(){
+                showTextarea();
+                request.done(function (message) {
+                    var result = JSON.parse(message);
+                    if(result.error == null){
+                        var request = $.ajax({
+                            url: domain + "submit",
+                            type: "POST",
+                            data: {auth_key: localStorage.getItem('auth_key'), json: json},
+                            dataType: "html"
+                        });
+
+                        request.done(function (message) {
+                            let json = JSON.parse(message);
+                            console.log(message);
+                            if (json["error"] == null) {
+                                console.log("callback called!")
+                                callback(json.data);
+                            }
+                            else {
+                                console.log("Error_handler called!")
+                                error_handler(json.error);
+                            }
+                        });
+                    }
+                    else{
+                        error_handler(result.error);
+                    }
+                });
+            }, function(error){
+                alert(error);
+                showLogin();
+            })
+
+
+        }
     </script>
 
     <script>
-        $('#json_div').hide();
-        $('#login_div').show();
+        function showLogin(){
+            $('#json_div').hide();
+            $('#login_div').show();
+        }
+
+        function showTextarea(){
+            $('#json_div').show();
+            $('#login_div').hide();
+        }
+
         $("#login_button").click(function(){
             console.log("login button clicked")
 //                var username = $("#username_text_field").text();
             var password = $("#password_text_field").val();
-            login(password);
+            login(password, function(){
+                if($('#json_textarea').val() == ""){
+                    get_json(function(json){
+                        $('#json_textarea').val(json);
+                    }, function(error){
+                        alert(error);
+                    });
+                }
+            }, function(error){
+                alert(error);
+            })
         });
     </script>
 
     <script>
-        document.getElementById("json_submit_button").onclick = function () {
+        document.getElementById("json_validate_button").onclick = function () {
             validate(document.getElementById("json_textarea").value, function(data){
                 document.getElementById("result").innerHTML = "JSON is valid!";
                 document.getElementById("result").className = "pass";
@@ -122,5 +224,28 @@
                 document.getElementById("result").className = "fail";
             });
         };
+
+        $("#json_submit_button").click(function(){
+            submit($("#json_submit_button").val(), function(data){
+                $("#result").innerHTML = "The JSON has been updated!";
+                $("#result").className = "pass";
+            }, function(error){
+                $("#result").innerHTML = error;
+                $("#result").className = "fail";
+            });
+        });
+    </script>
+
+    <script>
+        authenticate(function(){
+            showTextarea();
+            get_json(function(json){
+                $("#json_textarea").val(json);
+            }, function(error){
+                alert(error);
+            })
+        }, function(error){
+          showLogin();
+        })
     </script>
 </html>
