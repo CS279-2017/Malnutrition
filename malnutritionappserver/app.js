@@ -12,16 +12,15 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(bodyParser.json());
 
-var port = 3000;
+app.set('port', (process.env.PORT || 3000));
 
 var auth_key_arr = [];
 
 var server_password = "12345";
 
-app.listen(port, function(){
+app.listen(app.get('port'), function(){
     //Callback triggered when server is successfully listening. Hurray!
-
-    console.log("Server listening on: http://localhost:%s", port);
+    console.log("Server listening on: http://localhost:%s", app.get('port'));
 });
 
 app.get('/', function (req, res) {
@@ -36,7 +35,7 @@ app.get('/', function (req, res) {
 })
 
 app.post('/get_json', function(req, res){
-    var filePath = path.join(__dirname, 'main.html');
+    var filePath = path.join(__dirname, 'string.json');
     fs.readFile(filePath, {encoding: 'utf-8'}, function (err, data) {
         if (!err) {
             console.log("json sent to client!");
@@ -55,9 +54,8 @@ app.post('/login', function(req, res) {
 
     if(password == server_password) {
         console.log("passwords match!")
-        console.log('received data: ' + data);
         var auth_key = generateKey(24);
-        auth_key_arr.append(auth_key);
+        auth_key_arr.push(auth_key);
         //set a timer to remove the key after a certain amount of time
         setTimeout(function(){
             var index = auth_key_arr.indexOf(auth_key);
@@ -93,18 +91,14 @@ app.post('/validate', function(req, res){
     console.log("validate called!")
     var auth_key = req.body.auth_key
     var json = req.body.json;
-    console.log(json);
-    if(auth_key_arr.indexOf(key) != -1) {
+    if(auth_key_arr.indexOf(auth_key) != -1) {
         console.log("authentication successful!")
         try {
             var result = jsonlint.parse(json);
-            console.log(result)
             res.send({data: null, error: null});
         } catch(e) {
             console.log("Error caught!");
             res.send({data: null, error: e.message});
-            // console.log(e);
-            // console.log(e.message)
         }
     }
     else{
@@ -113,13 +107,12 @@ app.post('/validate', function(req, res){
     }
 });
 
-app.post('/update_json', function(req, res){
-    console.log("update json called!")
+app.post('/submit', function(req, res){
+    console.log("submit called!")
     var json = req.body.json;
     var auth_key = req.body.auth_key;
     var filePath = path.join(__dirname, 'string.json');
-    console.log(json);
-    if(auth_key_arr.indexOf(key) != -1) {
+    if(auth_key_arr.indexOf(auth_key) != -1) {
         try {
             var result = jsonlint.parse(json);
             //if parse is unsuccessful then it will throw an error and go to catch block

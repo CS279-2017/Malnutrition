@@ -13,9 +13,7 @@
 		323F8D231DD036FF008A0A7C /* samplejson.txt in Resources */ = {isa = PBXBuildFile; fileRef = 323F8D221DD036FF008A0A7C /* samplejson.txt */; };
 		324B91CD1DF0A47D00EF4764 /* ExaminationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324B91CC1DF0A47D00EF4764 /* ExaminationController.swift */; };
 		324B91CF1DF0A8F700EF4764 /* TextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324B91CE1DF0A8F700EF4764 /* TextFieldCell.swift */; };
-		324B91D31DF0AE4100EF4764 /* assessment_quiz.txt in Resources */ = {isa = PBXBuildFile; fileRef = 324B91D21DF0AE4100EF4764 /* assessment_quiz.txt */; };
 		324B91D51DF0B8A200EF4764 /* AssessmentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324B91D41DF0B8A200EF4764 /* AssessmentController.swift */; };
-		3260AD431DF1442700EA8DF3 /* siruis json2.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3260AD421DF1442700EA8DF3 /* siruis json2.txt */; };
 		3260AD451DF1456900EA8DF3 /* PictureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3260AD441DF1456900EA8DF3 /* PictureViewController.swift */; };
 		327D81811DDA73BF00A6B0F1 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327D81801DDA73BF00A6B0F1 /* Note.swift */; };
 		3285FAD91DDADA410071B017 /* NoteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3285FAD81DDADA410071B017 /* NoteCell.swift */; };
@@ -25,6 +23,9 @@
 		32D587D91DC8FA1F00E15047 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32D587D71DC8FA1F00E15047 /* Main.storyboard */; };
 		32D587DB1DC8FA1F00E15047 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 32D587DA1DC8FA1F00E15047 /* Assets.xcassets */; };
 		32D587DE1DC8FA1F00E15047 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32D587DC1DC8FA1F00E15047 /* LaunchScreen.storyboard */; };
+		32E5F21D1DF3FA4900DD785D /* ReferencesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32E5F21C1DF3FA4900DD785D /* ReferencesController.swift */; };
+		32E5F2201DF4A2B400DD785D /* assessment.json in Resources */ = {isa = PBXBuildFile; fileRef = 32E5F21E1DF4A2B400DD785D /* assessment.json */; };
+		32E5F2211DF4A2B400DD785D /* symptoms.json in Resources */ = {isa = PBXBuildFile; fileRef = 32E5F21F1DF4A2B400DD785D /* symptoms.json */; };
 		32E898E51DDA7D660051B9E5 /* NoteBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32E898E41DDA7D660051B9E5 /* NoteBook.swift */; };
 		32E898E71DDA81730051B9E5 /* NoteEditController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32E898E61DDA81730051B9E5 /* NoteEditController.swift */; };
 		32E898E91DDA8C430051B9E5 /* NoteController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32E898E81DDA8C430051B9E5 /* NoteController.swift */; };
@@ -41,9 +42,7 @@
 		323F8D221DD036FF008A0A7C /* samplejson.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = samplejson.txt; sourceTree = "<group>"; };
 		324B91CC1DF0A47D00EF4764 /* ExaminationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExaminationController.swift; sourceTree = "<group>"; };
 		324B91CE1DF0A8F700EF4764 /* TextFieldCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldCell.swift; sourceTree = "<group>"; };
-		324B91D21DF0AE4100EF4764 /* assessment_quiz.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = assessment_quiz.txt; sourceTree = "<group>"; };
 		324B91D41DF0B8A200EF4764 /* AssessmentController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssessmentController.swift; sourceTree = "<group>"; };
-		3260AD421DF1442700EA8DF3 /* siruis json2.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "siruis json2.txt"; sourceTree = "<group>"; };
 		3260AD441DF1456900EA8DF3 /* PictureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PictureViewController.swift; sourceTree = "<group>"; };
 		327D81801DDA73BF00A6B0F1 /* Note.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
 		3285FAD81DDADA410071B017 /* NoteCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteCell.swift; sourceTree = "<group>"; };
@@ -55,6 +54,9 @@
 		32D587DA1DC8FA1F00E15047 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		32D587DD1DC8FA1F00E15047 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		32D587DF1DC8FA1F00E15047 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		32E5F21C1DF3FA4900DD785D /* ReferencesController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReferencesController.swift; sourceTree = "<group>"; };
+		32E5F21E1DF4A2B400DD785D /* assessment.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = assessment.json; sourceTree = "<group>"; };
+		32E5F21F1DF4A2B400DD785D /* symptoms.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = symptoms.json; sourceTree = "<group>"; };
 		32E898E41DDA7D660051B9E5 /* NoteBook.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteBook.swift; sourceTree = "<group>"; };
 		32E898E61DDA81730051B9E5 /* NoteEditController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteEditController.swift; sourceTree = "<group>"; };
 		32E898E81DDA8C430051B9E5 /* NoteController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteController.swift; sourceTree = "<group>"; };
@@ -112,9 +114,9 @@
 				32F67FD01DED128B00AFD31E /* View */,
 				32F67FCF1DED127000AFD31E /* Controller */,
 				323F8D201DD029AF008A0A7C /* data.txt */,
-				324B91D21DF0AE4100EF4764 /* assessment_quiz.txt */,
+				32E5F21E1DF4A2B400DD785D /* assessment.json */,
+				32E5F21F1DF4A2B400DD785D /* symptoms.json */,
 				32F67FD61DED41A500AFD31E /* siruis json.txt */,
-				3260AD421DF1442700EA8DF3 /* siruis json2.txt */,
 				32D587DF1DC8FA1F00E15047 /* Info.plist */,
 				323F8D221DD036FF008A0A7C /* samplejson.txt */,
 			);
@@ -162,6 +164,7 @@
 				32E898E81DDA8C430051B9E5 /* NoteController.swift */,
 				324B91D41DF0B8A200EF4764 /* AssessmentController.swift */,
 				3260AD441DF1456900EA8DF3 /* PictureViewController.swift */,
+				32E5F21C1DF3FA4900DD785D /* ReferencesController.swift */,
 			);
 			name = Screens;
 			sourceTree = "<group>";
@@ -249,9 +252,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				323F8D211DD029AF008A0A7C /* data.txt in Resources */,
-				3260AD431DF1442700EA8DF3 /* siruis json2.txt in Resources */,
-				324B91D31DF0AE4100EF4764 /* assessment_quiz.txt in Resources */,
+				32E5F2211DF4A2B400DD785D /* symptoms.json in Resources */,
 				323F8D231DD036FF008A0A7C /* samplejson.txt in Resources */,
+				32E5F2201DF4A2B400DD785D /* assessment.json in Resources */,
 				32F67FD71DED41A500AFD31E /* siruis json.txt in Resources */,
 				32D587DE1DC8FA1F00E15047 /* LaunchScreen.storyboard in Resources */,
 				32D587DB1DC8FA1F00E15047 /* Assets.xcassets in Resources */,
@@ -325,6 +328,7 @@
 				324B91CD1DF0A47D00EF4764 /* ExaminationController.swift in Sources */,
 				32E898E71DDA81730051B9E5 /* NoteEditController.swift in Sources */,
 				323F8D1D1DD01D1F008A0A7C /* Item.swift in Sources */,
+				32E5F21D1DF3FA4900DD785D /* ReferencesController.swift in Sources */,
 				324B91D51DF0B8A200EF4764 /* AssessmentController.swift in Sources */,
 				327D81811DDA73BF00A6B0F1 /* Note.swift in Sources */,
 				323F8D191DD0181F008A0A7C /* ItemTableController.swift in Sources */,

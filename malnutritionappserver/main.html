@@ -126,9 +126,9 @@
 
         function get_json(callback, error_handler){
             var request = $.ajax({
-                url: domain + "validate",
+                url: domain + "get_json",
                 type: "POST",
-                data: {auth_key: localStorage.getItem('auth_key'), json: json},
+                data: {},
                 dataType: "html"
             });
             request.done(function (message) {
@@ -146,34 +146,25 @@
         }
 
         function submit(json, callback, error_handler){
-
             authenticate(function(){
                 showTextarea();
-                request.done(function (message) {
-                    var result = JSON.parse(message);
-                    if(result.error == null){
-                        var request = $.ajax({
-                            url: domain + "submit",
-                            type: "POST",
-                            data: {auth_key: localStorage.getItem('auth_key'), json: json},
-                            dataType: "html"
-                        });
+                var request = $.ajax({
+                    url: domain + "submit",
+                    type: "POST",
+                    data: {auth_key: localStorage.getItem('auth_key'), json: json},
+                    dataType: "html"
+                });
 
-                        request.done(function (message) {
-                            let json = JSON.parse(message);
-                            console.log(message);
-                            if (json["error"] == null) {
-                                console.log("callback called!")
-                                callback(json.data);
-                            }
-                            else {
-                                console.log("Error_handler called!")
-                                error_handler(json.error);
-                            }
-                        });
+                request.done(function (message) {
+                    var json = JSON.parse(message);
+                    console.log(message);
+                    if (json["error"] == null) {
+                        console.log("callback called!")
+                        callback(json.data);
                     }
-                    else{
-                        error_handler(result.error);
+                    else {
+                        console.log("Error_handler called!")
+                        error_handler(json.error);
                     }
                 });
             }, function(error){
@@ -204,6 +195,7 @@
                 if($('#json_textarea').val() == ""){
                     get_json(function(json){
                         $('#json_textarea').val(json);
+                        showTextarea();
                     }, function(error){
                         alert(error);
                     });
@@ -226,13 +218,15 @@
         };
 
         $("#json_submit_button").click(function(){
-            submit($("#json_submit_button").val(), function(data){
-                $("#result").innerHTML = "The JSON has been updated!";
-                $("#result").className = "pass";
-            }, function(error){
-                $("#result").innerHTML = error;
-                $("#result").className = "fail";
-            });
+            if(window.confirm("Are you sure? This will override the old JSON")){
+                submit($("#json_textarea").val(), function(data){
+                    document.getElementById("result").innerHTML = "JSON has been updated!";
+                    document.getElementById("result").className = "pass";
+                }, function(error){
+                    document.getElementById("result").innerHTML = error;
+                    document.getElementById("result").className = "fail";
+                });
+            }
         });
     </script>
 

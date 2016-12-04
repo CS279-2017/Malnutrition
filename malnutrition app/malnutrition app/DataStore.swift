@@ -39,11 +39,8 @@ class DataStore{
     
     private init(){
         //Constructor for DataStore, called by get() function, never called outside of DataStore class
+        
         //read the string from the text file that contains the item directory structure
-        let examinationJson = readStringFromFile(fileName: "siruis json2")
-        let quizAssessmentJson = readStringFromFile(fileName: "assessment_quiz");
-        parseJson(jsonString: examinationJson, root:rootItemExamination);
-        parseJson(jsonString: quizAssessmentJson, root: rootItemAssessmentQuiz);
         if let unarchivedObject = (NSKeyedUnarchiver.unarchiveObject(withFile: DataStore.archiveURL.path!)){
             noteBook = unarchivedObject as! NoteBook;
         }
@@ -53,12 +50,6 @@ class DataStore{
     func parseJson(jsonString:String, root: Item){
         if let dataFromString = jsonString.data(using: .utf8, allowLossyConversion: false) {
             let json = JSON(data: dataFromString);
-//            for (index,subJson):(String, JSON) in json {
-//                var item = Item();
-//                item.text = json[index]["text"].string!;
-//            }
-//            let i = json[0]["text"].string
-//            print(i);
             buildItemDirectory(parent: root, json: json)
         }
     }
@@ -92,10 +83,51 @@ class DataStore{
         parent.nextItems.append(newItem);
     }
     
+    func getJson(type: String, callback: ((String) -> Void)?, error_handler: ((String)->Void)?){
+        var request = URLRequest(url: URL(string: "https://nutriscreen.herokuapp.com/get_json")!)
+        request.httpMethod = "POST"
+//        let postString = "id=13&name=Jack"
+        let postString = "type=" + type;
+        request.httpBody = postString.data(using: .utf8)
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            guard let data = data, error == nil else {                                                 // check for fundamental networking error
+                if(error_handler != nil){
+                    error_handler!(String(describing: error));
+                }
+                print("error=\(error)")
+                return
+            }
+            
+            if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 {           // check for http errors
+                let error = "statusCode should be 200, but is \(httpStatus.statusCode)"
+                if(error_handler != nil){
+                    error_handler!(error);
+                }
+                print(error)
+                print("response = \(response)")
+            }
+            
+            let responseString = String(data: data, encoding: .utf8)
+            print("responseString = \(responseString)")
+            if let dataFromString = responseString?.data(using: .utf8, allowLossyConversion: false) {
+                let json = JSON(data: dataFromString);
+                let jsonString = json["data"]["json"].string
+                if(callback != nil){
+                    callback!(jsonString!)
+                }
+            }
+            else{
+                error_handler!("invalid json string");
+            }
+            
+        }
+        task.resume()
+    }
+    
     
     func readStringFromFile(fileName: String) -> String{
         
-        let path = Bundle.main.path(forResource: fileName, ofType: "txt")
+        let path = Bundle.main.path(forResource: fileName, ofType: "json")
         do{
             let text = try String(contentsOfFile: path!, encoding: String.Encoding.utf8);
             print(text)
@@ -158,6 +190,33 @@ class DataStore{
     func clearNote(){
         rootItemAssessmentQuiz.switchOffAllItems();
         rootItemExamination.switchOffAllItems();
+    }
+    
+    func loadSymptoms(){
+        getJson(type: "symptoms", callback: { symptomsJson in
+            print("Loaded Symptoms from server!")
+            self.parseJson(jsonString: symptomsJson, root:self.rootItemExamination);
+            AppDelegate.loadedSymptoms = true;
+            }, error_handler: { error in
+                print("Loaded Symptoms from file!")
+                let symptomsJson = self.readStringFromFile(fileName: "symptoms")
+                self.parseJson(jsonString: symptomsJson, root:self.rootItemExamination);
+                AppDelegate.loadedSymptoms = true;
+        });
+    }
+    
+    func loadAssessment(){
+        getJson(type: "assessment", callback: { assessmentJson in
+            print("Loaded Assessments from server!")
+            print(assessmentJson);
+            self.parseJson(jsonString: assessmentJson, root:self.rootItemAssessmentQuiz);
+            AppDelegate.loadedAssessments = true;
+            }, error_handler: { error in
+                print("Loaded Assessments from file!")
+                let assessmentJson = self.readStringFromFile(fileName: "assessment")
+                self.parseJson(jsonString: assessmentJson, root:self.rootItemAssessmentQuiz);
+                AppDelegate.loadedAssessments = true;
+        });
     }
 
 }

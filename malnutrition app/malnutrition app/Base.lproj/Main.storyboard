@@ -37,6 +37,9 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PoZ-jT-Cv2">
                                         <state key="normal" title="References"/>
+                                        <connections>
+                                            <segue destination="dih-QP-EbW" kind="show" id="DSL-ah-sIA"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -63,6 +66,81 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-447" y="72"/>
+        </scene>
+        <!--References Controller-->
+        <scene sceneID="HIJ-rn-QkM">
+            <objects>
+                <viewController storyboardIdentifier="ReferencesController" id="dih-QP-EbW" customClass="ReferencesController" customModule="malnutrition_app" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="G11-nU-9KK"/>
+                        <viewControllerLayoutGuide type="bottom" id="bVh-uV-lmO"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="eOy-rm-h0G">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="cSc-1R-w32">
+                                <subviews>
+                                    <view contentMode="scaleToFill" horizontalHuggingPriority="240" translatesAutoresizingMaskIntoConstraints="NO" id="fuS-TL-saj">
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </view>
+                                    <stackView opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="1000" axis="vertical" alignment="center" spacing="32" translatesAutoresizingMaskIntoConstraints="NO" id="L2k-aF-81y">
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="lo3-qa-pHd">
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="760" verticalCompressionResistancePriority="760" text="ICD-10 Codes" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="oin-hj-L3H">
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" verticalHuggingPriority="251" image="icd10_codes" translatesAutoresizingMaskIntoConstraints="NO" id="3CY-k5-Ind" colorLabel="IBBuiltInLabel-Blue"/>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="OUf-fm-AEx">
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="760" verticalCompressionResistancePriority="760" text="Diagnostic Guidelines" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3uf-Hb-fCI">
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="21" id="RT1-vh-m1W"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="diagnostic_guidelines" translatesAutoresizingMaskIntoConstraints="NO" id="Ah8-LT-eGg"/>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="lo3-qa-pHd" secondAttribute="bottom" constant="288" id="Ffx-9R-JjV"/>
+                                        </constraints>
+                                    </stackView>
+                                    <view contentMode="scaleToFill" verticalHuggingPriority="240" translatesAutoresizingMaskIntoConstraints="NO" id="epH-56-PEX">
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="L2k-aF-81y" firstAttribute="leading" secondItem="cSc-1R-w32" secondAttribute="leading" constant="8" id="eot-m4-f7x"/>
+                                    <constraint firstAttribute="trailing" secondItem="L2k-aF-81y" secondAttribute="trailing" constant="8" id="gAt-4A-zX4"/>
+                                    <constraint firstItem="fuS-TL-saj" firstAttribute="height" secondItem="epH-56-PEX" secondAttribute="height" id="uEo-wM-uSm"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="cSc-1R-w32" secondAttribute="trailing" id="7pP-dL-xrY"/>
+                            <constraint firstItem="cSc-1R-w32" firstAttribute="top" secondItem="G11-nU-9KK" secondAttribute="bottom" id="WUJ-Pe-jZV"/>
+                            <constraint firstItem="bVh-uV-lmO" firstAttribute="top" secondItem="cSc-1R-w32" secondAttribute="bottom" id="uwV-96-dzq"/>
+                            <constraint firstItem="cSc-1R-w32" firstAttribute="leading" secondItem="eOy-rm-h0G" secondAttribute="leading" id="w9z-OZ-fZx"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="diagnosticsImageView" destination="Ah8-LT-eGg" id="nCH-1R-HEc"/>
+                        <outlet property="icd10ImageView" destination="3CY-k5-Ind" id="KmB-TN-dz2"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LhC-gW-npT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-447" y="884"/>
         </scene>
         <!--Examination Controller-->
         <scene sceneID="e4u-uT-oo9">
@@ -113,10 +191,10 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="assessmentQuizButton" destination="Nqt-F2-NZf" id="xse-Oc-fBF"/>
+                        <outlet property="assessmentButton" destination="Nqt-F2-NZf" id="e0v-li-f1y"/>
                         <outlet property="clearNoteButton" destination="nHN-MH-Tfr" id="HXh-Hc-a0Q"/>
                         <outlet property="makeNoteButton" destination="4Tx-73-1cX" id="dui-ag-eOW"/>
-                        <outlet property="reviewOfSymptomsButton" destination="b2U-rj-27t" id="u5E-rA-TRx"/>
+                        <outlet property="symptomsButton" destination="b2U-rj-27t" id="dUM-Ib-ecq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gxz-0a-Emt" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -198,7 +276,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="252"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1Hc-ME-wg8" id="VQ4-eu-6fr">
-                                            <frame key="frameInset" width="375" height="251.5"/>
+                                            <frame key="frameInset" width="375" height="251"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="5vc-7Q-7ZD">
@@ -354,7 +432,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="252"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fbI-bo-MoR" id="GqA-h8-PQW">
-                                            <frame key="frameInset" width="375" height="251.5"/>
+                                            <frame key="frameInset" width="375" height="251"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="VKk-AC-sqq">
@@ -446,7 +524,7 @@
                                         <rect key="frame" x="0.0" y="280" width="375" height="128"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Xnx-qs-zCD" id="KjC-hW-eJn">
-                                            <frame key="frameInset" width="375" height="127.5"/>
+                                            <frame key="frameInset" width="375" height="127"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="gtu-CB-gjn">
@@ -539,7 +617,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="188"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hSC-2C-E7X" id="mtN-3d-w19">
-                                            <frame key="frameInset" width="375" height="187.5"/>
+                                            <frame key="frameInset" width="375" height="187"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="hts-hP-ldl">
@@ -639,6 +717,8 @@
     </scenes>
     <resources>
         <image name="delete_icon" width="25" height="25"/>
+        <image name="diagnostic_guidelines" width="408" height="236"/>
         <image name="edit_icon" width="25" height="25"/>
+        <image name="icd10_codes" width="146" height="122"/>
     </resources>
 </document>

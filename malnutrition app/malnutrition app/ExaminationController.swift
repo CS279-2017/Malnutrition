@@ -10,31 +10,39 @@ import UIKit
 
 class ExaminationController: UIViewController{
     
-    @IBOutlet weak var reviewOfSymptomsButton: UIButton!
+    @IBOutlet weak var symptomsButton: UIButton!
     
-    @IBOutlet weak var assessmentQuizButton: UIButton!
+    @IBOutlet weak var assessmentButton: UIButton!
     
     @IBOutlet weak var clearNoteButton: UIButton!
     @IBOutlet weak var makeNoteButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad();
-        reviewOfSymptomsButton.addTarget(self, action: #selector(reviewOfSymptomsButtonClicked(sender:)), for: .touchUpInside)
-        assessmentQuizButton.addTarget(self, action: #selector(assessmentQuizButtonClicked(sender:)), for: .touchUpInside)
+        symptomsButton.addTarget(self, action: #selector(symptomsButtonClicked(sender:)), for: .touchUpInside)
+        assessmentButton.addTarget(self, action: #selector(assessmentButtonClicked(sender:)), for: .touchUpInside)
         
         makeNoteButton.addTarget(self, action: #selector(makeNoteButtonClicked(sender:)), for: .touchUpInside)
         
         clearNoteButton.addTarget(self, action: #selector(clearNoteButtonClicked(sender:)), for: UIControlEvents.touchUpInside)
         
-        reviewOfSymptomsButton.layer.borderWidth = 1;
-        reviewOfSymptomsButton.layer.borderColor = reviewOfSymptomsButton.tintColor.cgColor
+        symptomsButton.layer.borderWidth = 1;
+        symptomsButton.layer.borderColor = symptomsButton.tintColor.cgColor
         
-        assessmentQuizButton.layer.borderWidth = 1;
-        assessmentQuizButton.layer.borderColor = assessmentQuizButton.tintColor.cgColor;
-
+        assessmentButton.layer.borderWidth = 1;
+        assessmentButton.layer.borderColor = assessmentButton.tintColor.cgColor;
         
     }
     
-    func assessmentQuizButtonClicked(sender: UIButton){
+    override func viewWillAppear(_ animated: Bool) {
+        AppDelegate.loadedAssessments = false;
+        AppDelegate.loadedSymptoms = false;
+    }
+    
+    func assessmentButtonClicked(sender: UIButton){
+        DataStore.get().loadAssessment();
+        while(AppDelegate.loadedAssessments != true){
+            
+        }
         let rootItem = DataStore.get().rootItemAssessmentQuiz;
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let controller = storyboard.instantiateViewController(withIdentifier: "AssessmentController") as! AssessmentController
@@ -42,7 +50,11 @@ class ExaminationController: UIViewController{
         self.navigationController?.pushViewController(controller, animated: true);
     }
     
-    func reviewOfSymptomsButtonClicked(sender:UIButton){
+    func symptomsButtonClicked(sender:UIButton){
+        DataStore.get().loadSymptoms();
+        while(AppDelegate.loadedSymptoms != true){
+            
+        }
         let rootItem = DataStore.get().rootItemExamination;
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let controller = storyboard.instantiateViewController(withIdentifier: "ItemTableController") as! ItemTableController
