@@ -1,129 +1,126 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 
-<div id="login_div">
-        <script>
-            window.onload = function(){
-//                    $('#source').hide();
-                $('#login_div').show();
-                $("#login_button").click(function(){
-                    console.log("login button clicked")
-                    var username = $("#username_text_field").text();
-                    var password = $("#password_text_field").text();
-                    login(username, password);
-                });
-    $("#validate_button").click(function(){
-        validate($("#source").val());
-    })
-            }
-        </script>
-        <ul>
-            <li><label for="username_text_field">Username</label>
-                <input type="text" name="username" id="username_text_field" placeholder="Username" required></li>
-            <li><label for="password_text_field">Password</label>
-                <input type="password" name="password" id="password_text_field" placeholder="Password" required></li>
-            <li>
-                <input type="submit" id="login_button" value="Login"></li>
-        </ul>
-</div>
-
-<!--<div id="textarea_div">-->
-    <!--<textarea id="textarea"></textarea>-->
-    <!--<button id = "validate_button"/>-->
-<!--</div>-->
-
-<!--<div id="output"></div>-->
-
 <!doctype html>
 <html lang="en">
-<head>
-    <meta charset="utf-8" />
-    <title>JSON Lint</title>
+    <head>
+        <meta charset="utf-8" />
+
+        <style>
+            #login_div{
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                margin-top: -50px;
+                margin-left: -50px;
+                width: 100px;
+                height: 100px;
+            }​
+        </style>
+        <style>
+            body {font-family: sans-serif;}
+            #result {
+                padding: 1em;
+            }
+            .pass {
+                background-color: #efe;
+                color: #393;
+                border: 2px solid #393;
+            }
+            .fail {
+                background-color: #fee;
+                color: #933;
+                border: 2px solid #933;
+            }
+            textarea { width: 100%; }
+        </style>
+    </head>
+    <body>
+        <div id="login_div">
+            <label for="password_text_field">Enter The Password</label>
+                <input type="password" name="password" id="password_text_field" placeholder="Password" required>
+            <input type="submit" id="login_button" value="Login">
+        </div>
+
+        <div id="json_div">
+            <textarea id="json_textarea" rows="20" cols="50"></textarea>
+            <p>
+                <button id="json_submit_button">Validate</button>
+            </p>
+            <pre id="result"></pre>
+        </div>
+    </body>
+
     <script>
-        window.onload = function () {
-            document.getElementById("button").onclick = function () {
-                validate(document.getElementById("source").value, function(data){
-                    document.getElementById("result").innerHTML = "JSON is valid!";
-                    document.getElementById("result").className = "pass";
-                }, function(error){
-                    document.getElementById("result").innerHTML = error;
-                    document.getElementById("result").className = "fail";
-                });
-            };
+        var domain = "http://localhost:3000/"
+        function login(password, callback, error_handler){
+
+            var request = $.ajax({
+                url: domain + "login",
+                type: "POST",
+                data: {password: password},
+                dataType: "html"
+            });
+
+            request.done(function(message) {
+                var json = JSON.parse(message);
+                if(json.error == null){
+                    $('#json_textarea').val(json.data);
+                    $('#json_div').show();
+                    $('#login_div').hide();
+                }
+                else{
+                    alert(json.error)
+                }
+            });
+        }
+
+        function validate(json, callback, error_handler) {
+            console.log(json);
+
+            var request = $.ajax({
+                url: domain + "validate",
+                type: "POST",
+                data: {json: json},
+                dataType: "html"
+            });
+
+            request.done(function (message) {
+                let json = JSON.parse(message);
+                console.log(message);
+//            console.log(message);
+                if (json["error"] == null) {
+                    console.log("callback called!")
+                    callback(json.data);
+                }
+                else {
+                    console.log("Error_handler called!")
+                    error_handler(json.error);
+                }
+            });
         }
     </script>
-    <style>
-        body {font-family: sans-serif;}
-        #result {
-            padding: 1em;
-        }
-        .pass {
-            background-color: #efe;
-            color: #393;
-            border: 2px solid #393;
-        }
-        .fail {
-            background-color: #fee;
-            color: #933;
-            border: 2px solid #933;
-        }
-        textarea { width: 100%; }
-    </style>
-</head>
-<body>
-<h1>JSON Lint</h1>
-  <textarea id="source" rows="20" cols="50"></textarea>
-<p>
-    <button id="button">Validate</button>
-</p>
-<h2>Results</h2>
-<pre id="result"></pre>
-</body>
+
+    <script>
+        $('#json_div').hide();
+        $('#login_div').show();
+        $("#login_button").click(function(){
+            console.log("login button clicked")
+//                var username = $("#username_text_field").text();
+            var password = $("#password_text_field").val();
+            login(password);
+        });
+    </script>
+
+    <script>
+        document.getElementById("json_submit_button").onclick = function () {
+            validate(document.getElementById("json_textarea").value, function(data){
+                document.getElementById("result").innerHTML = "JSON is valid!";
+                document.getElementById("result").className = "pass";
+            }, function(error){
+                document.getElementById("result").innerHTML = error;
+                document.getElementById("result").className = "fail";
+            });
+        };
+    </script>
 </html>
-
-<script language="JavaScript">
-    function login(username, password, callback, error_handler){
-
-        var request = $.ajax({
-            url: "http://localhost:3000",
-            type: "POST",
-            data: {username: username, password: password},
-            dataType: "html"
-        });
-
-        request.done(function(msg) {
-            $('#source').val(msg);
-            $('#source').show();
-            $('#login_div').hide();
-        });
-
-        request.fail(function(jqXHR, textStatus) {
-            alert( "Request failed: " + textStatus );
-        });
-    }
-
-    function validate(json, callback, error_handler){
-        console.log(json);
-
-        var request = $.ajax({
-            url: "http://localhost:3000/validate",
-            type: "POST",
-            data: {json: json},
-            dataType: "html"
-        });
-
-        request.done(function(message) {
-            let json = JSON.parse(message);
-            console.log(message);
-//            console.log(message);
-            if(json["error"] == null){
-                console.log("callback called!")
-               callback(json.data);
-            }
-            else{
-                console.log("Error_handler called!")
-                error_handler(json.error);
-            }
-        });
-    }
-</script>
