@@ -18,6 +18,7 @@ class ItemTableController: UIViewController, UITableViewDelegate, UITableViewDat
     //creates and initializes the tableView, setting the delegate and data source of the tableView to this class.
     override func viewDidLoad() {
         super.viewDidLoad()
+
         
         self.hideKeyboardWhenTappedAround();
 

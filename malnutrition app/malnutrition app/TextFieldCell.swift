@@ -17,6 +17,8 @@ class TextFieldCell: UITableViewCell, UITextFieldDelegate{
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder);
+        self.selectionStyle = .none
+
     }
     
     func setItem(item: Item){

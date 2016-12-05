@@ -32,6 +32,9 @@ class ItemTableCell:UITableViewCell, UICollectionViewDelegate, UICollectionViewD
     }
     
     func setItem(item: Item){
+        if(item.nextItems.count == 0){
+             self.selectionStyle = .none
+        }
         if(collectionView == nil){
             collectionView = collectionViewHolder;
         }
