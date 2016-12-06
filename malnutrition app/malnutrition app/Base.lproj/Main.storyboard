@@ -84,21 +84,76 @@
                                     <view contentMode="scaleToFill" horizontalHuggingPriority="240" translatesAutoresizingMaskIntoConstraints="NO" id="fuS-TL-saj">
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </view>
-                                    <stackView opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="1000" axis="vertical" alignment="center" spacing="32" translatesAutoresizingMaskIntoConstraints="NO" id="L2k-aF-81y">
+                                    <stackView opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="1000" axis="vertical" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="L2k-aF-81y">
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="lo3-qa-pHd">
+                                            <stackView opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="yyr-iW-6ek">
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="760" verticalCompressionResistancePriority="760" text="ICD-10 Codes" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="oin-hj-L3H">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="753" text="Definition of Malnutrition:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0oD-Uf-nXD">
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" verticalHuggingPriority="251" image="icd10_codes" translatesAutoresizingMaskIntoConstraints="NO" id="3CY-k5-Ind" colorLabel="IBBuiltInLabel-Blue"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalCompressionResistancePriority="760" verticalCompressionResistancePriority="752" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="b37-8C-w4b">
+                                                        <string key="text">a nutritional imbalance occurring at any body weight / BMI; lacking adequate calories, protein, or other nutrients needed for tissue maintenance and repair</string>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="8"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
                                                 </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="47" id="IVg-TK-TIl"/>
+                                                    <constraint firstAttribute="trailing" secondItem="b37-8C-w4b" secondAttribute="trailing" id="YBh-Im-bfq"/>
+                                                    <constraint firstItem="b37-8C-w4b" firstAttribute="leading" secondItem="yyr-iW-6ek" secondAttribute="leading" id="ot1-yd-36u"/>
+                                                </constraints>
                                             </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="OUf-fm-AEx">
+                                            <stackView opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="UvE-CS-AhS">
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="760" verticalCompressionResistancePriority="760" text="Diagnostic Guidelines" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3uf-Hb-fCI">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="752" verticalCompressionResistancePriority="753" text="Six Clinical Characteristics" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2vv-fP-8fO">
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="752" verticalCompressionResistancePriority="752" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FUV-eC-SGP">
+                                                        <string key="text">·      Insufficient energy intake
+·      Weight loss
+·      Loss of muscle mass
+·      Loss of subcutaneous fat
+·      Local or generalized fluid accumulation
+·      Diminished functional status</string>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="8"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="202" id="Ozr-ia-Lpk"/>
+                                                    <constraint firstAttribute="height" constant="78" id="b7A-77-gzc"/>
+                                                </constraints>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="lo3-qa-pHd">
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="760" verticalCompressionResistancePriority="760" text="ICD-10 Codes" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="oin-hj-L3H">
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="20" id="OTR-6h-VHp"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" verticalHuggingPriority="251" horizontalCompressionResistancePriority="752" verticalCompressionResistancePriority="752" image="icd10_codes" translatesAutoresizingMaskIntoConstraints="NO" id="3CY-k5-Ind" colorLabel="IBBuiltInLabel-Blue">
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="146" id="ChY-Ds-ATg"/>
+                                                            <constraint firstAttribute="height" constant="122" id="Gue-iM-rY5"/>
+                                                        </constraints>
+                                                    </imageView>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="142" id="aeB-7l-CHB"/>
+                                                </constraints>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="740" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="OUf-fm-AEx">
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Diagnostic Guidelines" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3uf-Hb-fCI">
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="21" id="RT1-vh-m1W"/>
                                                         </constraints>
@@ -106,12 +161,13 @@
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="diagnostic_guidelines" translatesAutoresizingMaskIntoConstraints="NO" id="Ah8-LT-eGg"/>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="253" verticalHuggingPriority="253" horizontalCompressionResistancePriority="740" verticalCompressionResistancePriority="740" image="diagnostic_guidelines" translatesAutoresizingMaskIntoConstraints="NO" id="Ah8-LT-eGg"/>
                                                 </subviews>
                                             </stackView>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstAttribute="bottom" secondItem="lo3-qa-pHd" secondAttribute="bottom" constant="288" id="Ffx-9R-JjV"/>
+                                            <constraint firstAttribute="trailing" secondItem="yyr-iW-6ek" secondAttribute="trailing" id="E93-tR-keI"/>
+                                            <constraint firstItem="yyr-iW-6ek" firstAttribute="leading" secondItem="L2k-aF-81y" secondAttribute="leading" id="nc0-fl-RHT"/>
                                         </constraints>
                                     </stackView>
                                     <view contentMode="scaleToFill" verticalHuggingPriority="240" translatesAutoresizingMaskIntoConstraints="NO" id="epH-56-PEX">
@@ -121,6 +177,7 @@
                                 <constraints>
                                     <constraint firstItem="L2k-aF-81y" firstAttribute="leading" secondItem="cSc-1R-w32" secondAttribute="leading" constant="8" id="eot-m4-f7x"/>
                                     <constraint firstAttribute="trailing" secondItem="L2k-aF-81y" secondAttribute="trailing" constant="8" id="gAt-4A-zX4"/>
+                                    <constraint firstAttribute="bottom" secondItem="L2k-aF-81y" secondAttribute="bottom" constant="8" id="kZW-1X-8CB"/>
                                     <constraint firstItem="fuS-TL-saj" firstAttribute="height" secondItem="epH-56-PEX" secondAttribute="height" id="uEo-wM-uSm"/>
                                 </constraints>
                             </stackView>

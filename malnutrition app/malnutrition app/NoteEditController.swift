@@ -8,7 +8,7 @@
 
 import UIKit
 
-class NoteEditController:UIViewController, UITextFieldDelegate, UITextViewDelegate{
+class NoteEditController:GAITrackedViewController, UITextFieldDelegate, UITextViewDelegate{
     
     var edittingExistingNote: Bool?
     var note: Note?;
@@ -39,6 +39,8 @@ class NoteEditController:UIViewController, UITextFieldDelegate, UITextViewDelega
         textView.layer.borderColor = UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 1.0).cgColor
         textView.layer.borderWidth = 1
         textView.layer.cornerRadius = 5;
+        
+        self.screenName = "Note Edit Screen"
         
 //        textView.layer.cornerRadius =
         

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PictureViewController: UIViewController, UIGestureRecognizerDelegate{
+class PictureViewController: GAITrackedViewController, UIGestureRecognizerDelegate{
     
     var image: UIImage?
     
@@ -31,6 +31,15 @@ class PictureViewController: UIViewController, UIGestureRecognizerDelegate{
         imageView.contentMode = UIViewContentMode.scaleAspectFit
         imageView.isUserInteractionEnabled = true;
         imageView.backgroundColor = UIColor.black
+        
+        self.screenName = "Picture View Screen";
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+//        let tracker = GAI.sharedInstance().defaultTracker
+//        tracker?.set(kGAIDescription, value: "Picture View Screen")
+//        let eventTracker: NSObject = GAIDictionaryBuilder.createScreenView().build()
+//        tracker?.send(eventTracker as! [NSObject : AnyObject])
     }
     
     func viewTapped(sender:UITapGestureRecognizer){

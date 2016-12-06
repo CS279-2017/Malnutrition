@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AssessmentController: UIViewController, UITableViewDelegate, UITableViewDataSource{
+class AssessmentController: GAITrackedViewController, UITableViewDelegate, UITableViewDataSource{
     
     @IBOutlet weak var tableView: UITableView!
     var assessmentRootItem: Item?
@@ -28,6 +28,15 @@ class AssessmentController: UIViewController, UITableViewDelegate, UITableViewDa
         self.automaticallyAdjustsScrollViewInsets = false
 
         tableView.tableFooterView = UIView();
+        
+        self.screenName = "Assessment Screen";
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        let tracker = GAI.sharedInstance().defaultTracker
+        tracker?.set(kGAIDescription, value: "Assessment Screen")
+        let eventTracker: NSObject = GAIDictionaryBuilder.createScreenView().build()
+        tracker?.send(eventTracker as! [NSObject : AnyObject])
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

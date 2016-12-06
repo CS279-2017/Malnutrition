@@ -6,9 +6,10 @@
 //  Copyright © 2016 Bowen Jin. All rights reserved.
 //
 
+
 import UIKit
 
-class ExaminationController: UIViewController{
+class ExaminationController: GAITrackedViewController{
     
     @IBOutlet weak var symptomsButton: UIButton!
     
@@ -31,6 +32,7 @@ class ExaminationController: UIViewController{
         assessmentButton.layer.borderWidth = 1;
         assessmentButton.layer.borderColor = assessmentButton.tintColor.cgColor;
         
+        self.screenName = "Examination Screen"
     }
     
     override func viewWillAppear(_ animated: Bool) {

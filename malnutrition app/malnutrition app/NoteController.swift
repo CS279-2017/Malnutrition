@@ -6,9 +6,11 @@
 //  Copyright © 2016 Bowen Jin. All rights reserved.
 //
 
+//<Google/Analytics.h>
+
 import Foundation
 import UIKit
-class NoteController: UIViewController, UISearchBarDelegate, UITableViewDelegate, UITableViewDataSource{
+class NoteController: GAITrackedViewController, UISearchBarDelegate, UITableViewDelegate, UITableViewDataSource{
     
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
@@ -33,10 +35,17 @@ class NoteController: UIViewController, UISearchBarDelegate, UITableViewDelegate
         displayedNotes = DataStore.get().noteBook.getAllNotes();
         
         searchBar.delegate = self;
+        
+        self.screenName = "Note View Screen";
     }
     
     override func viewDidAppear(_ animated: Bool) {
         tableView.reloadData();
+        
+        let tracker = GAI.sharedInstance().defaultTracker
+        tracker?.set(kGAIDescription, value: "Note View Screen")
+        let eventTracker: NSObject = GAIDictionaryBuilder.createScreenView().build()
+        tracker?.send(eventTracker as! [NSObject : AnyObject])
     }
     
     //build a full search function later on that searches for prefixes

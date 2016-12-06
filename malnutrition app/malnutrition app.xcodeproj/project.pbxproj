@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		322CBBE81DF7293E00374111 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 322CBBE61DF728E800374111 /* GoogleService-Info.plist */; };
 		323F8D191DD0181F008A0A7C /* ItemTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323F8D181DD0181F008A0A7C /* ItemTableController.swift */; };
 		323F8D1D1DD01D1F008A0A7C /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323F8D1C1DD01D1F008A0A7C /* Item.swift */; };
 		323F8D211DD029AF008A0A7C /* data.txt in Resources */ = {isa = PBXBuildFile; fileRef = 323F8D201DD029AF008A0A7C /* data.txt */; };
@@ -36,6 +37,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		322CBBE51DF7253500374111 /* BridgingHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BridgingHeader.h; sourceTree = "<group>"; };
+		322CBBE61DF728E800374111 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		323F8D181DD0181F008A0A7C /* ItemTableController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemTableController.swift; sourceTree = "<group>"; };
 		323F8D1C1DD01D1F008A0A7C /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		323F8D201DD029AF008A0A7C /* data.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = data.txt; sourceTree = "<group>"; };
@@ -92,6 +95,7 @@
 		32D587C71DC8FA1F00E15047 = {
 			isa = PBXGroup;
 			children = (
+				322CBBE61DF728E800374111 /* GoogleService-Info.plist */,
 				32D587D21DC8FA1F00E15047 /* malnutrition app */,
 				32D587D11DC8FA1F00E15047 /* Products */,
 				1EAF4CB6216C9798426607C5 /* Pods */,
@@ -110,6 +114,7 @@
 		32D587D21DC8FA1F00E15047 /* malnutrition app */ = {
 			isa = PBXGroup;
 			children = (
+				322CBBE51DF7253500374111 /* BridgingHeader.h */,
 				32F67FD11DED129000AFD31E /* Model */,
 				32F67FD01DED128B00AFD31E /* View */,
 				32F67FCF1DED127000AFD31E /* Controller */,
@@ -253,6 +258,7 @@
 			files = (
 				323F8D211DD029AF008A0A7C /* data.txt in Resources */,
 				32E5F2211DF4A2B400DD785D /* symptoms.json in Resources */,
+				322CBBE81DF7293E00374111 /* GoogleService-Info.plist in Resources */,
 				323F8D231DD036FF008A0A7C /* samplejson.txt in Resources */,
 				32E5F2201DF4A2B400DD785D /* assessment.json in Resources */,
 				32F67FD71DED41A500AFD31E /* siruis json.txt in Resources */,
@@ -460,6 +466,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "vandy.malnutrition-app";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = BridgingHeader.h;
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -474,6 +481,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "vandy.malnutrition-app";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = BridgingHeader.h;
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

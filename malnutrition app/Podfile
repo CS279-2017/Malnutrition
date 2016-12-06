@@ -7,5 +7,6 @@ target 'malnutrition app' do
 
   # Pods for malnutrition app
 	 pod 'SwiftyJSON'
+     pod 'Google/Analytics'
 
 end

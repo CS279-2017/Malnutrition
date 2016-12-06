@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class ItemTableController: UIViewController, UITableViewDelegate, UITableViewDataSource{
+class ItemTableController: GAITrackedViewController, UITableViewDelegate, UITableViewDataSource{
     
     //this is the item which the view controller represents
     var item:Item?;
@@ -36,6 +36,18 @@ class ItemTableController: UIViewController, UITableViewDelegate, UITableViewDat
         tableView.estimatedRowHeight = 100;
         tableView.tableFooterView = UIView();
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        if(item?.type == "Body Region"){
+            self.screenName = "Body Region Screen"
+        }
+        else if(item?.type == "Body Diagram"){
+            self.screenName = "Body Diagram Screen"
+        }
+        else{
+            self.screenName = "Other Item Screen"
+        }
     }
     
     func setItem(item: Item){

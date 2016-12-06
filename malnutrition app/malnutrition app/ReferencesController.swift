@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ReferencesController:UIViewController{
+class ReferencesController: GAITrackedViewController{
     
     @IBOutlet weak var diagnosticsImageView: UIImageView!
     
@@ -21,6 +21,9 @@ class ReferencesController:UIViewController{
         diagnosticsImageView?.addGestureRecognizer(tap1)
         icd10ImageView?.isUserInteractionEnabled = true
         icd10ImageView?.addGestureRecognizer(tap2)
+        
+        self.screenName = "References Screen";
+        
     }
     
     func imageTapped(gestureRecognizer: UITapGestureRecognizer)

@@ -6,9 +6,10 @@
 //  Copyright © 2016 Bowen Jin. All rights reserved.
 //
 
+
 import UIKit
 
-class MainController: UIViewController {
+class MainController: GAITrackedViewController {
 
     @IBOutlet weak var viewNotesButton: UIButton!
     @IBOutlet weak var examinationButton: UIButton!
@@ -28,6 +29,12 @@ class MainController: UIViewController {
         examinationButton.layer.borderColor = viewNotesButton.tintColor.cgColor;
         referencesButton.layer.borderWidth = 1;
         referencesButton.layer.borderColor = referencesButton.tintColor.cgColor
+        
+        self.screenName = "Main Screen";
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
     }
     
     

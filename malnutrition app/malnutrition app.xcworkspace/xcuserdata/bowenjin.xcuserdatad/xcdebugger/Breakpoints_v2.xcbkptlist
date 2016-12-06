@@ -186,11 +186,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "malnutrition app/NoteController.swift"
-            timestampString = "502341004.919875"
+            timestampString = "502737015.641549"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "22"
-            endingLineNumber = "22"
+            startingLineNumber = "24"
+            endingLineNumber = "24"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
@@ -209,6 +209,82 @@
             endingLineNumber = "113"
             landmarkName = "getJson(type:callback:error_handler:)"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "malnutrition app/MainController.swift"
+            timestampString = "502738842.626001"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "10"
+            endingLineNumber = "10">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "malnutrition_app.MainController.__deallocating_deinit"
+                  moduleName = "malnutrition app"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/bowenjin/Software%20Projects/team-1/malnutrition%20app/malnutrition%20app/MainController.swift"
+                  timestampString = "502738843.719729"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "16">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "malnutrition_app.MainController.__allocating_init (nibName : Swift.Optional&lt;Swift.String&gt;, bundle : Swift.Optional&lt;__ObjC.Bundle&gt;) -&gt; malnutrition_app.MainController"
+                  moduleName = "malnutrition app"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/bowenjin/Software%20Projects/team-1/malnutrition%20app/malnutrition%20app/MainController.swift"
+                  timestampString = "502738843.724379"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "32">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "malnutrition_app.MainController.__allocating_init (coder : __ObjC.NSCoder) -&gt; Swift.Optional&lt;malnutrition_app.MainController&gt;"
+                  moduleName = "malnutrition app"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/bowenjin/Software%20Projects/team-1/malnutrition%20app/malnutrition%20app/MainController.swift"
+                  timestampString = "502738843.726606"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "16">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "malnutrition_app.MainController.init (coder : __ObjC.NSCoder) -&gt; Swift.Optional&lt;malnutrition_app.MainController&gt;"
+                  moduleName = "malnutrition app"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/bowenjin/Software%20Projects/team-1/malnutrition%20app/malnutrition%20app/MainController.swift"
+                  timestampString = "502738843.728978"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "14"
+                  endingLineNumber = "14"
+                  offsetFromSymbolStart = "37">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
