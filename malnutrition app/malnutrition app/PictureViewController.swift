@@ -8,10 +8,11 @@
 
 import UIKit
 
-class PictureViewController: GAITrackedViewController, UIGestureRecognizerDelegate{
+class PictureViewController: GAITrackedViewController, UIGestureRecognizerDelegate, UIScrollViewDelegate{
     
     var image: UIImage?
     
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var imageView: UIImageView!
     
     func setImage(image: UIImage){
@@ -33,6 +34,19 @@ class PictureViewController: GAITrackedViewController, UIGestureRecognizerDelega
         imageView.backgroundColor = UIColor.black
         
         self.screenName = "Picture View Screen";
+        
+        scrollView.delegate = self;
+        
+        self.view.backgroundColor = UIColor.black;
+        
+        self.scrollView.minimumZoomScale = 1.0;
+        self.scrollView.maximumZoomScale = 5.0;
+        self.scrollView.contentSize = self.imageView.frame.size;
+        
+        
+        
+//        UIApplication.shared.setStatusBarStyle(UIStatusBarStyle.lightContent, animated: true);
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -46,4 +60,11 @@ class PictureViewController: GAITrackedViewController, UIGestureRecognizerDelega
         self.dismiss(animated: true, completion: nil);
     }
     
+    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
+        return self.imageView;
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
 }

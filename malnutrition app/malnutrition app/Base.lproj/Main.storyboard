@@ -452,23 +452,39 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wBb-F0-HZU"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xt4-mt-fSs">
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wBb-F0-HZU">
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="667" id="PAC-tG-Cnp"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="wBb-F0-HZU" secondAttribute="bottom" constant="-64" id="521-nK-VRz"/>
+                                    <constraint firstItem="wBb-F0-HZU" firstAttribute="centerX" secondItem="Xt4-mt-fSs" secondAttribute="centerX" id="Ixh-cp-i6D"/>
+                                    <constraint firstItem="wBb-F0-HZU" firstAttribute="top" secondItem="Xt4-mt-fSs" secondAttribute="top" id="KQA-l3-je2"/>
+                                    <constraint firstItem="wBb-F0-HZU" firstAttribute="leading" secondItem="Xt4-mt-fSs" secondAttribute="leading" id="SxN-6O-49W"/>
+                                    <constraint firstAttribute="trailing" secondItem="wBb-F0-HZU" secondAttribute="trailing" id="cU3-4e-BY4"/>
+                                </constraints>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="wBb-F0-HZU" firstAttribute="bottom" secondItem="GAl-e8-na5" secondAttribute="top" id="IOL-zH-HUp"/>
-                            <constraint firstItem="wBb-F0-HZU" firstAttribute="top" secondItem="rAE-FJ-bFa" secondAttribute="top" id="Pnn-So-cz4"/>
-                            <constraint firstAttribute="trailing" secondItem="wBb-F0-HZU" secondAttribute="trailing" id="dF0-xb-jd1"/>
-                            <constraint firstItem="wBb-F0-HZU" firstAttribute="leading" secondItem="rAE-FJ-bFa" secondAttribute="leading" id="pFJ-Bo-l1Y"/>
+                            <constraint firstAttribute="trailing" secondItem="Xt4-mt-fSs" secondAttribute="trailing" id="D1G-O4-Uvo"/>
+                            <constraint firstItem="Xt4-mt-fSs" firstAttribute="top" secondItem="0HV-8n-lO4" secondAttribute="bottom" id="eAx-5n-TWh"/>
+                            <constraint firstItem="Xt4-mt-fSs" firstAttribute="leading" secondItem="rAE-FJ-bFa" secondAttribute="leading" id="hDr-75-5ZO"/>
+                            <constraint firstItem="GAl-e8-na5" firstAttribute="top" secondItem="Xt4-mt-fSs" secondAttribute="bottom" id="ukL-NK-tXl"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="imageView" destination="wBb-F0-HZU" id="Yaz-pg-q0c"/>
+                        <outlet property="scrollView" destination="Xt4-mt-fSs" id="s7i-Dj-e0C"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="k5l-NI-oNK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-33" y="-675"/>
+            <point key="canvasLocation" x="-34.399999999999999" y="-675.11244377811101"/>
         </scene>
         <!--Assessment Controller-->
         <scene sceneID="h8i-Id-JGQ">
