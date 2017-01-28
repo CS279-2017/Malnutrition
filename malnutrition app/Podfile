@@ -8,5 +8,7 @@ target 'malnutrition app' do
   # Pods for malnutrition app
 	 pod 'SwiftyJSON'
      pod 'Google/Analytics'
+     pod 'Firebase/Core'
+     pod 'Firebase/Messaging'
 
 end

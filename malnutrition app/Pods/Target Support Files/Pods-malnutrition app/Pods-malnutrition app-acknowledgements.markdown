@@ -1,6 +1,10 @@
 # Acknowledgements
 This application makes use of the following third party libraries:
 
+## Firebase
+
+Copyright 2016 Google
+
 ## FirebaseAnalytics
 
 Copyright 2016 Google
@@ -10,6 +14,10 @@ Copyright 2016 Google
 Copyright 2016 Google
 
 ## FirebaseInstanceID
+
+Copyright 2016 Google
+
+## FirebaseMessaging
 
 Copyright 2016 Google
 
