@@ -7,12 +7,12 @@ dis da backend api
 * /auth
   * GET /refreshtoken
     * Query Params:
-      * username: <username>
-      * password: <password>
+      * username: \<username\>
+      * password: \<password\>
     * Response:
-      * 200: <refresh token>
+      * 200: \<refresh token\>
   * GET /accesstoken
     * Headers:
-      * Authorization: <Refresh Token>
+      * Authorization: \<Refresh Token\>
     * Response:
-      * 200: <access token>
+      * 200: \<access token\>
