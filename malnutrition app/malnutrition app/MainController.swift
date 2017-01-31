@@ -22,13 +22,25 @@ class MainController: GAITrackedViewController {
 //        examinationButton.addTarget(self, action: #selector(startButtonClicked) , for: UIControlEvents.touchUpInside)
         viewNotesButton.addTarget(self, action: #selector(viewNotesButtonClicked(button:)), for: UIControlEvents.touchUpInside);
         
-        viewNotesButton.layer.borderWidth = 1;
-        viewNotesButton.layer.borderColor = viewNotesButton.tintColor.cgColor;
+//        viewNotesButton.layer.borderWidth = 1;
+//        viewNotesButton.layer.borderColor = viewNotesButton.tintColor.cgColor;
+//        
+//        examinationButton.layer.borderWidth = 1;
+//        examinationButton.layer.borderColor = viewNotesButton.tintColor.cgColor;
+//        referencesButton.layer.borderWidth = 1;
+//        referencesButton.layer.borderColor = referencesButton.tintColor.cgColor
         
-        examinationButton.layer.borderWidth = 1;
-        examinationButton.layer.borderColor = viewNotesButton.tintColor.cgColor;
-        referencesButton.layer.borderWidth = 1;
-        referencesButton.layer.borderColor = referencesButton.tintColor.cgColor
+        examinationButton.addTarget(self, action: #selector(startFade(button:)), for: .touchDown)
+        examinationButton.addTarget(self, action: #selector(stopFade(button:)), for: .touchUpInside)
+        examinationButton.addTarget(self, action: #selector(stopFade(button:)), for: .touchUpOutside)
+        
+        viewNotesButton.addTarget(self, action: #selector(startFade(button:)), for: .touchDown)
+        viewNotesButton.addTarget(self, action: #selector(stopFade(button:)), for: .touchUpInside)
+        viewNotesButton.addTarget(self, action: #selector(stopFade(button:)), for: .touchUpOutside)
+        
+        referencesButton.addTarget(self, action: #selector(startFade(button:)), for: .touchDown)
+        referencesButton.addTarget(self, action: #selector(stopFade(button:)), for: .touchUpInside)
+        referencesButton.addTarget(self, action: #selector(stopFade(button:)), for: .touchUpOutside)
         
         self.screenName = "Main Screen";
     }
@@ -56,6 +68,20 @@ class MainController: GAITrackedViewController {
             let controller = storyboard.instantiateViewController(withIdentifier: "NoteController")
             self.navigationController?.pushViewController(controller, animated: true)
         }
+    }
+    
+    func startFade(button: UIButton){
+        //        UIView.animate(withDuration: 0.2, animations: { button.alpha = 0.25})
+        button.alpha = 0.25
+        button.backgroundColor = UIColor.lightGray;
+    }
+    
+    func stopFade(button: UIButton){
+        //        button.alpha = 1.0
+        UIView.animate(withDuration: 0.25, animations: {
+            button.alpha = 1.0
+            button.backgroundColor = UIColor.lightText;
+        })
     }
 
 

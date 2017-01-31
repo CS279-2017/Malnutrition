@@ -26,11 +26,11 @@ class ExaminationController: GAITrackedViewController{
         
         clearNoteButton.addTarget(self, action: #selector(clearNoteButtonClicked(sender:)), for: UIControlEvents.touchUpInside)
         
-        symptomsButton.layer.borderWidth = 1;
-        symptomsButton.layer.borderColor = symptomsButton.tintColor.cgColor
-        
-        assessmentButton.layer.borderWidth = 1;
-        assessmentButton.layer.borderColor = assessmentButton.tintColor.cgColor;
+//        symptomsButton.layer.borderWidth = 1;
+//        symptomsButton.layer.borderColor = symptomsButton.tintColor.cgColor
+//        
+//        assessmentButton.layer.borderWidth = 1;
+//        assessmentButton.layer.borderColor = assessmentButton.tintColor.cgColor;
         
         self.screenName = "Examination Screen"
     }

@@ -19,7 +19,17 @@
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="NutriRisk Logo" translatesAutoresizingMaskIntoConstraints="NO" id="BAu-QB-JOa">
+                                <rect key="frame" x="87.5" y="234" width="200" height="199"/>
+                                <color key="backgroundColor" red="0.98431372549019602" green="0.0" blue="0.023529411764705882" alpha="1" colorSpace="calibratedRGB"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.98431372549019602" green="0.0" blue="0.023529411764705882" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="BAu-QB-JOa" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="MfU-9q-yYa"/>
+                            <constraint firstItem="BAu-QB-JOa" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="eNW-Nr-P75"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -27,4 +37,7 @@
             <point key="canvasLocation" x="53" y="375"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="NutriRisk Logo" width="200" height="199"/>
+    </resources>
 </document>
