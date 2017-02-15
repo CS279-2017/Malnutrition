@@ -1,5 +1,8 @@
 {
   "plugins": {
-    "node.js": {}
+    "node": {},
+    "commonjs": {},
+    "requirejs": {},
+    "node_resolve": {}
   }
 }
