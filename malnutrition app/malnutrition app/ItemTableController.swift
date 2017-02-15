@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class ItemTableController: GAITrackedViewController, UITableViewDelegate, UITableViewDataSource{
+class ItemTableController: BaseController, UITableViewDelegate, UITableViewDataSource{
     
     //this is the item which the view controller represents
     var item:Item?;
@@ -39,6 +39,7 @@ class ItemTableController: GAITrackedViewController, UITableViewDelegate, UITabl
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         if(item?.type == "Body Region"){
             self.screenName = "Body Region Screen"
         }

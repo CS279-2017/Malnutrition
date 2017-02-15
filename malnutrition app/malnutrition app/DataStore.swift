@@ -16,6 +16,8 @@ class DataStore{
     static var sharedInstance: DataStore? = nil;
     
     
+//    let serverUrl = "http://10.66.247.44:3000"
+    let serverUrl = "https://nutriscreen.herokuapp.com"
     var rootItemExamination:Item = Item(type: "Root", title: nil, description: nil, images: [String](), nextItems: [Item](), options: [String]());
     
     var rootItemAssessmentQuiz:Item = Item(type: "Root", title: nil, description: nil, images: [String](), nextItems: [Item](), options: [String]());
@@ -28,6 +30,8 @@ class DataStore{
     }()
     
     var noteBook:NoteBook = NoteBook();
+    
+    var authKey:String = "";
     
     //get the singleton instance if it exists, otherwise call constructor and make an instance
     static func get() -> DataStore{
@@ -43,6 +47,7 @@ class DataStore{
         //read the string from the text file that contains the item directory structure
         if let unarchivedObject = (NSKeyedUnarchiver.unarchiveObject(withFile: DataStore.archiveURL.path!)){
             noteBook = unarchivedObject as! NoteBook;
+
         }
     
     }
@@ -83,8 +88,160 @@ class DataStore{
         parent.nextItems.append(newItem);
     }
     
+    func login(email: String, password: String, callback: ((String) -> Void)?, error_handler: ((String)->Void)?){
+        var request = URLRequest(url: URL(string: serverUrl+"/login_mobile")!)
+        request.httpMethod = "POST"
+        //        let postString = "id=13&name=Jack"
+        let postString = "email=" + email+"&password="+password;
+        request.httpBody = postString.data(using: .utf8)
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            guard let data = data, error == nil else {                                                 // check for fundamental networking error
+                if(error_handler != nil){
+                    error_handler!(String(describing: error));
+                }
+                return
+            }
+            
+            if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 {           // check for http errors
+                let error = "statusCode should be 200, but is \(httpStatus.statusCode)"
+                if(error_handler != nil){
+                    error_handler!(error);
+                }
+                print(error)
+                print("response = \(response)")
+            }
+            else{
+                let responseString = String(data: data, encoding: .utf8)
+                print("responseString = \(responseString)")
+                if let dataFromString = responseString?.data(using: .utf8, allowLossyConversion: false) {
+                    let json = JSON(data: dataFromString);
+                    if json["error"].string == nil{
+                        if(callback != nil){
+                            let authKey = json["data"]["authKey"].string!
+                            let userId = json["data"]["userId"].string!
+                            UserData.set(authKey: authKey);
+                            UserData.set(userId: userId);
+                            callback!(authKey);
+                        }
+                    }
+                    else{
+                        if let error_handler = error_handler{
+                            error_handler(json["error"].string!);
+                        }
+                    }
+                    
+                }
+                else{
+                    error_handler!("invalid json string");
+                }
+            }
+            
+            
+        }
+        task.resume()
+    }
+    
+    func register(email: String, password: String, callback: (() -> Void)?, error_handler: ((String)->Void)?){
+        var request = URLRequest(url: URL(string: serverUrl+"/register_mobile")!)
+        request.httpMethod = "POST"
+        //        let postString = "id=13&name=Jack"
+        let postString = "email=" + email+"&password="+password;
+        request.httpBody = postString.data(using: .utf8)
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            guard let data = data, error == nil else {                                                 // check for fundamental networking error
+                if(error_handler != nil){
+                    error_handler!(String(describing: error));
+                }
+                print("error=\(error)")
+                return
+            }
+            
+            if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 {           // check for http errors
+                let error = "statusCode should be 200, but is \(httpStatus.statusCode)"
+                if(error_handler != nil){
+                    error_handler!(error);
+                }
+                print(error)
+                print("response = \(response)")
+            }
+            else{
+                let responseString = String(data: data, encoding: .utf8)
+                print("responseString = \(responseString)")
+                if let dataFromString = responseString?.data(using: .utf8, allowLossyConversion: false) {
+                    let json = JSON(data: dataFromString);
+                    if json["error"].string == nil{
+                        if(callback != nil){
+                            callback!();
+                        }
+                    }
+                    else{
+                        if let error_handler = error_handler{
+                            error_handler(json["error"].string!);
+                        }
+                    }
+                    
+                }
+                else{
+                    error_handler!("invalid json string");
+                }
+            }
+            
+            
+        }
+        task.resume()
+    }
+    
+    func authenticate(authKey: String, userId: String, callback: (()->())?, error_handler: ((String)->())?){
+        var request = URLRequest(url: URL(string: serverUrl + "/authenticate")!)
+        request.httpMethod = "POST"
+        //        let postString = "id=13&name=Jack"
+        let postString = "authKey=" + authKey + "&userId=" + userId;
+        request.httpBody = postString.data(using: .utf8)
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            guard let data = data, error == nil else {                                                 // check for fundamental networking error
+                if(error_handler != nil){
+                    error_handler!(String(describing: error));
+                }
+                print("error=\(error)")
+                return
+            }
+            
+            if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 {           // check for http errors
+                let error = "statusCode should be 200, but is \(httpStatus.statusCode)"
+                if(error_handler != nil){
+                    error_handler!(error);
+                }
+                print(error)
+                print("response = \(response)")
+            }
+            
+            let responseString = String(data: data, encoding: .utf8)
+            if let dataFromString = responseString?.data(using: .utf8, allowLossyConversion: false) {
+                let json = JSON(data: dataFromString);
+                if json["error"].string == nil{
+                    if(callback != nil){
+                        callback!();
+                    }
+                }
+                else{
+                    if let error_handler = error_handler{
+                        error_handler(json["error"].string!);
+                    }
+                }
+               
+            }
+            else{
+                error_handler!("invalid json string");
+            }
+            print("responseString = \(responseString)")
+            
+        }
+        task.resume()
+    }
+
+    
     func getJson(type: String, callback: ((String) -> Void)?, error_handler: ((String)->Void)?){
-        var request = URLRequest(url: URL(string: "https://nutriscreen.herokuapp.com/get_json")!)
+        var request = URLRequest(url: URL(string: serverUrl + "/get_json")!)
         request.httpMethod = "POST"
 //        let postString = "id=13&name=Jack"
         let postString = "type=" + type;
@@ -144,11 +301,14 @@ class DataStore{
     }
     
     func error_handler(error: String){
-        let alertController = UIAlertController(title: "Error", message: error, preferredStyle: UIAlertControllerStyle.alert)
-        let okAction = UIAlertAction(title: "Ok", style: UIAlertActionStyle.default) { (result : UIAlertAction) -> Void in
+        DispatchQueue.main.async {
+            let alertController = UIAlertController(title: "Error", message: error, preferredStyle: UIAlertControllerStyle.alert)
+            let okAction = UIAlertAction(title: "Ok", style: UIAlertActionStyle.default) { (result : UIAlertAction) -> Void in
+            }
+            alertController.addAction(okAction)
+            
+            UIApplication.topViewController()?.present(alertController, animated: true, completion: nil)
         }
-        alertController.addAction(okAction)
-        UIApplication.topViewController()?.present(alertController, animated: true, completion: nil)
     }
     
     func getNoteString() -> String{
@@ -218,7 +378,6 @@ class DataStore{
                 AppDelegate.loadedAssessments = true;
         });
     }
-
 }
 
 extension UIApplication {

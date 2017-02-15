@@ -8,7 +8,7 @@
 
 import UIKit
 
-class NoteEditController:GAITrackedViewController, UITextFieldDelegate, UITextViewDelegate{
+class NoteEditController:BaseController, UITextFieldDelegate, UITextViewDelegate{
     
     var edittingExistingNote: Bool?
     var note: Note?;

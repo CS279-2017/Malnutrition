@@ -10,7 +10,7 @@
 
 import Foundation
 import UIKit
-class NoteController: GAITrackedViewController, UISearchBarDelegate, UITableViewDelegate, UITableViewDataSource{
+class NoteController: BaseController, UISearchBarDelegate, UITableViewDelegate, UITableViewDataSource{
     
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!

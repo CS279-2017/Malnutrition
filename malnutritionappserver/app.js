@@ -16,7 +16,11 @@ app.set('port', (process.env.PORT || 3000));
 
 var auth_key_arr = [];
 
-var server_password = "12345";
+var admin_password = "12345";
+
+var user_table = {
+    "bowen.jin@vanderbilt.edu":"nutririsk"
+};
 
 app.listen(app.get('port'), function(){
     //Callback triggered when server is successfully listening. Hurray!
@@ -51,8 +55,7 @@ app.post('/login', function(req, res) {
     console.log("login called!")
     // var username = req.body.username
     var password = req.body.password;
-
-    if(password == server_password) {
+    if(password == admin_password) {
         console.log("passwords match!")
         var auth_key = generateKey(24);
         auth_key_arr.push(auth_key);
@@ -70,6 +73,23 @@ app.post('/login', function(req, res) {
         res.send({data: null, error: "invalid password"});
     }
 });
+
+app.post('/login_mobile', function(req, res){
+    var email = req.body.email;
+    var password = req.body.password;
+    if(user_table[email] == password){
+        var auth_key = generateKey(24);
+        auth_key_arr.push(auth_key);
+        //set a timer to remove the key after a certain amount of time
+        setTimeout(function(){
+            var index = auth_key_arr.indexOf(auth_key);
+            if (index > -1) {
+                auth_key_arr.splice(index, 1);
+            }
+        }, 1800000)
+        res.send({data: {auth_key: auth_key}, error: null});
+    }
+})
 
 app.post('/authenticate', function(req, res) {
     console.log("login called!")

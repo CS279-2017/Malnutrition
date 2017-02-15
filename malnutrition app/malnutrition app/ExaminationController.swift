@@ -9,7 +9,7 @@
 
 import UIKit
 
-class ExaminationController: GAITrackedViewController{
+class ExaminationController: BaseController{
     
     @IBOutlet weak var symptomsButton: UIButton!
     
@@ -36,6 +36,7 @@ class ExaminationController: GAITrackedViewController{
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated);
         AppDelegate.loadedAssessments = false;
         AppDelegate.loadedSymptoms = false;
     }

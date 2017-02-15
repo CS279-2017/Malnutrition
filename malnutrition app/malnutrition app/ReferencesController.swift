@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ReferencesController: GAITrackedViewController{
+class ReferencesController: BaseController{
     
     @IBOutlet weak var diagnosticsImageView: UIImageView!
     

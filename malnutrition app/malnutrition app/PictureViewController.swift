@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PictureViewController: GAITrackedViewController, UIGestureRecognizerDelegate, UIScrollViewDelegate{
+class PictureViewController: BaseController, UIGestureRecognizerDelegate, UIScrollViewDelegate{
     
     var image: UIImage?
     

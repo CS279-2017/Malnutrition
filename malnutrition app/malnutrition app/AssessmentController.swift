@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AssessmentController: GAITrackedViewController, UITableViewDelegate, UITableViewDataSource{
+class AssessmentController: BaseController, UITableViewDelegate, UITableViewDataSource{
     
     @IBOutlet weak var tableView: UITableView!
     var assessmentRootItem: Item?
@@ -33,6 +33,7 @@ class AssessmentController: GAITrackedViewController, UITableViewDelegate, UITab
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated);
         let tracker = GAI.sharedInstance().defaultTracker
         tracker?.set(kGAIDescription, value: "Assessment Screen")
         let eventTracker: NSObject = GAIDictionaryBuilder.createScreenView().build()

@@ -9,7 +9,7 @@
 
 import UIKit
 
-class MainController: GAITrackedViewController {
+class MainController: BaseController {
 
     @IBOutlet weak var viewNotesButton: UIButton!
     @IBOutlet weak var examinationButton: UIButton!
@@ -46,7 +46,7 @@ class MainController: GAITrackedViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        
+        super.viewWillAppear(animated);
     }
     
     

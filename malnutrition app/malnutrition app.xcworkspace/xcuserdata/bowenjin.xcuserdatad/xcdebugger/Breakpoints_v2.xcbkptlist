@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "malnutrition app/DataStore.swift"
-            timestampString = "502312130.528668"
+            timestampString = "508659076.084235"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "37"
-            endingLineNumber = "37"
+            startingLineNumber = "41"
+            endingLineNumber = "41"
             landmarkName = "get()"
             landmarkType = "7">
          </BreakpointContent>
@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "malnutrition app/DataStore.swift"
-            timestampString = "502573109.269468"
+            timestampString = "508659076.084235"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "51"
-            endingLineNumber = "51"
+            startingLineNumber = "56"
+            endingLineNumber = "56"
             landmarkName = "parseJson(jsonString:root:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -202,11 +202,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "malnutrition app/DataStore.swift"
-            timestampString = "502573109.269468"
+            timestampString = "508662585.076582"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "113"
-            endingLineNumber = "113"
+            startingLineNumber = "270"
+            endingLineNumber = "270"
             landmarkName = "getJson(type:callback:error_handler:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -285,6 +285,198 @@
                   offsetFromSymbolStart = "37">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "malnutrition app/DataStore.swift"
+            timestampString = "508659680.325439"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "106"
+            endingLineNumber = "106"
+            landmarkName = "login(email:password:callback:error_handler:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "malnutrition app/DataStore.swift"
+            timestampString = "508659680.325439"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "116"
+            endingLineNumber = "116"
+            landmarkName = "login(email:password:callback:error_handler:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "malnutrition app/DataStore.swift"
+            timestampString = "508659480.09291"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "98"
+            endingLineNumber = "98"
+            landmarkName = "login(email:password:callback:error_handler:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "malnutrition_app.DataStore.(login (email : Swift.String, password : Swift.String, callback : Swift.Optional&lt;(Swift.String) -&gt; ()&gt;, error_handler : Swift.Optional&lt;(Swift.String) -&gt; ()&gt;) -&gt; ()).(closure #1)"
+                  moduleName = "malnutrition app"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/bowenjin/Software%20Projects/team-1/malnutrition%20app/malnutrition%20app/DataStore.swift"
+                  timestampString = "508659732.192412"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "98"
+                  endingLineNumber = "98"
+                  offsetFromSymbolStart = "52">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "malnutrition_app.DataStore.(login (email : Swift.String, password : Swift.String, callback : Swift.Optional&lt;(Swift.String) -&gt; ()&gt;, error_handler : Swift.Optional&lt;(Swift.String) -&gt; ()&gt;) -&gt; ()).(closure #1)"
+                  moduleName = "malnutrition app"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/bowenjin/Software%20Projects/team-1/malnutrition%20app/malnutrition%20app/DataStore.swift"
+                  timestampString = "508659732.193698"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "98"
+                  endingLineNumber = "98"
+                  offsetFromSymbolStart = "116">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "malnutrition app/DataStore.swift"
+            timestampString = "508662585.076582"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "151"
+            endingLineNumber = "151"
+            landmarkName = "register(email:password:callback:error_handler:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "malnutrition_app.DataStore.(register (email : Swift.String, password : Swift.String, callback : Swift.Optional&lt;() -&gt; ()&gt;, error_handler : Swift.Optional&lt;(Swift.String) -&gt; ()&gt;) -&gt; ()).(closure #1)"
+                  moduleName = "malnutrition app"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/bowenjin/Software%20Projects/team-1/malnutrition%20app/malnutrition%20app/DataStore.swift"
+                  timestampString = "508659879.880952"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "149"
+                  endingLineNumber = "149"
+                  offsetFromSymbolStart = "52">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "malnutrition_app.DataStore.(register (email : Swift.String, password : Swift.String, callback : Swift.Optional&lt;() -&gt; ()&gt;, error_handler : Swift.Optional&lt;(Swift.String) -&gt; ()&gt;) -&gt; ()).(closure #1)"
+                  moduleName = "malnutrition app"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/bowenjin/Software%20Projects/team-1/malnutrition%20app/malnutrition%20app/DataStore.swift"
+                  timestampString = "508659879.883157"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "149"
+                  endingLineNumber = "149"
+                  offsetFromSymbolStart = "116">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "malnutrition app/BaseController.swift"
+            timestampString = "508704356.225035"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "54"
+            endingLineNumber = "54"
+            landmarkName = "hideProgressBar()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "malnutrition app/BaseController.swift"
+            timestampString = "508704356.225035"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "55"
+            endingLineNumber = "55"
+            landmarkName = "hideProgressBar()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "malnutrition app/DataStore.swift"
+            timestampString = "508663824.928003"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "168"
+            endingLineNumber = "168"
+            landmarkName = "register(email:password:callback:error_handler:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "malnutrition app/RegisterController.swift"
+            timestampString = "508703374.976752"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "50"
+            endingLineNumber = "50"
+            landmarkName = "registerButtonClicked()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
