@@ -1,0 +1,75 @@
+{"title":"Root", "type": "Body Diagram", "nextItems":
+
+[
+ {"title": "HEENT", "type": "Body Region", "description": "null", "nextItems":
+	[
+		{"title": "Hair brittleness", "description": "Hair brittle or breaks off easily", "images": [], "options": ["No", "Mild-Moderate Loss", "Severe Loss"]},
+		{"title": "Hair pluckability", "description": "Ask client if they have noticed any changes to the texture of the hair. Gently pull on a few stands to check if hair is easily plucked", "images": [], "options": ["No", "Mild-Moderate Loss", "Severe Loss"]},
+		{"title": "Temporalis muscle wasting", "description": "Have patient turn the head to the side. Gently palpate the temple region with fingertips.", "images": ["http://i.imgur.com/GFQjQTp.png"], "options": ["No muscle loss", "Slight depression", "Severe indentation or hollow appearance"]},
+		{"title": "Orbital sockets", "description": "View the client from the front. Gently palpate under the eyes and above the cheekbones with your middle finger, feeling for a lack of orbital fat pads. Look for dark rings and loose skin.", "images": ["http://i.imgur.com/uM6Oki7.png", "http://i.imgur.com/WDdzNyQ.png", "http://i.imgur.com/gMV5HOp.png"], "options": ["Fat pad bulging", "Slightly hollow above cheekbones and some darkening", "Severely hollow and depressed, loose skin, dark circles"]},
+		{"title": "Tongue color", "description": "Using a tongue depressor, examine for bright red color.", "images": [], "options": ["No", "Yes"]},
+		{"title": "Tongue texture", "description": "Using a tongue depressor, examine for smooth texture.", "images": [], "options": ["No", "Yes"]},
+		{"title": "Teeth", "description": "Inspect for missing teeth and/or ill-fitting dentures.", "images": [], "options": ["Normal", "Mild-Moderate chewing impairement", "Unable to chew"]},
+		{"title": "Throat", "description": "null", "images": [], "options": ["Normal", "Mild-Moderate dysphagia", "Unable to swallow"]}
+	]
+ },	
+ {"title": "Neck/Shoulders/Ribs/Hips", "type": "Body Region", "description": "null", "nextItems":
+	[
+		{"title": "Clavicle", "description": "Ask client to sit up straight with arms at the side. Visibly inspect the clavicle area of both sides of the client and palpate the area for muscle loss.", "images": ["http://i.imgur.com/ccHFHjs.png", "http://i.imgur.com/N0ubO1Z.png"], "options": ["Clavicle not prominent , rounded shoulders", "Visible or protruding clavicle", "Clavicle and acromion process visible or protruding, concave depression"]},
+		{"title": "Scapular to Hips", "description": "Visibly inspect the rib cage area while the client is sitting upright (ribs should not be visible). Ask client to extend their arm out straight in front of them and push a solid surface. Gently palpate above and below the scapular bone.", "images": ["http://i.imgur.com/uneheNw.png"], "options": ["Normal", "Mild depression above and below scapula and iliac crest", "Prominent depression scapular, between ribs, and iliac region"]}
+	]
+ },
+ {"title": "Respiratory", "type": "Body Region", "description": "null", "nextItems":
+	[
+		{"title": "Decreased exercise tolerance", "description": "null", "images": [], "options": ["Normal", "Moderate fatigue", "Severe fatigue"]},
+		{"title": "Difficulty breathing", "description": "null", "images": [], "options": ["No shortness of breath with activity", "Moderate shortness of breath or difficulty breathing", "Heavy Labored"]}
+	]
+ },
+ {"title": "Upper Extremities", "type": "Body Region", "description": "null", "nextItems":
+	[
+		{"title": "Triceps", "description": "Have patient bend arm at a 90 degree angle and relax triceps area. Gently pinch the skin with thumb and forefinger and roll the skin under the triceps to assess fat.", "images": ["http://i.imgur.com/HYuXEMn.png"], "options": ["Normal rolling of fat when pinched", "Some loose skin", "Thumb and finger easily touch together while pinching"]},
+		{"title": "Hand", "description": "Have patient squeeze thumb to the side of their finger or touch thumb and index finger together to make the OK sign to assess dorsal muscle.", "images": ["http://i.imgur.com/ZKNJfca.png"], "options": ["Normal dorsal muscle", "Slightly depressed cavity", "Severely depressed cavity"]},
+		{"title": "Hand grip strength", "description": "Requires dynamometer. Have patient hold dynamometer in right hand with arm at 90 degree angle, elbow at the side, and wrist at 0-30 degree flex. Tell patient to squeeze with maximum force and hold (for 5 seconds or until the dynamometer small needle begins to lower). Use average of 3 successive trials with 60 second rest between trials", "images": [], "options": ["Undefined currently", "Will get these numbers later"]} 
+	]
+ },
+ {"title": "Gastrointestinal", "type": "Body Region", "description": "null", "nextItems":
+	[
+		{"title": "Abdominal pain", "description": "null", "images": [], "options": ["No", "< 5 days", "> 5 days"]},
+		{"title": "Nausea", "description": "null", "images": [], "options": ["No", "< 5 days", "> 5 days"]},
+		{"title": "Vomitting", "description": "null", "images": [], "options": ["No", "< 5 days", "> 5 days"]},
+		{"title": "Constipation", "description": "null", "images": [], "options": ["No", "< 5 days", "> 5 days"]},
+		{"title": "Diarrhea", "description": "null", "images": [], "options": ["No", "< 5 days", "> 5 days"]}
+	]
+ },
+ {"title": "Musculoskeletal", "type": "Body Region", "description": "null", "nextItems":
+	[
+		{"title": "Nails", "description": "Observe color, texture, and shape.", "images": ["http://i.imgur.com/ysuU7WD.png"], "options": ["Normal", "Moderate changes: half white/brown, brittle, concave spoon shape, or ridges", "Severely brittle, concave spoon shape, or ridges"]}
+	]
+ },
+ {"title": "Integumentary", "type": "Body Region", "description": "null", "nextItems":
+	[
+		{"title": "Skin turgor", "description": "Pinch skin and observe recoil time.", "images": ["http://i.imgur.com/92tfwwU.png"], "options": ["Immediately", "< 2 seconds", "> 2 seconds"]},
+		{"title": "Skin coloration", "description": "Observe skin for coloration.", "images": [], "options": ["Normal", "Moderate bruising", "Severe bruising"]},
+		{"title": "Pressure/decubitus ulcers", "description": "null", "images": [], "options": ["Normal intact skin", "Stage I or II", "Stage III or IV"]},
+		{"title": "Wounds", "description": "null", "images": [], "options": ["None", "Clean or closed", "Contaiminated/infected or open"]}
+	]
+ },
+ {"title": "Lower Extremities", "type": "Body Region", "description": "null", "nextItems":
+	[
+		{"title": "Patella", "description": "Have patient prop up leg with knee bent at a right angle. Make sure that the back of the knee is not resting against bed or chair", "images": [], "options": ["Normal muscle protrusion, knee bone not prominent", "Knee bone visible", "Knee bone prominent and/or square, qua muscle curves inward at knee joint"]},
+		{"title": "Gastronemius", "description": "Have patient prop up leg with knee at a right angle. Gently grasp calf to assess amount and quality of muscle present.", "images": [], "options": ["Well developed bulb of muscle with firm texture", "Mildly developed muscle with somewhat spongy quality", "Undeveloped muscle and spongy texture quality"]},
+		{"title": "Ankle and foot", "description": "Press firmly on the top of foot or tibial bone to assess for fluid accumulation or edema", "images": ["http://i.imgur.com/69CGvp0.png"], "options": ["No depression or pitting", "Moderate indentation < 30 seconds or < 6 mm deep", "Deep indentation > 30 seconds or > 6 mm deep"]}
+	]
+ },
+ {"title": "Endocrine", "type": "Body Region", "description": "null", "nextItems":
+	[
+		{"title": "Appetite", "description": "Assess patient for food intake.", "images": [], "options": ["No decrease", "Moderate decrease (< 75% for > 7 days)", "Severe decrease (< 50% for > 5 days)"]},
+		{"title": "Weight loss", "description": "Null", "images": [], "options": ["None", "Unintended weight loss < 10 pounds or < 5% in 1 month or < 7.5% in 3 months", "Unintended weight loss > 10 pounds or < 5% in 1 month or < 7.5% in 3 months"]},
+		{"title": "Weight gain", "description": "Null", "images": [], "options": ["None", "Unintended gain > 10 pounds", "Unintended gain > 10 pounds in past 3 months"]}
+	]
+ }
+]
+ 
+ 
+ 
+}

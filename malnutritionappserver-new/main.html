@@ -1,0 +1,301 @@
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+
+        <style>
+            #login_div{
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                margin-top: -50px;
+                margin-left: -50px;
+                width: 100px;
+                height: 100px;
+            }​
+        </style>
+        <style>
+            body {font-family: sans-serif;}
+            #result {
+                padding: 1em;
+            }
+            .pass {
+                background-color: #efe;
+                color: #393;
+                border: 2px solid #393;
+            }
+            .fail {
+                background-color: #fee;
+                color: #933;
+                border: 2px solid #933;
+            }
+            textarea { width: 100%; }
+        </style>
+    </head>
+    <body>
+        <div id="login_div">
+            <label for="password_text_field">Enter The Password</label>
+                <input type="password" name="password" id="password_text_field" placeholder="Password" required>
+            <input type="submit" id="login_button" value="Login">
+        </div>
+
+        <div id="symptoms_div">
+            <textarea id="symptoms_textarea" rows="20" cols="50"></textarea>
+            <p>
+                <button id="symptoms_validate_button">Validate</button>
+                <button id="symptoms_submit_button">Submit</button>
+            </p>
+            <pre id="symptoms_result"></pre>
+        </div>
+
+        <div id="assessment_div">
+            <textarea id="assessment_textarea" rows="20" cols="50"></textarea>
+            <p>
+                <button id="assessment_validate_button">Validate</button>
+                <button id="assessment_submit_button">Submit</button>
+            </p>
+            <pre id="assessment_result"></pre>
+        </div>
+    </body>
+
+    <script>
+        var domain = "http://nutriscreen.herokuapp.com/";
+//        var domain = "http://localhost:3000/"
+
+
+        function authenticate(callback, error_handler){
+            var request = $.ajax({
+                url: domain + "authenticate",
+                type: "POST",
+                data: {auth_key: localStorage.getItem('auth_key')},
+                dataType: "html"
+            });
+
+            request.done(function (message) {
+                let response = JSON.parse(message);
+                console.log(message);
+                if (response["error"] == null) {
+                    callback();
+                }
+                else {
+                    console.log("Error_handler called!")
+                    error_handler(response.error);
+                }
+            });
+        }
+
+        function login(password, callback, error_handler){
+
+            var request = $.ajax({
+                url: domain + "login",
+                type: "POST",
+                data: {password: password},
+                dataType: "html"
+            });
+
+            request.done(function(message) {
+                var json = JSON.parse(message);
+                if(json.error == null){
+                    localStorage.setItem('auth_key',json.data.auth_key);
+                    callback();
+                }
+                else{
+                    error_handler(json.error);
+                }
+            });
+        }
+
+        function validate(json, callback, error_handler) {
+            authenticate(function(){
+                showTextarea();
+                var request = $.ajax({
+                    url: domain + "validate",
+                    type: "POST",
+                    data: {auth_key: localStorage.getItem('auth_key'), json: json},
+                    dataType: "html"
+                });
+                request.done(function (message) {
+                    let json = JSON.parse(message);
+                    console.log(message);
+                    if (json["error"] == null) {
+                        console.log("callback called!")
+                        callback();
+                    }
+                    else {
+                        console.log("Error_handler called!")
+                        error_handler(json.error);
+                    }
+                });
+            },function(error){
+                alert(error);
+                showLogin();
+            });
+        }
+
+        function get_json(type, callback, error_handler){
+            var request = $.ajax({
+                url: domain + "get_json",
+                type: "POST",
+                data: {type: type},
+                dataType: "html"
+            });
+            request.done(function (message) {
+                let json = JSON.parse(message);
+                console.log(message);
+                if (json["error"] == null) {
+                    console.log("callback called!")
+                    callback(json.data.json);
+                }
+                else {
+                    console.log("Error_handler called!")
+                    error_handler(json.error);
+                }
+            });
+        }
+
+        function submit(json, type, callback, error_handler){
+            authenticate(function(){
+                showTextarea();
+                var request = $.ajax({
+                    url: domain + "submit",
+                    type: "POST",
+                    data: {auth_key: localStorage.getItem('auth_key'), json: json, type: type},
+                    dataType: "html"
+                });
+
+                request.done(function (message) {
+                    var json = JSON.parse(message);
+                    console.log(message);
+                    if (json["error"] == null) {
+                        console.log("callback called!")
+                        callback(json.data);
+                    }
+                    else {
+                        console.log("Error_handler called!")
+                        error_handler(json.error);
+                    }
+                });
+            }, function(error){
+                alert(error);
+                showLogin();
+            })
+
+
+        }
+    </script>
+
+    <script>
+        function showLogin(){
+            $('#symptoms_div').hide();
+            $('#assessment_div').hide();
+            $('#login_div').show();
+        }
+
+        function showTextarea(){
+            $('#symptoms_div').show();
+            $('#assessment_div').show();
+            $('#login_div').hide();
+        }
+
+        $("#login_button").click(function(){
+            console.log("login button clicked")
+//                var username = $("#username_text_field").text();
+            var password = $("#password_text_field").val();
+            login(password, function(){
+                showTextarea();
+                get_json("symptoms", function(json){
+                    if($('#symptoms_textarea').val() == "") {
+                        $("#symptoms_textarea").val(json);
+                    }
+                }, function(error){
+                    alert(error);
+                });
+                get_json("assessment", function(json){
+                    if($('#assessment_textarea').val() == "") {
+                        $("#assessment_textarea").val(json);
+                    }
+                }, function(error){
+                    alert(error);
+                });
+            }, function(error){
+                showLogin();
+                alert(error);
+            })
+        });
+    </script>
+
+    <script>
+        $("#symptoms_validate_button").click(function () {
+            var result = $("#symptoms_result");
+            validate($("#symptoms_textarea").val(), function(data){
+                result.html("JSON is valid!");
+                result.attr('class', 'pass');
+            }, function(error){
+                result.html(error);
+                result.attr('class', 'fail');
+            });
+        });
+
+        $("#symptoms_submit_button").click(function(){
+            var result = $("#symptoms_result");
+            if(window.confirm("Are you sure? This will override the old JSON")){
+                submit($("#symptoms_textarea").val(), "symptoms", function(data){
+                    result.html("JSON has been updated!");
+                    result.attr('class', 'pass');
+                }, function(error){
+                    result.html(error);
+                    result.attr('class', 'fail');
+                });
+            }
+        });
+
+        $("#assessment_validate_button").click(function(){
+            var result = $("#assessment_result");
+            validate($("#assessment_textarea").val(), function(data){
+                result.html("JSON is valid!");
+                result.attr('class', 'pass');
+            }, function(error){
+                result.html(error);
+                result.attr('class', 'fail');
+            });
+        })
+
+        $("#assessment_submit_button").click(function(){
+            var result = $("#assessment_result");
+            if(window.confirm("Are you sure? This will override the old JSON")){
+                submit($("#assessment_textarea").val(), "assessment", function(data){
+                    result.html("JSON has been updated!");
+                    result.attr('class', 'pass');
+                }, function(error){
+                    result.html(error);
+                    result.attr('class', 'fail');
+                });
+            }
+        });
+    </script>
+
+    <script>
+        authenticate(function(){
+            showTextarea();
+            get_json("symptoms", function(json){
+                if($('#symptoms_textarea').val() == "") {
+                    $("#symptoms_textarea").val(json);
+                }
+            }, function(error){
+                alert(error);
+            })
+            get_json("assessment", function(json){
+                if($('#assessment_textarea').val() == "") {
+                    $("#assessment_textarea").val(json);
+                }
+            }, function(error){
+                alert(error);
+            })
+        }, function(error){
+          showLogin();
+        })
+    </script>
+</html>
