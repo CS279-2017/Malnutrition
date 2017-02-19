@@ -1,4 +1,4 @@
-var RegistrationInformation = require("./registration_information.js");
+var RegistrationInformation = require("../model/registration_information.js");
 var nodemailer = require('nodemailer');
 
 var registrationAttemptsLimit = 5;
@@ -18,15 +18,15 @@ function RegistrationInformationCollection(database){
 
 RegistrationInformationCollection.prototype = {
     constructor: RegistrationInformationCollection,
-    registerEmail: function(email_address, callback, error_handler){
-        if(validateEmail(email_address) == false){
+    registerEmail: function(email, callback, error_handler){
+        if(validateEmail(email) == false){
             //return a object type that has an error message
             error_handler("invalid email address");
             console.log("validateEmail is false");
             return;
         }
         //validate email address is vanderbilt.edu
-        if(validateVanderbiltEmail(email_address) == false){
+        if(validateVanderbiltEmail(email) == false){
             error_handler("Must be a valid vanderbilt.edu email address");
             console.log("validateVanderbiltEmail is false");
             return;
@@ -34,20 +34,20 @@ RegistrationInformationCollection.prototype = {
         //generate verification_code
         var verification_code = generateVerificationCode(32);
         console.log(verification_code);
-        var registration_information = new RegistrationInformation(email_address);
+        var registration_information = new RegistrationInformation(email);
         registration_information.verification_code = verification_code;
         var collection_registration_information = this.collection_registration_information;
-        this.collection_registration_information.find({email_address: email_address, registered: true}).toArray(function(err, docs) {
+        this.collection_registration_information.find({email: email, registered: true}).toArray(function(err, docs) {
             if (!err) {
                 if (docs.length == 0) {
-                    sendEmail(email_address,{
+                    sendEmail(email,{
                         verificationCode: verification_code,
                         subject: "Verification Code For NutriRisk",
                         url: "/register_verification_code",
                         body: "CLick the link below to verify your email, if you did not register an account disregard this email"
                     }, function(){
                         collection_registration_information.findAndModify(
-                            {email_address: email_address},
+                            {email: email},
                             [],
                             {$set: registration_information},
                             {new: true, upsert: true},
@@ -77,15 +77,15 @@ RegistrationInformationCollection.prototype = {
             }
         });
     },
-    registerVerificationCode: function(verification_code, email_address, callback, error_handler){
+    registerVerificationCode: function(verification_code, email, callback, error_handler){
         var collection_registration_information = this.collection_registration_information;
-        this.collection_registration_information.find({email_address: email_address}).toArray(function(err, docs) {
+        this.collection_registration_information.find({email: email}).toArray(function(err, docs) {
             if(docs.length == 1) {
                 var registration_information = docs[0]
                 if (registration_information.registration_attempts < registrationAttemptsLimit) {
                     if (registration_information.verification_code == verification_code) {
                         if (registration_information.registered == false) {
-                            collection_registration_information.update({email_address: email_address}, {$set: {registered: true}}, function (err, count, status) {
+                            collection_registration_information.update({email: email}, {$set: {registered: true}}, function (err, count, status) {
                                 if (!err) {
                                     callback();
                                 }
@@ -102,7 +102,7 @@ RegistrationInformationCollection.prototype = {
                         }
                     }
                     else {
-                        collection_registration_information.update({email_address: email_address}, {$inc: {registration_attempts: 1}}, function (err, count, status) {
+                        collection_registration_information.update({email: email}, {$inc: {registration_attempts: 1}}, function (err, count, status) {
                             if (!err) {
                                 error_handler("Invalid verification code")
                             }
@@ -123,16 +123,16 @@ RegistrationInformationCollection.prototype = {
             }
         });
     },
-    resetPasswordEmail: function(email_address, callback, error_handler){
+    resetPasswordEmail: function(email, callback, error_handler){
         var collection_registration_information = this.collection_registration_information;
-        this.collection_registration_information.find({email_address: email_address}).toArray(function(err, docs) {
+        this.collection_registration_information.find({email: email}).toArray(function(err, docs) {
             if(docs.length == 1){
                 //generate reset_password_verification_code
                 var reset_password_verification_code = generateVerificationCode(32)
                 console.log(reset_password_verification_code);
 
                 //send email
-                sendEmail(email_address,
+                sendEmail(email,
                     {
                         verificationCode:reset_password_verification_code,
                         subject: "Reset Password For NutriRisk",
@@ -140,7 +140,7 @@ RegistrationInformationCollection.prototype = {
                         body: "CLick the link below to reset your password, if you did not request a password reset, disregard this email"
                     }, function(){
                     collection_registration_information.findAndModify(
-                        {email_address: email_address},
+                        {email: email},
                         [],
                         {$set: {reset_password_verification_code: reset_password_verification_code , reset_password_attempts: 0, password_reset: false}},
                         {new: true},
@@ -158,7 +158,7 @@ RegistrationInformationCollection.prototype = {
                 }, error_handler);
             }
             else if(docs.length > 1){
-                error_handler("There are duplicate email_addresses")
+                error_handler("There are duplicate emailes")
             }
             else{
                 error_handler("This email address hasn't been registered");
@@ -166,15 +166,15 @@ RegistrationInformationCollection.prototype = {
             }
         });
     },
-    resetPasswordVerificationCode: function(verification_code, email_address, callback, error_handler){
+    resetPasswordVerificationCode: function(verification_code, email, callback, error_handler){
         var collection_registration_information = this.collection_registration_information;
-        this.collection_registration_information.find({email_address: email_address}).toArray(function(err, docs) {
+        this.collection_registration_information.find({email: email}).toArray(function(err, docs) {
             if(docs.length == 1){
                 var registration_information = docs[0]
                 if(registration_information.reset_password_attempts < registrationAttemptsLimit){
                     if(registration_information.reset_password_verification_code == verification_code){
                         if(registration_information.password_reset == false){
-                            collection_registration_information.update({email_address: email_address}, {$set: {password_reset: true}}, function (err, count, status) {
+                            collection_registration_information.update({email: email}, {$set: {password_reset: true}}, function (err, count, status) {
                                 if (!err) {
                                     callback();
                                 }
@@ -191,7 +191,7 @@ RegistrationInformationCollection.prototype = {
                         }
                     }
                     else{
-                        collection_registration_information.update({email_address: email_address}, {$inc: {password_reset_attempts: 1}}, function (err, count, status) {
+                        collection_registration_information.update({email: email}, {$inc: {password_reset_attempts: 1}}, function (err, count, status) {
                             if(!err){
                                 error_handler("Invalid password reset verification code")
                             }
@@ -236,14 +236,14 @@ RegistrationInformationCollection.prototype = {
             }
         });
     },
-    getForEmailAddress: function(email_address, callback, error_handler){
-        this.collection_registration_information.find({email_address: email_address}).toArray(function(err, docs) {
+    getForEmailAddress: function(email, callback, error_handler){
+        this.collection_registration_information.find({email: email}).toArray(function(err, docs) {
             if(docs.length > 0) {
                 var registration_information = docs[0]
                 callback(registration_information);
             }
             else{
-                error_handler("RegistrationInformation with email_address " + email_address + " was not found");
+                error_handler("RegistrationInformation with email " + email + " was not found");
             }
         });
     },
@@ -253,7 +253,7 @@ function toMongoIdObject(id){
     return new require('mongodb').ObjectID(id.toString());
 }
 
-function sendEmail(email_address, options, callback, error_handler){
+function sendEmail(email, options, callback, error_handler){
     var verification_code = options.verificationCode;
     var subject = options.subject;
     var body = options.body;
@@ -261,10 +261,10 @@ function sendEmail(email_address, options, callback, error_handler){
     // setup e-mail data with unicode symbols
     var mailOptions = {
         from: '"NutriRisk" <bowen.jin@vanderbilt.edu>', // sender address
-        to: email_address, // list of receivers
+        to: email, // list of receivers
         subject: subject != undefined ? subject : 'An Email From NutriRisk', // Subject line
         text: (body == undefined ? "" : body + "\n\n") + (verification_code == undefined ? "" :
-            'Click Here: https://nutriscreen.herokuapp.com' + url + '?'+'email='+email_address+'&code='+verification_code)
+            'Click Here: https://nutriscreen.herokuapp.com' + url + '?'+'email='+email+'&code='+verification_code)
     }
 
     // send mail with defined transport object
@@ -291,15 +291,15 @@ function generateVerificationCode(length){
     return text;
 }
 
-function validateEmail(email_address) {
+function validateEmail(email) {
     var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    return re.test(email_address);
+    return re.test(email);
 }
 
-function validateVanderbiltEmail(email_address){
-    var nameString = email_address.substring(0, email_address.indexOf("@"));
+function validateVanderbiltEmail(email){
+    var nameString = email.substring(0, email.indexOf("@"));
     var nameStringSplit = nameString.split(".");
-    return nameStringSplit.length >= 2 && nameStringSplit.length <= 4 && /@vanderbilt.edu\s*$/.test(email_address);
+    return nameStringSplit.length >= 2 && nameStringSplit.length <= 4 && /@vanderbilt.edu\s*$/.test(email);
 }
 
 module.exports = RegistrationInformationCollection;

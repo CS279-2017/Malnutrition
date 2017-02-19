@@ -1,4 +1,4 @@
-var User = require("./user2.js");
+var User = require("../model/user.js");
 const crypto = require('crypto');
 const secret = 'vandylistisawesome';
 var hat = require('hat');

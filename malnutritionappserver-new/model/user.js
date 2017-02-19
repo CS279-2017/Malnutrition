@@ -1,52 +1,29 @@
-function User(email_address, password){
-    //TODO: find way to get a unique id that we can then assign the user, probably have to get it by querying the Database
-    // this._id = undefined;
-
-    if(email_address != undefined){
-        var name = parseNameFromEmailVanderbilt(email_address);
+function User(email, password){
+    if(email != undefined){
+        var name = parseNameFromEmailVanderbilt(email);
         this.firstName = name.firstName;
         this.lastName = name.lastName;
     }
 
-    if(password != undefined){
-        this.password = password;
-    }
-    this.email = email_address
+    this.password = password;
+    this.email = email
 
     this.verified = false;
     this.creation_time = new Date().getTime();
-
-    // this.device_token = undefined;
-    // this.venmo_id = undefined ;
-    // this.socket_id = undefined;
-
-    // this.profile_picture = undefined;
-
-
-    // this.buying_listing_ids = [];
-    // this.selling_listing_ids = [];
-
-    // this.location = undefined;
-    // this.logged_in = true;
 }
 
-// User.prototype = {
-//     //TODO: add getters for username and email, note: password should never be gotten only used internally in a user object
-//     constructor: User,
-// }
-
-function toMongoIdObject(id){
-    return new require('mongodb').ObjectID(id.toString());
+User.prototype = {
+    constructor: User,
 }
 
-function parseNameFromEmailVanderbilt(email_address){
+function parseNameFromEmailVanderbilt(email){
     String.prototype.capitalizeFirstLetter = function() {
         return this.charAt(0).toUpperCase() + this.slice(1);
     }
-    email_address = email_address.toLowerCase(); //converts email_address to lower_case because email_addresses are case insensitive
+    email = email.toLowerCase(); //converts email to lower_case because emailes are case insensitive
     var first_name;
     var last_name;
-    var nameString = email_address.substring(0, email_address.indexOf("@"));
+    var nameString = email.substring(0, email.indexOf("@"));
     var nameStringSplit = nameString.split(".");
     if(nameStringSplit.length == 2){
         first_name = nameStringSplit[0];
