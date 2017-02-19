@@ -1,4 +1,4 @@
-function RegistrationInformation(email){
+function Registration(email){
     //TODO: find way to get a unique id that we can then assign the registration_information, probably have to get it by querying the Database
     this.email = email
     
@@ -16,8 +16,8 @@ function RegistrationInformation(email){
     this.reset_password_attempts = 0;
 }
 
-RegistrationInformation.prototype = {
-    constructor: RegistrationInformation,
+Registration.prototype = {
+    constructor: Registration,
 }
 
-module.exports = RegistrationInformation;
+module.exports = Registration;

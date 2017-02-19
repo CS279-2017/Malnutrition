@@ -1,6 +1,6 @@
 var User = require("./model/user.js");
 
-var db = require("../database/db");
+var db = require("./db/db");
 var jsonlint = require("jsonlint");
 var fs = require('fs');
 var path = require('path');

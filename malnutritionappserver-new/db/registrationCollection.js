@@ -1,4 +1,4 @@
-var RegistrationInformation = require("../model/registration_information.js");
+var Registration = require("../model/registration.js");
 var nodemailer = require('nodemailer');
 
 var registrationAttemptsLimit = 5;
@@ -11,13 +11,13 @@ var transporter = nodemailer.createTransport({
     }
 });
 
-function RegistrationInformationCollection(database){
+function RegistrationCollection(database){
     this.database = database;
-    this.collection_registration_information = database.collection('registration_information');
+    this.registrationCollection = database.collection('registration');
 }
 
-RegistrationInformationCollection.prototype = {
-    constructor: RegistrationInformationCollection,
+RegistrationCollection.prototype = {
+    constructor: RegistrationCollection,
     registerEmail: function(email, callback, error_handler){
         if(validateEmail(email) == false){
             //return a object type that has an error message
@@ -34,10 +34,10 @@ RegistrationInformationCollection.prototype = {
         //generate verification_code
         var verification_code = generateVerificationCode(32);
         console.log(verification_code);
-        var registration_information = new RegistrationInformation(email);
-        registration_information.verification_code = verification_code;
-        var collection_registration_information = this.collection_registration_information;
-        this.collection_registration_information.find({email: email, registered: true}).toArray(function(err, docs) {
+        var registration = new Registration(email);
+        registration.verification_code = verification_code;
+        var registrationCollection = this.registrationCollection;
+        this.registrationCollection.find({email: email, registered: true}).toArray(function(err, docs) {
             if (!err) {
                 if (docs.length == 0) {
                     sendEmail(email,{
@@ -46,10 +46,10 @@ RegistrationInformationCollection.prototype = {
                         url: "/register_verification_code",
                         body: "CLick the link below to verify your email, if you did not register an account disregard this email"
                     }, function(){
-                        collection_registration_information.findAndModify(
+                        registrationCollection.findAndModify(
                             {email: email},
                             [],
-                            {$set: registration_information},
+                            {$set: registration},
                             {new: true, upsert: true},
                             function (err, docs) {
                                 if (!err) {
@@ -59,7 +59,7 @@ RegistrationInformationCollection.prototype = {
                                 }
                                 else {
                                     console.log(err);
-                                    console.log("collection.registration_information.findAndModify error");
+                                    console.log("collection.registration.findAndModify error");
                                     error_handler("An error occured!")
                                 }
                             }
@@ -78,14 +78,14 @@ RegistrationInformationCollection.prototype = {
         });
     },
     registerVerificationCode: function(verification_code, email, callback, error_handler){
-        var collection_registration_information = this.collection_registration_information;
-        this.collection_registration_information.find({email: email}).toArray(function(err, docs) {
+        var registrationCollection = this.registrationCollection;
+        this.registrationCollection.find({email: email}).toArray(function(err, docs) {
             if(docs.length == 1) {
-                var registration_information = docs[0]
-                if (registration_information.registration_attempts < registrationAttemptsLimit) {
-                    if (registration_information.verification_code == verification_code) {
-                        if (registration_information.registered == false) {
-                            collection_registration_information.update({email: email}, {$set: {registered: true}}, function (err, count, status) {
+                var registration = docs[0]
+                if (registration.registration_attempts < registrationAttemptsLimit) {
+                    if (registration.verification_code == verification_code) {
+                        if (registration.registered == false) {
+                            registrationCollection.update({email: email}, {$set: {registered: true}}, function (err, count, status) {
                                 if (!err) {
                                     callback();
                                 }
@@ -102,7 +102,7 @@ RegistrationInformationCollection.prototype = {
                         }
                     }
                     else {
-                        collection_registration_information.update({email: email}, {$inc: {registration_attempts: 1}}, function (err, count, status) {
+                        registrationCollection.update({email: email}, {$inc: {registration_attempts: 1}}, function (err, count, status) {
                             if (!err) {
                                 error_handler("Invalid verification code")
                             }
@@ -124,8 +124,8 @@ RegistrationInformationCollection.prototype = {
         });
     },
     resetPasswordEmail: function(email, callback, error_handler){
-        var collection_registration_information = this.collection_registration_information;
-        this.collection_registration_information.find({email: email}).toArray(function(err, docs) {
+        var registrationCollection = this.registrationCollection;
+        this.registrationCollection.find({email: email}).toArray(function(err, docs) {
             if(docs.length == 1){
                 //generate reset_password_verification_code
                 var reset_password_verification_code = generateVerificationCode(32)
@@ -139,7 +139,7 @@ RegistrationInformationCollection.prototype = {
                         url: "/reset_password_verification",
                         body: "CLick the link below to reset your password, if you did not request a password reset, disregard this email"
                     }, function(){
-                    collection_registration_information.findAndModify(
+                    registrationCollection.findAndModify(
                         {email: email},
                         [],
                         {$set: {reset_password_verification_code: reset_password_verification_code , reset_password_attempts: 0, password_reset: false}},
@@ -150,7 +150,7 @@ RegistrationInformationCollection.prototype = {
                                 if(callback != undefined){ callback(value); }
                             }
                             else{
-                                console.log("collection_registration_information.findAndModify error");
+                                console.log("registrationCollection.findAndModify error");
                                 error_handler("An Error Occured while Resetting Password!")
                             }
                         }
@@ -167,14 +167,14 @@ RegistrationInformationCollection.prototype = {
         });
     },
     resetPasswordVerificationCode: function(verification_code, email, callback, error_handler){
-        var collection_registration_information = this.collection_registration_information;
-        this.collection_registration_information.find({email: email}).toArray(function(err, docs) {
+        var registrationCollection = this.registrationCollection;
+        this.registrationCollection.find({email: email}).toArray(function(err, docs) {
             if(docs.length == 1){
-                var registration_information = docs[0]
-                if(registration_information.reset_password_attempts < registrationAttemptsLimit){
-                    if(registration_information.reset_password_verification_code == verification_code){
-                        if(registration_information.password_reset == false){
-                            collection_registration_information.update({email: email}, {$set: {password_reset: true}}, function (err, count, status) {
+                var registration = docs[0]
+                if(registration.reset_password_attempts < registrationAttemptsLimit){
+                    if(registration.reset_password_verification_code == verification_code){
+                        if(registration.password_reset == false){
+                            registrationCollection.update({email: email}, {$set: {password_reset: true}}, function (err, count, status) {
                                 if (!err) {
                                     callback();
                                 }
@@ -191,7 +191,7 @@ RegistrationInformationCollection.prototype = {
                         }
                     }
                     else{
-                        collection_registration_information.update({email: email}, {$inc: {password_reset_attempts: 1}}, function (err, count, status) {
+                        registrationCollection.update({email: email}, {$inc: {password_reset_attempts: 1}}, function (err, count, status) {
                             if(!err){
                                 error_handler("Invalid password reset verification code")
                             }
@@ -213,37 +213,37 @@ RegistrationInformationCollection.prototype = {
             }
         });
     },
-    get: function(registration_information_ids, callback, error_handler){
-        if(!(Array.isArray(registration_information_ids))){
-            error_handler("registration_information_ids must be an array!")
+    get: function(registration_ids, callback, error_handler){
+        if(!(Array.isArray(registration_ids))){
+            error_handler("registration_ids must be an array!")
         }
-        var registration_information_id_arr = [];
-        for(var i=0; i<registration_information_ids.length; i++){
-            registration_information_id_arr.push(toMongoIdObject(registration_information_ids[i].toString()));
+        var registration_id_arr = [];
+        for(var i=0; i<registration_ids.length; i++){
+            registration_id_arr.push(toMongoIdObject(registration_ids[i].toString()));
         }
-        this.collection_registration_information.find({_id: {$in:registration_information_id_arr}}).toArray(function(err, docs) {
+        this.registrationCollection.find({_id: {$in:registration_id_arr}}).toArray(function(err, docs) {
             if(docs.length > 0){
-                var registration_information_arr = [];
+                var registration_arr = [];
                 for(var j=0; j< docs.length; j++){
-                    var registration_information = new RegistrationInformation();
-                    registration_information.update(docs[j]);
-                    registration_information_arr.push(registration_information);
+                    var registration = new Registration();
+                    registration.update(docs[j]);
+                    registration_arr.push(registration);
                 }
-                callback(registration_information_arr);
+                callback(registration_arr);
             }
             else{
-                error_handler("Noregistration_information were found");
+                error_handler("Noregistration were found");
             }
         });
     },
     getForEmailAddress: function(email, callback, error_handler){
-        this.collection_registration_information.find({email: email}).toArray(function(err, docs) {
+        this.registrationCollection.find({email: email}).toArray(function(err, docs) {
             if(docs.length > 0) {
-                var registration_information = docs[0]
-                callback(registration_information);
+                var registration = docs[0]
+                callback(registration);
             }
             else{
-                error_handler("RegistrationInformation with email " + email + " was not found");
+                error_handler("Registration with email " + email + " was not found");
             }
         });
     },
@@ -302,4 +302,4 @@ function validateVanderbiltEmail(email){
     return nameStringSplit.length >= 2 && nameStringSplit.length <= 4 && /@vanderbilt.edu\s*$/.test(email);
 }
 
-module.exports = RegistrationInformationCollection;
+module.exports = RegistrationCollection;
