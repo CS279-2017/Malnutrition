@@ -15,7 +15,6 @@ class BaseController: GAITrackedViewController{
 //    }
     
     override func viewDidAppear(_ animated: Bool) {
-        authenticate();
         hideKeyboardWhenTappedAround();
     }
     
@@ -53,29 +52,6 @@ class BaseController: GAITrackedViewController{
     func hideProgressBar(){
         if(self.view.viewWithTag(200) != nil){
             self.view.viewWithTag(200)?.isHidden = true;
-        }
-    }
-    
-    func authenticate(){
-        if(!isLoginController()){
-            var authKey = ""
-            if let key = UserData.get()?.authKey{
-                authKey = key;
-            }
-            var userId = "";
-            if let id = UserData.get()?.userId{
-                userId = id;
-            }
-            DataStore.get().authenticate(authKey: authKey, userId: userId, callback:{
-                
-            }, error_handler: {error in
-                if(!(self is LoginController)){
-                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                    let controller = storyboard.instantiateViewController(withIdentifier: "FirstController") as! FirstController
-                    self.present(controller, animated: true, completion: nil);
-                }
-                //            DataStore.get().error_handler(error: error);
-            })
         }
     }
     

@@ -88,24 +88,24 @@ class DataStore{
         parent.nextItems.append(newItem);
     }
     
-    func login(email: String, password: String, callback: ((String) -> Void)?, error_handler: ((String)->Void)?){
-        var request = URLRequest(url: URL(string: serverUrl+"/login_mobile")!)
+    func login(email: String, password: String, callback: ((String) -> Void)?, errorHandler: ((String)->Void)?){
+        var request = URLRequest(url: URL(string: serverUrl+"/user/login")!)
         request.httpMethod = "POST"
         //        let postString = "id=13&name=Jack"
         let postString = "email=" + email+"&password="+password;
         request.httpBody = postString.data(using: .utf8)
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             guard let data = data, error == nil else {                                                 // check for fundamental networking error
-                if(error_handler != nil){
-                    error_handler!(String(describing: error));
+                if(errorHandler != nil){
+                    errorHandler!(String(describing: error));
                 }
                 return
             }
             
             if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 {           // check for http errors
                 let error = "statusCode should be 200, but is \(httpStatus.statusCode)"
-                if(error_handler != nil){
-                    error_handler!(error);
+                if(errorHandler != nil){
+                    errorHandler!(error);
                 }
                 print(error)
                 print("response = \(response)")
@@ -125,14 +125,14 @@ class DataStore{
                         }
                     }
                     else{
-                        if let error_handler = error_handler{
-                            error_handler(json["error"].string!);
+                        if let errorHandler = errorHandler{
+                            errorHandler(json["error"].string!);
                         }
                     }
                     
                 }
                 else{
-                    error_handler!("invalid json string");
+                    errorHandler!("invalid json string");
                 }
             }
             
@@ -141,16 +141,16 @@ class DataStore{
         task.resume()
     }
     
-    func register(email: String, password: String, callback: (() -> Void)?, error_handler: ((String)->Void)?){
-        var request = URLRequest(url: URL(string: serverUrl+"/register_mobile")!)
+    func register(email: String, password: String, callback: (() -> Void)?, errorHandler: ((String)->Void)?){
+        var request = URLRequest(url: URL(string: serverUrl+"/user/register")!)
         request.httpMethod = "POST"
         //        let postString = "id=13&name=Jack"
         let postString = "email=" + email+"&password="+password;
         request.httpBody = postString.data(using: .utf8)
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             guard let data = data, error == nil else {                                                 // check for fundamental networking error
-                if(error_handler != nil){
-                    error_handler!(String(describing: error));
+                if(errorHandler != nil){
+                    errorHandler!(String(describing: error));
                 }
                 print("error=\(error)")
                 return
@@ -158,8 +158,8 @@ class DataStore{
             
             if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 {           // check for http errors
                 let error = "statusCode should be 200, but is \(httpStatus.statusCode)"
-                if(error_handler != nil){
-                    error_handler!(error);
+                if(errorHandler != nil){
+                    errorHandler!(error);
                 }
                 print(error)
                 print("response = \(response)")
@@ -175,14 +175,14 @@ class DataStore{
                         }
                     }
                     else{
-                        if let error_handler = error_handler{
-                            error_handler(json["error"].string!);
+                        if let errorHandler = errorHandler{
+                            errorHandler(json["error"].string!);
                         }
                     }
                     
                 }
                 else{
-                    error_handler!("invalid json string");
+                    errorHandler!("invalid json string");
                 }
             }
             
@@ -191,16 +191,18 @@ class DataStore{
         task.resume()
     }
     
-    func authenticate(authKey: String, userId: String, callback: (()->())?, error_handler: ((String)->())?){
+    func authenticate(callback: (()->())?, errorHandler: ((String)->())?){
         var request = URLRequest(url: URL(string: serverUrl + "/authenticate")!)
         request.httpMethod = "POST"
         //        let postString = "id=13&name=Jack"
-        let postString = "authKey=" + authKey + "&userId=" + userId;
+        guard let authKey = UserData.get()?.authKey else {errorHandler!("No authKey"); return;}
+        guard let userId = UserData.get()?.userId else {errorHandler!("No userId"); return;}
+        let postString = "authKey=" +  authKey + "&userId=" + userId;
         request.httpBody = postString.data(using: .utf8)
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             guard let data = data, error == nil else {                                                 // check for fundamental networking error
-                if(error_handler != nil){
-                    error_handler!(String(describing: error));
+                if(errorHandler != nil){
+                    errorHandler!(String(describing: error));
                 }
                 print("error=\(error)")
                 return
@@ -208,8 +210,8 @@ class DataStore{
             
             if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 {           // check for http errors
                 let error = "statusCode should be 200, but is \(httpStatus.statusCode)"
-                if(error_handler != nil){
-                    error_handler!(error);
+                if(errorHandler != nil){
+                    errorHandler!(error);
                 }
                 print(error)
                 print("response = \(response)")
@@ -224,14 +226,14 @@ class DataStore{
                     }
                 }
                 else{
-                    if let error_handler = error_handler{
-                        error_handler(json["error"].string!);
+                    if let errorHandler = errorHandler{
+                        errorHandler(json["error"].string!);
                     }
                 }
                
             }
             else{
-                error_handler!("invalid json string");
+                errorHandler!("invalid json string");
             }
             print("responseString = \(responseString)")
             
@@ -240,7 +242,7 @@ class DataStore{
     }
 
     
-    func getJson(type: String, callback: ((String) -> Void)?, error_handler: ((String)->Void)?){
+    func getJson(type: String, callback: ((String) -> Void)?, errorHandler: ((String)->Void)?){
         var request = URLRequest(url: URL(string: serverUrl + "/get_json")!)
         request.httpMethod = "POST"
 //        let postString = "id=13&name=Jack"
@@ -248,8 +250,8 @@ class DataStore{
         request.httpBody = postString.data(using: .utf8)
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             guard let data = data, error == nil else {                                                 // check for fundamental networking error
-                if(error_handler != nil){
-                    error_handler!(String(describing: error));
+                if(errorHandler != nil){
+                    errorHandler!(String(describing: error));
                 }
                 print("error=\(error)")
                 return
@@ -257,8 +259,8 @@ class DataStore{
             
             if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 {           // check for http errors
                 let error = "statusCode should be 200, but is \(httpStatus.statusCode)"
-                if(error_handler != nil){
-                    error_handler!(error);
+                if(errorHandler != nil){
+                    errorHandler!(error);
                 }
                 print(error)
                 print("response = \(response)")
@@ -274,7 +276,7 @@ class DataStore{
                 }
             }
             else{
-                error_handler!("invalid json string");
+                errorHandler!("invalid json string");
             }
             
         }
@@ -300,7 +302,7 @@ class DataStore{
         return NSKeyedArchiver.archiveRootObject(noteBook, toFile: DataStore.archiveURL.path!)
     }
     
-    func error_handler(error: String){
+    func errorHandler(error: String){
         DispatchQueue.main.async {
             let alertController = UIAlertController(title: "Error", message: error, preferredStyle: UIAlertControllerStyle.alert)
             let okAction = UIAlertAction(title: "Ok", style: UIAlertActionStyle.default) { (result : UIAlertAction) -> Void in
@@ -315,12 +317,12 @@ class DataStore{
         return "Review Of Symptoms:\n" + DataStore.get().rootItemExamination.toString() + "\n" + "Assessment Quiz:\n" + DataStore.get().rootItemAssessmentQuiz.toString();
     }
     
-    func deleteNote(note: Note, callback: (() -> Void)?, error_handler: ((String)->Void)?){
+    func deleteNote(note: Note, callback: (() -> Void)?, errorHandler: ((String)->Void)?){
         noteBook.deleteNote(note: note);
         if(save() != true){
             print("unable to save note");
-            if(error_handler != nil){
-                error_handler!("unable to save note")
+            if(errorHandler != nil){
+                errorHandler!("unable to save note")
             }
         }
         else{
@@ -331,11 +333,11 @@ class DataStore{
         }
     }
     
-    func addNote(note: Note, callback: (() -> Void)?, error_handler: ((String)->Void)?){
+    func addNote(note: Note, callback: (() -> Void)?, errorHandler: ((String)->Void)?){
         noteBook.addNote(note: note);
         if(save() != true){
-            if(error_handler != nil){
-                error_handler!("unable to save note")
+            if(errorHandler != nil){
+                errorHandler!("unable to save note")
             }
             print("unable to save note");
         }
@@ -357,7 +359,7 @@ class DataStore{
             print("Loaded Symptoms from server!")
             self.parseJson(jsonString: symptomsJson, root:self.rootItemExamination);
             AppDelegate.loadedSymptoms = true;
-            }, error_handler: { error in
+            }, errorHandler: { error in
                 print("Loaded Symptoms from file!")
                 let symptomsJson = self.readStringFromFile(fileName: "symptoms")
                 self.parseJson(jsonString: symptomsJson, root:self.rootItemExamination);
@@ -371,7 +373,7 @@ class DataStore{
             print(assessmentJson);
             self.parseJson(jsonString: assessmentJson, root:self.rootItemAssessmentQuiz);
             AppDelegate.loadedAssessments = true;
-            }, error_handler: { error in
+            }, errorHandler: { error in
                 print("Loaded Assessments from file!")
                 let assessmentJson = self.readStringFromFile(fileName: "assessment")
                 self.parseJson(jsonString: assessmentJson, root:self.rootItemAssessmentQuiz);

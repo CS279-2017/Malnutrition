@@ -22,9 +22,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
-        DataStore.get();
-            
+        
+        DataStore.get().authenticate(callback: {
+            self.popToMainController();
+        }, errorHandler: {error in
+            self.popToFirstController();
+        })
+        self.popToFirstController();
+        
         // Configure tracker from GoogleService-Info.plist.
         var configureError:NSError?
         GGLContext.sharedInstance().configureWithError(&configureError)
@@ -146,6 +151,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
+    
+    func popToFirstController(){
+        DispatchQueue.main.async {
+            let storyboard = UIStoryboard(name: "Login", bundle: nil)
+            let firstController = storyboard.instantiateViewController(withIdentifier: "FirstController")
+            self.window?.rootViewController = firstController
+        }
+    }
+    
+    func popToMainController(){
+        DispatchQueue.main.async {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let mainController = storyboard.instantiateViewController(withIdentifier: "MainController")
+            self.window?.rootViewController = mainController
+        }
+    }
 
 
 }
@@ -185,4 +206,6 @@ extension UIViewController {
         view.endEditing(true)
     }
 }
+
+
 

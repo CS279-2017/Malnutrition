@@ -28,17 +28,17 @@ class RegisterController: BaseController{
     func registerButtonClicked(){
         //call register
         
-        guard let email = emailTextField.text else {DataStore.get().error_handler(error: "Please enter an email"); return;}
-        guard let password = passwordTextField.text else {DataStore.get().error_handler(error: "Please enter a password"); return;}
-        guard let verify_password = verifyPasswordTextField.text else{ DataStore.get().error_handler(error: "Please enter the password again"); return;}
+        guard let email = emailTextField.text else {DataStore.get().errorHandler(error: "Please enter an email"); return;}
+        guard let password = passwordTextField.text else {DataStore.get().errorHandler(error: "Please enter a password"); return;}
+        guard let verify_password = verifyPasswordTextField.text else{ DataStore.get().errorHandler(error: "Please enter the password again"); return;}
         if(email == ""){
-            DataStore.get().error_handler(error: "Enter Email"); return;
+            DataStore.get().errorHandler(error: "Enter Email"); return;
         }
         if(password == ""){
-            DataStore.get().error_handler(error: "Enter Password"); return;
+            DataStore.get().errorHandler(error: "Enter Password"); return;
         }
         if(password != verify_password){
-            DataStore.get().error_handler(error: "Passwords don't match!");
+            DataStore.get().errorHandler(error: "Passwords don't match!");
             return;
         }
         DataStore.get().register(email: email, password: password, callback:{
@@ -46,9 +46,9 @@ class RegisterController: BaseController{
             DispatchQueue.main.async {
                 self.performSegue(withIdentifier: "RegisterToLogin", sender: nil);
             }
-        }, error_handler:{error in
+        }, errorHandler:{error in
             print(error);
-            DataStore.get().error_handler(error: error);
+            DataStore.get().errorHandler(error: error);
         });
     }
 }

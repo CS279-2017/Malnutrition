@@ -33,20 +33,20 @@ class LoginController: BaseController, UITextFieldDelegate{
     
     
     func loginButtonClicked(){
-        guard let email = emailTextField.text else {DataStore.get().error_handler(error: "Enter Email"); return;}
-        guard let password = passwordTextField.text else {DataStore.get().error_handler(error: "Enter Password"); return;}
+        guard let email = emailTextField.text else {DataStore.get().errorHandler(error: "Enter Email"); return;}
+        guard let password = passwordTextField.text else {DataStore.get().errorHandler(error: "Enter Password"); return;}
 //        self.showProgressBar(msg: "Logging In", true, width: 150);
         if(email == ""){
-           DataStore.get().error_handler(error: "Enter Email"); return;
+           DataStore.get().errorHandler(error: "Enter Email"); return;
         }
         if(password == ""){
-            DataStore.get().error_handler(error: "Enter Password"); return;
+            DataStore.get().errorHandler(error: "Enter Password"); return;
         }
         DataStore.get().login(email: email, password: password, callback: { authKey in 
             self.hideProgressBar();
             self.popToRootViewController(animated: true);
-        }, error_handler: {error in
-            DataStore.get().error_handler(error: error);
+        }, errorHandler: {error in
+            DataStore.get().errorHandler(error: error);
             self.hideProgressBar();
         })
     }

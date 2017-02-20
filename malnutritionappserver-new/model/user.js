@@ -1,15 +1,15 @@
 function User(email, password){
     if(email != undefined){
         var name = parseNameFromEmailVanderbilt(email);
-        this.firstName = name.firstName;
-        this.lastName = name.lastName;
+        this.firstName = name.firstName; //string
+        this.lastName = name.lastName; //string
     }
 
-    this.password = password;
-    this.email = email
+    this.password = password; //string
+    this.email = email //string
 
-    this.verified = false;
-    this.creation_time = new Date().getTime();
+    this.verified = false; //boolean
+    this.creationTime = new Date().getTime(); //milliseconds since 1970
 }
 
 User.prototype = {

@@ -14,7 +14,7 @@ UsersCollection.prototype = {
         var collection_users = this.collection_users;
         user.password = hashPassword(user.password);
         if(user.email != undefined){
-            this.collection_users.update({email: user.email}, {$set: user}, {upsert: true}, function (err, count, status) {
+            this.collection_users.updateOne({email: user.email}, {$set: user}, {upsert: true}, function (err, count, status) {
                 if(err){error_handler(err.message);}
                 else{
                     if(callback != undefined && callback != null){callback(user);}
@@ -44,8 +44,8 @@ UsersCollection.prototype = {
             });
         }
     },
-    update: function(email, updated_params, callback, error_handler){
-        this.collection_users.update({email: email}, {$set: updated_params}, function (err, count, status) {
+    update: function(query, update, callback, error_handler){
+        this.collection_users.updateOne(query, update, function (err, count, status) {
             if(err){error_handler(err.message);}
             else{
                 if(callback != undefined && callback != null){callback();}
@@ -209,7 +209,7 @@ UsersCollection.prototype = {
         });
     },
     logout: function(user_id, callback, error_handler){
-        this.collection_users.update({_id: toMongoIdObject(user_id)}, {$set: {loggedIn: false}}, function (err, count, status) {
+        this.collection_users.updateOne({_id: toMongoIdObject(user_id)}, {$set: {loggedIn: false}}, function (err, count, status) {
             if(!err){
                 callback();
             }
@@ -220,7 +220,7 @@ UsersCollection.prototype = {
     },
     //adds listing_id to buying_listing_ids of user, if called multiple times for same user_id and listing_id, will only add listing_id once.
     addBuyingListingId: function(user_id, listing_id, callback, error_handler){
-        this.collection_users.update({_id: toMongoIdObject(user_id)}, {$addToSet: {buying_listing_ids: listing_id}}, function (err, count, status) {
+        this.collection_users.updateOne({_id: toMongoIdObject(user_id)}, {$addToSet: {buying_listing_ids: listing_id}}, function (err, count, status) {
             if(!err){
                 callback();
             }
@@ -232,7 +232,7 @@ UsersCollection.prototype = {
         });
     },
     removeBuyingListingId: function(user_id, listing_id, callback, error_handler){
-        this.collection_users.update({_id: toMongoIdObject(user_id)}, {pull: {buying_listing_ids: listing_id}}, function (err, count, status) {
+        this.collection_users.updateOne({_id: toMongoIdObject(user_id)}, {pull: {buying_listing_ids: listing_id}}, function (err, count, status) {
             if(!err){
                 callback();
             }
@@ -242,7 +242,7 @@ UsersCollection.prototype = {
         });
     },
     addSellingListingId: function(user_id, listing_id, callback, error_handler){
-        this.collection_users.update({_id: toMongoIdObject(user_id)}, {$addToSet: {selling_listing_ids: listing_id}}, function (err, count, status) {
+        this.collection_users.updateOne({_id: toMongoIdObject(user_id)}, {$addToSet: {selling_listing_ids: listing_id}}, function (err, count, status) {
             if(!err){
                 callback();
             }
@@ -252,7 +252,7 @@ UsersCollection.prototype = {
         });
     },
     removeSellingListingId: function(user_id, listing_id, callback, error_handler){
-        this.collection_users.update({_id: toMongoIdObject(user_id)}, {pull: {selling_listing_ids: listing_id}}, function (err, count, status) {
+        this.collection_users.updateOne({_id: toMongoIdObject(user_id)}, {pull: {selling_listing_ids: listing_id}}, function (err, count, status) {
             if(!err){
                 callback();
             }
@@ -262,7 +262,7 @@ UsersCollection.prototype = {
         });
     },
     updateVenmoId: function(user_id, venmo_id, callback, error_handler) {
-        this.collection_users.update({_id: toMongoIdObject(user_id)}, {$set: {venmo_id: venmo_id}}, function (err, count, status) {
+        this.collection_users.updateOne({_id: toMongoIdObject(user_id)}, {$set: {venmo_id: venmo_id}}, function (err, count, status) {
             if (!err) {
                 callback();
             }
@@ -272,13 +272,27 @@ UsersCollection.prototype = {
         });
     },
     updateProfilePicture: function(user_id, profile_picture, callback, error_handler){
-        this.collection_users.update({_id: toMongoIdObject(user_id)}, {$set: {profile_picture: profile_picture}}, function (err, count, status) {
+        this.collection_users.updateOne({_id: toMongoIdObject(user_id)}, {$set: {profile_picture: profile_picture}}, function (err, count, status) {
             if (!err) {
                 // console.log(count);
                 callback();
             }
             else {
                 error_handler("updateVenmoId failed");
+            }
+        });
+    },
+    addNote: function(userId, note, callback, errorHandler){
+        this.collection_users.updateOne({_id: toMongoIdObject(userId)}, {$addToSet: {notes: note}}, function (err, count, status) {
+            if(!err){
+                if(callback){
+                    callback();
+                }
+            }
+            else{
+                if(errorHandler){
+                    errorHandler("UsersCollection::addNote failed");
+                }
             }
         });
     },

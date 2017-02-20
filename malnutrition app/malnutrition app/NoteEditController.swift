@@ -54,18 +54,18 @@ class NoteEditController:BaseController, UITextFieldDelegate, UITextViewDelegate
         let enteredTitle = titleTextField.text!;
         if(self.edittingExistingNote == false){
             if(enteredTitle == ""){
-                DataStore.get().error_handler(error: "You must enter a title");
+                DataStore.get().errorHandler(error: "You must enter a title");
             }
             else{
                 note!.title = titleTextField.text!
                 note?.textContent = textView.text!
                 DataStore.get().addNote(note: note!, callback: {self.performSegue(withIdentifier: "unwindFromNoteEditController", sender: self);
-                DataStore.get().clearNote();}, error_handler: DataStore.get().error_handler)
+                DataStore.get().clearNote();}, errorHandler: DataStore.get().errorHandler)
             }
         }
         else{
             if(enteredTitle == ""){
-                DataStore.get().error_handler(error: "You must enter a title");
+                DataStore.get().errorHandler(error: "You must enter a title");
             }
             else{
                 note!.title = titleTextField.text!
@@ -75,7 +75,7 @@ class NoteEditController:BaseController, UITextFieldDelegate, UITextViewDelegate
                     self.navigationController?.popViewController(animated: true);
                 }
                 else{
-                    DataStore.get().error_handler(error: "Unable to save note");
+                    DataStore.get().errorHandler(error: "Unable to save note");
                 }
     //                    self.performSegue(withIdentifier: "unwindFromNoteEditController", sender: self);
     //                    DataStore.get().rootItem.switchOffAllItems();
