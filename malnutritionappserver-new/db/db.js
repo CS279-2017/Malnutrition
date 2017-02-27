@@ -3,7 +3,8 @@ var RegistrationCollection = require("./registrationCollection.js")
 
 var MongoClient = require('mongodb').MongoClient;
 
-var url = process.env.MONGODB_URL || "mongodb://localhost:27017/nutririsk"
+var url = process.env.MONGODB_URL
+    // || "mongodb://localhost:27017/nutririsk"
 
 var registrationCollection;
 var userCollection;
