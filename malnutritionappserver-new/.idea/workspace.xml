@@ -84,8 +84,8 @@
       <file leaf-file-name="registrationCollection.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/db/registrationCollection.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="424">
-              <caret line="256" column="21" selection-start-line="256" selection-start-column="21" selection-end-line="256" selection-end-column="21" />
+            <state relative-caret-position="409">
+              <caret line="266" column="85" selection-start-line="266" selection-start-column="85" selection-end-line="266" selection-end-column="85" />
               <folding />
             </state>
           </provider>
@@ -338,12 +338,12 @@
       <updated>1487527447530</updated>
       <workItem from="1487527448901" duration="4708000" />
       <workItem from="1487884137349" duration="857000" />
-      <workItem from="1488153245814" duration="3601000" />
+      <workItem from="1488153245814" duration="3677000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="9166000" />
+    <option name="totallyTimeSpent" value="9242000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="736" extended-state="0" />
@@ -666,8 +666,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/db/registrationCollection.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="424">
-          <caret line="256" column="21" selection-start-line="256" selection-start-column="21" selection-end-line="256" selection-end-column="21" />
+        <state relative-caret-position="409">
+          <caret line="266" column="85" selection-start-line="266" selection-start-column="85" selection-end-line="266" selection-end-column="85" />
           <folding />
         </state>
       </provider>
