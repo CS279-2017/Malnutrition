@@ -24,6 +24,8 @@ class User{
     
     var logged_in: Bool?
     
+    var survey: Survey?
+    
     init(){
 
     }
@@ -51,6 +53,7 @@ class User{
         
         self.last_login_time = dictionary["last_login_time"] as? UInt64;
         self.logged_in = dictionary["logged_in"] as? Bool
+
     }
 
 }

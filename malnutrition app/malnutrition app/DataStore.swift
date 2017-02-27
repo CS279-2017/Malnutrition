@@ -16,8 +16,14 @@ class DataStore{
     static var sharedInstance: DataStore? = nil;
     
     
-//    let serverUrl = "http://10.66.247.44:3000"
-    let serverUrl = "https://nutriscreen.herokuapp.com"
+    let serverUrl = "http://10.66.134.47:3000"
+//    let serverUrl = "https://nutriscreen.herokuapp.com"
+    
+    let vumcUnitOptions = ["Geriatrics", "General Medical","General Surgical"]
+    
+    let clinicianTypeOptions = ["Attending Physician", "Resident", "Nurse Practitioner", "Physician Assistant", "Registered Nurse","Dietician"]
+    
+    
     var rootItemExamination:Item = Item(type: "Root", title: nil, description: nil, images: [String](), nextItems: [Item](), options: [String]());
     
     var rootItemAssessmentQuiz:Item = Item(type: "Root", title: nil, description: nil, images: [String](), nextItems: [Item](), options: [String]());
@@ -303,7 +309,11 @@ class DataStore{
     }
     
     func errorHandler(error: String){
+        var error = error;
         DispatchQueue.main.async {
+            if error.contains("Optional(Error"){
+                error = "An error occured!";
+            }
             let alertController = UIAlertController(title: "Error", message: error, preferredStyle: UIAlertControllerStyle.alert)
             let okAction = UIAlertAction(title: "Ok", style: UIAlertActionStyle.default) { (result : UIAlertAction) -> Void in
             }

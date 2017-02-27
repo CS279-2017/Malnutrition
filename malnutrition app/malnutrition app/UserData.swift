@@ -36,6 +36,10 @@ class UserData:NSObject, NSCoding{
     
     var authKey: String? = "";
     
+    var surveyComplete: Bool? = false
+    
+    var survey: Survey?
+    
     
     private override init() {
         
@@ -50,6 +54,8 @@ class UserData:NSObject, NSCoding{
         aCoder.encode(self.first_name, forKey: "first_name");
         aCoder.encode(self.last_name, forKey: "last_name");
         aCoder.encode(self.device_token, forKey: "device_token");
+        
+        aCoder.encode(self.survey, forKey: "survey");
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -61,6 +67,8 @@ class UserData:NSObject, NSCoding{
         self.first_name = aDecoder.decodeObject(forKey: "first_name") as? String
         self.last_name = aDecoder.decodeObject(forKey: "last_name") as? String
         self.device_token = aDecoder.decodeObject(forKey: "device_token") as? String
+        
+        self.survey = aDecoder.decodeObject(forKey: "survey") as? Survey
     }
     
     private static func save() -> Bool{
@@ -174,6 +182,19 @@ class UserData:NSObject, NSCoding{
         }
         else{
             print("Saved device_token")
+        }
+    }
+    
+    static func set(survey: Survey){
+        if(sharedInstance == nil){
+            sharedInstance = UserData();
+        }
+        sharedInstance?.survey = survey;
+        if(!UserData.save()){
+            print("Failed to save survey");
+        }
+        else{
+            print("Saved survey")
         }
     }
     

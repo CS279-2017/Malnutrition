@@ -14,6 +14,9 @@
 		323F8D1D1DD01D1F008A0A7C /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323F8D1C1DD01D1F008A0A7C /* Item.swift */; };
 		323F8D211DD029AF008A0A7C /* data.txt in Resources */ = {isa = PBXBuildFile; fileRef = 323F8D201DD029AF008A0A7C /* data.txt */; };
 		323F8D231DD036FF008A0A7C /* samplejson.txt in Resources */ = {isa = PBXBuildFile; fileRef = 323F8D221DD036FF008A0A7C /* samplejson.txt */; };
+		32478F4C1E634ED50026EFF2 /* Survey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32478F4B1E634ED50026EFF2 /* Survey.swift */; };
+		32478F4E1E6350CF0026EFF2 /* SurveyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32478F4D1E6350CF0026EFF2 /* SurveyController.swift */; };
+		32478F511E6353E60026EFF2 /* OptionsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32478F501E6353E60026EFF2 /* OptionsController.swift */; };
 		324B91CD1DF0A47D00EF4764 /* ExaminationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324B91CC1DF0A47D00EF4764 /* ExaminationController.swift */; };
 		324B91CF1DF0A8F700EF4764 /* TextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324B91CE1DF0A8F700EF4764 /* TextFieldCell.swift */; };
 		324B91D51DF0B8A200EF4764 /* AssessmentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324B91D41DF0B8A200EF4764 /* AssessmentController.swift */; };
@@ -53,6 +56,9 @@
 		323F8D1C1DD01D1F008A0A7C /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		323F8D201DD029AF008A0A7C /* data.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = data.txt; sourceTree = "<group>"; };
 		323F8D221DD036FF008A0A7C /* samplejson.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = samplejson.txt; sourceTree = "<group>"; };
+		32478F4B1E634ED50026EFF2 /* Survey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Survey.swift; sourceTree = "<group>"; };
+		32478F4D1E6350CF0026EFF2 /* SurveyController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SurveyController.swift; sourceTree = "<group>"; };
+		32478F501E6353E60026EFF2 /* OptionsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionsController.swift; sourceTree = "<group>"; };
 		324B91CC1DF0A47D00EF4764 /* ExaminationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExaminationController.swift; sourceTree = "<group>"; };
 		324B91CE1DF0A8F700EF4764 /* TextFieldCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldCell.swift; sourceTree = "<group>"; };
 		324B91D41DF0B8A200EF4764 /* AssessmentController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssessmentController.swift; sourceTree = "<group>"; };
@@ -109,6 +115,15 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		32478F4F1E6350D50026EFF2 /* Survey */ = {
+			isa = PBXGroup;
+			children = (
+				32478F4D1E6350CF0026EFF2 /* SurveyController.swift */,
+				32478F501E6353E60026EFF2 /* OptionsController.swift */,
+			);
+			name = Survey;
+			sourceTree = "<group>";
+		};
 		32B631001E4E65BA002F8F1B /* Login */ = {
 			isa = PBXGroup;
 			children = (
@@ -160,6 +175,7 @@
 		32F67FCF1DED127000AFD31E /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				32478F4F1E6350D50026EFF2 /* Survey */,
 				32B631001E4E65BA002F8F1B /* Login */,
 				32F67FD31DED130B00AFD31E /* Cells */,
 				32F67FD21DED130100AFD31E /* Screens */,
@@ -188,6 +204,7 @@
 				32E898E41DDA7D660051B9E5 /* NoteBook.swift */,
 				32C4A1541E4929C400BB5BB7 /* User.swift */,
 				32C4A1561E4939DF00BB5BB7 /* UserData.swift */,
+				32478F4B1E634ED50026EFF2 /* Survey.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -375,6 +392,7 @@
 				32F67FD51DED133E00AFD31E /* ImageCollectionCell.swift in Sources */,
 				32D587D41DC8FA1F00E15047 /* AppDelegate.swift in Sources */,
 				32F67FCE1DED03D300AFD31E /* ItemTableCell.swift in Sources */,
+				32478F511E6353E60026EFF2 /* OptionsController.swift in Sources */,
 				32C4A1551E4929C400BB5BB7 /* User.swift in Sources */,
 				32C4A1571E4939DF00BB5BB7 /* UserData.swift in Sources */,
 				324B91CF1DF0A8F700EF4764 /* TextFieldCell.swift in Sources */,
@@ -385,9 +403,11 @@
 				32E5F21D1DF3FA4900DD785D /* ReferencesController.swift in Sources */,
 				32B631021E4E65DC002F8F1B /* RegisterController.swift in Sources */,
 				324B91D51DF0B8A200EF4764 /* AssessmentController.swift in Sources */,
+				32478F4E1E6350CF0026EFF2 /* SurveyController.swift in Sources */,
 				32C4A1511E4922EB00BB5BB7 /* LoginController.swift in Sources */,
 				327D81811DDA73BF00A6B0F1 /* Note.swift in Sources */,
 				323F8D191DD0181F008A0A7C /* ItemTableController.swift in Sources */,
+				32478F4C1E634ED50026EFF2 /* Survey.swift in Sources */,
 				32E898E91DDA8C430051B9E5 /* NoteController.swift in Sources */,
 				3285FAD91DDADA410071B017 /* NoteCell.swift in Sources */,
 			);

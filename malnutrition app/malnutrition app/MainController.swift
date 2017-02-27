@@ -43,6 +43,12 @@ class MainController: BaseController {
         referencesButton.addTarget(self, action: #selector(stopFade(button:)), for: .touchUpOutside)
         
         self.screenName = "Main Screen";
+        
+        if UserData.get()?.survey == nil{
+            let storyboard = UIStoryboard(name: "Survey", bundle: nil)
+            let controller = storyboard.instantiateViewController(withIdentifier: "SurveyController") as! SurveyController;
+            self.present(controller, animated: true, completion: nil)
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
