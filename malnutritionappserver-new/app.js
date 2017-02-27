@@ -57,6 +57,8 @@ LOGIN/AUTHENTICATION/REGISTRATION/PASSWORD RESET FOR MOBILE APP
  */
 var userRoutes = require('./routes/user');
 app.use('/user', userRoutes);
+var noteRoutes = require('./routes/note')
+app.use('/note', noteRoutes);
 
 /**
  * ALL THE CODE BELOW THIS POINT IS FOR THE WEBSITE FRONTEND, I.E IT WILL BE REPLACED SOON

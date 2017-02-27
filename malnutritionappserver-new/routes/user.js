@@ -1,4 +1,4 @@
-var db = require("../database/db");
+var db = require("../db/db");
 var User = require("./../model/user.js");
 
 var express = require('express')
