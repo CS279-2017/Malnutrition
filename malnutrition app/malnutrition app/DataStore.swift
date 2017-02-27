@@ -15,8 +15,8 @@ class DataStore{
     //stores the shared singleton instance of the DataStore class
     static var sharedInstance: DataStore? = nil;
     
-    
-    let serverUrl = "http://10.66.134.47:3000"
+    let serverUrl = "http://ec2-35-163-70-13.us-west-2.compute.amazonaws.com:3000";
+//    let serverUrl = "http://10.66.134.47:3000"
 //    let serverUrl = "https://nutriscreen.herokuapp.com"
     
     let vumcUnitOptions = ["Geriatrics", "General Medical","General Surgical"]

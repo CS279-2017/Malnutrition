@@ -70,7 +70,7 @@ var auth_key_arr = [];
 var server_password = "12345";
 
 app.get('/', function (req, res) {
-    var filePath = path.join(__dirname, 'main.html');
+    var filePath = path.join(__dirname, 'view/main.html');
     fs.readFile(filePath, {encoding: 'utf-8'}, function(err,data){
         if (!err){
             res.send(data);
