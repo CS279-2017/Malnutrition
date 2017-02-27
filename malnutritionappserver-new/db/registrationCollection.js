@@ -43,7 +43,7 @@ RegistrationCollection.prototype = {
                     sendEmail(email,{
                         verificationCode: verification_code,
                         subject: "Verification Code For NutriRisk",
-                        url: "/register_verification_code",
+                        url: "/user/register_verification_code",
                         body: "CLick the link below to verify your email, if you did not register an account disregard this email"
                     }, function(){
                         registrationCollection.findAndModify(
@@ -136,7 +136,7 @@ RegistrationCollection.prototype = {
                     {
                         verificationCode:reset_password_verification_code,
                         subject: "Reset Password For NutriRisk",
-                        url: "/reset_password_verification",
+                        url: "/user/reset_password_verification",
                         body: "CLick the link below to reset your password, if you did not request a password reset, disregard this email"
                     }, function(){
                     registrationCollection.findAndModify(
