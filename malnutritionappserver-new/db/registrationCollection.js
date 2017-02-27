@@ -264,7 +264,7 @@ function sendEmail(email, options, callback, error_handler){
         to: email, // list of receivers
         subject: subject != undefined ? subject : 'An Email From NutriRisk', // Subject line
         text: (body == undefined ? "" : body + "\n\n") + (verification_code == undefined ? "" :
-            'Click Here: https://nutriscreen.herokuapp.com' + url + '?'+'email='+email+'&code='+verification_code)
+            'Click Here: http://ec2-35-163-70-13.us-west-2.compute.amazonaws.com:3000/' + url + '?'+'email='+email+'&code='+verification_code)
     }
 
     // send mail with defined transport object
