@@ -25,7 +25,7 @@
 	<key>STORAGE_BUCKET</key>
 	<string>malnutritionapp.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
-	<true/>
+	<false/>
 	<key>IS_ANALYTICS_ENABLED</key>
 	<true/>
 	<key>IS_APPINVITE_ENABLED</key>
@@ -33,7 +33,7 @@
 	<key>IS_GCM_ENABLED</key>
 	<true/>
 	<key>IS_SIGNIN_ENABLED</key>
-	<true/>
+	<false/>
 	<key>GOOGLE_APP_ID</key>
 	<string>1:1023374748602:ios:99750c05920dae67</string>
 	<key>DATABASE_URL</key>

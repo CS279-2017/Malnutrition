@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-//UserData stores data persistent data about to user such as email_address and password as well as userId.
+//UserData stores data persistent data about to user such as email and password as well as userId.
 class UserData:NSObject, NSCoding{
     
     static var sharedInstance: UserData? = nil;
@@ -21,7 +21,7 @@ class UserData:NSObject, NSCoding{
         return documentDirectory as NSURL
     }()
     
-    var email_address: String? = nil
+    var email: String? = nil
     
     var userId: String? = nil;
     var password: String? = nil;
@@ -29,16 +29,17 @@ class UserData:NSObject, NSCoding{
     
 //    var venmo_id: String? = nil
 //    var location: Location?
-    var profile_picture: UIImage?
+    var profilePicture: UIImage?
     
-    var first_name: String? = nil;
-    var last_name: String? = nil;
+    var firstName: String? = nil;
+    var lastName: String? = nil;
     
     var authKey: String? = "";
     
     var surveyComplete: Bool? = false
     
     var survey: Survey?
+    var noteBook: NoteBook?
     
     
     private override init() {
@@ -46,32 +47,39 @@ class UserData:NSObject, NSCoding{
     }
     
     func encode(with aCoder: NSCoder) {
-        aCoder.encode(self.email_address, forKey: "email_address")
-        aCoder.encode(self.userId, forKey: "userId")
+        aCoder.encode(self.email, forKey: "email")
         aCoder.encode(self.password, forKey: "password")
-//        aCoder.encode(self.venmo_id, forKey: "venmo_id")
-        aCoder.encode(self.profile_picture, forKey: "profile_picture");
-        aCoder.encode(self.first_name, forKey: "first_name");
-        aCoder.encode(self.last_name, forKey: "last_name");
-        aCoder.encode(self.device_token, forKey: "device_token");
         
-        aCoder.encode(self.survey, forKey: "survey");
+        aCoder.encode(self.userId, forKey: "userId")
+//        aCoder.encode(self.authKey, forKey: "authKey");
+        
+//        aCoder.encode(self.profilePicture, forKey: "profilePicture");
+        aCoder.encode(self.firstName, forKey: "firstName");
+        aCoder.encode(self.lastName, forKey: "lastName");
+//        aCoder.encode(self.device_token, forKey: "device_token");
+        
+//        aCoder.encode(self.survey, forKey: "survey");
+        aCoder.encode(self.noteBook, forKey: "noteBook")
     }
     
     required init?(coder aDecoder: NSCoder) {
-        self.email_address = aDecoder.decodeObject(forKey: "email_address") as? String
-        self.userId = aDecoder.decodeObject(forKey: "userId") as? String
+        self.email = aDecoder.decodeObject(forKey: "email") as? String
         self.password = aDecoder.decodeObject(forKey: "password") as? String
-//        self.venmo_id = aDecoder.decodeObject(forKey: "venmo_id") as? String
-        self.profile_picture = aDecoder.decodeObject(forKey: "profile_picture") as? UIImage
-        self.first_name = aDecoder.decodeObject(forKey: "first_name") as? String
-        self.last_name = aDecoder.decodeObject(forKey: "last_name") as? String
-        self.device_token = aDecoder.decodeObject(forKey: "device_token") as? String
+
+        self.userId = aDecoder.decodeObject(forKey: "userId") as? String
+//        self.authKey = aDecoder.decodeObject(forKey: "authKey") as? String
         
-        self.survey = aDecoder.decodeObject(forKey: "survey") as? Survey
+//        self.profilePicture = aDecoder.decodeObject(forKey: "profilePicture") as? UIImage
+        
+        self.firstName = aDecoder.decodeObject(forKey: "firstName") as? String
+        self.lastName = aDecoder.decodeObject(forKey: "lastName") as? String
+//        self.device_token = aDecoder.decodeObject(forKey: "device_token") as? String
+        
+//        self.survey = aDecoder.decodeObject(forKey: "survey") as? Survey
+        self.noteBook = aDecoder.decodeObject(forKey: "noteBook") as? NoteBook
     }
     
-    private static func save() -> Bool{
+    static func save() -> Bool{
         return NSKeyedArchiver.archiveRootObject(sharedInstance, toFile: UserData.archiveURL.path!)
     }
     
@@ -97,23 +105,66 @@ class UserData:NSObject, NSCoding{
         }
         sharedInstance?.userId = userId;
     }
-    
-    static func set(user: User){
+    static func set(email: String){
         if(sharedInstance == nil){
             sharedInstance = UserData();
         }
-        sharedInstance?.userId = user._id;
-        sharedInstance?.first_name = user.first_name
-        sharedInstance?.last_name = user.last_name;
-        sharedInstance?.email_address = user.email_address;
-//        sharedInstance?.venmo_id = user.venmo_id
-        sharedInstance?.profile_picture = user.profile_picture
-        
+        sharedInstance?.email = email
         if(!UserData.save()){
             print("Failed to save UserData");
         }
         else{
             print("Saved userData")
+        }
+    }
+    
+    static func set(firstName: String, lastName: String){
+        if(sharedInstance == nil){
+            sharedInstance = UserData();
+        }
+        sharedInstance?.firstName = firstName;
+        sharedInstance?.lastName = lastName;
+        if(!UserData.save()){
+            print("Failed to save UserData");
+        }
+        else{
+            print("Saved userData")
+        }
+    }
+    
+    static func deleteNote(note: Note, callback: (() -> Void)?, errorHandler: ((String)->Void)?){
+        if(sharedInstance == nil){
+            sharedInstance = UserData();
+        }
+        if(sharedInstance?.noteBook == nil){
+            sharedInstance?.noteBook = NoteBook();
+        }
+        sharedInstance?.noteBook?.deleteNote(note: note);
+        if(!UserData.save()){
+            print("Failed to save UserData");
+            errorHandler!("Failed to delete note")
+        }
+        else{
+            print("deleted note")
+            callback!();
+        }
+    }
+
+    static func addNote(note: Note, callback: (() -> Void)?, errorHandler: ((String)->Void)?){
+        if(sharedInstance == nil){
+            sharedInstance = UserData();
+        }
+        if(sharedInstance?.noteBook == nil){
+            sharedInstance?.noteBook = NoteBook();
+        }
+        sharedInstance?.noteBook?.addNote(note: note);
+        if(!UserData.save()){
+            print("Failed to save UserData");
+            errorHandler!("Failed to add note")
+        }
+        else{
+            print("added note")
+            callback!();
         }
     }
     
@@ -131,25 +182,11 @@ class UserData:NSObject, NSCoding{
         }
     }
     
-//    static func set(venmo_id: String?){
-//        if(sharedInstance == nil){
-//            sharedInstance = UserData();
-//        }
-//        sharedInstance?.venmo_id = venmo_id;
-//        if(!UserData.save()){
-//            print("Failed to save UserData");
-//        }
-//        else{
-//            print("Saved userData")
-//        }
-//        
-//    }
-    
-    static func set(profile_picture: UIImage){
+    static func set(profilePicture: UIImage){
         if(sharedInstance == nil){
             sharedInstance = UserData();
         }
-        sharedInstance?.profile_picture = profile_picture;
+        sharedInstance?.profilePicture = profilePicture;
         if(!UserData.save()){
             print("Failed to save UserData");
         }
@@ -157,20 +194,7 @@ class UserData:NSObject, NSCoding{
             print("Saved userData")
         }
     }
-    
-    //    static func set(first_name: String, last_name: String){
-    //        if(sharedInstance == nil){
-    //            sharedInstance = UserData();
-    //        }
-    //        sharedInstance?.first_name = first_name;
-    //        sharedInstance?.last_name = last_name;
-    //        if(!UserData.save()){
-    //            print("Failed to save UserData");
-    //        }
-    //        else{
-    //            print("Saved userData")
-    //        }
-    //    }
+
     static func set(device_token: String){
         if(sharedInstance == nil){
             sharedInstance = UserData();

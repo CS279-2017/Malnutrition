@@ -59,7 +59,7 @@ class NoteEditController:BaseController, UITextFieldDelegate, UITextViewDelegate
             else{
                 note!.title = titleTextField.text!
                 note?.textContent = textView.text!
-                DataStore.get().addNote(note: note!, callback: {self.performSegue(withIdentifier: "unwindFromNoteEditController", sender: self);
+                UserData.addNote(note: note!, callback: {self.performSegue(withIdentifier: "unwindFromNoteEditController", sender: self);
                 DataStore.get().clearNote();}, errorHandler: DataStore.get().errorHandler)
             }
         }
@@ -71,7 +71,7 @@ class NoteEditController:BaseController, UITextFieldDelegate, UITextViewDelegate
                 note!.title = titleTextField.text!
                 note!.textContent = textView.text!
                 note!.dateLastEdited = Date();
-                if(DataStore.get().save()){
+                if(UserData.save()){
                     self.navigationController?.popViewController(animated: true);
                 }
                 else{

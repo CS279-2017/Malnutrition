@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class BaseController: GAITrackedViewController{
     
@@ -15,6 +16,9 @@ class BaseController: GAITrackedViewController{
 //    }
     
     override func viewDidAppear(_ animated: Bool) {
+        let type = String(describing: type(of: self))
+        let eventName = type.toFireBaseEventName();
+        FIRAnalytics.logEvent(withName: eventName, parameters: [:]);
         hideKeyboardWhenTappedAround();
     }
     

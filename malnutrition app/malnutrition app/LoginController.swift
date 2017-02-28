@@ -14,7 +14,7 @@ class LoginController: BaseController, UITextFieldDelegate{
     @IBOutlet weak var emailTextField: UITextField!
     
     @IBOutlet weak var passwordTextField: UITextField!
-    @IBOutlet weak var loginButton: UIButton!
+    @IBOutlet weak var loginButton: BaseButton!
     
     override func viewDidLoad() {
         super.viewDidLoad();
@@ -31,6 +31,11 @@ class LoginController: BaseController, UITextFieldDelegate{
         self.screenName = "Login Screen";
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated);
+        emailTextField.text = UserData.get()?.email
+    }
+    
     
     func loginButtonClicked(){
         guard let email = emailTextField.text else {DataStore.get().errorHandler(error: "Enter Email"); return;}
@@ -44,7 +49,16 @@ class LoginController: BaseController, UITextFieldDelegate{
         }
         DataStore.get().login(email: email, password: password, callback: { authKey in 
             self.hideProgressBar();
-            self.popToRootViewController(animated: true);
+            UserData.set(email: email);
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            if UserData.get()?.survey == nil{
+                let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                appDelegate.popToSurveyController();
+            }
+            else{
+                appDelegate.popToMainController();
+            }
+//            self.popToRootViewController(animated: true);
         }, errorHandler: {error in
             DataStore.get().errorHandler(error: error);
             self.hideProgressBar();

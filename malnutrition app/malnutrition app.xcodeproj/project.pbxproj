@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		322CBBE81DF7293E00374111 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 322CBBE61DF728E800374111 /* GoogleService-Info.plist */; };
+		3207B2311E65023D00AA882A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3207B2301E65023D00AA882A /* GoogleService-Info.plist */; };
 		3230A1981E5B944200A2FED9 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3230A1971E5B944200A2FED9 /* Login.storyboard */; };
 		3230A19A1E5B980D00A2FED9 /* Survey.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3230A1991E5B980D00A2FED9 /* Survey.storyboard */; };
 		323F8D191DD0181F008A0A7C /* ItemTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323F8D181DD0181F008A0A7C /* ItemTableController.swift */; };
@@ -17,6 +17,7 @@
 		32478F4C1E634ED50026EFF2 /* Survey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32478F4B1E634ED50026EFF2 /* Survey.swift */; };
 		32478F4E1E6350CF0026EFF2 /* SurveyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32478F4D1E6350CF0026EFF2 /* SurveyController.swift */; };
 		32478F511E6353E60026EFF2 /* OptionsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32478F501E6353E60026EFF2 /* OptionsController.swift */; };
+		32478F531E6499280026EFF2 /* HTTPRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32478F521E6499280026EFF2 /* HTTPRequest.swift */; };
 		324B91CD1DF0A47D00EF4764 /* ExaminationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324B91CC1DF0A47D00EF4764 /* ExaminationController.swift */; };
 		324B91CF1DF0A8F700EF4764 /* TextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324B91CE1DF0A8F700EF4764 /* TextFieldCell.swift */; };
 		324B91D51DF0B8A200EF4764 /* AssessmentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324B91D41DF0B8A200EF4764 /* AssessmentController.swift */; };
@@ -30,6 +31,7 @@
 		32C4A1531E49241D00BB5BB7 /* BaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C4A1521E49241D00BB5BB7 /* BaseController.swift */; };
 		32C4A1551E4929C400BB5BB7 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C4A1541E4929C400BB5BB7 /* User.swift */; };
 		32C4A1571E4939DF00BB5BB7 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C4A1561E4939DF00BB5BB7 /* UserData.swift */; };
+		32C9BDCC1E64F72900ADDF20 /* BaseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C9BDCB1E64F72900ADDF20 /* BaseButton.swift */; };
 		32D587D41DC8FA1F00E15047 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D587D31DC8FA1F00E15047 /* AppDelegate.swift */; };
 		32D587D61DC8FA1F00E15047 /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D587D51DC8FA1F00E15047 /* MainController.swift */; };
 		32D587D91DC8FA1F00E15047 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32D587D71DC8FA1F00E15047 /* Main.storyboard */; };
@@ -48,8 +50,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3207B2301E65023D00AA882A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		322CBBE51DF7253500374111 /* BridgingHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BridgingHeader.h; sourceTree = "<group>"; };
-		322CBBE61DF728E800374111 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3230A1971E5B944200A2FED9 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		3230A1991E5B980D00A2FED9 /* Survey.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Survey.storyboard; sourceTree = "<group>"; };
 		323F8D181DD0181F008A0A7C /* ItemTableController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemTableController.swift; sourceTree = "<group>"; };
@@ -59,6 +61,7 @@
 		32478F4B1E634ED50026EFF2 /* Survey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Survey.swift; sourceTree = "<group>"; };
 		32478F4D1E6350CF0026EFF2 /* SurveyController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SurveyController.swift; sourceTree = "<group>"; };
 		32478F501E6353E60026EFF2 /* OptionsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionsController.swift; sourceTree = "<group>"; };
+		32478F521E6499280026EFF2 /* HTTPRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPRequest.swift; sourceTree = "<group>"; };
 		324B91CC1DF0A47D00EF4764 /* ExaminationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExaminationController.swift; sourceTree = "<group>"; };
 		324B91CE1DF0A8F700EF4764 /* TextFieldCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldCell.swift; sourceTree = "<group>"; };
 		324B91D41DF0B8A200EF4764 /* AssessmentController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssessmentController.swift; sourceTree = "<group>"; };
@@ -73,6 +76,7 @@
 		32C4A1521E49241D00BB5BB7 /* BaseController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseController.swift; sourceTree = "<group>"; };
 		32C4A1541E4929C400BB5BB7 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		32C4A1561E4939DF00BB5BB7 /* UserData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
+		32C9BDCB1E64F72900ADDF20 /* BaseButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseButton.swift; sourceTree = "<group>"; };
 		32D587D01DC8FA1F00E15047 /* malnutrition app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "malnutrition app.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		32D587D31DC8FA1F00E15047 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		32D587D51DC8FA1F00E15047 /* MainController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
@@ -115,6 +119,21 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		3207B22F1E64F9A400AA882A /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				32D587D51DC8FA1F00E15047 /* MainController.swift */,
+				324B91CC1DF0A47D00EF4764 /* ExaminationController.swift */,
+				32E898E61DDA81730051B9E5 /* NoteEditController.swift */,
+				323F8D181DD0181F008A0A7C /* ItemTableController.swift */,
+				32E898E81DDA8C430051B9E5 /* NoteController.swift */,
+				324B91D41DF0B8A200EF4764 /* AssessmentController.swift */,
+				3260AD441DF1456900EA8DF3 /* PictureViewController.swift */,
+				32E5F21C1DF3FA4900DD785D /* ReferencesController.swift */,
+			);
+			name = Main;
+			sourceTree = "<group>";
+		};
 		32478F4F1E6350D50026EFF2 /* Survey */ = {
 			isa = PBXGroup;
 			children = (
@@ -137,7 +156,6 @@
 		32D587C71DC8FA1F00E15047 = {
 			isa = PBXGroup;
 			children = (
-				322CBBE61DF728E800374111 /* GoogleService-Info.plist */,
 				32D587D21DC8FA1F00E15047 /* malnutrition app */,
 				32D587D11DC8FA1F00E15047 /* Products */,
 				1EAF4CB6216C9798426607C5 /* Pods */,
@@ -156,7 +174,9 @@
 		32D587D21DC8FA1F00E15047 /* malnutrition app */ = {
 			isa = PBXGroup;
 			children = (
+				3207B2301E65023D00AA882A /* GoogleService-Info.plist */,
 				32D587D31DC8FA1F00E15047 /* AppDelegate.swift */,
+				32478F521E6499280026EFF2 /* HTTPRequest.swift */,
 				32C186B31DF77851009770E3 /* malnutrition app.entitlements */,
 				322CBBE51DF7253500374111 /* BridgingHeader.h */,
 				32F67FD11DED129000AFD31E /* Model */,
@@ -175,10 +195,11 @@
 		32F67FCF1DED127000AFD31E /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				32C4A1521E49241D00BB5BB7 /* BaseController.swift */,
+				3207B22F1E64F9A400AA882A /* Main */,
 				32478F4F1E6350D50026EFF2 /* Survey */,
 				32B631001E4E65BA002F8F1B /* Login */,
 				32F67FD31DED130B00AFD31E /* Cells */,
-				32F67FD21DED130100AFD31E /* Screens */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -186,6 +207,7 @@
 		32F67FD01DED128B00AFD31E /* View */ = {
 			isa = PBXGroup;
 			children = (
+				32C9BDCB1E64F72900ADDF20 /* BaseButton.swift */,
 				32D587D71DC8FA1F00E15047 /* Main.storyboard */,
 				3230A1971E5B944200A2FED9 /* Login.storyboard */,
 				3230A1991E5B980D00A2FED9 /* Survey.storyboard */,
@@ -207,22 +229,6 @@
 				32478F4B1E634ED50026EFF2 /* Survey.swift */,
 			);
 			name = Model;
-			sourceTree = "<group>";
-		};
-		32F67FD21DED130100AFD31E /* Screens */ = {
-			isa = PBXGroup;
-			children = (
-				32D587D51DC8FA1F00E15047 /* MainController.swift */,
-				324B91CC1DF0A47D00EF4764 /* ExaminationController.swift */,
-				32E898E61DDA81730051B9E5 /* NoteEditController.swift */,
-				323F8D181DD0181F008A0A7C /* ItemTableController.swift */,
-				32E898E81DDA8C430051B9E5 /* NoteController.swift */,
-				324B91D41DF0B8A200EF4764 /* AssessmentController.swift */,
-				3260AD441DF1456900EA8DF3 /* PictureViewController.swift */,
-				32E5F21C1DF3FA4900DD785D /* ReferencesController.swift */,
-				32C4A1521E49241D00BB5BB7 /* BaseController.swift */,
-			);
-			name = Screens;
 			sourceTree = "<group>";
 		};
 		32F67FD31DED130B00AFD31E /* Cells */ = {
@@ -317,13 +323,13 @@
 			files = (
 				323F8D211DD029AF008A0A7C /* data.txt in Resources */,
 				32E5F2211DF4A2B400DD785D /* symptoms.json in Resources */,
-				322CBBE81DF7293E00374111 /* GoogleService-Info.plist in Resources */,
 				323F8D231DD036FF008A0A7C /* samplejson.txt in Resources */,
 				32E5F2201DF4A2B400DD785D /* assessment.json in Resources */,
 				32F67FD71DED41A500AFD31E /* siruis json.txt in Resources */,
 				3230A19A1E5B980D00A2FED9 /* Survey.storyboard in Resources */,
 				32D587DE1DC8FA1F00E15047 /* LaunchScreen.storyboard in Resources */,
 				32D587DB1DC8FA1F00E15047 /* Assets.xcassets in Resources */,
+				3207B2311E65023D00AA882A /* GoogleService-Info.plist in Resources */,
 				3230A1981E5B944200A2FED9 /* Login.storyboard in Resources */,
 				32D587D91DC8FA1F00E15047 /* Main.storyboard in Resources */,
 			);
@@ -390,9 +396,11 @@
 				32D587D61DC8FA1F00E15047 /* MainController.swift in Sources */,
 				32E898E51DDA7D660051B9E5 /* NoteBook.swift in Sources */,
 				32F67FD51DED133E00AFD31E /* ImageCollectionCell.swift in Sources */,
+				32478F531E6499280026EFF2 /* HTTPRequest.swift in Sources */,
 				32D587D41DC8FA1F00E15047 /* AppDelegate.swift in Sources */,
 				32F67FCE1DED03D300AFD31E /* ItemTableCell.swift in Sources */,
 				32478F511E6353E60026EFF2 /* OptionsController.swift in Sources */,
+				32C9BDCC1E64F72900ADDF20 /* BaseButton.swift in Sources */,
 				32C4A1551E4929C400BB5BB7 /* User.swift in Sources */,
 				32C4A1571E4939DF00BB5BB7 /* UserData.swift in Sources */,
 				324B91CF1DF0A8F700EF4764 /* TextFieldCell.swift in Sources */,

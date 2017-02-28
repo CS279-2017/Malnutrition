@@ -11,12 +11,12 @@ import UIKit
 
 class ExaminationController: BaseController{
     
-    @IBOutlet weak var symptomsButton: UIButton!
+    @IBOutlet weak var symptomsButton: BaseButton!
     
-    @IBOutlet weak var assessmentButton: UIButton!
+    @IBOutlet weak var assessmentButton: BaseButton!
     
-    @IBOutlet weak var clearNoteButton: UIButton!
-    @IBOutlet weak var makeNoteButton: UIButton!
+    @IBOutlet weak var clearNoteButton: BaseButton!
+    @IBOutlet weak var makeNoteButton: BaseButton!
     override func viewDidLoad() {
         super.viewDidLoad();
         symptomsButton.addTarget(self, action: #selector(symptomsButtonClicked(sender:)), for: .touchUpInside)
@@ -41,7 +41,7 @@ class ExaminationController: BaseController{
         AppDelegate.loadedSymptoms = false;
     }
     
-    func assessmentButtonClicked(sender: UIButton){
+    func assessmentButtonClicked(sender: BaseButton){
         DataStore.get().loadAssessment();
         while(AppDelegate.loadedAssessments != true){
             
@@ -53,7 +53,7 @@ class ExaminationController: BaseController{
         self.navigationController?.pushViewController(controller, animated: true);
     }
     
-    func symptomsButtonClicked(sender:UIButton){
+    func symptomsButtonClicked(sender:BaseButton){
         DataStore.get().loadSymptoms();
         while(AppDelegate.loadedSymptoms != true){
             
@@ -66,7 +66,7 @@ class ExaminationController: BaseController{
         self.navigationController?.pushViewController(controller, animated: true);
     }
     
-    func makeNoteButtonClicked(sender: UIButton){
+    func makeNoteButtonClicked(sender: BaseButton){
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let controller = storyboard.instantiateViewController(withIdentifier: "NoteEditController") as! NoteEditController
         let note = Note(title: "", text: DataStore.get().getNoteString());
@@ -74,7 +74,7 @@ class ExaminationController: BaseController{
         self.navigationController?.pushViewController(controller, animated: true)
     }
     
-    func clearNoteButtonClicked(sender: UIButton){
+    func clearNoteButtonClicked(sender: BaseButton){
         let alertController = UIAlertController(title: "Clear Note", message: "Are you sure you want to clear this note?", preferredStyle: UIAlertControllerStyle.alert)
         let clearAction = UIAlertAction(title: "Clear", style: UIAlertActionStyle.destructive) { (result : UIAlertAction) -> Void in
             DataStore.get().clearNote();

@@ -15,7 +15,7 @@ class NoteController: BaseController, UISearchBarDelegate, UITableViewDelegate, 
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
     
-    var noteBook = DataStore.get().noteBook;
+    var noteBook = UserData.get()?.noteBook;
     var displayedNotes:[Note] = [];
     
     var searchQuery: String?
@@ -32,7 +32,7 @@ class NoteController: BaseController, UISearchBarDelegate, UITableViewDelegate, 
         
         tableView.allowsSelection = false;
         
-        displayedNotes = DataStore.get().noteBook.getAllNotes();
+        displayedNotes = (UserData.get()?.noteBook?.getAllNotes())!;
         
         searchBar.delegate = self;
         
@@ -50,7 +50,7 @@ class NoteController: BaseController, UISearchBarDelegate, UITableViewDelegate, 
     
     //build a full search function later on that searches for prefixes
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        displayedNotes = noteBook.getNotesWithPrefix(prefix: searchText);
+        displayedNotes = (noteBook?.getNotesWithPrefix(prefix: searchText))!;
         searchQuery = searchText;
         tableView.reloadData();
     }
@@ -73,14 +73,16 @@ class NoteController: BaseController, UISearchBarDelegate, UITableViewDelegate, 
         
     }
     
-    func deleteNoteButtonClicked(button: UIButton){
+    func deleteNoteButtonClicked(button: BaseButton){
         let alertController = UIAlertController(title: "Delete Note", message: "Are you sure you want to delete this note?", preferredStyle: UIAlertControllerStyle.alert)
         let deleteAction = UIAlertAction(title: "Delete", style: UIAlertActionStyle.destructive) { (result : UIAlertAction) -> Void in
             let note = self.displayedNotes[button.tag];
-            DataStore.get().deleteNote(note: note, callback: nil, errorHandler: DataStore.get().errorHandler);
-            self.updateDisplayedNotes();
-            self.tableView.deleteRows(at: [IndexPath(row: button.tag, section: 0)]
-                , with: UITableViewRowAnimation.automatic)
+            UserData.deleteNote(note: note, callback: {
+                self.updateDisplayedNotes();
+                self.tableView.deleteRows(at: [IndexPath(row: button.tag, section: 0)]
+                    , with: UITableViewRowAnimation.automatic)
+            }, errorHandler: DataStore.get().errorHandler);
+        
             
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default) { (result : UIAlertAction) -> Void in
@@ -92,7 +94,7 @@ class NoteController: BaseController, UISearchBarDelegate, UITableViewDelegate, 
         
     }
     
-    func editNoteButtonClicked(button: UIButton){
+    func editNoteButtonClicked(button: BaseButton){
         let note = displayedNotes[button.tag];
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let controller = storyboard.instantiateViewController(withIdentifier: "NoteEditController") as! NoteEditController
@@ -107,10 +109,10 @@ class NoteController: BaseController, UISearchBarDelegate, UITableViewDelegate, 
     
     func updateDisplayedNotes(){
         if(searchQuery == nil){
-            displayedNotes = DataStore.get().noteBook.getAllNotes();
+            displayedNotes = (UserData.get()?.noteBook?.getAllNotes())!;
         }
         else{
-            displayedNotes = DataStore.get().noteBook.getNotesWithPrefix(prefix: searchQuery!);
+            displayedNotes = (UserData.get()?.noteBook?.getNotesWithPrefix(prefix: searchQuery!))!;
         }
         
     }

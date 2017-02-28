@@ -22,13 +22,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+//        FIRApp.configure()
         
         DataStore.get().authenticate(callback: {
             self.popToMainController();
         }, errorHandler: {error in
             self.popToFirstController();
         })
-        self.popToFirstController();
+//        self.popToFirstController();
         
         // Configure tracker from GoogleService-Info.plist.
         var configureError:NSError?
@@ -156,7 +157,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         DispatchQueue.main.async {
             let storyboard = UIStoryboard(name: "Login", bundle: nil)
             let firstController = storyboard.instantiateViewController(withIdentifier: "FirstController")
-            self.window?.rootViewController = firstController
+            UIView.transition(from: (self.window?.rootViewController!.view)!, to: firstController.view, duration: 0.6, options: [.transitionCrossDissolve], completion: {
+                _ in
+                self.window?.rootViewController = firstController
+            })
+            
         }
     }
     
@@ -164,7 +169,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         DispatchQueue.main.async {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let mainController = storyboard.instantiateViewController(withIdentifier: "MainController")
-            self.window?.rootViewController = mainController
+            UIView.transition(from: (self.window?.rootViewController!.view)!, to: mainController.view, duration: 0.6, options: [.transitionCrossDissolve], completion: {
+                _ in
+                self.window?.rootViewController = mainController
+            })
+        }
+    }
+    
+    func popToSurveyController(){
+        DispatchQueue.main.async {
+            let storyboard = UIStoryboard(name: "Survey", bundle: nil)
+            let surveyController = storyboard.instantiateViewController(withIdentifier: "SurveyController")
+            UIView.transition(from: (self.window?.rootViewController!.view)!, to: surveyController.view, duration: 0.6, options: [.transitionCrossDissolve], completion: {
+                _ in
+                self.window?.rootViewController = surveyController
+            })
         }
     }
 
@@ -204,6 +223,19 @@ extension UIViewController {
     
     func dismissKeyboard() {
         view.endEditing(true)
+    }
+}
+
+extension String{
+    func toFireBaseEventName()->String{
+        var str = self;
+        //eventNames are restricted to 32 characters
+        if(str.characters.count > 32){
+            str = str.substring(to: str.index(str.startIndex, offsetBy: 31));
+        }
+        //no spaces
+        str = str.replacingOccurrences(of: " ", with: "_");
+        return str;
     }
 }
 

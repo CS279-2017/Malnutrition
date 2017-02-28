@@ -8,6 +8,24 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--View Controller-->
+        <scene sceneID="gdg-jD-1Ds">
+            <objects>
+                <viewController id="6Rj-XF-9H8" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="uei-XC-gA8"/>
+                        <viewControllerLayoutGuide type="bottom" id="L0z-Fb-zhZ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="HaX-Hr-dZ9">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.98431372549019602" green="0.0" blue="0.023529411764705882" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sDv-kM-Gn2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2006" y="-1334"/>
+        </scene>
         <!--First Controller-->
         <scene sceneID="NW0-XD-guG">
             <objects>
@@ -29,7 +47,7 @@
                                             <constraint firstAttribute="width" constant="200" id="cD7-WT-OcQ"/>
                                         </constraints>
                                     </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="85Y-5U-1tu">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="85Y-5U-1tu" customClass="BaseButton" customModule="malnutrition_app" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="215" width="200" height="46"/>
                                         <color key="backgroundColor" red="1" green="0.40418328850000002" blue="0.067871770370000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
@@ -43,7 +61,7 @@
                                             </segue>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DZL-Gi-GZD">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DZL-Gi-GZD" customClass="BaseButton" customModule="malnutrition_app" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="277" width="200" height="46"/>
                                         <color key="backgroundColor" red="1" green="0.40418328850000002" blue="0.067871770370000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
@@ -84,16 +102,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="32" translatesAutoresizingMaskIntoConstraints="NO" id="eX6-hb-hbH">
-                                <rect key="frame" x="60" y="174" width="255" height="319"/>
+                                <rect key="frame" x="60" y="174.5" width="255" height="318.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sIA-wV-MVi">
-                                        <rect key="frame" x="0.0" y="0.0" width="255" height="39"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="255" height="38.5"/>
                                         <fontDescription key="fontDescription" type="italicSystem" pointSize="32"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="F11-xN-Xxk">
-                                        <rect key="frame" x="0.0" y="71" width="255" height="108"/>
+                                        <rect key="frame" x="0.0" y="70.5" width="255" height="108"/>
                                         <subviews>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Vanderbilt Email" textAlignment="natural" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="egA-uK-5o1">
                                                 <rect key="frame" x="0.0" y="0.0" width="255" height="46"/>
@@ -119,8 +137,8 @@
                                             <constraint firstItem="gMO-yw-KL2" firstAttribute="height" secondItem="egA-uK-5o1" secondAttribute="height" id="rc7-tE-H0H"/>
                                         </constraints>
                                     </stackView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uZj-Zg-fpw">
-                                        <rect key="frame" x="0.0" y="211" width="255" height="46"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uZj-Zg-fpw" customClass="BaseButton" customModule="malnutrition_app" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="210.5" width="255" height="46"/>
                                         <color key="backgroundColor" red="1" green="0.40418328850000002" blue="0.067871770370000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                                         <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -128,8 +146,8 @@
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TCm-eV-0TY">
-                                        <rect key="frame" x="0.0" y="289" width="255" height="30"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TCm-eV-0TY" customClass="BaseButton" customModule="malnutrition_app" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="288.5" width="255" height="30"/>
                                         <state key="normal" title="New User?">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -174,16 +192,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="32" translatesAutoresizingMaskIntoConstraints="NO" id="yaf-30-Dd4">
-                                <rect key="frame" x="60" y="151" width="255" height="365"/>
+                                <rect key="frame" x="60" y="151.5" width="255" height="364.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Register" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LxY-Yy-pag">
-                                        <rect key="frame" x="0.0" y="0.0" width="255" height="39"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="255" height="38.5"/>
                                         <fontDescription key="fontDescription" type="italicSystem" pointSize="32"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="BAy-t5-pD1">
-                                        <rect key="frame" x="0.0" y="71" width="255" height="154"/>
+                                        <rect key="frame" x="0.0" y="70.5" width="255" height="154"/>
                                         <subviews>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Vanderbilt Email" textAlignment="natural" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="mgb-Wj-hMM">
                                                 <rect key="frame" x="0.0" y="0.0" width="255" height="46"/>
@@ -217,8 +235,8 @@
                                             </textField>
                                         </subviews>
                                     </stackView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M0N-n4-klY">
-                                        <rect key="frame" x="0.0" y="257" width="255" height="46"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M0N-n4-klY" customClass="BaseButton" customModule="malnutrition_app" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="256.5" width="255" height="46"/>
                                         <color key="backgroundColor" red="1" green="0.40418328850000002" blue="0.067871770370000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                                         <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -226,8 +244,8 @@
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CtZ-yl-MRG">
-                                        <rect key="frame" x="0.0" y="335" width="255" height="30"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CtZ-yl-MRG" customClass="BaseButton" customModule="malnutrition_app" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="334.5" width="255" height="30"/>
                                         <state key="normal" title="Existing User?">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -265,7 +283,7 @@
         <image name="NutriRisk Logo" width="200" height="199"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="7qY-un-Ons"/>
         <segue reference="WfY-86-n5t"/>
+        <segue reference="7qY-un-Ons"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -12,8 +12,8 @@ import UIKit
 class NoteCell: UITableViewCell{
     var note: Note?
     
-    @IBOutlet weak var editButton: UIButton!
-    @IBOutlet weak var deleteButton: UIButton!
+    @IBOutlet weak var editButton: BaseButton!
+    @IBOutlet weak var deleteButton: BaseButton!
     @IBOutlet weak var bodyLabel: UILabel!
     @IBOutlet weak var dateTimeCreatedLabel: UILabel!
     @IBOutlet weak var dateTimeEditedLabel: UILabel!
@@ -64,12 +64,12 @@ class NoteCell: UITableViewCell{
     
     
     
-    func startFade(button: UIButton){
+    func startFade(button: BaseButton){
 //        UIView.animate(withDuration: 0.2, animations: { button.alpha = 0.25})
         button.alpha = 0.25
     }
     
-    func stopFade(button: UIButton){
+    func stopFade(button: BaseButton){
 //        button.alpha = 1.0
         UIView.animate(withDuration: 0.25, animations: { button.alpha = 1.0})
     }

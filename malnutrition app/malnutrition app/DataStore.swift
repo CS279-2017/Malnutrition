@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Firebase
 
 import SwiftyJSON
 
@@ -15,8 +16,8 @@ class DataStore{
     //stores the shared singleton instance of the DataStore class
     static var sharedInstance: DataStore? = nil;
     
-    let serverUrl = "http://ec2-35-163-70-13.us-west-2.compute.amazonaws.com:3000";
-//    let serverUrl = "http://10.66.134.47:3000"
+//    let serverUrl = "http://ec2-35-163-70-13.us-west-2.compute.amazonaws.com:3000";
+    let serverUrl = "http://10.66.134.47:3000"
 //    let serverUrl = "https://nutriscreen.herokuapp.com"
     
     let vumcUnitOptions = ["Geriatrics", "General Medical","General Surgical"]
@@ -29,11 +30,11 @@ class DataStore{
     var rootItemAssessmentQuiz:Item = Item(type: "Root", title: nil, description: nil, images: [String](), nextItems: [Item](), options: [String]());
 
     
-    private static let archiveURL: NSURL = {
-        let documentsDirectories = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask);
-        let documentDirectory = documentsDirectories.first!.appendingPathComponent("noteBook.archive");
-        return documentDirectory as NSURL
-    }()
+//    private static let archiveURL: NSURL = {
+//        let documentsDirectories = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask);
+//        let documentDirectory = documentsDirectories.first!.appendingPathComponent("noteBook.archive");
+//        return documentDirectory as NSURL
+//    }()
     
     var noteBook:NoteBook = NoteBook();
     
@@ -51,10 +52,10 @@ class DataStore{
         //Constructor for DataStore, called by get() function, never called outside of DataStore class
         
         //read the string from the text file that contains the item directory structure
-        if let unarchivedObject = (NSKeyedUnarchiver.unarchiveObject(withFile: DataStore.archiveURL.path!)){
-            noteBook = unarchivedObject as! NoteBook;
-
-        }
+//        if let unarchivedObject = (NSKeyedUnarchiver.unarchiveObject(withFile: DataStore.archiveURL.path!)){
+//            noteBook = unarchivedObject as! NoteBook;
+//
+//        }
     
     }
     
@@ -94,157 +95,79 @@ class DataStore{
         parent.nextItems.append(newItem);
     }
     
-    func login(email: String, password: String, callback: ((String) -> Void)?, errorHandler: ((String)->Void)?){
-        var request = URLRequest(url: URL(string: serverUrl+"/user/login")!)
-        request.httpMethod = "POST"
-        //        let postString = "id=13&name=Jack"
-        let postString = "email=" + email+"&password="+password;
-        request.httpBody = postString.data(using: .utf8)
-        let task = URLSession.shared.dataTask(with: request) { data, response, error in
-            guard let data = data, error == nil else {                                                 // check for fundamental networking error
-                if(errorHandler != nil){
-                    errorHandler!(String(describing: error));
-                }
-                return
-            }
-            
-            if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 {           // check for http errors
-                let error = "statusCode should be 200, but is \(httpStatus.statusCode)"
-                if(errorHandler != nil){
-                    errorHandler!(error);
-                }
-                print(error)
-                print("response = \(response)")
-            }
-            else{
-                let responseString = String(data: data, encoding: .utf8)
-                print("responseString = \(responseString)")
-                if let dataFromString = responseString?.data(using: .utf8, allowLossyConversion: false) {
-                    let json = JSON(data: dataFromString);
-                    if json["error"].string == nil{
-                        if(callback != nil){
-                            let authKey = json["data"]["authKey"].string!
-                            let userId = json["data"]["userId"].string!
-                            UserData.set(authKey: authKey);
-                            UserData.set(userId: userId);
-                            callback!(authKey);
-                        }
-                    }
-                    else{
-                        if let errorHandler = errorHandler{
-                            errorHandler(json["error"].string!);
-                        }
-                    }
-                    
-                }
-                else{
-                    errorHandler!("invalid json string");
-                }
-            }
-            
-            
-        }
-        task.resume()
+    func login(email: String, password: String, callback: (() -> Void)?, errorHandler: ((String)->Void)?){
+        let request = HTTPRequest(url: serverUrl+"/user/login", method: "POST", parameters: ["email":email, "password":password]);
+        request.send(callback: {dictionary in
+            let dictionary = dictionary as! Dictionary<String, String>
+            //save authKey and userId that are passed back
+            UserData.set(authKey: dictionary["authKey"]!);
+            UserData.set(userId: dictionary["userId"]!);
+            UserData.set(email: email);
+            callback?();
+        }, errorHandler: {error in
+            DataStore.get().errorHandler(error: error);
+        })
     }
     
     func register(email: String, password: String, callback: (() -> Void)?, errorHandler: ((String)->Void)?){
-        var request = URLRequest(url: URL(string: serverUrl+"/user/register")!)
-        request.httpMethod = "POST"
-        //        let postString = "id=13&name=Jack"
-        let postString = "email=" + email+"&password="+password;
-        request.httpBody = postString.data(using: .utf8)
-        let task = URLSession.shared.dataTask(with: request) { data, response, error in
-            guard let data = data, error == nil else {                                                 // check for fundamental networking error
-                if(errorHandler != nil){
-                    errorHandler!(String(describing: error));
-                }
-                print("error=\(error)")
-                return
-            }
-            
-            if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 {           // check for http errors
-                let error = "statusCode should be 200, but is \(httpStatus.statusCode)"
-                if(errorHandler != nil){
-                    errorHandler!(error);
-                }
-                print(error)
-                print("response = \(response)")
-            }
-            else{
-                let responseString = String(data: data, encoding: .utf8)
-                print("responseString = \(responseString)")
-                if let dataFromString = responseString?.data(using: .utf8, allowLossyConversion: false) {
-                    let json = JSON(data: dataFromString);
-                    if json["error"].string == nil{
-                        if(callback != nil){
-                            callback!();
-                        }
-                    }
-                    else{
-                        if let errorHandler = errorHandler{
-                            errorHandler(json["error"].string!);
-                        }
-                    }
-                    
-                }
-                else{
-                    errorHandler!("invalid json string");
-                }
-            }
-            
-            
-        }
-        task.resume()
+        let request = HTTPRequest(url: serverUrl+"/user/register", method: "POST", parameters: ["email":email, "password":password]);
+        request.send(callback: {dictionary in
+            UserData.set(email: email);
+            //successful registration
+            //show login screen?
+            callback?();
+        }, errorHandler: {error in
+            DataStore.get().errorHandler(error: error);
+        })
     }
     
     func authenticate(callback: (()->())?, errorHandler: ((String)->())?){
-        var request = URLRequest(url: URL(string: serverUrl + "/authenticate")!)
-        request.httpMethod = "POST"
-        //        let postString = "id=13&name=Jack"
-        guard let authKey = UserData.get()?.authKey else {errorHandler!("No authKey"); return;}
-        guard let userId = UserData.get()?.userId else {errorHandler!("No userId"); return;}
-        let postString = "authKey=" +  authKey + "&userId=" + userId;
-        request.httpBody = postString.data(using: .utf8)
-        let task = URLSession.shared.dataTask(with: request) { data, response, error in
-            guard let data = data, error == nil else {                                                 // check for fundamental networking error
-                if(errorHandler != nil){
-                    errorHandler!(String(describing: error));
-                }
-                print("error=\(error)")
-                return
-            }
-            
-            if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 {           // check for http errors
-                let error = "statusCode should be 200, but is \(httpStatus.statusCode)"
-                if(errorHandler != nil){
-                    errorHandler!(error);
-                }
-                print(error)
-                print("response = \(response)")
-            }
-            
-            let responseString = String(data: data, encoding: .utf8)
-            if let dataFromString = responseString?.data(using: .utf8, allowLossyConversion: false) {
-                let json = JSON(data: dataFromString);
-                if json["error"].string == nil{
-                    if(callback != nil){
-                        callback!();
-                    }
-                }
-                else{
-                    if let errorHandler = errorHandler{
-                        errorHandler(json["error"].string!);
-                    }
-                }
-               
-            }
-            else{
-                errorHandler!("invalid json string");
-            }
-            print("responseString = \(responseString)")
-            
+        guard let authKey = UserData.get()?.authKey else {self.errorHandler(error: "No authKey saved"); return;}
+        guard let userId = UserData.get()?.userId else {self.errorHandler(error: "No userId saved"); return;}
+        let request = HTTPRequest(url: serverUrl+"/user/authenticate", method: "POST", parameters: ["authKey":authKey, "userId":userId]);
+        request.send(callback: {dictionary in
+            //successful authentication
+            callback?();
+        }, errorHandler: {error in
+            //unsuccessful authentication (show login?)
+            //            DataStore.get().errorHandler(error: error);
+            errorHandler?(error);
+        })
+    }
+    
+    func logout(callback: (()->())?, errorHandler: ((String)->())?){
+        guard let authKey = UserData.get()?.authKey else {self.errorHandler(error: "No authKey saved"); return;}
+        guard let userId = UserData.get()?.userId else {self.errorHandler(error: "No userId saved"); return;}
+        let request = HTTPRequest(url: serverUrl+"/user/logout", method: "POST", parameters: ["authKey":authKey, "userId":userId]);
+        request.send(callback: {dictionary in
+            //successful authentication
+            callback?();
+        }, errorHandler: {error in
+            //unsuccessful authentication (show login?)
+            DataStore.get().errorHandler(error: error);
+        })
+    }
+    
+    func sendSurvey(survey: Survey, callback: (()->())?, errorHandler: ((String)->())?){
+        guard let userId = UserData.get()?.userId else { DataStore.get().errorHandler(error: "No userId"); return;
         }
-        task.resume()
+        guard let authKey = UserData.get()?.authKey else { DataStore.get().errorHandler(error: "No authKey"); return;
+        }
+        var surveyJson:String?
+        do {
+            surveyJson = try JSONSerialization.data(withJSONObject: survey.toDictionary(), options: .prettyPrinted).base64EncodedString();
+
+        } catch {
+            self.errorHandler(error: error.localizedDescription)
+        }
+
+        let request = HTTPRequest(url: serverUrl+"/user/survey", method: "POST",parameters: ["userId":userId, "authKey":authKey, "survey": surveyJson!]);
+        request.send(callback: {dictionary in
+//            let dictionary = dictionary as! Dictionary<String, String>
+            callback?();
+        }, errorHandler: {error in
+            DataStore.get().errorHandler(error: error);
+        })
     }
 
     
@@ -277,9 +200,15 @@ class DataStore{
             if let dataFromString = responseString?.data(using: .utf8, allowLossyConversion: false) {
                 let json = JSON(data: dataFromString);
                 let jsonString = json["data"]["json"].string
-                if(callback != nil){
-                    callback!(jsonString!)
+                if let jsonString = jsonString{
+                    if(callback != nil){
+                        callback!(jsonString)
+                    }
                 }
+                else{
+                    DataStore.get().errorHandler(error: "Could not get Json from server");
+                }
+                
             }
             else{
                 errorHandler!("invalid json string");
@@ -304,9 +233,9 @@ class DataStore{
     }
     
     //save user inform stored inside dataStore
-    func save() -> Bool{
-        return NSKeyedArchiver.archiveRootObject(noteBook, toFile: DataStore.archiveURL.path!)
-    }
+//    func save() -> Bool{
+//        return NSKeyedArchiver.archiveRootObject(noteBook, toFile: DataStore.archiveURL.path!)
+//    }
     
     func errorHandler(error: String){
         var error = error;
@@ -320,43 +249,13 @@ class DataStore{
             alertController.addAction(okAction)
             
             UIApplication.topViewController()?.present(alertController, animated: true, completion: nil)
+            let eventName = (error + "error").toFireBaseEventName()
+            FIRAnalytics.logEvent(withName: eventName, parameters: [:]);
         }
     }
     
     func getNoteString() -> String{
         return "Review Of Symptoms:\n" + DataStore.get().rootItemExamination.toString() + "\n" + "Assessment Quiz:\n" + DataStore.get().rootItemAssessmentQuiz.toString();
-    }
-    
-    func deleteNote(note: Note, callback: (() -> Void)?, errorHandler: ((String)->Void)?){
-        noteBook.deleteNote(note: note);
-        if(save() != true){
-            print("unable to save note");
-            if(errorHandler != nil){
-                errorHandler!("unable to save note")
-            }
-        }
-        else{
-            print("save note successful!")
-            if(callback != nil){
-                callback!();
-            }
-        }
-    }
-    
-    func addNote(note: Note, callback: (() -> Void)?, errorHandler: ((String)->Void)?){
-        noteBook.addNote(note: note);
-        if(save() != true){
-            if(errorHandler != nil){
-                errorHandler!("unable to save note")
-            }
-            print("unable to save note");
-        }
-        else{
-            print("save note successful!")
-            if(callback != nil){
-                callback!();
-            }
-        }
     }
     
     func clearNote(){

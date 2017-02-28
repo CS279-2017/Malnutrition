@@ -78,7 +78,7 @@ class ItemTableCell:UITableViewCell, UICollectionViewDelegate, UICollectionViewD
         var i = 0;
         for subview in optionsStackView.subviews{
             if(i < item.options.count){
-                let button = subview as! UIButton;
+                let button = subview as! BaseButton;
                 button.titleLabel?.minimumScaleFactor = 0.25;
                 button.titleLabel?.numberOfLines = 2;
                 button.titleLabel?.adjustsFontSizeToFitWidth = true;
@@ -120,9 +120,9 @@ class ItemTableCell:UITableViewCell, UICollectionViewDelegate, UICollectionViewD
         return (item?.images.count)!
     }
     
-    func buttonClicked(button: UIButton){
+    func buttonClicked(button: BaseButton){
         for view in optionsStackView.subviews{
-            let button = view as! UIButton
+            let button = view as! BaseButton
             button.tintColor = defaultSeparatorColor
         }
         button.tintColor = defaultTintColor

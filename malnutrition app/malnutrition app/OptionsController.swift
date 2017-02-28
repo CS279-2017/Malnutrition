@@ -9,19 +9,23 @@
 import UIKit
 
 class OptionsController:UITableViewController{
-    var surveyVar: Any?
     var identifier: String?
     var cellTextArray = [String]();
+    var parentController: SurveyController?;
+    
+    override func viewDidLoad() {
+        tableView.tableFooterView = UIView();
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         guard let identifier = self.identifier else{
             DataStore.get().errorHandler(error: "No identifier set");
             return;
         }
-        if identifier == "VUMC Unit"{
+        if identifier == "vumcUnit"{
             cellTextArray = DataStore.get().vumcUnitOptions;
         }
-        else if identifier == "Clinician Type"{
+        else if identifier == "clinicianType"{
             cellTextArray = DataStore.get().clinicianTypeOptions;
         }
         tableView.reloadData();
@@ -33,13 +37,33 @@ class OptionsController:UITableViewController{
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
-        cell.textLabel?.text = cellTextArray[indexPath.row];
+        let text = cellTextArray[indexPath.row];
+        cell.textLabel?.text = text
+        if(identifier == "vumcUnit"){
+            if(parentController?.vumcUnit == text){
+                tableView.selectRow(at: indexPath, animated: false, scrollPosition: .middle)
+            }
+        }
+        else if(identifier == "clinicianType"){
+            if(parentController?.clinicianType == text){
+               tableView.selectRow(at: indexPath, animated: false, scrollPosition: .middle)
+            }
+        }
         return cell;
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath);
-        surveyVar = cell?.textLabel?.text!
+        if(identifier == "vumcUnit"){
+            let text = cell?.textLabel?.text
+            parentController?.vumcUnit = text
+//            parentController?.vumcUnitLabel.text = text;
+        }
+        else if(identifier == "clinicianType"){
+            let text = cell?.textLabel?.text
+            parentController?.clinicianType = text
+//            parentController?.clinicianTypeLabel.text = text
+        }
         cell?.accessoryType = .checkmark;
     }
     

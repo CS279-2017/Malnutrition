@@ -13,7 +13,7 @@ class RegisterController: BaseController{
     @IBOutlet weak var emailTextField: UITextField!
     
     @IBOutlet weak var passwordTextField: UITextField!
-    @IBOutlet weak var registerButton: UIButton!
+    @IBOutlet weak var registerButton: BaseButton!
     @IBOutlet weak var verifyPasswordTextField: UITextField!
     
     override func viewDidLoad() {
@@ -42,6 +42,7 @@ class RegisterController: BaseController{
             return;
         }
         DataStore.get().register(email: email, password: password, callback:{
+            UserData.set(email: email);
             self.hideProgressBar();
             DispatchQueue.main.async {
                 self.performSegue(withIdentifier: "RegisterToLogin", sender: nil);

@@ -12,7 +12,7 @@
         <!--Survey Controller-->
         <scene sceneID="UZr-Dg-Lnu">
             <objects>
-                <tableViewController storyboardIdentifier="SurveyController" id="fgj-cs-yu4" customClass="SurveyController" customModule="malnutrition_app" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="fgj-cs-yu4" customClass="SurveyController" customModule="malnutrition_app" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="QG8-2S-4JW">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -28,7 +28,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First Name" textAlignment="natural" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="INs-4Z-KIi">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="24"/>
@@ -51,7 +51,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Last Name" textAlignment="natural" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="VlX-Gk-6Tn">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="24"/>
@@ -74,16 +74,16 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jMH-BO-snR">
-                                                    <rect key="frame" x="8" y="8" width="326" height="27.5"/>
+                                                    <rect key="frame" x="8" y="8" width="326" height="28"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="VUMC Unit" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m1E-YJ-lm9">
-                                                            <rect key="frame" x="0.0" y="0.0" width="284" height="27.5"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="284" height="28"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PB3-tq-KEn">
-                                                            <rect key="frame" x="284" y="0.0" width="42" height="27.5"/>
+                                                            <rect key="frame" x="284" y="0.0" width="42" height="28"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
@@ -99,7 +99,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="gjf-1d-Y6s" kind="show" identifier="surveyToOptions" id="NOM-q6-sEU"/>
+                                            <segue destination="gjf-1d-Y6s" kind="show" identifier="vumcUnit" id="NOM-q6-sEU"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Clinician Type" id="P3Y-vW-RJ1">
@@ -135,7 +135,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="gjf-1d-Y6s" kind="show" id="jKz-lw-ItI"/>
+                                            <segue destination="gjf-1d-Y6s" kind="show" identifier="clinicianType" id="jKz-lw-ItI"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Years In Practice" id="SMm-Z6-neI">
@@ -172,7 +172,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jtR-5z-6rU">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jtR-5z-6rU" customClass="BaseButton" customModule="malnutrition_app" customModuleProvider="target">
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                                     <state key="normal" title="Submit"/>
                                                 </button>
@@ -195,9 +195,11 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="bxb-aa-sLA"/>
                     <connections>
+                        <outlet property="clinicianTypeLabel" destination="fvn-wH-3Cw" id="2tA-v9-f7v"/>
                         <outlet property="firstNameTextField" destination="INs-4Z-KIi" id="s55-hR-hYp"/>
                         <outlet property="lastNameTextField" destination="VlX-Gk-6Tn" id="FOJ-5E-m0S"/>
                         <outlet property="submitButton" destination="jtR-5z-6rU" id="V7g-Sc-0pu"/>
+                        <outlet property="vumcUnitLabel" destination="PB3-tq-KEn" id="fbE-BI-yuh"/>
                         <outlet property="yearsInPracticeTextField" destination="59Y-aq-1Wf" id="0va-7a-pgq"/>
                     </connections>
                 </tableViewController>
@@ -208,7 +210,7 @@
         <!--Navigation Controller-->
         <scene sceneID="kZx-f9-g4e">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Y2u-bF-u5T" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="SurveyController" automaticallyAdjustsScrollViewInsets="NO" id="Y2u-bF-u5T" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="i9E-xd-eZe">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -227,7 +229,7 @@
         <scene sceneID="4vi-6R-iZv">
             <objects>
                 <tableViewController storyboardIdentifier="OptionsController" id="gjf-1d-Y6s" customClass="OptionsController" customModule="malnutrition_app" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="RpB-2S-JNn">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="RpB-2S-JNn">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -246,6 +248,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="NOM-q6-sEU"/>
+        <segue reference="jKz-lw-ItI"/>
     </inferredMetricsTieBreakers>
 </document>

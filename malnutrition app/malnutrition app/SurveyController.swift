@@ -10,13 +10,16 @@ import UIKit
 
 class SurveyController: UITableViewController{
     
-    @IBOutlet weak var submitButton: UIButton!
+    @IBOutlet weak var submitButton: BaseButton!
     @IBOutlet weak var yearsInPracticeTextField: UITextField!
     @IBOutlet weak var lastNameTextField: UITextField!
     @IBOutlet weak var firstNameTextField: UITextField!
     
     var clinicianType: String?
     var vumcUnit: String?
+    
+    @IBOutlet weak var clinicianTypeLabel: UILabel!
+    @IBOutlet weak var vumcUnitLabel: UILabel!
     
     var survey: Survey?;
     
@@ -26,19 +29,28 @@ class SurveyController: UITableViewController{
     }
     
     override func viewDidLoad() {
+        super.viewDidLoad()
         submitButton.addTarget(self, action: #selector(submitButtonClicked), for: .touchUpInside)
+        firstNameTextField.text = UserData.get()?.firstName
+        lastNameTextField.text = UserData.get()?.lastName
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated);
+        clinicianTypeLabel.text = clinicianType
+        vumcUnitLabel.text = vumcUnit
     }
     
     func submitButtonClicked(){
-        guard let firstName = firstNameTextField.text else{
+        guard let firstName = firstNameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) else{
             DataStore.get().errorHandler(error: "Please enter your First Name");
             return;
         }
-        guard let lastName = lastNameTextField.text else{
+        guard let lastName = lastNameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) else{
             DataStore.get().errorHandler(error: "Please enter your Last Name");
             return;
         }
-        guard let yearsInPracticeString = yearsInPracticeTextField.text else{
+        guard let yearsInPracticeString = yearsInPracticeTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) else{
             DataStore.get().errorHandler(error: "Please enter your Years In Practice");
             return;
         }
@@ -50,11 +62,11 @@ class SurveyController: UITableViewController{
 //        survey?.lastName = lastName;
 //        survey?.yearsInPractice = yearsInPractice;
 //        survey
-        if(survey?.vumcUnit == nil){
+        if(self.vumcUnit == nil){
             DataStore.get().errorHandler(error: "Please select your VUMC Unit");
             return;
         }
-        if(survey?.clinicianType == nil){
+        if(self.clinicianType == nil){
             DataStore.get().errorHandler(error: "Please select your Clinician Type");
             return;
         }
@@ -62,26 +74,39 @@ class SurveyController: UITableViewController{
         
         if let survey = self.survey{
             UserData.set(survey: survey)
-            self.dismiss(animated: true, completion: nil);
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            appDelegate.popToMainController();
         }
         else{
             DataStore.get().errorHandler(error: "Invalid survey");
         }
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: IndexPath) {
-        
-        let cell = tableView.cellForRow(at: indexPath);
-        let identifier = cell?.reuseIdentifier;
-        let destinationVC = OptionsController();
-        destinationVC.identifier = identifier;
-        destinationVC.performSegue(withIdentifier: "surveyToOptions", sender: self)
-        // Create an instance of PlayerTableViewController and pass the variable
-//        let destinationVC = PlayerTableViewController()
-//        destinationVC.programVar = selectedProgram
-        
-        // Let's assume that the segue name is called playerSegue
-        // This will perform the segue and pre-load the variable for you to use
+//    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: IndexPath) {
+//        
+//        let cell = tableView.cellForRow(at: indexPath);
+//        let identifier = cell?.reuseIdentifier;
+//        let destinationVC = OptionsController();
+//        destinationVC.identifier = identifier;
+//        destinationVC.performSegue(withIdentifier: "surveyToOptions", sender: self)
+//        // Create an instance of PlayerTableViewController and pass the variable
+////        let destinationVC = PlayerTableViewController()
+////        destinationVC.programVar = selectedProgram
+//        
+//        // Let's assume that the segue name is called playerSegue
+//        // This will perform the segue and pre-load the variable for you to use
+//    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let toViewController = segue.destination as? OptionsController {
+            toViewController.identifier = segue.identifier;
+            toViewController.parentController = self;
+//            toViewController.survey = self.survey;
+        }
+//        if segue.identifier == "vumc" {
+//            
+//            
+//        }
     }
     
 }
