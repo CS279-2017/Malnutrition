@@ -13,11 +13,28 @@ router.post('/login', function(req, res){
     db.users.login(email, password, function(object){
         var authKey = object.authKey;
         var userId = object.userId;
-        res.send({data: {authKey: authKey, userId: userId}, error: null});
+        res.send({data: {authKey: authKey, userId: userId, firstName: object.firstName, lastName: object.lastName}, error: null});
     }, function(error){
         res.send({data: null, error: error});
     })
 })
+
+router.post('/logout', function(req, res){
+    var userId = req.body.userId;
+    var authKey = req.body.authKey;
+    console.log("userId: " + userId);
+    console.log("authKey: " + authKey)
+    res.type('json')
+    db.users.authenticate(authKey, userId, function(user){
+        db.users.logout(userId, function(){
+            res.send({data: null, error:null});
+        }, function(error){
+            res.send({data: null, error: error});
+        });
+    },function(error){
+        res.send({data: null, error: error});
+    });
+});
 
 router.post('/register', function(req, res){
     console.log("/register_mobile called!");
@@ -88,6 +105,8 @@ router.post('/authenticate', function(req, res) {
     // var username = req.body.username,
     var userId = req.body.userId;
     var authKey = req.body.authKey;
+    console.log("userId: " + userId);
+    console.log("authKey: " + authKey)
     db.users.authenticate(authKey, userId, function(){
         console.log("authentication successful!")
         res.send({data: null, error: null})
@@ -96,5 +115,45 @@ router.post('/authenticate', function(req, res) {
         res.send({data: null, error: error});
     });
 });
+
+router.post('/survey',function(req,res){
+    console.log("/user/survey called")
+    // var username = req.body.username,
+    var userId = req.body.userId;
+    var authKey = req.body.authKey;
+    var survey = req.body.survey;
+    // var firstName = req.body.firstName
+    // var lastName = req.body.lastName
+    // var vumcUnit = req.body.vumcUnit;
+    // var clinicianType = req.body.clinicanType;
+    // var yearsInPractice = req.body.yearsInPractice;
+
+    // var fields = {
+    //     preferredFirstName: firstName,
+    //     preferredLastName: lastName,
+    //     vumcUnit: vumcUnit,
+    //     clinicianType: clinicianType,
+    //     yearsInPractice: yearsInPractice
+    // }
+
+    db.users.authenticate(authKey, userId, function(){
+        console.log("authentication successful!")
+        db.users.update({_id: util.toMongoIdObject(userId)}, {$set: survey}, function(){
+            res.send({data: null, error: null});
+        }, function(error){
+            console.log("update failed!");
+            res.send({data: null, error: error});
+        })
+    }, function(error){
+        console.log("invalid auth key!")
+        res.send({data: null, error: error});
+    });
+})
+
+function toMongoIdObject(id){
+    if(id != undefined){
+        return new require('mongodb').ObjectId(id.toString());
+    }
+}
 
 module.exports = router

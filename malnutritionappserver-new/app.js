@@ -24,11 +24,11 @@ app.post('/get_json',function(req, res){
     var type = req.body.type;
     console.log(type);
     if(type == "symptoms") {
-        var filePath = path.join(__dirname, 'symptoms.json');
+        var filePath = path.join(__dirname, 'files/symptoms.json');
         read(filePath);
     }
     else if(type == "assessment"){
-        var filePath = path.join(__dirname, 'assessment.json');
+        var filePath = path.join(__dirname, 'files/assessment.json');
         read(filePath);
     }
     else{

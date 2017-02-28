@@ -9,9 +9,9 @@
 	<key>TRACKING_ID</key>
 	<string>UA-86794955-1</string>
 	<key>CLIENT_ID</key>
-	<string>1023374748602-1nd04vlk2meks1hb49v5juh7n2gd2qin.apps.googleusercontent.com</string>
+	<string>1023374748602-9t53tpm13svbkupnshndorvcvq37ggls.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.1023374748602-1nd04vlk2meks1hb49v5juh7n2gd2qin</string>
+	<string>com.googleusercontent.apps.1023374748602-9t53tpm13svbkupnshndorvcvq37ggls</string>
 	<key>API_KEY</key>
 	<string>AIzaSyAMijz6cuI4pvlljEFlQX1AeOPk2F79PFc</string>
 	<key>GCM_SENDER_ID</key>
@@ -25,7 +25,7 @@
 	<key>STORAGE_BUCKET</key>
 	<string>malnutritionapp.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
-	<false/>
+	<true/>
 	<key>IS_ANALYTICS_ENABLED</key>
 	<true/>
 	<key>IS_APPINVITE_ENABLED</key>
@@ -33,7 +33,7 @@
 	<key>IS_GCM_ENABLED</key>
 	<true/>
 	<key>IS_SIGNIN_ENABLED</key>
-	<false/>
+	<true/>
 	<key>GOOGLE_APP_ID</key>
 	<string>1:1023374748602:ios:99750c05920dae67</string>
 	<key>DATABASE_URL</key>

@@ -208,13 +208,13 @@ UsersCollection.prototype = {
             }
         });
     },
-    logout: function(user_id, callback, error_handler){
-        this.collection_users.updateOne({_id: toMongoIdObject(user_id)}, {$set: {loggedIn: false}}, function (err, count, status) {
+    logout: function(userId, callback, errorHandler){
+        this.collection_users.update({_id: toMongoIdObject(userId)}, {$set: {logged_in: false}}, function (err, count, status) {
             if(!err){
                 callback();
             }
             else{
-                error_handler("logout failed");
+                errorHandler("logout failed");
             }
         });
     },
