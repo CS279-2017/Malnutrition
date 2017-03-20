@@ -80,6 +80,16 @@ app.get('/', function (req, res) {
     });
 })
 
+app.get('/login', function(req, res) {
+    var filePath = path.join(__dirname, 'view/login.html');
+    fs.readFile(filePath, {encoding: 'utf-8'}, function(err,data){
+        if (!err){
+            res.send(data);
+        }else{
+            console.log(err);
+        }
+    });
+})
 app.post('/login', function(req, res) {
     console.log("login called!")
     // var username = req.body.username
@@ -104,6 +114,19 @@ app.post('/login', function(req, res) {
     }
 });
 
+app.post('/authenticate', function(req, res) {
+    console.log("login called!")
+    // var username = req.body.username,
+    var key = req.body.auth_key;
+    if(auth_key_arr.indexOf(key) != -1) {
+        console.log("authentication successful!")
+        res.send({data: null, error: null});
+    }
+    else{
+        console.log("invalid auth key!")
+        res.send({data: null, error: "invalid auth key"});
+    }
+});
 
 app.post('/validate', function(req, res){
     console.log("validate called!")

@@ -1,76 +1,69 @@
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>;
+</head>
 
 <!doctype html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8" />
-
-        <style>
-            #login_div{
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                margin-top: -50px;
-                margin-left: -50px;
-                width: 100px;
-                height: 100px;
-            }​
-        </style>
-        <style>
-            body {font-family: sans-serif;}
-            #result {
-                padding: 1em;
-            }
-            .pass {
-                background-color: #efe;
-                color: #393;
-                border: 2px solid #393;
-            }
-            .fail {
-                background-color: #fee;
-                color: #933;
-                border: 2px solid #933;
-            }
-            textarea { width: 100%; }
-        </style>
-    </head>
     <body>
-        <div id="login_div">
-            <label for="password_text_field">Enter The Password</label>
-                <input type="password" name="password" id="password_text_field" placeholder="Password" required>
-            <input type="submit" id="login_button" value="Login">
+        <!--<div id="login_div">-->
+            <!--<label for="password_text_field">Enter The Password</label>-->
+                <!--<input type="password" name="password" id="password_text_field" placeholder="Password" required>-->
+            <!--<input type="submit" id="login_button" value="Login">-->
+        <!--</div>-->
+
+        <!--<div id="symptoms_div">-->
+            <!--<textarea id="symptoms_textarea" rows="20" cols="50"></textarea>-->
+            <!--<p>-->
+                <!--<button id="symptoms_validate_button">Validate</button>-->
+                <!--<button id="symptoms_submit_button">Submit</button>-->
+            <!--</p>-->
+            <!--<pre id="symptoms_result"></pre>-->
+        <!--</div>-->
+
+        <div class="container">
+            <div id="symptoms_div" class="form-group">
+                <label for="symptoms_textarea">Review Of Symptoms JSON:</label>
+                <textarea id="symptoms_textarea" class="form-control" rows="5"></textarea>
+            </div>
+
+            <button id="symptoms_validate_button">Validate</button>
+            <button id="symptoms_submit_button">Submit</button>
+
+            <div id="assessment_div" class="form-group">
+
+                <label for="assessment_textarea">Assessment Quiz JSON:</label>
+
+                <textarea id="assessment_textarea" class="form-control" rows="5"></textarea>
+
+            </div>
+
+            <button id="assessment_validate_button">Validate</button>
+            <button id="assessment_submit_button">Submit</button>
         </div>
 
-        <div id="symptoms_div">
-            <textarea id="symptoms_textarea" rows="20" cols="50"></textarea>
-            <p>
-                <button id="symptoms_validate_button">Validate</button>
-                <button id="symptoms_submit_button">Submit</button>
-            </p>
-            <pre id="symptoms_result"></pre>
-        </div>
 
-        <div id="assessment_div">
-            <textarea id="assessment_textarea" rows="20" cols="50"></textarea>
-            <p>
-                <button id="assessment_validate_button">Validate</button>
-                <button id="assessment_submit_button">Submit</button>
-            </p>
-            <pre id="assessment_result"></pre>
-        </div>
+        <!--<div id="assessment_div">-->
+            <!--<textarea id="assessment_textarea" rows="20" cols="50"></textarea>-->
+            <!--<p>-->
+                <!--<button id="assessment_validate_button">Validate</button>-->
+                <!--<button id="assessment_submit_button">Submit</button>-->
+            <!--</p>-->
+            <!--<pre id="assessment_result"></pre>-->
+        <!--</div>-->
     </body>
 
     <script>
-        var domain = "http://nutriscreen.herokuapp.com/";
+        var domain = "http://ec2-35-163-70-13.us-west-2.compute.amazonaws.com/";
 //        var domain = "http://localhost:3000/"
 
 
         function authenticate(callback, error_handler){
             var request = $.ajax({
-                url: domain + "authenticate",
+                url: domain + "user/authenticate",
                 type: "POST",
-                data: {auth_key: localStorage.getItem('auth_key')},
+                data: {authKey: localStorage.getItem('authKey'), userId: localStorage.getItem('userId')},
                 dataType: "html"
             });
 
@@ -87,34 +80,13 @@
             });
         }
 
-        function login(password, callback, error_handler){
-
-            var request = $.ajax({
-                url: domain + "login",
-                type: "POST",
-                data: {password: password},
-                dataType: "html"
-            });
-
-            request.done(function(message) {
-                var json = JSON.parse(message);
-                if(json.error == null){
-                    localStorage.setItem('auth_key',json.data.auth_key);
-                    callback();
-                }
-                else{
-                    error_handler(json.error);
-                }
-            });
-        }
-
         function validate(json, callback, error_handler) {
             authenticate(function(){
                 showTextarea();
                 var request = $.ajax({
                     url: domain + "validate",
                     type: "POST",
-                    data: {auth_key: localStorage.getItem('auth_key'), json: json},
+                    data: {authKey: localStorage.getItem('authKey'), userId: localStorage.getItem('userId'), json: json},
                     dataType: "html"
                 });
                 request.done(function (message) {
@@ -189,15 +161,17 @@
 
     <script>
         function showLogin(){
-            $('#symptoms_div').hide();
-            $('#assessment_div').hide();
-            $('#login_div').show();
+//            $('#symptoms_div').hide();
+//            $('#assessment_div').hide();
+//            $('#login_div').show();
+            window.location.href = '/login';
         }
 
         function showTextarea(){
-            $('#symptoms_div').show();
-            $('#assessment_div').show();
-            $('#login_div').hide();
+//            $('#symptoms_div').show();
+//            $('#assessment_div').show();
+//            $('#login_div').hide();
+//            window.location.href
         }
 
         $("#login_button").click(function(){
@@ -298,4 +272,35 @@
           showLogin();
         })
     </script>
+
+    <meta charset="utf-8" />
+
+    <!--<style>-->
+        <!--#login_div{-->
+            <!--position: absolute;-->
+            <!--top: 50%;-->
+            <!--left: 50%;-->
+            <!--margin-top: -50px;-->
+            <!--margin-left: -50px;-->
+            <!--width: 100px;-->
+            <!--height: 100px;-->
+        <!--}​-->
+    <!--</style>-->
+    <!--<style>-->
+        <!--body {font-family: sans-serif;}-->
+        <!--#result {-->
+            <!--padding: 1em;-->
+        <!--}-->
+        <!--.pass {-->
+            <!--background-color: #efe;-->
+            <!--color: #393;-->
+            <!--border: 2px solid #393;-->
+        <!--}-->
+        <!--.fail {-->
+            <!--background-color: #fee;-->
+            <!--color: #933;-->
+            <!--border: 2px solid #933;-->
+        <!--}-->
+        <!--textarea { width: 100%; }-->
+    <!--</style>-->
 </html>
