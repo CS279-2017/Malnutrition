@@ -32,7 +32,9 @@ class NoteController: BaseController, UISearchBarDelegate, UITableViewDelegate, 
         
         tableView.allowsSelection = false;
         
-        displayedNotes = (UserData.get()?.noteBook?.getAllNotes())!;
+        if let allNotes = UserData.get()?.noteBook?.getAllNotes(){
+            displayedNotes = allNotes;
+        };
         
         searchBar.delegate = self;
         
@@ -50,7 +52,9 @@ class NoteController: BaseController, UISearchBarDelegate, UITableViewDelegate, 
     
     //build a full search function later on that searches for prefixes
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        displayedNotes = (noteBook?.getNotesWithPrefix(prefix: searchText))!;
+        if let notes = noteBook?.getNotesWithPrefix(prefix: searchText){
+            displayedNotes = notes;
+        }
         searchQuery = searchText;
         tableView.reloadData();
     }
@@ -109,10 +113,14 @@ class NoteController: BaseController, UISearchBarDelegate, UITableViewDelegate, 
     
     func updateDisplayedNotes(){
         if(searchQuery == nil){
-            displayedNotes = (UserData.get()?.noteBook?.getAllNotes())!;
+            if let allNotes = UserData.get()?.noteBook?.getAllNotes(){
+                displayedNotes = allNotes;
+            };
         }
         else{
-            displayedNotes = (UserData.get()?.noteBook?.getNotesWithPrefix(prefix: searchQuery!))!;
+            if let notes = UserData.get()?.noteBook?.getNotesWithPrefix(prefix: searchQuery!){
+                displayedNotes = notes;
+            }
         }
         
     }

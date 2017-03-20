@@ -69,6 +69,28 @@ class Item{
         return retString;
     }
     
+    func toJson() -> String?{
+        
+        let dictionary:[String:Any] = [
+         "type":type, //can take on values: "Root, Symptom", "Body Part", "Action", "Question, or nil"
+        "title":title,
+        "description":description,
+        "images":images,
+        "nextItems": nextItems,
+        "options": options,
+        "optionsSelectedIndex": optionsSelectedIndex,
+        "value":value,
+        "switched":switched,
+        ]
+        var json:String?
+        do {
+            json = try JSONSerialization.data(withJSONObject: dictionary, options: .prettyPrinted) as? String
+        } catch {
+            print(error.localizedDescription)
+        }
+        return json
+    }
+    
     func switchOffAllItems(){
         switched = false;
         optionsSelectedIndex = nil;

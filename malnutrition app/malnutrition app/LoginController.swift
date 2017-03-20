@@ -40,14 +40,14 @@ class LoginController: BaseController, UITextFieldDelegate{
     func loginButtonClicked(){
         guard let email = emailTextField.text else {DataStore.get().errorHandler(error: "Enter Email"); return;}
         guard let password = passwordTextField.text else {DataStore.get().errorHandler(error: "Enter Password"); return;}
-//        self.showProgressBar(msg: "Logging In", true, width: 150);
         if(email == ""){
            DataStore.get().errorHandler(error: "Enter Email"); return;
         }
         if(password == ""){
             DataStore.get().errorHandler(error: "Enter Password"); return;
         }
-        DataStore.get().login(email: email, password: password, callback: { authKey in 
+        self.showProgressBar(msg: "Logging In", true, width: 150);
+        DataStore.get().login(email: email, password: password, callback: { authKey in
             self.hideProgressBar();
             UserData.set(email: email);
             let appDelegate = UIApplication.shared.delegate as! AppDelegate

@@ -51,14 +51,12 @@ class UserData:NSObject, NSCoding{
         aCoder.encode(self.password, forKey: "password")
         
         aCoder.encode(self.userId, forKey: "userId")
-//        aCoder.encode(self.authKey, forKey: "authKey");
+        aCoder.encode(self.authKey, forKey: "authKey");
         
-//        aCoder.encode(self.profilePicture, forKey: "profilePicture");
         aCoder.encode(self.firstName, forKey: "firstName");
         aCoder.encode(self.lastName, forKey: "lastName");
-//        aCoder.encode(self.device_token, forKey: "device_token");
         
-//        aCoder.encode(self.survey, forKey: "survey");
+        aCoder.encode(self.survey, forKey: "survey");
         aCoder.encode(self.noteBook, forKey: "noteBook")
     }
     
@@ -67,15 +65,13 @@ class UserData:NSObject, NSCoding{
         self.password = aDecoder.decodeObject(forKey: "password") as? String
 
         self.userId = aDecoder.decodeObject(forKey: "userId") as? String
-//        self.authKey = aDecoder.decodeObject(forKey: "authKey") as? String
+        self.authKey = aDecoder.decodeObject(forKey: "authKey") as? String
         
-//        self.profilePicture = aDecoder.decodeObject(forKey: "profilePicture") as? UIImage
         
         self.firstName = aDecoder.decodeObject(forKey: "firstName") as? String
         self.lastName = aDecoder.decodeObject(forKey: "lastName") as? String
-//        self.device_token = aDecoder.decodeObject(forKey: "device_token") as? String
         
-//        self.survey = aDecoder.decodeObject(forKey: "survey") as? Survey
+        self.survey = aDecoder.decodeObject(forKey: "survey") as? Survey
         self.noteBook = aDecoder.decodeObject(forKey: "noteBook") as? NoteBook
     }
     

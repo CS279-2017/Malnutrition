@@ -6,6 +6,7 @@
 //  Copyright © 2016 Bowen Jin. All rights reserved.
 //
 
+import SwiftyJSON
 import Foundation
 
 class Note: NSObject, NSCoding{
@@ -46,6 +47,26 @@ class Note: NSObject, NSCoding{
         self.textContent = aDecoder.decodeObject(forKey: "textContent") as! String
         self.dateCreated = aDecoder.decodeObject(forKey: "dateCreated") as! Date;
         self.dateLastEdited = aDecoder.decodeObject(forKey: "dateLastEdited") as! Date?;
+    }
+    
+    func toJson()->String?{
+        let dictionary =
+            ["uuid": uuid,
+             "title": title,
+             "textContent": textContent,
+             "dateCreated": String(describing: dateCreated),
+             "dateLastEdited": String(describing: dateLastEdited),
+             "examJson":examRootItem?.toJson(),
+             "assessmentJSon":assessmentRootItem?.toJson(),
+            ]
+
+        var json:String?
+        do {
+            json = try JSONSerialization.data(withJSONObject: dictionary, options: .prettyPrinted) as? String
+        } catch {
+            print(error.localizedDescription)
+        }
+        return json
     }
     
 }

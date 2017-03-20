@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3207B2311E65023D00AA882A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3207B2301E65023D00AA882A /* GoogleService-Info.plist */; };
+		3207B2331E65147100AA882A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3207B2321E65147100AA882A /* GoogleService-Info.plist */; };
 		3230A1981E5B944200A2FED9 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3230A1971E5B944200A2FED9 /* Login.storyboard */; };
 		3230A19A1E5B980D00A2FED9 /* Survey.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3230A1991E5B980D00A2FED9 /* Survey.storyboard */; };
 		323F8D191DD0181F008A0A7C /* ItemTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323F8D181DD0181F008A0A7C /* ItemTableController.swift */; };
@@ -50,7 +50,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		3207B2301E65023D00AA882A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		3207B2321E65147100AA882A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		322CBBE51DF7253500374111 /* BridgingHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BridgingHeader.h; sourceTree = "<group>"; };
 		3230A1971E5B944200A2FED9 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		3230A1991E5B980D00A2FED9 /* Survey.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Survey.storyboard; sourceTree = "<group>"; };
@@ -174,7 +174,7 @@
 		32D587D21DC8FA1F00E15047 /* malnutrition app */ = {
 			isa = PBXGroup;
 			children = (
-				3207B2301E65023D00AA882A /* GoogleService-Info.plist */,
+				3207B2321E65147100AA882A /* GoogleService-Info.plist */,
 				32D587D31DC8FA1F00E15047 /* AppDelegate.swift */,
 				32478F521E6499280026EFF2 /* HTTPRequest.swift */,
 				32C186B31DF77851009770E3 /* malnutrition app.entitlements */,
@@ -329,7 +329,7 @@
 				3230A19A1E5B980D00A2FED9 /* Survey.storyboard in Resources */,
 				32D587DE1DC8FA1F00E15047 /* LaunchScreen.storyboard in Resources */,
 				32D587DB1DC8FA1F00E15047 /* Assets.xcassets in Resources */,
-				3207B2311E65023D00AA882A /* GoogleService-Info.plist in Resources */,
+				3207B2331E65147100AA882A /* GoogleService-Info.plist in Resources */,
 				3230A1981E5B944200A2FED9 /* Login.storyboard in Resources */,
 				32D587D91DC8FA1F00E15047 /* Main.storyboard in Resources */,
 			);

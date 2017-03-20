@@ -24,11 +24,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 //        FIRApp.configure()
         
-        DataStore.get().authenticate(callback: {
-            self.popToMainController();
-        }, errorHandler: {error in
+        if(DataStore.get().isInternetAvailable()){
+            DataStore.get().authenticate(callback: {
+                self.popToMainController();
+            }, errorHandler: {error in
+                self.popToFirstController();
+            })
+        }
+        else{
             self.popToFirstController();
-        })
+            DataStore.get().errorHandler(error: "No Internet Connection");
+        }
+        
 //        self.popToFirstController();
         
         // Configure tracker from GoogleService-Info.plist.
@@ -64,7 +71,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // [END register_for_notifications]
         
-        FIRApp.configure()
+//        FIRApp.configure()
         
         // Add observer for InstanceID token refresh callback.
         NotificationCenter.default.addObserver(self,

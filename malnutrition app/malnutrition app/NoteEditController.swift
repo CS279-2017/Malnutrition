@@ -82,6 +82,7 @@ class NoteEditController:BaseController, UITextFieldDelegate, UITextViewDelegate
                 //note: we don't switch off because we are editing an existing note and not making a new note
             }
         }
+//        print(note?.toJson());
     }
     
     func setNote(note: Note, isEditingExisting: Bool){

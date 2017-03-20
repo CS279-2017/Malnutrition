@@ -8,6 +8,7 @@
 
 import Foundation
 import Firebase
+import SystemConfiguration
 
 import SwiftyJSON
 
@@ -16,8 +17,8 @@ class DataStore{
     //stores the shared singleton instance of the DataStore class
     static var sharedInstance: DataStore? = nil;
     
-//    let serverUrl = "http://ec2-35-163-70-13.us-west-2.compute.amazonaws.com:3000";
-    let serverUrl = "http://10.66.134.47:3000"
+    let serverUrl = "http://ec2-35-163-70-13.us-west-2.compute.amazonaws.com:3000";
+//    let serverUrl = "http://10.66.134.47:3000"
 //    let serverUrl = "https://nutriscreen.herokuapp.com"
     
     let vumcUnitOptions = ["Geriatrics", "General Medical","General Surgical"]
@@ -122,8 +123,8 @@ class DataStore{
     }
     
     func authenticate(callback: (()->())?, errorHandler: ((String)->())?){
-        guard let authKey = UserData.get()?.authKey else {self.errorHandler(error: "No authKey saved"); return;}
-        guard let userId = UserData.get()?.userId else {self.errorHandler(error: "No userId saved"); return;}
+        guard let authKey = UserData.get()?.authKey else {errorHandler?("No authKey saved"); return;}
+        guard let userId = UserData.get()?.userId else {errorHandler?("No userId saved"); return;}
         let request = HTTPRequest(url: serverUrl+"/user/authenticate", method: "POST", parameters: ["authKey":authKey, "userId":userId]);
         request.send(callback: {dictionary in
             //successful authentication
@@ -288,6 +289,27 @@ class DataStore{
                 self.parseJson(jsonString: assessmentJson, root:self.rootItemAssessmentQuiz);
                 AppDelegate.loadedAssessments = true;
         });
+    }
+    
+    func isInternetAvailable() -> Bool
+    {
+        var zeroAddress = sockaddr_in()
+        zeroAddress.sin_len = UInt8(MemoryLayout.size(ofValue: zeroAddress))
+        zeroAddress.sin_family = sa_family_t(AF_INET)
+        
+        let defaultRouteReachability = withUnsafePointer(to: &zeroAddress) {
+            $0.withMemoryRebound(to: sockaddr.self, capacity: 1) {zeroSockAddress in
+                SCNetworkReachabilityCreateWithAddress(nil, zeroSockAddress)
+            }
+        }
+        
+        var flags = SCNetworkReachabilityFlags()
+        if !SCNetworkReachabilityGetFlags(defaultRouteReachability!, &flags) {
+            return false
+        }
+        let isReachable = (flags.rawValue & UInt32(kSCNetworkFlagsReachable)) != 0
+        let needsConnection = (flags.rawValue & UInt32(kSCNetworkFlagsConnectionRequired)) != 0
+        return (isReachable && !needsConnection)
     }
 }
 
