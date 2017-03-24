@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="/base.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="/scripts.js" ></script>
+</head>
+<body onload="setupNotes()">
+        <div id="wrap">
+            <label for="vumc_unit">VUMC Unit:</label>
+            <select id="vumc_unit">
+                <option value="all_units">All Units</option>
+                <option value="geriatrics">Geriatrics</option>
+                <option value="general_medical">General Medical</option>
+                <option value="general_surgical">General Surgical</option>
+            </select>
+            <label for="vumc_unit">Clinician Type:</label>
+            <select id="clinician_type">
+                <option value="all_types">All Types</option>
+                <option value="attending_physician">Attending Physician</option>
+                <option value="resident">Resident</option>
+                <option value="nurse_practitioner">Nurse Practitioner</option>
+                <option value="physician_assistant">Physician Assistant</option>
+                <option value="registered_nurse">Registered Nurse</option>
+                <option value="dietician">Dietician</option>
+            </select>
+            <label for="vumc_unit">Years in practice:</label>
+            <select id="years_in_practice">
+                <option value="all">All</option>
+                <option value="less_than_5_years">Less than 5 years</option>
+                <option value="more_than_5_years">More than 5 years</option>
+            </select>
+        </div>
+        <button type="button" onclick="updateNotes()">Update</button>
+    <div>
+        <ul id="notes_list">
+        </ul>
+    </div>
+</body>
+</html>
