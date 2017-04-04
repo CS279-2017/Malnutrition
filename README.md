@@ -34,7 +34,8 @@ Classes:
     * text: What is displayed on the button
     * click: id value of the screen that will be navigated to when the button is clicked
 
-##Example JSON:
+#Example JSON:
+
  [{
 		"id": "screen0",
 		"class": "main-screen",
