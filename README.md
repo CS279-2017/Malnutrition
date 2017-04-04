@@ -31,8 +31,13 @@ Classes:
 6. textfield
     * text: What is displayed before any text is entered (aka placeholder)
 7. button
-    * text: What is displayed on the button
-    * click: id value of the screen that will be navigated to when the button is clicked
+    * Attributes:
+    	* text: What is displayed on the button
+   	* click: id value of the screen that will be navigated to when the button is clicked
+8. image-slider
+    * Attributes:
+    	* text (optional): Text that is displayed above the image slider
+	* images: an array of urls of images to be displayed 
 
 ###Example JSON:
 * 
@@ -96,7 +101,11 @@ Classes:
                     "text":"hello world"},
                     {"class":"button",
                     "text":"Hi class",
-                    "click":"screen2"}
+                    "click":"screen2"},
+		    {"class":"image-slider",
+		    "text":"Text above the image slider",
+		    "images":["http://www.imgur/img1", "http://www.imgur/img2", "http://www.imgur/img3"]
+		    }
                     ]
   },
   
