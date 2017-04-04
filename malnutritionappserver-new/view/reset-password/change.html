@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    #default-header#
+</head>
+
+<body>
+<div class = "main">
+    #nav-bar#
+    <br>
+    <div class="container change-password-container container-main">
+        <div class="row">
+            <div class="col-md-5 col-md-offset-4">
+                <div class="panel panel-change-password">
+                    <div class="panel-heading text-center">
+                        <div class="row ">
+                            <a class="active" id="change-password-form-link"><i18n-string>Change Password</i18n-string></a>
+                            <!--<a href="#" class="active" id="change-password-form-link">Reset Password</a>-->
+                            <!--<div class="col-xs-6">-->
+                            <!---->
+                            <!--</div>-->
+                        </div>
+                        <hr>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row text-center">
+                            <div class="alert alert-info">
+                                <i18n-string>Enter your new password below</i18n-string>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <form id="change-password-form" action="/reset-password/change" method="post" role="form" style="display: block;">
+                                    <div class="form-group">
+                                        <input type="password" name="password" id="change-password-new-password-input" tabindex="1" class="form-control" placeholder="<i18n-string>New Password</i18n-string>" value="">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="password" name="confirm-password" id="change-password-confirm-new-password-input" tabindex="1" class="form-control" placeholder="<i18n-string>Confirm New Password</i18n-string>" value="">
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-sm-6 col-sm-offset-3">
+                                                <input type="submit" name="change-password-submit" id="change-password-submit" tabindex="4" class="form-control btn btn-change-password" value="<i18n-string>Change Password</i18n-string>">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--<div class="form-group">-->
+                                    <!--<div class="row">-->
+                                    <!--<div class="col-lg-12">-->
+                                    <!--<div class="text-center">-->
+                                    <!--<a href="/change-password" tabindex="5" class="forgot-password">Forgot Password?</a>-->
+                                    <!--</div>-->
+                                    <!--</div>-->
+                                    <!--</div>-->
+                                    <!--</div>-->
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br/>
+</div>
+
+
+#footer#
+</body>
+
+
+</html>
+
+<style>
+    .alert{
+        margin-left: 10%;
+        margin-right: 10%;
+    }
+    .panel-change-password {
+        border-color: #ccc;
+        -webkit-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.2);
+        -moz-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.2);
+        box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.2);
+    }
+    .panel-change-password>.panel-heading {
+        color: #00415d;
+        background-color: #fff;
+        border-color: #fff;
+        text-align:center;
+    }
+    .panel-change-password>.panel-heading a{
+        text-decoration: none;
+        color: #666;
+        font-weight: bold;
+        font-size: 15px;
+        -webkit-transition: all 0.1s linear;
+        -moz-transition: all 0.1s linear;
+        transition: all 0.1s linear;
+    }
+    .panel-change-password>.panel-heading a.active{
+        color: #029f5b;
+        font-size: 18px;
+    }
+    .panel-change-password>.panel-heading hr{
+        margin-top: 10px;
+        margin-bottom: 0px;
+        clear: both;
+        border: 0;
+        height: 1px;
+        background-image: -webkit-linear-gradient(left,rgba(0, 0, 0, 0),rgba(0, 0, 0, 0.15),rgba(0, 0, 0, 0));
+        background-image: -moz-linear-gradient(left,rgba(0,0,0,0),rgba(0,0,0,0.15),rgba(0,0,0,0));
+        background-image: -ms-linear-gradient(left,rgba(0,0,0,0),rgba(0,0,0,0.15),rgba(0,0,0,0));
+        background-image: -o-linear-gradient(left,rgba(0,0,0,0),rgba(0,0,0,0.15),rgba(0,0,0,0));
+    }
+    .panel-change-password input[type="text"],.panel-change-password input[type="email"],.panel-change-password input[type="password"] {
+        height: 45px;
+        border: 1px solid #ddd;
+        font-size: 16px;
+        -webkit-transition: all 0.1s linear;
+        -moz-transition: all 0.1s linear;
+        transition: all 0.1s linear;
+    }
+    .panel-change-password input:hover,
+    .panel-change-password input:focus {
+        outline:none;
+        -webkit-box-shadow: none;
+        -moz-box-shadow: none;
+        box-shadow: none;
+        border-color: #ccc;
+    }
+    .btn-change-password {
+        background-color: #59B2E0;
+        outline: none;
+        color: #fff;
+        font-size: 14px;
+        height: auto;
+        font-weight: normal;
+        padding: 14px 0;
+        text-transform: uppercase;
+        border-color: #59B2E6;
+    }
+    .btn-change-password:hover,
+    .btn-change-password:focus {
+        color: #fff;
+        background-color: #53A3CD;
+        border-color: #53A3CD;
+    }
+    .forgot-password {
+        text-decoration: underline;
+        color: #888;
+    }
+    .forgot-password:hover,
+    .forgot-password:focus {
+        text-decoration: underline;
+        color: #666;
+    }
+</style>
+
+<script>
+    $("#change-password-form").submit(function(e) {
+        e.preventDefault();
+        if($('#change-password-new-password-input').val() != $('#change-password-confirm-new-password-input').val()){
+            $('.alert-dismissible').remove();
+            $('.change-password-container').prepend(
+                    '<div class="alert alert-danger alert-dismissible" role="alert">'+
+                    '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>'+
+                    '<strong><i18n-string>Error: </i18n-string></strong>' +  "<i18n-string>Passwords don't match </i18n-string>" +
+                    '</div>'
+            );
+        }
+        else{
+            $.ajax({
+                url : $(this).attr('action') || window.location.pathname,
+                type: "POST",
+                data: $(this).serialize(),
+                success: function (json) {
+                    var error = json.error
+                    if(json.error){
+                        $('.alert-dismissible').remove();
+                        $('.change-password-container').prepend(
+                                '<div class="alert alert-danger alert-dismissible" role="alert">'+
+                                '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>'+
+                                '<strong><i18n-string>Error: </i18n-string></strong>' + error +
+                                '</div>'
+                        );
+                    }
+                    else{
+                        var data = json.data;
+                        var email = data.email;
+                        $('.alert-dismissible').remove();
+                        $('.change-password-container').prepend(
+                            '<div class="alert alert-success alert-dismissible" role="alert">'+
+                                '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>'+
+                                '<strong><i18n-string>Success! </i18n-string></strong>' + '<i18n-string>Password for </i18n-string>' + email + '<i18n-string> was changed. </i18n-string><a href="/login?email=' + email +'" class="alert-link"><i18n-string>Click Here To Login</i18n-string></a>' +
+                            '</div>'
+                        );
+                        $('#change-password-new-password-input').val('');
+                        $('#change-password-confirm-new-password-input').val('');
+
+                    }
+                },
+                error: function (jXHR, textStatus, errorThrown) {
+                    alert(errorThrown);
+                }
+            });
+        }
+        return false;
+    });
+</script>

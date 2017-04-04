@@ -4,159 +4,492 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>;
 </head>
 
-<div class="container">
-    <div class="row">
-        <div class="col-sm-6 col-md-4 col-md-offset-4">
-            <!--<h1 class="text-center login-title">Sign in to continue to Bootsnipp</h1>-->
-            <div class="account-wall">
-                <!--<img class="profile-img" src="https://lh5.googleusercontent.com/-b0-k99FZlyE/AAAAAAAAAAI/AAAAAAAAAAA/eu7opA4byxI/photo.jpg?sz=120"-->
-                     <!--alt="">-->
-                <form class="form-signin">
-                    <input id="email-input" type="text" class="form-control" placeholder="Email" required autofocus>
-                    <input id="password-input" type="password" class="form-control" placeholder="Password" required>
-                    <button id="login-button" class="btn btn-lg btn-primary btn-block" type="submit">
-                        Sign in</button>
-                    <!--<label class="checkbox pull-left">-->
-                        <!--<input type="checkbox" value="remember-me">-->
-                        <!--Remember me-->
-                    <!--</label>-->
-                    <!--<a href="#" class="pull-right need-help">Need help? </a><span class="clearfix"></span>-->
-                </form>
+<!--<div class="container">-->
+    <!--<div class="row">-->
+        <!--<div class="col-sm-6 col-md-4 col-md-offset-4">-->
+            <!--&lt;!&ndash;<h1 class="text-center login-title">Sign in to continue to Bootsnipp</h1>&ndash;&gt;-->
+            <!--<div class="account-wall">-->
+                <!--&lt;!&ndash;<img class="profile-img" src="https://lh5.googleusercontent.com/-b0-k99FZlyE/AAAAAAAAAAI/AAAAAAAAAAA/eu7opA4byxI/photo.jpg?sz=120"&ndash;&gt;-->
+                     <!--&lt;!&ndash;alt="">&ndash;&gt;-->
+                <!--<form class="form-signin">-->
+                    <!--<input id="email-input" type="text" class="form-control" placeholder="Email" required autofocus>-->
+                    <!--<input id="password-input" type="password" class="form-control" placeholder="Password" required>-->
+                    <!--<button id="login-button" class="btn btn-lg btn-primary btn-block" type="submit">-->
+                        <!--Sign in</button>-->
+                    <!--&lt;!&ndash;<label class="checkbox pull-left">&ndash;&gt;-->
+                        <!--&lt;!&ndash;<input type="checkbox" value="remember-me">&ndash;&gt;-->
+                        <!--&lt;!&ndash;Remember me&ndash;&gt;-->
+                    <!--&lt;!&ndash;</label>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<a href="#" class="pull-right need-help">Need help? </a><span class="clearfix"></span>&ndash;&gt;-->
+                <!--</form>-->
+            <!--</div>-->
+            <!--<a href="#" class="text-center new-account">Create an account </a>-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</div>-->
+
+<!--<script>-->
+    <!--var domain = "http://ec2-35-163-70-13.us-west-2.compute.amazonaws.com:3000/";-->
+<!--//    var domain = "http://localhost:3000/"-->
+
+    <!--$("#login-button").click(function(e){-->
+        <!--e.preventDefault();-->
+        <!--console.log("login button clicked")-->
+        <!--var email = $("#email-input").text();-->
+        <!--var password = $("#password-input").val();-->
+        <!--login(email, password, function(){-->
+            <!--window.location.href = '/'-->
+<!--//            showTextarea();-->
+<!--//            get_json("symptoms", function(json){-->
+<!--//                if($('#symptoms_textarea').val() == "") {-->
+<!--//                    $("#symptoms_textarea").val(json);-->
+<!--//                }-->
+<!--//            }, function(error){-->
+<!--//                alert(error);-->
+<!--//            });-->
+<!--//            get_json("assessment", function(json){-->
+<!--//                if($('#assessment_textarea').val() == "") {-->
+<!--//                    $("#assessment_textarea").val(json);-->
+<!--//                }-->
+<!--//            }, function(error){-->
+<!--//                alert(error);-->
+<!--//            });-->
+        <!--}, function(error){-->
+<!--//            showLogin();-->
+            <!--alert(error);-->
+        <!--})-->
+    <!--});-->
+
+    <!--function login(email, password, callback, error_handler){-->
+
+        <!--var request = $.ajax({-->
+            <!--url: domain + "login",-->
+            <!--type: "POST",-->
+            <!--data: {email: email, password: password},-->
+            <!--dataType: "html"-->
+        <!--});-->
+
+        <!--request.done(function(message) {-->
+            <!--var json = JSON.parse(message);-->
+            <!--if(json.error == null){-->
+                <!--localStorage.setItem('authKey',json.data.authKey);-->
+                <!--localStorage.setItem('userId', json.data.userId);-->
+                <!--callback();-->
+            <!--}-->
+            <!--else{-->
+                <!--error_handler(json.error);-->
+            <!--}-->
+        <!--});-->
+    <!--}-->
+<!--</script>-->
+
+<!--<style>-->
+    <!--.form-signin-->
+    <!--{-->
+        <!--max-width: 330px;-->
+        <!--padding: 15px;-->
+        <!--margin: 0 auto;-->
+    <!--}-->
+    <!--.form-signin .form-signin-heading, .form-signin .checkbox-->
+    <!--{-->
+        <!--margin-bottom: 10px;-->
+    <!--}-->
+    <!--.form-signin .checkbox-->
+    <!--{-->
+        <!--font-weight: normal;-->
+    <!--}-->
+    <!--.form-signin .form-control-->
+    <!--{-->
+        <!--position: relative;-->
+        <!--font-size: 16px;-->
+        <!--height: auto;-->
+        <!--padding: 10px;-->
+        <!-- -webkit-box-sizing: border-box;-->
+        <!-- -moz-box-sizing: border-box;-->
+        <!--box-sizing: border-box;-->
+    <!--}-->
+    <!--.form-signin .form-control:focus-->
+    <!--{-->
+        <!--z-index: 2;-->
+    <!--}-->
+    <!--.form-signin input[type="text"]-->
+    <!--{-->
+        <!--margin-bottom: -1px;-->
+        <!--border-bottom-left-radius: 0;-->
+        <!--border-bottom-right-radius: 0;-->
+    <!--}-->
+    <!--.form-signin input[type="password"]-->
+    <!--{-->
+        <!--margin-bottom: 10px;-->
+        <!--border-top-left-radius: 0;-->
+        <!--border-top-right-radius: 0;-->
+    <!--}-->
+    <!--.account-wall-->
+    <!--{-->
+        <!--margin-top: 20px;-->
+        <!--padding: 40px 0px 20px 0px;-->
+        <!--background-color: #f7f7f7;-->
+        <!-- -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);-->
+        <!-- -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);-->
+        <!--box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);-->
+    <!--}-->
+    <!--.login-title-->
+    <!--{-->
+        <!--color: #555;-->
+        <!--font-size: 18px;-->
+        <!--font-weight: 400;-->
+        <!--display: block;-->
+    <!--}-->
+    <!--.profile-img-->
+    <!--{-->
+        <!--width: 96px;-->
+        <!--height: 96px;-->
+        <!--margin: 0 auto 10px;-->
+        <!--display: block;-->
+        <!-- -moz-border-radius: 50%;-->
+        <!-- -webkit-border-radius: 50%;-->
+        <!--border-radius: 50%;-->
+    <!--}-->
+    <!--.need-help-->
+    <!--{-->
+        <!--margin-top: 10px;-->
+    <!--}-->
+    <!--.new-account-->
+    <!--{-->
+        <!--display: block;-->
+        <!--margin-top: 10px;-->
+    <!--}-->
+<!--</style>-->
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <!--<meta name="Description" content="SeaTurtleVPN - A simple VPN for 留学生">-->
+    <!--<title>SeaTurtleVPN - Login/Register</title>-->
+    <!--<meta name="google-site-verification" content="AUAE9fPD0o0-rRObahtfFk6ynrKgRSUt5RPcGssdWGA" />-->
+    <!--<title>SeaTurtleVPN</title>-->
+    <!-- You can use Open Graph tags to customize link previews.
+    Learn more: https://developers.facebook.com/docs/sharing/webmasters -->
+    <!--<meta property="og:url"           content="https://www.SeaTurtleVPN.com/register" />-->
+    <!--<meta property="og:type"          content="website" />-->
+    <!--<meta property="og:title"         content="SeaTurtleVPN" />-->
+    <!--<meta property="og:description"   content="A simple VPN for 留学生" />-->
+    <!--<meta property="og:image"         content="https://www.SeaTurtleVPN.com/images/logo.png" />-->
+
+</head>
+
+<body>
+<div class="main">
+    <br>
+    <br>
+    <div class="container login-container container-main">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                <div class="panel panel-login">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <a href="#" class="active login" id="login-form-link">Login</a>
+                            </div>
+                            <div class="col-xs-6">
+                                <a href="#" class="register" id="register-form-link">Register</a>
+                            </div>
+                        </div>
+                        <hr>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <form id="login-form" action="/login" method="post" role="form" style="display: block;">
+                                    <div class="form-group">
+                                        <input type="text" name="email" id="login-email-input" tabindex="1" class="form-control" placeholder="Email" value="">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="password" name="password" id="login-password-input" tabindex="2" class="form-control" placeholder="Password">
+                                    </div>
+                                    <!--<div class="form-group text-center">-->
+                                    <!--<input type="checkbox" tabindex="3" class="" name="remember" id="remember">-->
+                                    <!--<label for="remember"> Remember Me</label>-->
+                                    <!--</div>-->
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-sm-6 col-sm-offset-3">
+                                                <input type="submit" name="login-submit" id="login-submit" tabindex="4" class="form-control btn btn-login" value="Login">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <div class="text-center">
+                                                    <a href="/reset-password" tabindex="5" class="forgot-password">Forgot Password?</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                                <form id="register-form" action="/register" method="post" role="form" style="display: none;">
+                                    <div class="form-group">
+                                        <input type="email" name="email" id="register-email-input" tabindex="1" class="form-control" placeholder="Email Address" value="">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="password" name="password" id="register-password-input" tabindex="2" class="form-control" placeholder="Password">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="password" name="confirm-password" id="register-confirm-password-input" tabindex="2" class="form-control" placeholder="Confirm Password">
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-sm-6 col-sm-offset-3">
+                                                <input type="submit" name="register-submit" id="register-submit" tabindex="4" class="form-control btn btn-register" value="Register">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <a href="#" class="text-center new-account">Create an account </a>
         </div>
     </div>
 </div>
+</div>
 
-<script>
-    var domain = "http://ec2-35-163-70-13.us-west-2.compute.amazonaws.com:3000/";
-//    var domain = "http://localhost:3000/"
+</body>
 
-    $("#login-button").click(function(e){
-        e.preventDefault();
-        console.log("login button clicked")
-        var email = $("#email-input").text();
-        var password = $("#password-input").val();
-        login(email, password, function(){
-            window.location.href = '/'
-//            showTextarea();
-//            get_json("symptoms", function(json){
-//                if($('#symptoms_textarea').val() == "") {
-//                    $("#symptoms_textarea").val(json);
-//                }
-//            }, function(error){
-//                alert(error);
-//            });
-//            get_json("assessment", function(json){
-//                if($('#assessment_textarea').val() == "") {
-//                    $("#assessment_textarea").val(json);
-//                }
-//            }, function(error){
-//                alert(error);
-//            });
-        }, function(error){
-//            showLogin();
-            alert(error);
-        })
-    });
 
-    function login(email, password, callback, error_handler){
-
-        var request = $.ajax({
-            url: domain + "login",
-            type: "POST",
-            data: {email: email, password: password},
-            dataType: "html"
-        });
-
-        request.done(function(message) {
-            var json = JSON.parse(message);
-            if(json.error == null){
-                localStorage.setItem('authKey',json.data.authKey);
-                localStorage.setItem('userId', json.data.userId);
-                callback();
-            }
-            else{
-                error_handler(json.error);
-            }
-        });
-    }
-</script>
 
 <style>
-    .form-signin
-    {
-        max-width: 330px;
-        padding: 15px;
-        margin: 0 auto;
+    .panel-login {
+        border-color: #ccc;
+        -webkit-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.2);
+        -moz-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.2);
+        box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.2);
     }
-    .form-signin .form-signin-heading, .form-signin .checkbox
-    {
-        margin-bottom: 10px;
+    .panel-login>.panel-heading {
+        color: #00415d;
+        background-color: #fff;
+        border-color: #fff;
+        text-align:center;
     }
-    .form-signin .checkbox
-    {
-        font-weight: normal;
+    .panel-login>.panel-heading a{
+        text-decoration: none;
+        color: #666;
+        font-weight: bold;
+        font-size: 15px;
+        -webkit-transition: all 0.1s linear;
+        -moz-transition: all 0.1s linear;
+        transition: all 0.1s linear;
     }
-    .form-signin .form-control
-    {
-        position: relative;
-        font-size: 16px;
-        height: auto;
-        padding: 10px;
-        -webkit-box-sizing: border-box;
-        -moz-box-sizing: border-box;
-        box-sizing: border-box;
-    }
-    .form-signin .form-control:focus
-    {
-        z-index: 2;
-    }
-    .form-signin input[type="text"]
-    {
-        margin-bottom: -1px;
-        border-bottom-left-radius: 0;
-        border-bottom-right-radius: 0;
-    }
-    .form-signin input[type="password"]
-    {
-        margin-bottom: 10px;
-        border-top-left-radius: 0;
-        border-top-right-radius: 0;
-    }
-    .account-wall
-    {
-        margin-top: 20px;
-        padding: 40px 0px 20px 0px;
-        background-color: #f7f7f7;
-        -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-        -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-        box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-    }
-    .login-title
-    {
-        color: #555;
+    .panel-login>.panel-heading a.login.active{
+        color: #5bc0de;
         font-size: 18px;
-        font-weight: 400;
-        display: block;
     }
-    .profile-img
-    {
-        width: 96px;
-        height: 96px;
-        margin: 0 auto 10px;
-        display: block;
-        -moz-border-radius: 50%;
-        -webkit-border-radius: 50%;
-        border-radius: 50%;
+    .panel-login>.panel-heading a.register.active {
+        color: #5cb85c;
+        font-size: 18px;
     }
-    .need-help
-    {
+    .panel-login>.panel-heading hr{
         margin-top: 10px;
+        margin-bottom: 0px;
+        clear: both;
+        border: 0;
+        height: 1px;
+        background-image: -webkit-linear-gradient(left,rgba(0, 0, 0, 0),rgba(0, 0, 0, 0.15),rgba(0, 0, 0, 0));
+        background-image: -moz-linear-gradient(left,rgba(0,0,0,0),rgba(0,0,0,0.15),rgba(0,0,0,0));
+        background-image: -ms-linear-gradient(left,rgba(0,0,0,0),rgba(0,0,0,0.15),rgba(0,0,0,0));
+        background-image: -o-linear-gradient(left,rgba(0,0,0,0),rgba(0,0,0,0.15),rgba(0,0,0,0));
     }
-    .new-account
-    {
-        display: block;
-        margin-top: 10px;
+    .panel-login input[type="text"],.panel-login input[type="email"],.panel-login input[type="password"] {
+        height: 45px;
+        border: 1px solid #ddd;
+        font-size: 16px;
+        -webkit-transition: all 0.1s linear;
+        -moz-transition: all 0.1s linear;
+        transition: all 0.1s linear;
+    }
+    .panel-login input:hover,
+    .panel-login input:focus {
+        outline:none;
+        -webkit-box-shadow: none;
+        -moz-box-shadow: none;
+        box-shadow: none;
+        border-color: #ccc;
+    }
+    .btn-login {
+        background-color: #59B2E0;
+        outline: none;
+        color: #fff;
+        font-size: 14px;
+        height: auto;
+        font-weight: normal;
+        padding: 14px 0;
+        text-transform: uppercase;
+        border-color: #59B2E6;
+    }
+    .btn-login:hover,
+    .btn-login:focus {
+        color: #fff;
+        background-color: #53A3CD;
+        border-color: #53A3CD;
+    }
+    .forgot-password {
+        text-decoration: underline;
+        color: #888;
+    }
+    .forgot-password:hover,
+    .forgot-password:focus {
+        text-decoration: underline;
+        color: #666;
+    }
+
+    .btn-register {
+        background-color: #1CB94E;
+        outline: none;
+        color: #fff;
+        font-size: 14px;
+        height: auto;
+        font-weight: normal;
+        padding: 14px 0;
+        text-transform: uppercase;
+        border-color: #1CB94A;
+    }
+    .btn-register:hover,
+    .btn-register:focus {
+        color: #fff;
+        background-color: #1CA347;
+        border-color: #1CA347;
     }
 </style>
+
+<script>
+    $(function() {
+        $('#login-form-link').click(function(e) {
+            $("#login-form").delay(100).fadeIn(100);
+            $("#register-form").fadeOut(100);
+            $('#register-form-link').removeClass('active');
+            $(this).addClass('active');
+            e.preventDefault();
+        });
+        $('#register-form-link').click(function(e) {
+            $("#register-form").delay(100).fadeIn(100);
+            $("#login-form").fadeOut(100);
+            $('#login-form-link').removeClass('active');
+            $(this).addClass('active');
+            e.preventDefault();
+        });
+
+        $("#register-form").submit(function(e) {
+            e.preventDefault();
+            if($('#register-password-input').val() != $('#register-confirm-password-input').val()){
+                $('.alert-dismissible').remove();
+                $('.login-container').prepend(
+                        '<div class="alert alert-danger alert-dismissible" role="alert">'+
+                        '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>'+
+                        '<strong>Error: </strong>' + "Passwords don't match" +
+                        '</div>'
+                );
+//                console.log($('#register-password-input').val());
+//                console.log($('#register-confirm-password-input').val());
+//                $('#register-submit').attr('title', "Passwords don't match")
+//                        .tooltip('fixTitle')
+//                        .tooltip('show');
+            }
+            else{
+                $.ajax({
+                    url : $(this).attr('action') || window.location.pathname,
+                    type: "POST",
+                    data: $(this).serialize() + '&referralCode='+ localStorage.getItem("referralCode"),
+                    success: function (json) {
+                        var error = json.error
+                        if(json.error){
+                            $('.alert-dismissible').remove();
+                            $('.login-container').prepend(
+                                    '<div class="alert alert-danger alert-dismissible" role="alert">'+
+                                    '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>'+
+                                    '<strong>Error: </strong>' + error +
+                                    '</div>'
+                            );
+//                        $('#register-submit').tooltip('dispose');
+//                        $('#register-submit').tooltip({title: error, placement: 'bottom'});
+//                        $('#register-submit').tooltip('show');
+//                            $('#register-submit').attr('title', error)
+//                                    .tooltip('fixTitle')
+//                                    .tooltip('show');
+//                        alert(error);
+
+                        }
+                        else{
+                            var data = json.data;
+                            var email = data.email;
+                            //display successful registration page
+//                        $("#form_output").html(data);
+                            $('.alert-dismissible').remove();
+                            $('.login-container').prepend(
+                                    '<div class="alert alert-success alert-dismissible" role="alert">'+
+                                    '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>'+
+                                    '<strong>You are Registered!</strong>' + ' Click on the verification link that was sent to your email, ' + email + ', to begin your free trial' +
+                                    '</div>'
+                            );
+                            $('#register-email-input').val('');
+                            $('#register-password-input').val('');
+                            $('#register-confirm-password-input').val('');
+
+                        }
+                    },
+                    error: function (jXHR, textStatus, errorThrown) {
+                        alert(errorThrown);
+                    }
+                });
+            }
+        });
+
+        $("#login-form").submit(function(e) {
+            e.preventDefault();
+            $.ajax({
+                url : $(this).attr('action') || window.location.pathname,
+                type: "POST",
+                data: $(this).serialize(),
+                success: function (json) {
+                    $(".alert-dismissible").remove();
+                    var error = json.error
+                    if(error){
+//                        $('#login-submit').tooltip('dispose');
+//                        $('#login-submit').tooltip({title: error, placement: 'bottom'});
+//                        $('#login-submit').tooltip('show');
+                        $('.alert-dismissible').remove();
+                        $('.login-container').prepend(
+                                '<div class="alert alert-danger alert-dismissible" role="alert">'+
+                                '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>'+
+                                '<strong>Error: </strong>' + error +
+                                '</div>'
+                        );
+                        $('#login-password-input').val('');
+                    }
+                    else{
+                        var data = json.data;
+                        //display successful login page
+                        //save userId and authKey
+//                        var data = json.data;
+//                        createCookie("userId", data.userId, 7);
+//                        createCookie("authKey", data.authKey, 7);
+//                        localStorage.setItem("userId", data.userId); // writes name and password to local storage if not exists
+//                        localStorage.setItem("authKey", data.authKey);
+//                        localStorage.setItem("email", data.email);
+//                        $("#form_output").html(data);
+                        window.location.href = "/download";
+
+
+                    }
+//
+                },
+                error: function (jXHR, textStatus, errorThrown) {
+                    alert(errorThrown);
+                }
+            });
+        });
+
+    });
+</script>

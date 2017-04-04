@@ -59,6 +59,8 @@ var userRoutes = require('./routes/user');
 app.use('/user', userRoutes);
 var noteRoutes = require('./routes/note')
 app.use('/note', noteRoutes);
+var resetPassword = require('./routes/reset-password')
+app.use('/reset-password', resetPassword); 
 
 /**
  * ALL THE CODE BELOW THIS POINT IS FOR THE WEBSITE FRONTEND, I.E IT WILL BE REPLACED SOON
