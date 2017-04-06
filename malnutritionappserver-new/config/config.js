@@ -8,9 +8,6 @@ module.exports = {
       xauthUserFilePath: '/files/userFile.txt',
       l2tpUserFilePath: '/files/l2tpUserFile.txt',
       removeExpiredUsersInterval: 1000*60*1,
-      STRIPE_PK: 'pk_test_jFxFhiLM0gOYpzWyx0KRf5SQ',
-      STRIPE_SK: 'sk_test_1AT6gGprpdRcrhoUbh2KBxgz',
-      AWS_LOAD_BALANCER: 'jumpmanserver-balancer-2111802642.us-west-2.elb.amazonaws.com',
       bonusTimeReferral: 1000*60*60*24*10, //10 days
       bonusTimeSubscription: 0,
       trialTime: 1000*60*60*24*10, //10 days
@@ -26,9 +23,6 @@ module.exports = {
     xauthUserFilePath: '/files/userFile.txt',
         l2tpUserFilePath: '/files/l2tpUserFile.txt',
         removeExpiredUsersInterval: 1000*60*1, //5 seconds
-    STRIPE_PK: 'pk_test_jFxFhiLM0gOYpzWyx0KRf5SQ',
-    STRIPE_SK: 'sk_test_1AT6gGprpdRcrhoUbh2KBxgz',
-        AWS_LOAD_BALANCER: 'jumpmanserver-balancer-2111802642.us-west-2.elb.amazonaws.com',
         bonusTimeReferral: 1000*60*60*24*10, //10 days
         bonusTimeSubscription: 0,
         trialTime: 1000*60*60*24*10, //10 days
@@ -43,8 +37,6 @@ module.exports = {
     xauthUserFilePath: '../etc/ipsec.d/passwd',
       l2tpUserFilePath: '../etc/ppp/chap-secrets',
       removeExpiredUsersInterval: 1000*60*1,
-      STRIPE_PK: 'pk_live_Z4MJzW3yhBEDWrW1XAPWlzF2',
-      AWS_LOAD_BALANCER: 'jumpmanserver-balancer-2111802642.us-west-2.elb.amazonaws.com',
       bonusTimeReferral: 1000*60*60*24*10, //10 days
       bonusTimeSubscription: 0,
       trialTime: 1000*60*60*24*10, //10 days
