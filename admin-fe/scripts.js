@@ -1,9 +1,11 @@
 function login() {
     let username = $("#username_input").val();
     let password = $("#password_input").val();
-    if (username === "username" && password === "password") {
+    console.log(username + password);
+    console.log("asdf");
+    if (username === "admin" && password === "malnutritionappteam") {
         console.log("login sucess");
-        window.location.assign("notes.html");
+        window.location.replace("/notes.html");
     } else {
         alert("Login failed");
     }
@@ -57,6 +59,7 @@ function showNotes(notes) {
         let note = notes[i];
         let li = $("<li/>")
             .addClass("note-element")
+            .addClass("list-group-item")
             .appendTo(notesListEl);
         $("<p/>").text(note.time).appendTo(li);
         $("<p/>").text(note.name).appendTo(li);
