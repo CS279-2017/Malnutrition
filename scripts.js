@@ -5,7 +5,7 @@ function login() {
     console.log("asdf");
     if (username === "admin" && password === "malnutritionappteam") {
         console.log("login sucess");
-        window.location.replace("/notes.html");
+        window.location.replace("./notes.html");
     } else {
         alert("Login failed");
     }
